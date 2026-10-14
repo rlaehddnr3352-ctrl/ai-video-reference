@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>오늘의 터진 쇼츠 · 숏폼 롱폼 뜯어보기 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="최근 터진 한국 쇼츠와 롱폼을 매일 모아 첫 3초 훅, 흐름, 왜 터졌는지 뜯어보고 같은 공식으로 AI 영상 프롬프트까지 만드는 페이지.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/radar/">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="오늘의 터진 쇼츠 · 숏폼 롱폼 뜯어보기 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="최근 터진 한국 쇼츠와 롱폼을 매일 모아 첫 3초 훅, 흐름, 왜 터졌는지 뜯어보고 같은 공식으로 AI 영상 프롬프트까지 만드는 페이지.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/radar/">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.55}
+a{color:inherit}
+select,input{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+.btn{font:inherit;font-weight:600;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:9px 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.code{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+:is(a,button,select,input):focus-visible{outline:2px solid var(--rec);outline-offset:2px}
+</style><style>
+.rd{max-width:1180px;margin:0 auto;padding:18px 16px 90px}
+.rd-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.rd-top a.brand{font-family:var(--f-display);font-size:20px;text-decoration:none}
+.rd-top nav{display:flex;gap:4px;flex-wrap:wrap}
+.rd-top nav a{font-size:13px;text-decoration:none;padding:6px 10px;border-radius:999px;color:var(--muted)}
+.rd-top nav a[aria-current="page"]{background:var(--ink);color:var(--bg)}
+.rd h1{font-family:var(--f-display);font-weight:400;font-size:clamp(30px,5vw,44px);line-height:1.05;margin:0}
+.rd h1 em{font-style:normal;color:var(--rec)}
+.rd-sub{color:var(--muted);margin:8px 0 0;font-size:14px;max-width:70ch}
+.rd-note{display:inline-block;margin-top:10px;font-size:12px;padding:3px 9px;border-radius:999px;border:1px dashed var(--line);color:var(--muted)}
+.rd-tabs{display:flex;gap:6px;margin:22px 0 14px;border-bottom:1px solid var(--line)}
+.rd-tabs button{font:inherit;font-size:16px;font-weight:600;background:none;border:0;border-bottom:3px solid transparent;padding:8px 14px 10px;color:var(--muted);cursor:pointer}
+.rd-tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--rec)}
+.rd-tabs small{font-family:var(--f-mono);font-weight:500;margin-left:6px;opacity:.7}
+.rd-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,2.2fr);gap:10px;margin-bottom:14px}
+.rd-stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.rd-stat b{display:block;font-family:var(--f-display);font-weight:400;font-size:26px;line-height:1.1;font-variant-numeric:tabular-nums}
+.rd-stat span{font-size:12px;color:var(--muted)}
+.rd-traits{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.rd-traits p{margin:0 0 4px;font-size:12px;color:var(--muted);font-weight:600}
+.rd-traits ol{margin:0;padding-left:18px;font-size:13px;line-height:1.5}
+.rd-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 12px}
+.rd-tools select{width:auto}
+.rd-tools label{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted)}
+.rd-tools label input{width:auto}
+.rd-crit{font-size:12px;color:var(--muted);margin-left:auto}
+.rd-grid{display:grid;gap:12px}
+.rd-grid.short{grid-template-columns:repeat(auto-fill,minmax(min(46%,190px),1fr))}
+.rd-grid.long{grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr))}
+.rv{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;text-align:left;font:inherit;color:inherit;padding:0;display:flex;flex-direction:column}
+.rv:hover{border-color:var(--muted)}
+.rv-th{position:relative;background:#111;overflow:hidden}
+.short .rv-th{aspect-ratio:9/16}.long .rv-th{aspect-ratio:16/9}
+.rv-th img{width:100%;height:100%;object-fit:cover;display:block}
+.rv-mult{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.72);color:#fff;font-family:var(--f-mono);font-size:12px;font-weight:500;padding:3px 7px;border-radius:6px}
+.rv-mult.hot{background:var(--rec)}
+.rv-dur{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.72);color:#fff;font-family:var(--f-mono);font-size:11px;padding:2px 6px;border-radius:4px}
+.rv-play{position:absolute;inset:auto auto 8px 8px;background:rgba(255,255,255,.92);color:#111;font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px}
+.rv-b{padding:9px 11px 11px;display:grid;gap:4px}
+.rv-t{font-size:14px;font-weight:600;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rv-m{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.rv-f{font-size:11.5px;color:var(--rec);font-weight:600}
+dialog.rd-dlg{border:0;padding:0;border-radius:16px;max-width:min(980px,94vw);width:100%;background:var(--surface);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+dialog.rd-dlg::backdrop{background:rgba(10,12,16,.6)}
+.dl{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:0}
+.dl.long{grid-template-columns:minmax(0,1fr)}
+.dl-pl{background:#000;position:relative}
+.dl.short .dl-pl{aspect-ratio:9/16}
+.dl.long .dl-pl{aspect-ratio:16/9}
+.dl-pl img,.dl-pl iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.dl-pbtns{position:absolute;left:0;right:0;bottom:0;display:flex;gap:6px;justify-content:center;padding:12px;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+.dl-pbtns button{font:inherit;font-size:13px;font-weight:600;border:0;border-radius:999px;padding:8px 13px;cursor:pointer;background:#fff;color:#111}
+.dl-pbtns button.hook{background:var(--rec);color:#fff}
+.dl-body{padding:18px 20px 20px;display:grid;gap:12px;align-content:start;max-height:min(88vh,860px);overflow:auto}
+.dl.long .dl-body{max-height:none}
+ .dl-x2{display:block}
+.dl-head{display:flex;justify-content:space-between;gap:10px;align-items:start}
+.dl-head h2{font-size:18px;line-height:1.35;margin:0}
+.dl-x{font:inherit;font-size:20px;line-height:1;background:none;border:1px solid var(--line);border-radius:8px;width:34px;height:34px;cursor:pointer;color:var(--ink);flex:none}
+.dl-nums{display:flex;flex-wrap:wrap;gap:6px}
+.dl-nums span{font-size:12px;background:var(--bg);border-radius:8px;padding:4px 8px;font-variant-numeric:tabular-nums}
+.dl-nums span b{font-weight:700}
+.dl-nums .hot{background:var(--rec);color:#fff}
+.dl-sec{display:grid;gap:4px}
+.dl-sec h3{font-size:12px;color:var(--muted);margin:0;font-weight:600;letter-spacing:.02em}
+.dl-sec p{margin:0;font-size:14px;line-height:1.55}
+.dl-flow{display:flex;flex-wrap:wrap;gap:4px;align-items:center;font-size:13px}
+.dl-flow span{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 8px}
+.dl-flow i{color:var(--muted);font-style:normal}
+.dl-cards{display:flex;flex-wrap:wrap;gap:6px}
+.dl-cards a{font-size:12.5px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:4px 8px}
+.dl-cards a .code{margin-right:4px}
+.dl-tag{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.7);color:#fff;font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px}
+.dl-x2{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;border-color:transparent;display:none}
+.dl-caution{font-size:13px;background:color-mix(in srgb,var(--rec) 12%,var(--surface));border-radius:8px;padding:8px 10px}
+.dl-basis{font-size:11.5px;color:var(--muted)}
+.dl-cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.rd-foot{margin-top:28px;font-size:12px;color:var(--muted);line-height:1.6}
+.rd-empty{padding:40px;text-align:center;color:var(--muted)}
+@media (max-width:760px){
+ .rd-sum{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .rd-traits{grid-column:1/-1}
+ .rd-crit{margin-left:0;width:100%}
+ .dl,.dl.long{grid-template-columns:1fr}
+ .dl.short .dl-pl{aspect-ratio:auto;height:min(62vh,520px)}
+ .dl-body{max-height:none}
+ .dl-x2{display:block}
+ dialog.rd-dlg{max-height:94vh;overflow:auto}
+}
+</style>
+<div class="rd">
+  <header class="rd-top">
+    <a class="brand" href="../">AI 영상 레퍼런스 보관함</a>
+    <nav><a href="../#wiz">간편 만들기</a><a href="../#dict">레퍼런스 사전</a><a href="./" aria-current="page">터진 쇼츠</a><a href="../guide/">가이드</a></nav>
+  </header>
+  <h1>오늘의 <em>터진 쇼츠</em> 뜯어보기</h1>
+  <p class="rd-sub">뭘 만들지 막막할 때, 요즘 실제로 터진 영상부터 보세요. 첫 3초만 바로 재생해 보고, 왜 터졌는지 확인한 다음, 같은 공식으로 프롬프트까지 만들 수 있어요.</p>
+  <span class="rd-note" id="rdNote">불러오는 중…</span>
+
+  <div class="rd-tabs" role="tablist">
+    <button role="tab" id="tab-short" aria-selected="true" data-kind="short">숏폼<small id="n-short"></small></button>
+    <button role="tab" id="tab-long" aria-selected="false" data-kind="long">롱폼<small id="n-long"></small></button>
+  </div>
+  <section class="rd-sum" id="rdSum"></section>
+  <div class="rd-tools">
+    <select id="rdDate" aria-label="날짜" hidden></select>
+    <select id="rdSort" aria-label="정렬"><option value="mult">배수 높은 순</option><option value="views">조회수 높은 순</option><option value="age">최신 순</option></select>
+    <label><input type="checkbox" id="rdSmall"> 작은 채널만 (구독자 1만 명 미만)</label>
+    <span class="rd-crit" id="rdCrit"></span>
+  </div>
+  <div class="rd-grid short" id="rdGrid"></div>
+  <p class="rd-foot"><b>배수</b>는 조회수를 구독자 수로 나눈 값이에요. 10배가 넘으면 빨간색으로 표시해요. 구독자는 적은데 크게 터졌다는 뜻이라, 채널의 힘이 아니라 영상의 힘으로 터진 경우예요. 따라 하기 가장 좋은 대상이에요.<br>
+  영상은 유튜브 공식 플레이어로 재생되고, 이 사이트는 영상을 저장하거나 다시 올리지 않아요. 뜯어보기는 썸네일·제목·공개 수치를 바탕으로 한 분석이라, 방향을 잡는 용도로 보세요.</p>
+</div>
+
+<dialog class="rd-dlg" id="rdDlg" aria-labelledby="dlTitle"><div id="dlBody"></div></dialog>
+
+<script>
+(function(){
+  const DATA_URL = "data.json", ARCHIVE = "archive/";
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const TPL = {shorts:["T01","틱톡 · 릴스 · 쇼츠"],ad15:["T02","광고 심리 구조"],drama:["T03","숏드라마 훅"],marketing:["T04","마케팅"],testimonial:["T07","고객 후기"],case:["T08","사례 연구"],explainer:["T09","설명 영상"],youtube:["T10","유튜브 롱폼"],demo:["T11","제품 데모"],tutorial:["T12","튜토리얼"]};
+  const LIGHT = {"1":"L01","2":"L02","4":"L03","8":"L04"};
+  const nfmt = n => n==null ? "-" : n>=1e8 ? (n/1e8).toFixed(1).replace(/\.0$/,"")+"억" : n>=1e4 ? (n/1e4).toFixed(n>=1e5?0:1).replace(/\.0$/,"")+"만" : n.toLocaleString("ko-KR");
+  const dfmt = s => s>=3600 ? Math.floor(s/3600)+":"+String(Math.floor(s%3600/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0") : Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+  const mult = x => x.subs ? x.views/x.subs : 0;
+  const multTxt = m => m>=100 ? Math.round(m).toLocaleString("ko-KR") : m>=10 ? m.toFixed(0) : m.toFixed(1);
+  const thumb = x => x.thumb==="frame0" ? `https://i.ytimg.com/vi/${x.id}/frame0.jpg` : x.kind==="short" ? `https://i.ytimg.com/vi/${x.id}/oardefault.jpg` : `https://i.ytimg.com/vi/${x.id}/mqdefault.jpg`;
+  const poster = x => x.kind==="short" ? `https://i.ytimg.com/vi/${x.id}/frame0.jpg` : `https://i.ytimg.com/vi/${x.id}/hqdefault.jpg`;
+  const ytUrl = x => x.kind==="short" ? `https://www.youtube.com/shorts/${x.id}` : `https://www.youtube.com/watch?v=${x.id}`;
+  let DATA = null, kind = "short", cardNames = null;
+  try{ const k = new URLSearchParams(location.search).get("t"); if(k==="long") kind="long"; }catch(e){}
+
+  function list(){
+    let a = (DATA[kind].items||[]).slice();
+    if($("#rdSmall").checked) a = a.filter(x => (x.subs||0) < 10000);
+    const s = $("#rdSort").value;
+    a.sort((p,q) => s==="views" ? q.views-p.views : s==="age" ? (p.age??99)-(q.age??99) : mult(q)-mult(p));
+    return a;
+  }
+  function render(){
+    document.querySelectorAll(".rd-tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.kind===kind)));
+    const st = DATA[kind].stats || {};
+    $("#rdSum").innerHTML = `<div class="rd-stat"><b>${st.n||0}편</b><span>${kind==="short"?"오늘 고른 숏폼":"오늘 고른 롱폼"}</span></div>
+      <div class="rd-stat"><b>${nfmt(st.medViews)}</b><span>조회수 중앙값</span></div>
+      <div class="rd-stat"><b>${st.medMult!=null?multTxt(st.medMult)+"배":"-"}</b><span>배수 중앙값</span></div>
+      <div class="rd-traits"><p>오늘의 공통점</p><ol>${(DATA[kind].traits||[]).map(t=>`<li>${esc(t)}</li>`).join("")}</ol></div>`;
+    $("#rdCrit").textContent = "기준 · " + ((DATA.criteria||{})[kind]||"");
+    const g = $("#rdGrid"); g.className = "rd-grid " + kind;
+    const items = list();
+    g.innerHTML = items.length ? items.map(x => { const m = mult(x);
+      return `<button type="button" class="rv" data-id="${esc(x.id)}">
+        <span class="rv-th"><img src="${thumb(x)}" alt="" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(x.id)}/hqdefault.jpg'">
+          ${m?`<span class="rv-mult${m>=10?" hot":""}">×${multTxt(m)}</span>`:""}<span class="rv-dur">${dfmt(x.dur||0)}</span><span class="rv-play">▶ ${x.kind==="short"?"첫 3초":"도입 15초"}</span></span>
+        <span class="rv-b"><span class="rv-f">${esc(x.fmt)}</span><span class="rv-t">${esc(x.title)}</span>
+          <span class="rv-m">${esc(x.channel)} · ${nfmt(x.views)}회 · ${x.age!=null?x.age+"일 전":""}</span></span>
+      </button>`; }).join("") : `<div class="rd-empty">조건에 맞는 영상이 없어요.</div>`;
+  }
+  async function names(){
+    if(cardNames) return cardNames;
+    try{ const r = await fetch("../cards.json"); const j = await r.json(); cardNames = Object.fromEntries((j.cards||[]).map(c=>[c.code,c.name])); }catch(e){ cardNames = {}; }
+    return cardNames;
+  }
+  function player(x, mode){
+    const pl = $("#dlPl");
+    const end = x.kind==="short" ? 3 : 15;
+    const q = mode==="hook" ? `start=0&end=${end}&autoplay=1` : `autoplay=1`;
+    pl.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(x.id)}?${q}&playsinline=1&rel=0" title="${esc(x.title)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      <button type="button" class="dl-x dl-x2" data-close aria-label="닫기">×</button><div class="dl-pbtns" style="background:none;top:auto"><button type="button" class="hook" data-p="hook">↺ ${x.kind==="short"?"첫 3초 다시":"도입 15초 다시"}</button><button type="button" data-p="full">전체 재생</button></div>`;
+  }
+  async function open(id){
+    const x = (DATA[kind].items||[]).find(i=>i.id===id); if(!x) return;
+    const m = mult(x), p = x.preset||{}, nm = await names();
+    const tp = TPL[p.tpl];
+    const cards = [tp && [tp[0], tp[1]], ...(p.m||[]).map(c=>[c.toUpperCase(), nm[c.toUpperCase()]||""]), p.style && [p.style.toUpperCase(), nm[p.style.toUpperCase()]||""], p.light && LIGHT[p.light] && [LIGHT[p.light], nm[LIGHT[p.light]]||""]].filter(Boolean);
+    const make = "../#make=" + encodeURIComponent(JSON.stringify({use:p.use,tpl:p.tpl,m:p.m,style:p.style,light:p.light,kind:x.kind}));
+    $("#dlBody").innerHTML = `<div class="dl ${x.kind}">
+      <div class="dl-pl" id="dlPl"><img src="${poster(x)}" alt="" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(x.id)}/hqdefault.jpg'">${x.kind==="short"?`<span class="dl-tag">실제 첫 장면</span>`:""}<button type="button" class="dl-x dl-x2" data-close aria-label="닫기">×</button>
+        <div class="dl-pbtns"><button type="button" class="hook" data-p="hook">▶ ${x.kind==="short"?"첫 3초만 보기":"도입 15초만 보기"}</button><button type="button" data-p="full">전체 재생</button></div></div>
+      <div class="dl-body">
+        <div class="dl-head"><h2 id="dlTitle">${esc(x.title)}</h2><button type="button" class="dl-x" data-close aria-label="닫기">×</button></div>
+        <div class="dl-nums"><span>${esc(x.channel)}</span><span>조회 <b>${nfmt(x.views)}</b></span><span>구독자 <b>${nfmt(x.subs)}</b></span>${m?`<span class="${m>=10?"hot":""}">배수 <b>×${multTxt(m)}</b></span>`:""}<span>좋아요 ${nfmt(x.likes)}</span><span>댓글 ${nfmt(x.comments)}</span><span>${x.age!=null?x.age+"일 전":""} · ${dfmt(x.dur||0)}</span></div>
+        <div class="dl-sec"><h3>형식</h3><p>${esc(x.fmt)}</p></div>
+        <div class="dl-sec"><h3>${x.kind==="short"?"첫 3초 훅":"도입 · 클릭 포인트"}</h3><p>${esc(x.hook)}</p></div>
+        <div class="dl-sec"><h3>흐름</h3><div class="dl-flow">${(x.flow||[]).map((f,i)=>`${i?"<i>→</i>":""}<span>${esc(f)}</span>`).join("")}</div></div>
+        <div class="dl-sec"><h3>왜 터졌나</h3><p>${esc(x.why)}</p></div>
+        ${x.caution?`<div class="dl-caution">주의 · ${esc(x.caution)}</div>`:""}
+        <div class="dl-sec"><h3>이 공식에 맞는 카드</h3><div class="dl-cards">${cards.map(([c,n])=>`<a href="../card/${c.toLowerCase()}.html"><span class="code">${esc(c)}</span>${esc(n)}</a>`).join("")}</div></div>
+        <div class="dl-cta"><a class="btn primary" href="${make}">이 공식으로 프롬프트 만들기 →</a><a class="btn" href="${ytUrl(x)}" target="_blank" rel="noopener">유튜브에서 보기 ↗</a></div>
+        <p class="dl-basis">분석 기준 · ${esc(x.basis||"")} · 업로드 ${esc((x.date||"").replace(/(\d{4})(\d\d)(\d\d)/,"$1.$2.$3"))}</p>
+      </div></div>`;
+    const d = $("#rdDlg"); if(!d.open) d.showModal();
+    d.onclick = e => {
+      if(e.target===d || e.target.closest("[data-close]")){ d.close(); return; }
+      const b = e.target.closest("[data-p]"); if(b) player(x, b.dataset.p);
+    };
+  }
+  $("#rdDlg").addEventListener("close", () => { $("#dlBody").innerHTML = ""; });
+  document.querySelector(".rd-tabs").addEventListener("click", e => { const b=e.target.closest("[data-kind]"); if(!b) return; kind=b.dataset.kind; try{ history.replaceState(null,"",kind==="long"?"?t=long":"./"); }catch(_){} render(); });
+  $("#rdGrid").addEventListener("click", e => { const b=e.target.closest("[data-id]"); if(b) open(b.dataset.id); });
+  $("#rdSort").addEventListener("change", render); $("#rdSmall").addEventListener("change", render);
+
+  async function dates(){
+    try{ const r = await fetch(ARCHIVE+"index.json", {cache:"no-cache"}); const j = await r.json(); return Array.isArray(j) ? j : []; }catch(e){ return []; }
+  }
+  function show(d){
+    DATA = d;
+    $("#n-short").textContent = (d.short.items||[]).length; $("#n-long").textContent = (d.long.items||[]).length;
+    const dt = (d.date||"").replace(/-/g,".");
+    $("#rdNote").textContent = d.sample ? `${dt} 기준 · 견본 데이터 (매일 아침 자동 갱신 준비 중)` : `${dt} 아침 갱신 · 매일 오전 7시`;
+    render();
+  }
+  async function load(date){
+    try{ const r = await fetch(date ? `${ARCHIVE}${date}.json` : DATA_URL, {cache:"no-cache"}); show(await r.json()); }
+    catch(e){ $("#rdNote").textContent = "데이터를 불러오지 못했어요. 잠시 뒤 새로고침해 주세요."; }
+  }
+  load().then(async () => {
+    const ds = await dates(); if(ds.length < 2) return;
+    const sel = $("#rdDate"); sel.innerHTML = ds.map((d,i)=>`<option value="${i?esc(d):""}">${esc(d.replace(/-/g,"."))}${i?"":" (오늘)"}</option>`).join(""); sel.hidden = false;
+    sel.addEventListener("change", () => load(sel.value));
+  });
+})();
+</script>
+
+</body>
+</html>

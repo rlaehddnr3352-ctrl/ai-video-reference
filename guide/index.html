@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI 영상 제작 가이드 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="AI 영상 프롬프트 작성법, 카메라 무빙, 숏폼 구조, 자주 생기는 오류 해결법을 정리한 가이드 모음.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/guide/">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI 영상 제작 가이드 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="AI 영상 프롬프트 작성법, 카메라 무빙, 숏폼 구조, 자주 생기는 오류 해결법을 정리한 가이드 모음.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/guide/">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+</style><header class="top"><nav><a class="brand" href="../">AI 영상 레퍼런스 보관함</a><a href="../#dict">레퍼런스 사전</a><a href="../guide/">가이드</a><a href="../privacy.html">소개</a></nav></header>
+<main>
+  <span class="eyebrow">GUIDE</span>
+  <h1>AI 영상 제작 가이드</h1>
+  <p class="lede">레퍼런스 사전을 더 잘 쓰기 위한 실전 정리입니다. 프롬프트 공식부터 망가진 영상 고치는 법까지.</p>
+  <ul class="related"><li><a href="prompt-7-steps.html"><b>AI 영상 프롬프트, 7단계로 나눠 쓰면 결과가 안정된다</b><small>&quot;멋지게 만들어 줘&quot; 대신 무엇을 고정하고 무엇을 움직일지 나눠 쓰는 7단계 프롬프트 공식과 전후 비교 예시. · 약 6분</small></a></li><li><a href="camera-moves.html"><b>카메라 무빙 14가지, 언제 어떤 움직임을 써야 할까</b><small>돌리인, 오비트, 스냅 줌, 크레인 업부터 스톱모션까지. 카메라 움직임마다 주는 효과, 쓰기 좋은 순간, 바로 쓰는 프롬프트 문장. · 약 7분</small></a></li><li><a href="shortform-structures.html"><b>15–45초 숏폼, 4가지 구조로 짜는 법</b><small>쇼츠·릴스 기본형, 광고 심리 구조, 숏드라마 훅, 고객 후기형. 초 단위 시간 배분과 예시 대본까지. · 약 7분</small></a></li><li><a href="fix-ai-video-errors.html"><b>AI 영상이 망가지는 7가지 이유와 고치는 법</b><small>제품 모양이 바뀌고, 글자가 깨지고, 손이 뭉개지고, 조명이 튀는 문제. 원인별로 바로 써먹는 해결법. · 약 8분</small></a></li></ul>
+  <aside class="adslot" aria-label="광고" hidden><span class="lab">광고</span>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0000000000000000" data-ad-slot="SLOT_GUIDE_LIST" data-ad-format="auto" data-full-width-responsive="true"></ins></aside>
+</main>
+<footer><a href="../privacy.html">소개 · 개인정보처리방침</a></footer>
+<script>
+(function(){document.querySelectorAll(".adslot").forEach(function(box){var ins=box.querySelector("ins");
+ if(!ins||/SLOT_|0000000000000000/.test(ins.getAttribute("data-ad-slot")+ins.getAttribute("data-ad-client")))return;
+ box.hidden=false;try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}});})();
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>카메라 무빙 14가지, 언제 어떤 움직임을 써야 할까 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="돌리인, 오비트, 스냅 줌, 크레인 업부터 스톱모션까지. 카메라 움직임마다 주는 효과, 쓰기 좋은 순간, 바로 쓰는 프롬프트 문장.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/guide/camera-moves.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="카메라 무빙 14가지, 언제 어떤 움직임을 써야 할까 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="돌리인, 오비트, 스냅 줌, 크레인 업부터 스톱모션까지. 카메라 움직임마다 주는 효과, 쓰기 좋은 순간, 바로 쓰는 프롬프트 문장.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/guide/camera-moves.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+</style><header class="top"><nav><a class="brand" href="../">AI 영상 레퍼런스 보관함</a><a href="../#dict">레퍼런스 사전</a><a href="../guide/">가이드</a><a href="../privacy.html">소개</a></nav></header>
+<main>
+  <article>
+    <span class="eyebrow">GUIDE · 읽는 시간 약 7분</span>
+    <h1>카메라 무빙 14가지, 언제 어떤 움직임을 써야 할까</h1>
+    <p class="lede">돌리인, 오비트, 스냅 줌, 크레인 업부터 스톱모션까지. 카메라 움직임마다 주는 효과, 쓰기 좋은 순간, 바로 쓰는 프롬프트 문장.</p>
+    <p>AI 영상 도구는 카메라 움직임을 이름으로 꽤 잘 알아듣습니다. 문제는 "어떤 순간에 어떤 움직임을 쓸지"예요. 같은 제품이라도 다가가면 질감이 보이고, 돌면 형태가 보이고, 올라가면 감정이 남습니다. 이 글은 사전에 있는 카메라 무빙 14가지를 <b>목적별로</b> 묶어 정리했어요.</p>
+
+<h2>먼저 기억할 원칙 두 가지</h2>
+<ul>
+  <li><b>한 샷에 움직임은 하나.</b> "다가가면서 돌면서 올라가는" 샷은 사람 촬영감독도 어렵고, AI는 더 자주 무너집니다. 움직임이 여러 개 필요하면 샷을 나누세요.</li>
+  <li><b>길이는 짧게.</b> 대부분의 움직임은 3–6초면 충분해요. 길게 뽑을수록 중간에 형태가 흐트러질 확률이 커집니다.</li>
+</ul>
+
+<h2>1. 다가가기: 디테일과 강조</h2>
+<div class="tw"><table>
+  <thead><tr><th>움직임</th><th>효과</th><th>쓰기 좋은 순간</th></tr></thead>
+  <tbody>
+    <tr><td>매크로 돌리인</td><td>천천히 다가가며 질감을 드러냄</td><td>음식 단면, 크림 제형, 원단 짜임</td></tr>
+    <tr><td>임팩트 푸시인</td><td>순간적으로 확 다가가 힘을 실음</td><td>핵심 문구, 가격, 제품이 등장하는 순간</td></tr>
+    <tr><td>스냅 줌</td><td>1초 안에 확 당겨 시선을 붙잡음</td><td>숏폼 첫 1초</td></tr>
+  </tbody>
+</table></div>
+<pre class="prompt">slow macro dolly-in toward the subject, shallow depth of field, gentle focus pull landing on the surface texture</pre>
+<p>돌리인과 줌은 다릅니다. 돌리인은 카메라가 실제로 이동해서 배경과의 거리감이 바뀌고, 줌은 제자리에서 확대만 해서 화면이 평평하게 느껴져요. 고급스러운 느낌은 돌리인, 에너지와 유머는 스냅 줌이 잘 맞습니다.</p>
+
+<h2>2. 돌기 · 옆 이동: 형태와 깊이감</h2>
+<div class="tw"><table>
+  <thead><tr><th>움직임</th><th>효과</th><th>쓰기 좋은 순간</th></tr></thead>
+  <tbody>
+    <tr><td>제품 오비트</td><td>앞·옆면을 한 컷에 보여 줌</td><td>패키지, 신발, 전자기기 소개</td></tr>
+    <tr><td>패럴랙스 슬라이드</td><td>앞뒤 레이어 속도 차이로 입체감</td><td>정물 컷이 밋밋할 때</td></tr>
+    <tr><td>래터럴 트래킹</td><td>나란히 따라가며 이동감</td><td>걷는 사람, 진열대 훑기</td></tr>
+  </tbody>
+</table></div>
+<p>오비트는 180도까지만 도는 게 안전해요. 360도를 한 번에 돌리면 뒷면을 AI가 상상해서 그리기 때문에 라벨이나 형태가 바뀌는 경우가 많습니다. 뒷면이 중요하면 뒷면 사진을 따로 넣어 별도 샷으로 만드세요.</p>
+
+<h2>3. 위아래: 감정과 정보</h2>
+<div class="tw"><table>
+  <thead><tr><th>움직임</th><th>효과</th><th>쓰기 좋은 순간</th></tr></thead>
+  <tbody>
+    <tr><td>크레인 업 (아래에서 위로)</td><td>제품에서 사람의 표정으로, 감정이 남음</td><td>엔딩, 사용 후 반응</td></tr>
+    <tr><td>탑다운 구성품 등장</td><td>위에서 정리된 정보를 하나씩</td><td>구성품, 재료, 성분 소개</td></tr>
+  </tbody>
+</table></div>
+
+<h2>4. 따라가기: 현장감</h2>
+<p><b>낮은 시점 핸드헬드 팔로우</b>는 살짝 흔들리면서 피사체를 따라가 실제 생활을 엿보는 느낌을 줍니다. 후기 영상과 잘 어울리지만, AI가 손발이나 걸음을 왜곡하기 가장 쉬운 움직임이기도 해요. 사람이나 동물이 크게 걸어 다니는 장면은 실제로 찍은 영상에 스타일만 입히는(video-to-video) 쪽이 훨씬 안정적입니다.</p>
+
+<h2>5. 전환: 컷과 컷 사이</h2>
+<ul>
+  <li><b>와이프 리빌</b> — 앞쪽 물체가 화면을 지나가며 제품을 드러냄. 공개 장면에 좋아요.</li>
+  <li><b>동작 중 컷</b> — 뚜껑을 여는 동작 중간에 잘라 다음 샷에서 이어 붙임. 두 샷의 이동 방향과 조명 방향이 같아야 자연스럽습니다.</li>
+  <li><b>고정 점프컷</b> — 카메라는 그대로, 대상만 바뀌는 리듬 컷. 색상·옵션 비교에 잘 맞아요.</li>
+</ul>
+
+<h2>6. 특수: 순간과 손맛</h2>
+<ul>
+  <li><b>슬로모 쏟아짐</b> — 음료, 시리얼, 원두가 쏟아지는 순간. 식욕을 자극하는 가장 쉬운 방법이에요.</li>
+  <li><b>스톱모션 프레임 이동</b> — 한 칸씩 툭툭 움직이는 손맛. 점토, 펠트, 종이처럼 재질을 꼭 같이 적어야 스톱모션답게 나옵니다.</li>
+</ul>
+
+<h2>상황별 추천 조합</h2>
+<div class="tw"><table>
+  <thead><tr><th>상황</th><th>첫 샷</th><th>가운데</th><th>마지막</th></tr></thead>
+  <tbody>
+    <tr><td>쇼핑몰 제품 쇼츠</td><td>스냅 줌</td><td>오비트</td><td>고정 컷 (정보 자막)</td></tr>
+    <tr><td>카페 신메뉴</td><td>슬로모 쏟아짐</td><td>매크로 돌리인</td><td>크레인 업 (마시는 사람)</td></tr>
+    <tr><td>뷰티 프리미엄</td><td>와이프 리빌</td><td>패럴랙스 슬라이드</td><td>임팩트 푸시인 (로고)</td></tr>
+  </tbody>
+</table></div>
+<p>사전의 카메라 무빙 카드에는 각 움직임의 미리보기와 영문 프롬프트가 들어 있어서, 담기만 하면 위 조합을 바로 주문서로 만들 수 있어요.</p>
+
+  </article>
+  <h2>이 글에 나온 카드</h2><p>카드를 누르면 미리보기와 바로 복사할 수 있는 프롬프트가 나와요.</p><ul class="related cards"><li><a href="../card/m01.html"><b>M01 매크로 돌리인</b><small>제품 표면까지 천천히 다가가며 질감을 보여 주는 접근 샷.</small></a></li><li><a href="../card/m02.html"><b>M02 제품 오비트</b><small>제품 주위를 일정한 속도로 반 바퀴 도는 샷. 앞·옆면 정보를 한 번에 보여 줌.</small></a></li><li><a href="../card/m03.html"><b>M03 슬로모 쏟아짐</b><small>재료나 음료가 쏟아지고 튀어 오르는 순간을 느리게 보여 주는 컷.</small></a></li><li><a href="../card/m04.html"><b>M04 탑다운 구성품 등장</b><small>위에서 고정한 화면에 구성품이나 재료가 하나씩 미끄러져 들어오는 구성.</small></a></li><li><a href="../card/m05.html"><b>M05 낮은 시점 팔로우</b><small>낮은 눈높이에서 살짝 흔들리며 따라가는 핸드헬드. 실생활 느낌.</small></a></li><li><a href="../card/m06.html"><b>M06 와이프 리빌</b><small>앞쪽 물체가 화면을 가로지르며 제품을 드러내는 전환 샷.</small></a></li><li><a href="../card/m07.html"><b>M07 스냅 줌</b><small>첫 1초에 빠르게 확 당기는 줌. 숏폼 훅용.</small></a></li><li><a href="../card/m08.html"><b>M08 아래에서 위로 상승</b><small>제품 높이에서 카메라가 수직으로 올라가 사람 얼굴이나 전체 장면에서 멈춤.</small></a></li><li><a href="../card/m09.html"><b>M09 패럴랙스 슬라이드</b><small>앞·뒤 레이어가 다른 속도로 움직이는 옆 이동 샷. 단조로운 정물에 깊이감.</small></a></li><li><a href="../card/m10.html"><b>M10 고정 점프컷</b><small>카메라는 고정, 대상만 바뀌는 리듬 컷.</small></a></li><li><a href="../card/m11.html"><b>M11 임팩트 푸시인</b><small>강조하고 싶은 순간에 카메라가 빠르게 다가가며 힘을 싣는 샷.</small></a></li><li><a href="../card/m12.html"><b>M12 래터럴 트래킹</b><small>피사체와 나란히 옆으로 이동하며 따라가는 샷. 이동 방향을 컷마다 같게 유지.</small></a></li><li><a href="../card/m13.html"><b>M13 동작 중 컷</b><small>동작이 진행되는 중간에 컷을 넘겨 두 샷을 자연스럽게 잇는 편집.</small></a></li><li><a href="../card/m14.html"><b>M14 스톱모션 프레임 이동</b><small>물체가 프레임 단위로 한 칸씩 툭툭 움직이는 손맛 있는 움직임.</small></a></li><li><a href="../card/m15.html"><b>M15 팬</b><small>카메라 위치는 그대로, 고개만 좌우로 돌리듯 화면을 훑는 샷.</small></a></li><li><a href="../card/m16.html"><b>M16 틸트 업</b><small>카메라 위치는 그대로, 고개를 아래에서 위로 드는 샷.</small></a></li><li><a href="../card/m17.html"><b>M17 렌즈 줌 인</b><small>카메라는 그대로, 렌즈만 당겨 확대. 배경 거리감이 그대로라 화면이 평평하게 느껴져요.</small></a></li><li><a href="../card/m18.html"><b>M18 풀백 리빌</b><small>가까이서 시작해 뒤로 빠지며 주변 상황을 드러내는 샷.</small></a></li><li><a href="../card/m19.html"><b>M19 트럭 (좌우 평행 이동)</b><small>카메라가 옆으로 평행 이동. 팬과 달리 바라보는 방향은 그대로예요.</small></a></li><li><a href="../card/m20.html"><b>M20 페데스탈 다운</b><small>기울이지 않고 카메라 높이만 수직으로 내리는 샷.</small></a></li><li><a href="../card/m21.html"><b>M21 돌리 줌 (버티고)</b><small>다가가면서 동시에 줌 아웃. 피사체 크기는 그대로인데 배경만 늘어나는 어지러운 효과.</small></a></li><li><a href="../card/m22.html"><b>M22 크래시 줌</b><small>눈 깜짝할 새 확 당기는 아주 빠른 줌. 예능식 강조.</small></a></li><li><a href="../card/m23.html"><b>M23 위프 팬</b><small>카메라를 휙 돌려 모션 블러로 다음 장면으로 넘기는 전환.</small></a></li><li><a href="../card/m24.html"><b>M24 FPV 드론 다이브</b><small>드론이 빠르게 날아 들어가며 공간을 통과하는 샷.</small></a></li><li><a href="../card/m25.html"><b>M25 불릿 타임</b><small>시간이 멈춘 듯한 순간 주위를 카메라가 도는 효과.</small></a></li><li><a href="../card/m26.html"><b>M26 오브젝트 통과 샷</b><small>창틀, 잎사귀, 문틈 같은 앞 물체 사이를 지나 안으로 들어가는 샷.</small></a></li><li><a href="../card/m27.html"><b>M27 인피니트 줌</b><small>계속 확대되며 장면 안의 장면으로 끝없이 들어가는 효과.</small></a></li><li><a href="../card/m28.html"><b>M28 360 오비트</b><small>피사체 주위를 한 바퀴 완전히 도는 샷.</small></a></li><li><a href="../card/m29.html"><b>M29 에어리얼 리빌</b><small>높은 곳에서 천천히 내려다보며 장소 전체를 보여 주는 샷.</small></a></li><li><a href="../card/m30.html"><b>M30 랙 포커스</b><small>카메라는 고정, 초점만 앞에서 뒤로 옮겨 시선을 넘기는 샷.</small></a></li></ul>
+  <aside class="cpbox" aria-label="광고"><span class="lab">광고 · 쿠팡</span>
+    <div class="cpwrap"><script src="https://ads-partners.coupang.com/g.js"></script> <script> new PartnersCoupang.G({"id":1038865,"template":"carousel","trackingCode":"AF0984527","width":"680","height":"140","tsource":""}); </script></div>
+    <p class="cpnote">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></aside>
+  <div class="cta"><b>사전에서 바로 해 보기</b><span>이 글에 나온 카메라 무빙, 구조, 조명 카드를 골라 담으면 7단계 프롬프트가 자동으로 만들어집니다.</span><a class="btn" href="../#dict">레퍼런스 사전 열기</a></div>
+  <h2>다른 가이드</h2>
+  <ul class="related"><li><a href="prompt-7-steps.html"><b>AI 영상 프롬프트, 7단계로 나눠 쓰면 결과가 안정된다</b><small>&quot;멋지게 만들어 줘&quot; 대신 무엇을 고정하고 무엇을 움직일지 나눠 쓰는 7단계 프롬프트 공식과 전후 비교 예시.</small></a></li><li><a href="shortform-structures.html"><b>15–45초 숏폼, 4가지 구조로 짜는 법</b><small>쇼츠·릴스 기본형, 광고 심리 구조, 숏드라마 훅, 고객 후기형. 초 단위 시간 배분과 예시 대본까지.</small></a></li><li><a href="fix-ai-video-errors.html"><b>AI 영상이 망가지는 7가지 이유와 고치는 법</b><small>제품 모양이 바뀌고, 글자가 깨지고, 손이 뭉개지고, 조명이 튀는 문제. 원인별로 바로 써먹는 해결법.</small></a></li></ul>
+</main>
+<footer><a href="../privacy.html">소개 · 개인정보처리방침</a></footer>
+<script>
+(function(){document.querySelectorAll(".adslot").forEach(function(box){var ins=box.querySelector("ins");
+ if(!ins||/SLOT_|0000000000000000/.test(ins.getAttribute("data-ad-slot")+ins.getAttribute("data-ad-client")))return;
+ box.hidden=false;try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}});})();
+</script>
+</body>
+</html>

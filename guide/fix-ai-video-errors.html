@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI 영상이 망가지는 7가지 이유와 고치는 법 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="제품 모양이 바뀌고, 글자가 깨지고, 손이 뭉개지고, 조명이 튀는 문제. 원인별로 바로 써먹는 해결법.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/guide/fix-ai-video-errors.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI 영상이 망가지는 7가지 이유와 고치는 법 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="제품 모양이 바뀌고, 글자가 깨지고, 손이 뭉개지고, 조명이 튀는 문제. 원인별로 바로 써먹는 해결법.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/guide/fix-ai-video-errors.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+</style><header class="top"><nav><a class="brand" href="../">AI 영상 레퍼런스 보관함</a><a href="../#dict">레퍼런스 사전</a><a href="../guide/">가이드</a><a href="../privacy.html">소개</a></nav></header>
+<main>
+  <article>
+    <span class="eyebrow">GUIDE · 읽는 시간 약 8분</span>
+    <h1>AI 영상이 망가지는 7가지 이유와 고치는 법</h1>
+    <p class="lede">제품 모양이 바뀌고, 글자가 깨지고, 손이 뭉개지고, 조명이 튀는 문제. 원인별로 바로 써먹는 해결법.</p>
+    <p>AI 영상을 몇 번 만들어 보면 같은 문제가 반복된다는 걸 알게 됩니다. 다행히 대부분은 원인이 정해져 있어서, 프롬프트와 작업 순서만 바꿔도 크게 줄일 수 있어요. 자주 겪는 7가지를 원인과 해결법으로 정리했습니다.</p>
+
+<h2>1. 제품 모양이 컷마다 바뀐다</h2>
+<p><b>원인:</b> 텍스트로만 제품을 설명하면 AI는 컷마다 비슷하지만 다른 물건을 새로 그립니다.</p>
+<p><b>해결:</b></p>
+<ul>
+  <li>실제 제품 사진을 첫 프레임이나 참조 이미지로 넣으세요(이미지→영상).</li>
+  <li>프롬프트에 ID와 고정 특징을 적고, 모든 컷에 똑같이 붙입니다. 예: <code>PRODUCT_01 = white 300ml bottle, green cap, label facing camera</code></li>
+  <li>360도 회전처럼 사진에 없는 면을 상상하게 만드는 움직임은 피하세요.</li>
+</ul>
+
+<h2>2. 라벨 글자가 깨진다</h2>
+<p><b>원인:</b> 영상 모델은 글자를 "모양"으로 그리기 때문에, 작은 글씨일수록 쉽게 뭉개집니다.</p>
+<p><b>해결:</b> 글자는 AI에게 맡기지 말고 <b>편집 단계에서 자막·로고로 얹으세요.</b> 프롬프트에는 "label text is not readable, no new text"처럼 글자를 새로 만들지 말라고 적어 두면 이상한 글자가 덜 생깁니다.</p>
+
+<h2>3. 손과 발이 뭉개진다</h2>
+<p><b>원인:</b> 손가락, 다리처럼 여러 부분이 겹쳐 움직이는 신체는 AI가 가장 어려워하는 대상입니다.</p>
+<p><b>해결:</b></p>
+<ul>
+  <li>손이 꼭 필요하지 않으면 화면 밖으로 빼거나, 제품만 움직이게 하세요.</li>
+  <li>손이 나와야 하면 실제로 찍은 영상에 스타일만 입히는 video-to-video나, 참고 영상으로 움직임을 따라 하게 하는 모션 컨트롤을 쓰세요.</li>
+  <li>금지 목록에 <code>warped hands or fingers, extra limbs</code>를 넣으세요.</li>
+</ul>
+
+<h2>4. 컷마다 조명이 튄다</h2>
+<p><b>원인:</b> 컷을 따로 생성하면 빛의 방향과 밝기도 매번 새로 정해집니다.</p>
+<p><b>해결:</b> 빛의 방향과 대비 비율을 숫자로 고정하세요. 예: <code>key light from the left, about 2:1 key-to-fill ratio</code>. 이 문장을 모든 컷에 같이 넣으면 편집했을 때 한 장소에서 찍은 것처럼 이어집니다.</p>
+
+<h2>5. 움직임이 과하거나 엉뚱하다</h2>
+<p><b>원인:</b> 한 샷에 움직임을 여러 개 넣었거나, "역동적으로" 같은 모호한 말을 썼을 때 생깁니다.</p>
+<p><b>해결:</b> 한 샷에는 카메라 움직임 하나만 넣고, 이름으로 적으세요(slow dolly-in, 180-degree orbit). 속도도 같이 적으면 더 안정적이에요(slow, constant speed).</p>
+
+<h2>6. 이어 붙이면 방향이 뒤집힌다</h2>
+<p><b>원인:</b> A컷에서 왼쪽에서 오른쪽으로 가던 사람이 B컷에서 반대로 가면, 시청자는 되돌아간다고 느낍니다. 촬영에서는 "180도 규칙"이라고 부르는 문제예요.</p>
+<p><b>해결:</b> 모든 컷에 이동 방향을 적으세요. 예: <code>movement left to right across all shots</code>. 동작 중간에 컷을 넘길 때도 두 컷의 방향이 같은지 확인합니다.</p>
+
+<h2>7. 길게 뽑으면 후반에 무너진다</h2>
+<p><b>원인:</b> 생성 길이가 길어질수록 처음 정한 형태에서 조금씩 멀어집니다.</p>
+<p><b>해결:</b> 3–6초 단위로 짧게 만들어 편집으로 잇는 편이 결과가 좋아요. 이어서 생성하는 기능을 쓸 때는 "이전 클립의 마지막 프레임 상태에서 계속"이라고 명시하세요.</p>
+
+<h2>덤: 전체를 다시 만들지 마세요</h2>
+<p>30초 영상에서 한 컷만 이상하면, 그 컷만 다시 생성해 교체하는 게 시간과 비용 모두 아낍니다. 그러려면 처음부터 <b>컷 단위로 만들고, 컷마다 같은 고정 문장(정체성, 조명, 방향)을 쓰는 습관</b>이 필요해요. 이 사이트의 주문서가 프롬프트를 7단계로 나누는 이유도 여기 있습니다.</p>
+
+<h2>한 장 요약</h2>
+<div class="tw"><table>
+  <thead><tr><th>문제</th><th>가장 빠른 해결</th></tr></thead>
+  <tbody>
+    <tr><td>제품 모양 변형</td><td>제품 사진을 참조로, ID 고정 문장</td></tr>
+    <tr><td>글자 깨짐</td><td>글자는 편집에서 얹기</td></tr>
+    <tr><td>손 · 발 왜곡</td><td>화면 밖으로, 또는 실사 + 스타일 입히기</td></tr>
+    <tr><td>조명 튐</td><td>빛 방향 · 대비 비율을 모든 컷에</td></tr>
+    <tr><td>움직임 과함</td><td>한 샷에 움직임 하나, 이름과 속도로</td></tr>
+    <tr><td>방향 뒤집힘</td><td>이동 방향을 모든 컷에</td></tr>
+    <tr><td>후반 붕괴</td><td>3–6초로 끊어 편집</td></tr>
+  </tbody>
+</table></div>
+
+  </article>
+  <h2>이 글에 나온 카드</h2><p>카드를 누르면 미리보기와 바로 복사할 수 있는 프롬프트가 나와요.</p><ul class="related cards"><li><a href="../card/m10.html"><b>M10 고정 점프컷</b><small>카메라는 고정, 대상만 바뀌는 리듬 컷.</small></a></li><li><a href="../card/m13.html"><b>M13 동작 중 컷</b><small>동작이 진행되는 중간에 컷을 넘겨 두 샷을 자연스럽게 잇는 편집.</small></a></li><li><a href="../card/m02.html"><b>M02 제품 오비트</b><small>제품 주위를 일정한 속도로 반 바퀴 도는 샷. 앞·옆면 정보를 한 번에 보여 줌.</small></a></li><li><a href="../card/m28.html"><b>M28 360 오비트</b><small>피사체 주위를 한 바퀴 완전히 도는 샷.</small></a></li><li><a href="../card/m17.html"><b>M17 렌즈 줌 인</b><small>카메라는 그대로, 렌즈만 당겨 확대. 배경 거리감이 그대로라 화면이 평평하게 느껴져요.</small></a></li><li><a href="../card/l02.html"><b>L02 2:1 부드러움</b><small>자연스럽고 편안하게</small></a></li><li><a href="../card/s01.html"><b>S01 클린 화이트 스튜디오</b><small>밝은 흰 배경, 부드러운 확산광. 상세페이지·쇼핑 쇼츠에 무난.</small></a></li><li><a href="../card/m05.html"><b>M05 낮은 시점 팔로우</b><small>낮은 눈높이에서 살짝 흔들리며 따라가는 핸드헬드. 실생활 느낌.</small></a></li></ul>
+  <aside class="cpbox" aria-label="광고"><span class="lab">광고 · 쿠팡</span>
+    <div class="cpwrap"><script src="https://ads-partners.coupang.com/g.js"></script> <script> new PartnersCoupang.G({"id":1038865,"template":"carousel","trackingCode":"AF0984527","width":"680","height":"140","tsource":""}); </script></div>
+    <p class="cpnote">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></aside>
+  <div class="cta"><b>사전에서 바로 해 보기</b><span>이 글에 나온 카메라 무빙, 구조, 조명 카드를 골라 담으면 7단계 프롬프트가 자동으로 만들어집니다.</span><a class="btn" href="../#dict">레퍼런스 사전 열기</a></div>
+  <h2>다른 가이드</h2>
+  <ul class="related"><li><a href="prompt-7-steps.html"><b>AI 영상 프롬프트, 7단계로 나눠 쓰면 결과가 안정된다</b><small>&quot;멋지게 만들어 줘&quot; 대신 무엇을 고정하고 무엇을 움직일지 나눠 쓰는 7단계 프롬프트 공식과 전후 비교 예시.</small></a></li><li><a href="camera-moves.html"><b>카메라 무빙 14가지, 언제 어떤 움직임을 써야 할까</b><small>돌리인, 오비트, 스냅 줌, 크레인 업부터 스톱모션까지. 카메라 움직임마다 주는 효과, 쓰기 좋은 순간, 바로 쓰는 프롬프트 문장.</small></a></li><li><a href="shortform-structures.html"><b>15–45초 숏폼, 4가지 구조로 짜는 법</b><small>쇼츠·릴스 기본형, 광고 심리 구조, 숏드라마 훅, 고객 후기형. 초 단위 시간 배분과 예시 대본까지.</small></a></li></ul>
+</main>
+<footer><a href="../privacy.html">소개 · 개인정보처리방침</a></footer>
+<script>
+(function(){document.querySelectorAll(".adslot").forEach(function(box){var ins=box.querySelector("ins");
+ if(!ins||/SLOT_|0000000000000000/.test(ins.getAttribute("data-ad-slot")+ins.getAttribute("data-ad-client")))return;
+ box.hidden=false;try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}});})();
+</script>
+</body>
+</html>

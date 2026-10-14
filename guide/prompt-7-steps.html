@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI 영상 프롬프트, 7단계로 나눠 쓰면 결과가 안정된다 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="&quot;멋지게 만들어 줘&quot; 대신 무엇을 고정하고 무엇을 움직일지 나눠 쓰는 7단계 프롬프트 공식과 전후 비교 예시.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/guide/prompt-7-steps.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI 영상 프롬프트, 7단계로 나눠 쓰면 결과가 안정된다 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="&quot;멋지게 만들어 줘&quot; 대신 무엇을 고정하고 무엇을 움직일지 나눠 쓰는 7단계 프롬프트 공식과 전후 비교 예시.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/guide/prompt-7-steps.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+</style><header class="top"><nav><a class="brand" href="../">AI 영상 레퍼런스 보관함</a><a href="../#dict">레퍼런스 사전</a><a href="../guide/">가이드</a><a href="../privacy.html">소개</a></nav></header>
+<main>
+  <article>
+    <span class="eyebrow">GUIDE · 읽는 시간 약 6분</span>
+    <h1>AI 영상 프롬프트, 7단계로 나눠 쓰면 결과가 안정된다</h1>
+    <p class="lede">&quot;멋지게 만들어 줘&quot; 대신 무엇을 고정하고 무엇을 움직일지 나눠 쓰는 7단계 프롬프트 공식과 전후 비교 예시.</p>
+    <p>AI 영상 도구에 "고급스럽고 감성적인 제품 영상"이라고만 적으면 결과가 매번 달라집니다. 어떤 컷은 제품 모양이 바뀌고, 어떤 컷은 조명이 갑자기 어두워지고, 다음 컷에서는 진행 방향이 반대로 뒤집히죠. 모델이 나빠서라기보다, 정해 주지 않은 부분을 모델이 매번 새로 상상하기 때문입니다.</p>
+<p>해결법은 단순합니다. 프롬프트를 <b>바뀌면 안 되는 것</b>과 <b>움직여야 하는 것</b>으로 나눠, 정해진 순서대로 쓰는 거예요. 이 사이트의 주문서는 아래 7단계 순서로 프롬프트를 만듭니다.</p>
+
+<h2>7단계 한눈에 보기</h2>
+<div class="tw"><table>
+  <thead><tr><th>단계</th><th>무엇을 쓰나</th><th>예시 문장</th></tr></thead>
+  <tbody>
+    <tr><td>1. 핵심 상황</td><td>이 장면이 무엇이고 어떤 감정을 남겨야 하는지 한 문장</td><td>수제 쿠키 신메뉴 15초 광고, 따뜻하고 군침 도는 느낌</td></tr>
+    <tr><td>2. 정체성 고정</td><td>바뀌면 안 되는 대상에 이름표(ID)를 붙이고 특징을 못 박기</td><td>PRODUCT_01 = 초코칩 쿠키, 지름 8cm, 갈색 크라프트 봉투</td></tr>
+    <tr><td>3. 세계 · 장르</td><td>장소, 색 팔레트, 재질, 빛이 들어오는 논리</td><td>나무 조리대, 오후 창가 햇살, 베이지와 갈색</td></tr>
+    <tr><td>4. 매체 · 사실감</td><td>실사인지 3D인지 스톱모션인지, 그리고 피해야 할 오류</td><td>실사 촬영 느낌. 녹아내리는 쿠키, 깨진 글자 금지</td></tr>
+    <tr><td>5. 사운드</td><td>음악을 몇 곡 쓰는지, 효과음은 어떤지</td><td>BGM 한 곡만, 쿠키 부서지는 효과음</td></tr>
+    <tr><td>6. 샷 설계</td><td>구간별 카메라 움직임, 샷 크기, 앵글, 조명 대비</td><td>0–3초 스냅 줌, 3–8초 매크로 돌리인, 클로즈업, 4:1 조명</td></tr>
+    <tr><td>7. 연속성</td><td>다음 샷까지 유지할 상태</td><td>봉투 라벨은 항상 정면, 빛은 왼쪽에서, 움직임은 왼→오</td></tr>
+  </tbody>
+</table></div>
+
+<h2>왜 이 순서일까</h2>
+<p>앞쪽 단계일수록 "변하면 안 되는 것"이고, 뒤쪽으로 갈수록 "샷마다 달라지는 것"입니다. 정체성(2단계)과 세계(3단계)를 먼저 고정해 두면, 6단계에서 카메라를 아무리 바꿔도 제품과 분위기가 흔들리지 않아요. 반대로 카메라 움직임부터 길게 적고 제품 설명을 맨 끝에 붙이면, 모델이 제품을 덜 중요한 정보로 다루기 쉽습니다.</p>
+<p>2단계의 이름표(PRODUCT_01 같은 ID)는 특히 여러 컷을 따로 생성할 때 효과가 큽니다. 컷마다 같은 ID와 같은 특징 문장을 그대로 붙여 넣으면, 사람이 읽어도 AI가 읽어도 "같은 물건"이라는 게 분명해져요.</p>
+
+<h2>전후 비교</h2>
+<p><b>고치기 전</b></p>
+<pre class="prompt">고급스럽고 감성적인 쿠키 광고 영상, 시네마틱하게, 예쁘게</pre>
+<p>"고급스럽게", "시네마틱하게", "예쁘게"는 모두 해석의 폭이 넓은 말이라, 모델이 알아서 채웁니다. 결과는 매번 다른 쿠키, 다른 조명, 다른 카메라가 나와요.</p>
+<p><b>고친 뒤</b></p>
+<pre class="prompt">CORE: chocolate chip cookie launch, 15s total, 9:16 vertical, warm and appetizing.
+IDENTITY LOCK: PRODUCT_01 = round chocolate chip cookie, 8cm, in a brown kraft bag with a white label; shape and label stay identical in every shot.
+WORLD: wooden counter, late-afternoon window light from the left, beige and brown palette.
+MEDIUM: photorealistic live-action. Avoid melting or morphing cookies, warped hands, garbled label text.
+SOUND: single BGM track only, light foley of the cookie breaking.
+SHOT PLAN (close-up, dramatic 4:1 lighting):
+  1. 0–3s hook: fast snap zoom-in on the cookie
+  2. 3–9s texture: slow macro dolly-in to the broken edge, focus pull
+  3. 9–15s brand: camera holds on the bag, label facing camera
+CONTINUITY: label faces camera, key light stays on the left, movement left to right.</pre>
+<p>"시네마틱"은 85mm 렌즈, 얕은 심도, 4:1 조명처럼 <b>측정할 수 있는 조건</b>으로 바뀌었고, 쿠키와 봉투는 ID로 고정됐습니다. 영문으로 쓴 이유는 대부분의 영상 모델이 영어 프롬프트를 더 안정적으로 해석하기 때문이에요. 한국어로 써도 구조만 지키면 효과는 비슷합니다.</p>
+
+<h2>바로 쓰는 체크리스트</h2>
+<ul>
+  <li>감성어("감성적", "고급스러운")를 썼다면 렌즈, 조명 비율, 색 팔레트로 바꿀 수 있는지 확인</li>
+  <li>제품, 캐릭터, 장소마다 ID와 바뀌면 안 되는 특징 1–3개를 적었는지</li>
+  <li>한 샷에 카메라 움직임을 두 개 이상 넣지 않았는지 (돌리인하면서 오비트 X)</li>
+  <li>피해야 할 오류를 명시했는지 (손 왜곡, 제품 변형, 글자 깨짐)</li>
+  <li>여러 컷을 따로 만든다면 1–3단계 문장을 컷마다 똑같이 붙였는지</li>
+</ul>
+<p>이 공식은 NolanX AI가 공개한 영상 제작 스킬의 모듈형 프롬프트 구성을 참고해 한국어로 풀어 정리했습니다.</p>
+
+  </article>
+  <h2>이 글에 나온 카드</h2><p>카드를 누르면 미리보기와 바로 복사할 수 있는 프롬프트가 나와요.</p><ul class="related cards"><li><a href="../card/t01.html"><b>T01 틱톡 · 릴스 · 쇼츠</b><small>숏폼, 빠른 팁, 제품 티저</small></a></li><li><a href="../card/s01.html"><b>S01 클린 화이트 스튜디오</b><small>밝은 흰 배경, 부드러운 확산광. 상세페이지·쇼핑 쇼츠에 무난.</small></a></li><li><a href="../card/s05.html"><b>S05 시네마틱 로우키</b><small>단일 키라이트, 깊은 그림자. 프리미엄·고급 무드.</small></a></li><li><a href="../card/f07.html"><b>F07 클로즈업</b><small>얼굴 · 손 · 패키지</small></a></li><li><a href="../card/a02.html"><b>A02 로우 앵글</b><small>크고 당당하게</small></a></li><li><a href="../card/l01.html"><b>L01 1:1 플랫</b><small>그림자 없이 깔끔하게</small></a></li><li><a href="../card/l03.html"><b>L03 4:1 드라마틱</b><small>입체감 · 고급감</small></a></li><li><a href="../card/m01.html"><b>M01 매크로 돌리인</b><small>제품 표면까지 천천히 다가가며 질감을 보여 주는 접근 샷.</small></a></li></ul>
+  <aside class="cpbox" aria-label="광고"><span class="lab">광고 · 쿠팡</span>
+    <div class="cpwrap"><script src="https://ads-partners.coupang.com/g.js"></script> <script> new PartnersCoupang.G({"id":1038865,"template":"carousel","trackingCode":"AF0984527","width":"680","height":"140","tsource":""}); </script></div>
+    <p class="cpnote">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></aside>
+  <div class="cta"><b>사전에서 바로 해 보기</b><span>이 글에 나온 카메라 무빙, 구조, 조명 카드를 골라 담으면 7단계 프롬프트가 자동으로 만들어집니다.</span><a class="btn" href="../#dict">레퍼런스 사전 열기</a></div>
+  <h2>다른 가이드</h2>
+  <ul class="related"><li><a href="camera-moves.html"><b>카메라 무빙 14가지, 언제 어떤 움직임을 써야 할까</b><small>돌리인, 오비트, 스냅 줌, 크레인 업부터 스톱모션까지. 카메라 움직임마다 주는 효과, 쓰기 좋은 순간, 바로 쓰는 프롬프트 문장.</small></a></li><li><a href="shortform-structures.html"><b>15–45초 숏폼, 4가지 구조로 짜는 법</b><small>쇼츠·릴스 기본형, 광고 심리 구조, 숏드라마 훅, 고객 후기형. 초 단위 시간 배분과 예시 대본까지.</small></a></li><li><a href="fix-ai-video-errors.html"><b>AI 영상이 망가지는 7가지 이유와 고치는 법</b><small>제품 모양이 바뀌고, 글자가 깨지고, 손이 뭉개지고, 조명이 튀는 문제. 원인별로 바로 써먹는 해결법.</small></a></li></ul>
+</main>
+<footer><a href="../privacy.html">소개 · 개인정보처리방침</a></footer>
+<script>
+(function(){document.querySelectorAll(".adslot").forEach(function(box){var ins=box.querySelector("ins");
+ if(!ins||/SLOT_|0000000000000000/.test(ins.getAttribute("data-ad-slot")+ins.getAttribute("data-ad-client")))return;
+ box.hidden=false;try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}});})();
+</script>
+</body>
+</html>

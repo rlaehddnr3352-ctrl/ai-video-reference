@@ -1,0 +1,1443 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI 영상 프롬프트 만들기 · 카메라 무빙 레퍼런스 사전 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="AI 영상 프롬프트를 클릭만으로 만드는 무료 사전. 카메라 무빙 30가지, 룩, 샷 크기, 앵글, 조명, 스크립트 구조 카드를 골라 담으면 Kling·ChatGPT 등에 바로 넣을 프롬프트가 완성됩니다.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI 영상 프롬프트 만들기 · 카메라 무빙 레퍼런스 사전 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="AI 영상 프롬프트를 클릭만으로 만드는 무료 사전. 카메라 무빙 30가지, 룩, 샷 크기, 앵글, 조명, 스크립트 구조 카드를 골라 담으면 Kling·ChatGPT 등에 바로 넣을 프롬프트가 완성됩니다.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}.carddir{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:12px 18px}.cdgrp h3{font-size:14px;margin:0 0 6px}.cdgrp h3 small{color:var(--muted);font-weight:400;font-family:var(--f-mono)}.cdgrp ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}.cdgrp a{display:flex;gap:6px;align-items:baseline;text-decoration:none;padding:3px 0;font-size:13.5px}.cdgrp a:hover{color:var(--rec)}
+</style>
+</head>
+<body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+/* Layout: a single-column "dictionary" — hero, shared settings, ready-made sets, filters, then one section per category of preview cards; an order sheet collects picked cards into one prompt in a side drawer */
+:root{
+  --bg:#F2F3F5; --surface:#FFFFFF; --ink:#15171C; --muted:#5C6270; --line:#DCDFE5;
+  --motion:#2D5BD0; --motion-soft:#E7EDFB; --style:#AE5C0C; --style-soft:#FBEFE1;
+  --rec:#D2382A; --c3:#5E8F3E; --c4:#7A55B8;
+  --f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111317; --surface:#1A1D23; --ink:#ECEEF2; --muted:#9BA1AE; --line:#2D313A;
+  --motion:#86A4FF; --motion-soft:#1D2848; --style:#F2A65E; --style-soft:#3A2916;
+  --rec:#FF6B5C; --c3:#9BCB7A; --c4:#B79BEB; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111317; --surface:#1A1D23; --ink:#ECEEF2; --muted:#9BA1AE; --line:#2D313A;
+  --motion:#86A4FF; --motion-soft:#1D2848; --style:#F2A65E; --style-soft:#3A2916;
+  --rec:#FF6B5C; --c3:#9BCB7A; --c4:#B79BEB; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:20px;padding-block:24px 110px}
+a{color:inherit}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;width:100%}
+textarea{resize:vertical}
+:is(input,select,textarea,button,a,summary):focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+.btn{font:inherit;font-weight:500;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:7px 12px;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.small{padding:4px 9px;font-size:12.5px}
+.btn.ghost{border-color:transparent;background:none;color:var(--muted)}
+.btn.added{background:var(--rec);border-color:var(--rec);color:#fff}
+.btn:disabled{opacity:.5;cursor:default}
+.lab{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;color:var(--muted)}
+.status{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.status.err{color:var(--rec)}
+.note{font-size:12.5px;color:var(--muted)}
+
+/* hero */
+.hero{display:grid;gap:14px;padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.hero h1{font-family:var(--f-display);font-weight:400;font-size:clamp(30px,5vw,48px);line-height:1.05;margin:0;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--rec)}
+.hero p{margin:0;color:var(--muted);max-width:64ch;font-size:15px}
+.stats{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--f-mono);font-size:12.5px;color:var(--muted)}
+.stats b{font-family:var(--f-display);font-weight:400;font-size:24px;color:var(--ink);margin-right:4px}
+.jump{display:flex;flex-wrap:wrap;gap:8px}
+
+/* settings */
+details.settings{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:18px}
+details.settings summary{cursor:pointer;padding:12px 16px;font-weight:600;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+details.settings summary span{font-weight:400;color:var(--muted);font-size:12.5px}
+.sgrid{display:grid;grid-template-columns:2fr 1.4fr 1fr 1fr;gap:10px;padding:0 16px 14px}
+.sgrid label{display:grid;gap:4px;font-size:12px;color:var(--muted);min-width:0}
+.sgrid .wide{grid-column:1/-1}
+@media (max-width:760px){.sgrid{grid-template-columns:1fr 1fr}.sgrid .s2{grid-column:1/-1}}
+
+/* sets */
+.sets{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:22px}
+.set{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:6px;align-content:start}
+.set b{font-family:var(--f-display);font-weight:400;font-size:18px}
+.setgrp{margin-bottom:18px}.setgrp-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-bottom:10px}.setgrp-head h3{margin:0;font-size:16px;font-weight:600;padding-left:9px;border-left:3px solid var(--rec)}.setgrp-head p{margin:0;color:var(--muted);font-size:13px}
+.set .codes{display:flex;flex-wrap:wrap;gap:4px}
+.code{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-radius:4px;padding:1px 6px;color:var(--muted);background:var(--bg)}
+h2.block{font-family:var(--f-display);font-weight:400;font-size:26px;margin:0 0 4px;line-height:1.2}
+.blocknote{color:var(--muted);margin:0 0 12px;max-width:68ch}
+
+/* filters */
+.filters{position:sticky;top:env(safe-area-inset-top,0px);z-index:4;background:var(--bg);padding-block:10px;display:grid;gap:8px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.frow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.frow input[type=search]{flex:1 1 220px;width:auto}
+.chip{font:inherit;font-size:12.5px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 11px;cursor:pointer;white-space:nowrap}
+.chip small{color:var(--muted);font-family:var(--f-mono);margin-left:3px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip[aria-pressed="true"] small{color:inherit;opacity:.7}
+
+/* add form */
+.addform{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:18px;display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.addform label{display:grid;gap:4px;font-size:12.5px;color:var(--muted)}
+.addform .full{grid-column:1/-1}
+.addform .row{grid-column:1/-1;display:flex;gap:8px;justify-content:flex-end;align-items:center;flex-wrap:wrap}
+.checks{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:13px;color:var(--ink)}
+.checks label{display:flex;gap:4px;align-items:center}
+.checks input{width:auto}
+@media (max-width:560px){.addform{grid-template-columns:minmax(0,1fr)}}
+
+/* category sections & cards */
+.catsec{margin-bottom:34px;scroll-margin-top:120px}
+.cathead{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-bottom:12px}
+.cathead h2{font-family:var(--f-display);font-weight:400;font-size:26px;margin:0;line-height:1.2}
+.cathead .n{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.cathead p{flex-basis:100%;margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card.in{border-color:var(--rec);box-shadow:0 0 0 1px var(--rec) inset}
+.prev{background:var(--bg);border-radius:8px;overflow:hidden;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;max-width:100%}
+.prev > svg{width:100%;height:100%;display:block}
+.prev.pad{padding:12px;align-items:stretch;justify-content:center;flex-direction:column}
+.chead{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.chead .code{color:var(--ink)}
+.dur{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.card h3{font-family:var(--f-display);font-weight:400;font-size:21px;line-height:1.15;margin:0}
+.card .en{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.card p{margin:0}
+.when{font-size:13px;background:var(--bg);border-radius:8px;padding:6px 9px}
+.when b{font-weight:600;margin-right:4px}
+.caution{font-size:12.5px;color:var(--rec)}
+.fit{font-size:12px;color:var(--muted)}.fit b{font-weight:600}.fit-good b{color:var(--c3)}.fit-warn b{color:var(--rec)}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 8px;cursor:pointer;background:none;font-family:inherit}
+.tag:hover{color:var(--ink);border-color:var(--muted)}
+.pbox{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.ptabs{display:flex;align-items:center;justify-content:space-between;background:var(--bg);border-bottom:1px solid var(--line);padding:0 4px 0 8px}
+.ptabs .lab{color:var(--ink)}
+.ptabs div{display:flex}
+.ptabs button{font:inherit;font-size:12px;border:0;background:none;color:var(--muted);padding:5px 8px;cursor:pointer;border-bottom:2px solid transparent}
+.ptabs button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--rec)}
+.prompt{font-family:var(--f-mono);font-size:12px;line-height:1.6;padding:9px 10px;white-space:pre-wrap;overflow-wrap:anywhere;margin:0;background:var(--surface)}
+mark{background:color-mix(in srgb,var(--rec) 18%,transparent);color:inherit;border-radius:3px;padding:0 2px}
+.actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px;border-top:1px dashed var(--line)}
+.yt{display:flex;flex-direction:column;gap:3px;font-size:12.5px}
+.yt a,.src a{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;overflow-wrap:anywhere}
+.yt a:hover,.src a:hover{text-decoration-color:var(--rec)}
+.src{font-size:11.5px;color:var(--muted)}
+.inline-form{display:grid;gap:6px}
+.inline-form .row{display:flex;gap:6px;justify-content:flex-end}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:24px;color:var(--muted);text-align:center;grid-column:1/-1}
+
+/* visuals */
+.swatchrow{display:flex;gap:10px;align-items:center;width:100%;height:100%;padding:12px}
+.swatch{display:flex;flex:1;height:100%;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.swatch span{flex:1}
+.sphere{width:30%;max-width:84px;height:auto;flex:none}
+.tlwrap{position:relative;width:100%}
+.tl{display:flex;width:100%;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.tl .b{--c:var(--motion);background:color-mix(in srgb,var(--c) 20%,var(--surface));border-top:3px solid var(--c);padding:5px 6px;min-width:0;font-size:11.5px;line-height:1.3;border-right:1px solid var(--surface)}
+.tl .b:last-child{border-right:0}
+.tl .b b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tl .b span{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl.thin .b{padding:0;height:8px;border-top-width:0;background:var(--c)}
+.k0{--c:var(--rec)!important}.k1{--c:var(--motion)!important}.k2{--c:var(--style)!important}.k3{--c:var(--c3)!important}.k4{--c:var(--c4)!important}.k5{--c:var(--muted)!important}
+.playhead{position:absolute;top:-4px;bottom:-4px;left:0;width:2px;background:var(--rec);border-radius:2px;animation:play 5s linear infinite}
+@keyframes play{from{left:0}to{left:calc(100% - 2px)}}
+.paused .playhead{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.playhead{animation:none}}
+.legend{display:flex;flex-wrap:wrap;gap:3px 10px;font-size:11.5px;color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--c);margin-right:4px}
+.schema{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;width:100%}
+.schema span{border:1px solid var(--line);border-radius:6px;padding:6px;font-size:12px;text-align:center;background:var(--surface)}
+
+/* formula & start */
+.layers{display:grid;gap:4px;max-width:820px;margin-bottom:22px}
+.layer{display:grid;grid-template-columns:30px minmax(0,1.2fr) minmax(0,1fr);gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:8px;padding:8px 12px;font-size:13px}
+.layer .n{font-family:var(--f-mono);color:var(--muted)}
+.layer .from{color:var(--muted);font-size:12px}
+@media (max-width:560px){.layer{grid-template-columns:26px minmax(0,1fr)}.layer .from{grid-column:2}}
+.rgroups{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:22px}
+.rgroup{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
+.rgroup h3{margin:0 0 8px;font-family:var(--f-display);font-weight:400;font-size:19px}
+.rgroup ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rgroup li{font-size:13px}
+.rgroup code{display:block;font-family:var(--f-mono);font-size:11px;color:var(--muted);overflow-wrap:anywhere}
+.recipes{display:grid;gap:8px;margin-bottom:22px}
+.recipe{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;gap:6px}
+.recipe .flow{display:flex;flex-wrap:wrap;align-items:center;gap:4px;font-family:var(--f-mono);font-size:11.5px}
+.recipe .flow span{border:1px solid var(--line);border-radius:6px;padding:2px 6px;background:var(--bg)}
+.recipe .flow i{font-style:normal;color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:16px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:13px;display:grid;gap:4px;align-content:start}
+.step b{font-family:var(--f-mono);font-size:11px;color:var(--rec)}
+.step strong{font-family:var(--f-display);font-weight:400;font-size:18px}
+.aicode{display:block;margin-top:6px;font-family:var(--f-mono);font-size:11.5px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:4px 6px;overflow-wrap:anywhere}
+.toolgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:13px;display:grid;gap:4px}
+.tool b{font-weight:600}
+section.doc{margin-top:40px;scroll-margin-top:20px}
+footer.srcs{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);display:grid;gap:4px}
+
+
+/* set previews */
+.sets{grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))}
+.set{grid-template-columns:104px minmax(0,1fr);column-gap:14px;align-items:start}
+.setinfo{display:grid;gap:6px;min-width:0}
+.pvwrap{display:grid;gap:4px;justify-items:center}
+.pvlab{font-family:var(--f-mono);font-size:10px;color:var(--muted)}
+.pv{position:relative;width:104px;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#111;box-shadow:0 0 0 3px var(--ink) inset,0 2px 8px rgba(0,0,0,.12);isolation:isolate}
+.pv-scene{position:absolute;inset:3px;border-radius:9px;overflow:hidden;opacity:0;display:grid;place-items:center}
+.pv-scene.on{opacity:1}
+.pv-gpt .pv-scene{transition:opacity .45s}
+.pv-cam{position:absolute;inset:0;display:grid;place-items:center;transform-origin:50% 50%}
+.pv-vig{position:absolute;inset:0;background:radial-gradient(circle at 30% 28%,transparent 30%,#000 100%);pointer-events:none}
+.pv-cap{position:absolute;left:6%;right:6%;bottom:9%;background:rgba(0,0,0,.62);color:#fff;font-size:9px;line-height:1.3;padding:3px 5px;border-radius:4px;text-align:center;font-weight:600}
+.pv-tc{position:absolute;left:6px;top:5px;font-family:var(--f-mono);font-size:8px;color:#fff;background:rgba(0,0,0,.45);padding:0 4px;border-radius:3px}
+.pv-img{position:absolute;right:6px;top:5px;font-family:var(--f-mono);font-size:8px;color:#fff;background:rgba(0,0,0,.45);padding:0 4px;border-radius:3px}
+.pv-bar{position:absolute;left:6px;right:6px;bottom:5px;height:2px;background:rgba(255,255,255,.35);border-radius:2px;z-index:2}
+.pv-bar i{display:block;height:100%;width:0;background:var(--rec);border-radius:2px}
+/* props */
+.pr{position:relative}
+.pr-box{width:46%;aspect-ratio:3/4;border-radius:5px;background:linear-gradient(135deg,var(--b),var(--a));box-shadow:0 6px 10px rgba(0,0,0,.25)}
+.pr-box i{position:absolute;left:14%;right:14%;top:38%;height:18%;background:rgba(255,255,255,.85);border-radius:2px}
+.pr-bottle{width:24%;aspect-ratio:1/2.3;border-radius:10px 10px 6px 6px;background:linear-gradient(90deg,var(--b),var(--a) 60%,var(--b));box-shadow:0 6px 10px rgba(0,0,0,.3)}
+.pr-bottle::before{content:"";position:absolute;left:30%;right:30%;top:-16%;height:16%;background:var(--b);border-radius:3px 3px 0 0}
+.pr-bottle i{position:absolute;left:18%;right:18%;top:45%;height:14%;background:rgba(255,255,255,.8)}
+.pr-cup{width:42%;aspect-ratio:1/1.1;background:linear-gradient(135deg,var(--a),var(--b));clip-path:polygon(6% 0,94% 0,80% 100%,20% 100%)}
+.pr-cup i{position:absolute;left:12%;right:12%;top:8%;height:16%;background:rgba(255,255,255,.55);border-radius:50%}
+.pr-steam{position:absolute;top:22%;left:50%;transform:translateX(-50%);display:flex;gap:6px}
+.pr-steam i{width:3px;height:18px;border-radius:3px;background:rgba(255,255,255,.7);animation:pv-steam 1.6s ease-in-out infinite}
+.pr-steam i:nth-child(2){animation-delay:.5s}
+.pr-person{width:34%;aspect-ratio:1/1.6}
+.pr-person::before{content:"";position:absolute;left:28%;right:28%;top:0;aspect-ratio:1;border-radius:50%;background:var(--a)}
+.pr-person i{position:absolute;left:0;right:0;bottom:0;height:58%;border-radius:40% 40% 6px 6px;background:var(--b)}
+.pr-store{width:62%;aspect-ratio:1/0.9;background:var(--b);clip-path:polygon(0 30%,50% 0,100% 30%,100% 100%,0 100%)}
+.pr-store i{position:absolute;left:12%;right:12%;top:38%;height:16%;background:repeating-linear-gradient(90deg,var(--a) 0 8px,#fff 8px 16px)}
+.pr-clay{width:40%;aspect-ratio:1/1.05;border-radius:50% 50% 44% 44%;background:var(--a);box-shadow:inset -6px -8px 0 rgba(0,0,0,.12)}
+.pr-clay::before,.pr-clay::after{content:"";position:absolute;top:36%;width:12%;aspect-ratio:1;border-radius:50%;background:var(--b)}
+.pr-clay::before{left:28%}.pr-clay::after{right:28%}
+.pv-drops{position:absolute;inset:0;pointer-events:none}
+.pv-drops i{position:absolute;top:-6%;width:5px;height:5px;border-radius:1px;background:var(--rec);opacity:.8}
+.pv-drops i:nth-child(1){left:40%}.pv-drops i:nth-child(2){left:48%}.pv-drops i:nth-child(3){left:56%}.pv-drops i:nth-child(4){left:44%}.pv-drops i:nth-child(5){left:52%}.pv-drops i:nth-child(6){left:60%}.pv-drops i:nth-child(7){left:36%}
+.pv-items{position:absolute;inset:0;pointer-events:none}
+.pv-items i{position:absolute;width:12%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.85)}
+.pv-items i:nth-child(1){left:10%;top:18%}.pv-items i:nth-child(2){right:10%;top:22%}.pv-items i:nth-child(3){left:12%;bottom:22%}.pv-items i:nth-child(4){right:12%;bottom:26%}
+.pv-wipe{position:absolute;top:0;bottom:0;width:30%;left:-40%;background:rgba(0,0,0,.55)}
+.pv-fg{position:absolute;top:0;bottom:0;width:14%;left:20%;background:rgba(0,0,0,.4)}
+/* camera moves (run while the scene is on) */
+.pv-scene.on .cam-dollyin{animation:pv-dolly var(--d) ease-out both}
+.pv-scene.on .cam-snapzoom{animation:pv-snap var(--d) cubic-bezier(.2,.9,.2,1) both}
+.pv-scene.on .cam-pushin{animation:pv-push var(--d) linear both}
+.pv-scene.on .cam-orbit{animation:pv-orbit var(--d) ease-in-out both}
+.pv-scene.on .cam-slide,.pv-scene.on .cam-lateral{animation:pv-slide var(--d) linear both}
+.pv-scene.on .cam-crane{animation:pv-crane var(--d) ease-in-out both}
+.pv-scene.on .cam-follow{animation:pv-follow var(--d) ease-in-out both}
+.pv-scene.on .cam-stopmotion{animation:pv-step var(--d) steps(5) both}
+.pv-scene.on .cam-kb{animation:pv-kb var(--d) linear both}
+.pv-scene.on .pv-drops i{animation:pv-drop .9s ease-in infinite}
+.pv-scene.on .pv-drops i:nth-child(2n){animation-delay:.3s}.pv-scene.on .pv-drops i:nth-child(3n){animation-delay:.55s}
+.pv-scene.on .pv-items i{animation:pv-in var(--d) ease-out both}
+.pv-scene.on .pv-items i:nth-child(2){animation-delay:.15s}.pv-scene.on .pv-items i:nth-child(3){animation-delay:.3s}.pv-scene.on .pv-items i:nth-child(4){animation-delay:.45s}
+.pv-scene.on .pv-wipe{animation:pv-wipe var(--d) ease-in-out both}
+.pv-scene.on .pv-fg{animation:pv-fg var(--d) linear both}
+@keyframes pv-dolly{from{transform:scale(1)}to{transform:scale(1.55)}}
+@keyframes pv-snap{0%{transform:scale(1)}18%{transform:scale(1.7)}100%{transform:scale(1.78)}}
+@keyframes pv-push{0%,50%{transform:scale(1)}60%{transform:scale(1.45) translateX(3%)}66%{transform:scale(1.45) translateX(-3%)}72%,100%{transform:scale(1.45)}}
+@keyframes pv-orbit{0%{transform:translateX(-16%) scaleX(.8)}50%{transform:translateX(0) scaleX(1)}100%{transform:translateX(16%) scaleX(.8)}}
+@keyframes pv-slide{from{transform:translateX(-13%)}to{transform:translateX(13%)}}
+@keyframes pv-crane{from{transform:translateY(-20%) scale(1.08)}to{transform:translateY(16%) scale(1.08)}}
+@keyframes pv-follow{0%{transform:translate(-5%,0)}25%{transform:translate(0,-3%)}50%{transform:translate(5%,0)}75%{transform:translate(0,2%)}100%{transform:translate(-3%,0)}}
+@keyframes pv-step{from{transform:translateX(-26%)}to{transform:translateX(26%)}}
+@keyframes pv-kb{from{transform:scale(1.04)}to{transform:scale(1.2) translate(-3%,-2%)}}
+@keyframes pv-drop{from{transform:translateY(0)}to{transform:translateY(900%)}}
+@keyframes pv-in{from{transform:scale(.2);opacity:0}30%{opacity:1}to{transform:scale(1);opacity:1}}
+@keyframes pv-wipe{from{left:-40%}to{left:110%}}
+@keyframes pv-fg{from{left:70%}to{left:-20%}}
+@keyframes pv-steam{0%,100%{transform:translateY(0);opacity:.2}50%{transform:translateY(-6px);opacity:.8}}
+/* motion-graphics scenes (Claude Code) */
+.cc{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;gap:8px;padding:12% 10%;color:var(--ink);font-family:var(--f-display);text-align:center}
+.cc-hook{font-size:19px;line-height:1.1}
+.cc-title{font-size:13px;line-height:1.15}
+.cc-num{font-size:30px;line-height:1;color:var(--acc)}
+.cc-dots{display:flex;gap:5px}.cc-dots i{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.cc-bars{width:100%;display:grid;gap:5px}.cc-bars i{display:block;height:8px;border-radius:4px;background:var(--acc);width:var(--w)}
+.cc-list{width:100%;display:grid;gap:5px}.cc-list i{display:block;height:10px;border-radius:3px;background:var(--ink);opacity:.8}
+.cc-list i:nth-child(2){width:80%}.cc-list i:nth-child(3){width:60%}
+.cc-cta{font-family:var(--f-body);font-size:10px;font-weight:600;background:var(--ink);color:var(--bgc);padding:4px 10px;border-radius:999px}
+.pv-scene.on .cc-hook,.pv-scene.on .cc-num{animation:cc-pop .45s cubic-bezier(.2,1.4,.4,1) both}
+.pv-scene.on .cc-title{animation:cc-up .4s ease-out both}
+.pv-scene.on .cc-dots i{animation:cc-pop .4s cubic-bezier(.2,1.4,.4,1) both}.pv-scene.on .cc-dots i:nth-child(2){animation-delay:.1s}.pv-scene.on .cc-dots i:nth-child(3){animation-delay:.2s}
+.pv-scene.on .cc-bars i{animation:cc-bar .8s ease-out both}.pv-scene.on .cc-bars i:nth-child(2){animation-delay:.12s}.pv-scene.on .cc-bars i:nth-child(3){animation-delay:.24s}
+.pv-scene.on .cc-list i{animation:cc-slide .4s ease-out both}.pv-scene.on .cc-list i:nth-child(2){animation-delay:.15s}.pv-scene.on .cc-list i:nth-child(3){animation-delay:.3s}
+.pv-scene.on .cc-cta{animation:cc-pulse 1s ease-in-out infinite}
+@keyframes cc-pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes cc-up{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+@keyframes cc-bar{from{width:0}}
+@keyframes cc-slide{from{transform:translateX(-30px);opacity:0}to{transform:none;opacity:.8}}
+@keyframes cc-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.paused .pv *{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){.pv *{animation:none!important}}
+
+/* order bar & drawer */
+.orderbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 14px);z-index:8;display:flex;align-items:center;gap:12px;background:var(--ink);color:var(--bg);border-radius:12px;padding:8px 8px 8px 16px;box-shadow:0 6px 24px rgba(0,0,0,.18);max-width:calc(100% - 32px)}
+.orderbar .cnt{font-family:var(--f-mono);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.orderbar .cnt b{color:var(--rec);font-size:15px}
+.orderbar .btn{background:var(--bg);color:var(--ink);border-color:var(--bg)}
+.scrim{position:fixed;inset:0;background:rgba(10,12,16,.4);z-index:9}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(470px,100%);background:var(--surface);border-left:1px solid var(--line);z-index:10;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.dhead{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 16px;background:var(--ink);color:var(--bg)}
+.dhead b{font-family:var(--f-display);font-weight:400;font-size:20px}
+.dhead .btn{background:none;color:var(--bg);border-color:transparent}
+.dbody{overflow-y:auto;padding:16px;display:grid;gap:18px;align-content:start}
+.olist{display:flex;flex-wrap:wrap;gap:6px}
+.oitem{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:8px;padding:3px 4px 3px 8px;font-size:12.5px;background:var(--bg)}
+.oitem button{border:0;background:none;color:var(--muted);cursor:pointer;font:inherit;padding:0 4px}
+.sec-title{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--muted);margin:0 0 6px}
+.dprompt{font-family:var(--f-mono);font-size:12px;line-height:1.6;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
+.btnrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.links{display:grid;gap:4px}
+.links a{display:flex;justify-content:space-between;gap:10px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:13px}
+.links a:hover{border-color:var(--rec)}
+.links a span:last-child{color:var(--muted);font-family:var(--f-mono);font-size:11px;white-space:nowrap}
+.tooltip{font-size:12.5px;background:var(--bg);border-radius:8px;padding:8px 10px}
+.concepts{display:grid;gap:10px;margin-top:8px}
+.concept{border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:8px}
+.concept h4{margin:0;font-family:var(--f-display);font-weight:400;font-size:18px;line-height:1.25}
+.concept .hook{color:var(--muted);font-size:13px}
+.shots{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.shots li{display:grid;grid-template-columns:58px minmax(0,1fr);gap:8px;font-size:13px}
+.shots .tc{font-family:var(--f-mono);font-size:11.5px;color:var(--rec);padding-top:2px;font-variant-numeric:tabular-nums}
+.shots small{display:block;font-size:12px;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 76px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13px;z-index:20;max-width:calc(100% - 32px)}
+@media (prefers-reduced-motion:reduce){.mover{display:none}}
+.paused .mover{opacity:.9}
+
+/* quick builder: one question per step, picks fill the same order-sheet prompt */
+.wiz{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;margin:0 0 18px;scroll-margin-top:12px}
+.wiz-head{display:flex;justify-content:space-between;align-items:baseline;gap:6px 12px;flex-wrap:wrap}
+.wiz-head h2{font-family:var(--f-display);font-weight:400;font-size:26px;line-height:1.1;margin:0}
+.wiz-head h2 em{font-style:normal;color:var(--rec)}
+.wiz-steps{display:flex;gap:4px;overflow-x:auto;margin:12px 0 16px;padding-bottom:2px;scrollbar-width:none}
+.wiz-steps button{flex:1 0 auto;min-width:58px;font:inherit;font-size:12px;background:none;border:0;border-top:3px solid var(--line);padding:6px 2px 0;color:var(--muted);text-align:left;cursor:pointer;white-space:nowrap}
+.wiz-steps button.done{border-color:var(--ink);color:var(--ink)}
+.wiz-steps button[aria-current="step"]{border-color:var(--rec);color:var(--ink);font-weight:600}
+.wiz-steps button:disabled{cursor:default}
+.wiz-steps small{font-family:var(--f-mono);margin-right:4px;opacity:.7}
+.wiz-q{font-family:var(--f-display);font-size:23px;line-height:1.15;margin:0 0 4px}
+.wiz-sub{color:var(--muted);margin:0 0 12px;max-width:70ch}
+.wiz-opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,168px),1fr));gap:8px}
+.wiz-opts.wide{grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr))}
+.wiz-grp{margin:2px 0 6px;font-weight:600;font-size:13px}
+.wiz-grp + .wiz-opts{margin-bottom:12px}
+.wopt{font:inherit;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;display:flex;flex-direction:column;gap:4px;color:var(--ink);position:relative;min-width:0}
+.wopt:hover{border-color:var(--muted)}
+.wopt[aria-pressed="true"]{border-color:var(--rec);box-shadow:0 0 0 1px var(--rec) inset;background:var(--surface)}
+.wopt b{font-size:15px;font-weight:600;line-height:1.3;padding-right:34px}
+.wopt .d{color:var(--muted);font-size:12.5px;line-height:1.45}
+.wopt .rec{position:absolute;top:9px;right:9px;font-family:var(--f-mono);font-size:10px;letter-spacing:.04em;color:var(--rec)}
+.wopt .num{position:absolute;top:8px;left:8px;z-index:1;background:var(--rec);color:#fff;border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px;font-weight:600}
+.wopt .prev{display:flex;width:100%;margin-bottom:2px;background:var(--surface)}
+.wopt[aria-pressed="true"] .prev{background:var(--bg)}
+.wopt .prev.pad{padding:8px}
+.wopt .tl{margin:4px 0 2px}
+.wopt .fit{font-size:11.5px}
+.wiz-label{display:grid;gap:4px;font-weight:600;font-size:13px;max-width:460px;margin-bottom:12px}
+.wiz-row{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 14px}
+.wiz-map{list-style:none;padding:0;margin:0 0 10px;display:grid;gap:4px;max-width:640px}
+.wiz-hint{color:var(--muted);font-size:12.5px}
+.wiz-map li{display:grid;grid-template-columns:62px 150px minmax(0,1fr);gap:8px;align-items:baseline;font-size:13px;background:var(--bg);border-radius:8px;padding:5px 9px}
+.wiz-map .tc{font-family:var(--f-mono);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.wiz-map .m{color:var(--muted)}.wiz-map .m.on{color:var(--ink);font-weight:600}
+.wiz-nav{display:flex;gap:6px;justify-content:space-between;align-items:center;margin-top:16px;flex-wrap:wrap}
+.wiz-pick{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 10px}
+.wiz .dprompt{max-height:340px;overflow:auto}
+@media (max-width:560px){.wiz{padding:14px 12px}.wiz-q{font-size:21px}.wiz-opts,.wiz-opts.wide{grid-template-columns:1fr 1fr;gap:6px}.wopt{padding:8px 9px}.wopt b{font-size:13.5px;padding-right:0}.wopt .rec{position:static;order:-1}.wopt .num{top:5px;left:5px}.wopt .d{font-size:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.wiz-map li{grid-template-columns:54px minmax(0,1fr);}.wiz-map li .m{grid-column:2}}
+.morebtn{grid-column:1/-1;justify-self:center;margin:4px 0 8px;padding:10px 18px}
+.catsec{content-visibility:auto;contain-intrinsic-size:auto 1400px}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+.adslot{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;margin-bottom:4px}
+.layout{display:block}
+.rail{display:none}
+.rb{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 15px;transition:border-color .15s}
+.rb:hover{border-color:var(--muted)}
+.rb .rl{font-size:11px;color:var(--muted)}
+.rb .rbt{font-family:var(--f-display);font-weight:400;font-size:22px;line-height:1.15}
+.rb .rtx{font-size:13px;line-height:1.5}
+.rb .rmeta{font-size:12px;color:var(--muted);line-height:1.45}
+.rb .rprice{font-weight:600;font-size:14px}
+.rb .rcta{margin-top:4px;font-size:12.5px;font-weight:600;color:var(--rec);overflow-wrap:anywhere}
+.rb-brand{border-top:4px solid var(--c3)}
+.rb .rimg{display:block;width:100%;height:auto;border-radius:10px;margin:2px 0 4px;background:#F9F9F9}
+.rb-brand .rbt{color:var(--c3)}
+.rb-svc{border-top:4px solid var(--rec)}
+.rb-ask{border-style:dashed;background:transparent}
+.rb-ask .rbt{font-size:19px}
+.rail-inline{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px;margin:26px 0}
+@media (min-width:1180px){
+ .layout{display:grid;grid-template-columns:minmax(0,1240px) 220px;gap:16px;justify-content:center;padding-right:16px}
+ .layout > .wrap{margin:0;width:100%}
+ .rail{display:flex;flex-direction:column;gap:12px;position:sticky;top:16px;align-self:start;margin-top:24px;max-height:calc(100vh - 32px);overflow:auto}
+ .rail-inline{display:none}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" style="fill:var(--motion)"/></marker>
+    <g id="scene">
+      <rect x="-400" y="-400" width="900" height="600" style="fill:var(--motion-soft)"/>
+      <circle cx="-110" cy="-70" r="22" style="fill:var(--style)"/>
+      <path d="M-260 200 L-150 60 L-40 200 Z M120 200 L240 40 L360 200 Z" style="fill:var(--line)"/>
+      <rect x="196" y="120" width="10" height="80" style="fill:var(--muted)"/>
+      <circle cx="201" cy="104" r="30" style="fill:var(--c3)"/>
+      <rect x="-400" y="200" width="900" height="500" style="fill:var(--style-soft)"/>
+    </g>
+    <g id="person">
+      <rect x="36" y="110" width="12" height="90" rx="5" style="fill:var(--ink)"/>
+      <rect x="52" y="110" width="12" height="90" rx="5" style="fill:var(--ink)"/>
+      <path d="M32 50 Q50 42 68 50 L66 116 L34 116 Z" style="fill:var(--ink)"/>
+      <path d="M33 54 L22 108 M67 54 L78 108" style="stroke:var(--ink);stroke-width:8;stroke-linecap:round;fill:none"/>
+      <rect x="45" y="40" width="10" height="10" style="fill:var(--ink)"/>
+      <circle cx="50" cy="30" r="14" style="fill:var(--ink)"/>
+      <circle cx="45" cy="28" r="1.8" style="fill:var(--bg)"/>
+      <circle cx="55" cy="28" r="1.8" style="fill:var(--bg)"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="layout"><div class="wrap">
+  <header class="hero">
+    <span class="lab">AI 영상 프롬프트 만들기 · 무료 레퍼런스 사전</span>
+    <h1>카드를 골라 담으면<br><em>영상 AI 주문서</em>가 완성됩니다</h1>
+    <p>카메라 무빙, 룩, 샷 크기, 앵글, 조명, 스크립트 구조를 움직이는 미리보기로 보고 고르세요. 담은 카드는 하나의 프롬프트로 합쳐지고, 예시 영상 컨셉과 비슷한 유튜브 영상까지 이어 줍니다.</p>
+    <div class="stats" id="stats"></div>
+    <div class="jump">
+      <a class="btn primary" href="#wiz">간편 만들기</a>
+      <a class="btn" href="radar/" style="border-color:var(--rec);color:var(--rec)">🔥 오늘의 터진 쇼츠</a>
+      <a class="btn" href="#dict">사전 보기</a>
+      <a class="btn" href="#formula">주문 공식</a>
+      <a class="btn" href="#start">시작하는 법</a>
+      <a class="btn" href="guide/">가이드 글</a>
+    </div>
+  </header>
+
+
+  <section class="wiz" id="wiz" aria-labelledby="wizTitle">
+    <div class="wiz-head"><h2 id="wizTitle">간편 만들기 · <em>클릭만으로</em> 프롬프트 완성</h2><span class="wiz-hint">카드를 몰라도 질문에 하나씩 답하면 끝</span></div>
+    <nav class="wiz-steps" id="wizSteps" aria-label="간편 만들기 단계"></nav>
+    <div id="wizBody" aria-live="polite"></div>
+  </section>
+
+  <details class="settings" id="settingsBox">
+    <summary>공통 설정 <span>모든 카드의 프롬프트에 자동으로 들어갑니다 · 이 브라우저에만 저장</span></summary>
+    <div class="sgrid">
+      <label class="s2">제품 · 주제<input id="s_subj" value="" placeholder="예: 수제 쿠키, 무선 이어폰, 동네 꽃집"></label>
+      <label class="s2">영상 AI 도구<select id="s_tool"></select></label>
+      <label>화면비<select id="s_aspect"><option>9:16</option><option>16:9</option><option>1:1</option><option>4:5</option></select></label>
+      <label>전체 길이<select id="s_dur"><option value="8">8초</option><option value="15">15초</option><option value="30">30초</option><option value="45">45초</option><option value="60">60초</option><option value="90">90초</option><option value="120">2분</option></select></label>
+      <label class="s2">사운드<select id="s_sound"><option value="bgm">BGM 한 곡만</option><option value="sfx">효과음 · ASMR 중심</option><option value="voice">내레이션 · 대사 포함</option><option value="mute">무음 (편집에서 음악 추가)</option></select></label>
+      <label class="s2">분위기 · 추가 요청 (선택)<input id="s_mood" placeholder="예: 따뜻하고 차분하게, 초록 포인트 컬러"></label>
+    </div>
+  </details>
+
+  <h2 class="block">바로 쓰는 조합</h2>
+  <p class="blocknote">쓰는 도구에 따라 두 묶음으로 나눴어요. 세트를 담으면 주문서에서 빼거나 더할 수 있습니다.</p>
+  <div id="sets"></div>
+  <aside class="cpbox" aria-label="광고"><span class="lab">광고 · 쿠팡</span>
+    <div class="cpwrap"><script src="https://ads-partners.coupang.com/g.js"></script> <script> new PartnersCoupang.G({"id":1038865,"template":"carousel","trackingCode":"AF0984527","width":"680","height":"140","tsource":""}); </script></div>
+    <p class="cpnote">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></aside>
+
+  <div id="dict"></div>
+  <div class="filters">
+    <div class="frow">
+      <input type="search" id="q" placeholder="이름, 영어 이름, 쓰임새로 찾기 (예: 질감, orbit, 후기)">
+      <button class="chip" id="pauseBtn" type="button" aria-pressed="false">미리보기 멈춤</button>
+      <button class="btn small primary" id="toggleAdd" type="button">+ 레퍼런스 추가</button>
+    </div>
+    <div class="frow" id="catChips" aria-label="종류"></div>
+    <div class="frow" id="useChips" aria-label="용도"></div>
+  </div>
+
+  <form class="addform" id="addform" hidden>
+    <label>종류<select id="f_kind"><option value="motion">카메라 무빙</option><option value="style">룩 · 스타일</option></select></label>
+    <label>이름<input id="f_name" placeholder="예: 매크로 돌리인"></label>
+    <label>영어 이름 (선택)<input id="f_en" placeholder="Macro dolly-in"></label>
+    <label>길이 (선택)<input id="f_dur" placeholder="3–5초"></label>
+    <label class="full">설명<textarea id="f_desc" rows="2" placeholder="어떤 장면인지 한두 줄"></textarea></label>
+    <label class="full">이럴 때<input id="f_when" placeholder="예: 음식 단면의 질감을 강조하고 싶을 때"></label>
+    <label class="full">AI 프롬프트 문장 (영문 권장)<textarea id="f_snip" rows="2" placeholder="slow macro dolly-in toward the subject, shallow depth of field"></textarea></label>
+    <label>미리보기 그림 (카메라 무빙일 때)<select id="f_cam"></select></label>
+    <label>색 팔레트 (스타일일 때, 쉼표로 HEX)<input id="f_pal" placeholder="#F6E7CF, #D9A86C, #8A5A33"></label>
+    <div class="full"><span class="lab">용도</span><div class="checks" id="f_uses"></div></div>
+    <label>태그 (쉼표로 구분)<input id="f_tags" placeholder="음식, 클로즈업"></label>
+    <label>유튜브 검색어<input id="f_ytq" placeholder="macro dolly in product shot"></label>
+    <label class="full">유튜브 링크 (한 줄에 하나, 선택)<textarea id="f_yt" rows="2" placeholder="https://www.youtube.com/shorts/..."></textarea></label>
+    <div class="row">
+      <span class="status" id="addStatus"></span>
+      <button class="btn ghost" type="button" id="cancelAdd">취소</button>
+      <button class="btn primary" type="submit">저장</button>
+    </div>
+  </form>
+
+  <div id="sections"></div>
+
+  <aside class="adslot" aria-label="광고" hidden><span class="lab">광고</span>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0000000000000000" data-ad-slot="SLOT_MID" data-ad-format="auto" data-full-width-responsive="true"></ins></aside>
+  <section class="rail-inline" aria-label="광고 · 운영자 소식">
+    <a class="rb rb-brand" href="https://brand.naver.com/greatbilly_official?utm_source=ai-video-reference&amp;utm_medium=banner&amp;utm_campaign=site_rail" target="_blank" rel="noopener sponsored">
+      <span class="rl">광고 · 운영자가 일하는 브랜드</span>
+      <img class="rimg" src="media/greatbilly-ad.gif" width="380" height="320" alt="그래잇빌리 비건 사료 에코 패키지 · 100% 식물성 단백질" loading="lazy" decoding="async">
+      <b class="rbt">그래잇빌리</b>
+      <span class="rtx">100% 식물성 단백질<br>프리미엄 강아지 사료</span>
+      <span class="rmeta">작고 둥근 부드러운 알갱이라 소형견 · 노견도 편하게</span>
+      <span class="rcta">공식 스토어 보기 ↗</span></a>
+    <a class="rb rb-ask" href="mailto:qwerasdfrfed@naver.com?subject=%5BAI%20%EC%98%81%EC%83%81%20%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4%5D%20%EA%B4%91%EA%B3%A0%20%EB%AC%B8%EC%9D%98">
+      <span class="rl">광고 문의</span><b class="rbt">이 자리에<br>광고하세요</b>
+      <span class="rtx">AI 영상 도구, 촬영 장비, 크리에이터 서비스</span>
+      <span class="rcta">qwerasdfrfed@naver.com</span></a>
+  </section>
+  <section class="doc" id="formula">
+    <h2 class="block">주문 공식</h2>
+    <p class="blocknote">"멋지게 만들어 줘"보다 무엇을 고정하고 무엇을 움직일지 나눠 지시해야 제품 모양 변형, 조명 튐, 방향 뒤집힘이 줄어듭니다. 주문서는 이 7단계 순서로 프롬프트를 만듭니다.</p>
+    <div class="layers" id="layers"></div>
+    <h2 class="block">자주 무너지는 지점별 규칙</h2>
+    <p class="blocknote">NolanX AI가 공개한 영상 제작 스킬 20개를 용도별로 묶어 요약했어요.</p>
+    <div class="rgroups" id="rgroups"></div>
+    <h2 class="block">작업별 규칙 조합 순서</h2>
+    <div class="recipes" id="recipes"></div>
+  </section>
+
+  <section class="doc" id="start">
+    <h2 class="block">시작하는 법</h2>
+    <div class="steps">
+      <div class="step"><b>STEP 1</b><strong>공통 설정 채우기</strong>제품, 도구, 화면비, 길이를 정하면 모든 카드 프롬프트의 빈칸이 채워집니다.</div>
+      <div class="step"><b>STEP 2</b><strong>카드 담기</strong>스크립트 구조 하나, 카메라 무빙 1–3개, 룩 하나를 기본으로 담고 샷 크기 · 앵글 · 조명은 필요할 때 더합니다.</div>
+      <div class="step"><b>STEP 3</b><strong>주문서 확인</strong>합쳐진 프롬프트를 복사하거나 예시 영상 3개를 제안받고, 비슷한 유튜브 영상으로 감을 맞춥니다.</div>
+      <div class="step"><b>STEP 4</b><strong>도구에 넣기</strong>아래 도구별 메모대로 이미지 · 참고 영상을 함께 넣고, 문제 있는 샷만 다시 생성합니다.</div>
+    </div>
+    <h2 class="block">AI에게 레퍼런스로 쓰는 법</h2>
+    <p class="blocknote">이 사이트의 카드는 사람이 보는 화면 말고도, AI가 바로 읽을 수 있는 파일로 같이 공개돼 있어요. ChatGPT나 Claude에게 이 사이트를 "참고 자료"로 주면 카드 코드(M01, S05 등)를 근거로 프롬프트를 짜 줍니다.</p>
+    <div class="steps">
+      <div class="step"><b>방법 1 · 가장 확실함</b><strong>브리프 붙여 넣기</strong>카드를 주문서에 담고 "AI 브리프(JSON) 복사"를 눌러 ChatGPT나 Claude 대화창에 붙여 넣으세요. 웹 검색이 꺼져 있어도 됩니다.</div>
+      <div class="step"><b>방법 2 · 링크로 알려주기</b><strong>카드 목록 주소 전달</strong>웹 검색이 되는 AI라면 카드 전체 목록 주소를 알려 주고 골라 쓰게 할 수 있어요.<code class="aicode">https://ai-video-reference-kr.netlify.app/cards.json</code></div>
+      <div class="step"><b>방법 3 · 그대로 복사</b><strong>요청 문장 예시</strong><span id="aiAsk">아래 카드 목록을 참고해서 [제품] 15초 쇼츠 영상 프롬프트를 짜 줘. 카메라 무빙 · 룩 · 조명을 카드 코드로 표시하고, 7단계(핵심 상황 → 정체성 고정 → 세계 → 매체 → 사운드 → 샷 → 연속성) 순서로 써 줘. 카드 목록: https://ai-video-reference-kr.netlify.app/cards.json</span><button class="btn small" type="button" id="copyAiAsk" style="justify-self:start;margin-top:6px">문장 복사</button></div>
+    </div>
+    <h2 class="block">도구별 메모</h2>
+    <div class="toolgrid" id="toolgrid"></div>
+  </section>
+
+  <aside class="adslot" aria-label="광고" hidden><span class="lab">광고</span>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0000000000000000" data-ad-slot="SLOT_FOOT" data-ad-format="auto" data-full-width-responsive="true"></ins></aside>
+  <section class="doc" id="all-cards">
+    <h2 class="block">카드 전체 목록</h2>
+    <p class="blocknote">카드마다 따로 정리한 페이지가 있어요. 설명, 이럴 때 쓰는 법, 바로 복사할 프롬프트를 한 페이지에서 볼 수 있습니다.</p>
+    <nav class="carddir" aria-label="카드 전체 목록"><div class="cdgrp"><h3>카메라 무빙 <small>30</small></h3><ul><li><a href="card/m01.html"><span class="code">M01</span>매크로 돌리인</a></li><li><a href="card/m02.html"><span class="code">M02</span>제품 오비트</a></li><li><a href="card/m03.html"><span class="code">M03</span>슬로모 쏟아짐</a></li><li><a href="card/m04.html"><span class="code">M04</span>탑다운 구성품 등장</a></li><li><a href="card/m05.html"><span class="code">M05</span>낮은 시점 팔로우</a></li><li><a href="card/m06.html"><span class="code">M06</span>와이프 리빌</a></li><li><a href="card/m07.html"><span class="code">M07</span>스냅 줌</a></li><li><a href="card/m08.html"><span class="code">M08</span>아래에서 위로 상승</a></li><li><a href="card/m09.html"><span class="code">M09</span>패럴랙스 슬라이드</a></li><li><a href="card/m10.html"><span class="code">M10</span>고정 점프컷</a></li><li><a href="card/m11.html"><span class="code">M11</span>임팩트 푸시인</a></li><li><a href="card/m12.html"><span class="code">M12</span>래터럴 트래킹</a></li><li><a href="card/m13.html"><span class="code">M13</span>동작 중 컷</a></li><li><a href="card/m14.html"><span class="code">M14</span>스톱모션 프레임 이동</a></li><li><a href="card/m15.html"><span class="code">M15</span>팬</a></li><li><a href="card/m16.html"><span class="code">M16</span>틸트 업</a></li><li><a href="card/m17.html"><span class="code">M17</span>렌즈 줌 인</a></li><li><a href="card/m18.html"><span class="code">M18</span>풀백 리빌</a></li><li><a href="card/m19.html"><span class="code">M19</span>트럭 (좌우 평행 이동)</a></li><li><a href="card/m20.html"><span class="code">M20</span>페데스탈 다운</a></li><li><a href="card/m21.html"><span class="code">M21</span>돌리 줌 (버티고)</a></li><li><a href="card/m22.html"><span class="code">M22</span>크래시 줌</a></li><li><a href="card/m23.html"><span class="code">M23</span>위프 팬</a></li><li><a href="card/m24.html"><span class="code">M24</span>FPV 드론 다이브</a></li><li><a href="card/m25.html"><span class="code">M25</span>불릿 타임</a></li><li><a href="card/m26.html"><span class="code">M26</span>오브젝트 통과 샷</a></li><li><a href="card/m27.html"><span class="code">M27</span>인피니트 줌</a></li><li><a href="card/m28.html"><span class="code">M28</span>360 오비트</a></li><li><a href="card/m29.html"><span class="code">M29</span>에어리얼 리빌</a></li><li><a href="card/m30.html"><span class="code">M30</span>랙 포커스</a></li></ul></div><div class="cdgrp"><h3>룩 · 스타일 <small>11</small></h3><ul><li><a href="card/s01.html"><span class="code">S01</span>클린 화이트 스튜디오</a></li><li><a href="card/s02.html"><span class="code">S02</span>아침 햇살 주방</a></li><li><a href="card/s03.html"><span class="code">S03</span>다큐 리얼</a></li><li><a href="card/s04.html"><span class="code">S04</span>아이소메트릭 설명 일러스트</a></li><li><a href="card/s05.html"><span class="code">S05</span>시네마틱 로우키</a></li><li><a href="card/s06.html"><span class="code">S06</span>파스텔 팝</a></li><li><a href="card/s07.html"><span class="code">S07</span>매크로 푸드 텍스처</a></li><li><a href="card/s08.html"><span class="code">S08</span>35mm 필름 웜톤</a></li><li><a href="card/s09.html"><span class="code">S09</span>펠트 · 클레이 스톱모션</a></li><li><a href="card/s10.html"><span class="code">S10</span>종이 컷아웃 스톱모션</a></li><li><a href="card/s11.html"><span class="code">S11</span>시네마 렌즈 룩</a></li></ul></div><div class="cdgrp"><h3>스크립트 구조 <small>16</small></h3><ul><li><a href="card/t01.html"><span class="code">T01</span>틱톡 · 릴스 · 쇼츠</a></li><li><a href="card/t02.html"><span class="code">T02</span>광고 심리 구조</a></li><li><a href="card/t03.html"><span class="code">T03</span>숏드라마 훅</a></li><li><a href="card/t04.html"><span class="code">T04</span>마케팅</a></li><li><a href="card/t05.html"><span class="code">T05</span>라이브 · 클래스 예고</a></li><li><a href="card/t06.html"><span class="code">T06</span>영업 아웃리치</a></li><li><a href="card/t07.html"><span class="code">T07</span>고객 후기</a></li><li><a href="card/t08.html"><span class="code">T08</span>사례 연구</a></li><li><a href="card/t09.html"><span class="code">T09</span>설명 영상</a></li><li><a href="card/t10.html"><span class="code">T10</span>유튜브 롱폼</a></li><li><a href="card/t11.html"><span class="code">T11</span>제품 데모</a></li><li><a href="card/t12.html"><span class="code">T12</span>튜토리얼</a></li><li><a href="card/t13.html"><span class="code">T13</span>교육</a></li><li><a href="card/t14.html"><span class="code">T14</span>업무 절차 (SOP)</a></li><li><a href="card/t15.html"><span class="code">T15</span>온보딩</a></li><li><a href="card/t16.html"><span class="code">T16</span>AI 영상 생성기용 대본</a></li></ul></div><div class="cdgrp"><h3>샷 크기 <small>8</small></h3><ul><li><a href="card/f01.html"><span class="code">F01</span>익스트림 와이드</a></li><li><a href="card/f02.html"><span class="code">F02</span>와이드 · 롱샷</a></li><li><a href="card/f03.html"><span class="code">F03</span>풀샷</a></li><li><a href="card/f04.html"><span class="code">F04</span>미디엄 풀</a></li><li><a href="card/f05.html"><span class="code">F05</span>미디엄</a></li><li><a href="card/f06.html"><span class="code">F06</span>미디엄 클로즈업</a></li><li><a href="card/f07.html"><span class="code">F07</span>클로즈업</a></li><li><a href="card/f08.html"><span class="code">F08</span>익스트림 클로즈업</a></li></ul></div><div class="cdgrp"><h3>앵글 <small>6</small></h3><ul><li><a href="card/a01.html"><span class="code">A01</span>아이 레벨</a></li><li><a href="card/a02.html"><span class="code">A02</span>로우 앵글</a></li><li><a href="card/a03.html"><span class="code">A03</span>하이 앵글</a></li><li><a href="card/a04.html"><span class="code">A04</span>오버헤드 (탑다운)</a></li><li><a href="card/a05.html"><span class="code">A05</span>더치 (기울임)</a></li><li><a href="card/a06.html"><span class="code">A06</span>바닥 눈높이</a></li></ul></div><div class="cdgrp"><h3>조명 대비 <small>4</small></h3><ul><li><a href="card/l01.html"><span class="code">L01</span>1:1 플랫</a></li><li><a href="card/l02.html"><span class="code">L02</span>2:1 부드러움</a></li><li><a href="card/l03.html"><span class="code">L03</span>4:1 드라마틱</a></li><li><a href="card/l04.html"><span class="code">L04</span>8:1+ 어둡고 긴장</a></li></ul></div></nav>
+  </section>
+  <footer class="srcs">
+    <span><a href="guide/">가이드 글</a> · <a href="privacy.html">소개 · 개인정보처리방침</a></span>
+    <span class="lab">SOURCES</span>
+    <a href="https://javaexpert.tistory.com/1760" target="_blank" rel="noopener">NolanX AI Skills 기반 AI 영상 프롬프트 설계법 (javaexpert 티스토리)</a>
+    <a href="https://leadde.ai/ko/blog/14-free-video-script-templates-for-every-type-of-video" target="_blank" rel="noopener">영상 유형별 무료 스크립트 템플릿 14종 (Leadde)</a>
+    <a href="https://flick.art/ko/tools/stop-motion" target="_blank" rel="noopener">Flick 스톱모션 비디오 생성기</a>
+  </footer>
+</div>
+<aside class="rail" aria-label="광고 · 운영자 소식">
+    <a class="rb rb-brand" href="https://brand.naver.com/greatbilly_official?utm_source=ai-video-reference&amp;utm_medium=banner&amp;utm_campaign=site_rail" target="_blank" rel="noopener sponsored">
+      <span class="rl">광고 · 운영자가 일하는 브랜드</span>
+      <img class="rimg" src="media/greatbilly-ad.gif" width="380" height="320" alt="그래잇빌리 비건 사료 에코 패키지 · 100% 식물성 단백질" loading="lazy" decoding="async">
+      <b class="rbt">그래잇빌리</b>
+      <span class="rtx">100% 식물성 단백질<br>프리미엄 강아지 사료</span>
+      <span class="rmeta">작고 둥근 부드러운 알갱이라 소형견 · 노견도 편하게</span>
+      <span class="rcta">공식 스토어 보기 ↗</span></a>
+    <a class="rb rb-ask" href="mailto:qwerasdfrfed@naver.com?subject=%5BAI%20%EC%98%81%EC%83%81%20%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4%5D%20%EA%B4%91%EA%B3%A0%20%EB%AC%B8%EC%9D%98">
+      <span class="rl">광고 문의</span><b class="rbt">이 자리에<br>광고하세요</b>
+      <span class="rtx">AI 영상 도구, 촬영 장비, 크리에이터 서비스</span>
+      <span class="rcta">qwerasdfrfed@naver.com</span></a>
+  </aside>
+</div>
+
+<div class="orderbar" id="orderbar">
+  <span class="cnt" id="orderCnt">주문서 · <b>0</b>개 담김</span>
+  <button class="btn small" type="button" id="openOrder">주문서 열기</button>
+</div>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="주문서">
+  <div class="dhead"><b>주문서</b><div><button class="btn small" type="button" id="clearOrder">비우기</button><button class="btn small" type="button" id="closeOrder">닫기</button></div></div>
+  <div class="dbody">
+    <div><p class="sec-title">담은 카드</p><div class="olist" id="olist"></div></div>
+    <div><p class="sec-title">TIMELINE · 구조 배분</p><div id="otl"></div></div>
+    <div>
+      <p class="sec-title">PROMPT · 7단계 모듈형</p>
+      <pre class="dprompt" id="oprompt"></pre>
+      <div class="btnrow">
+        <button class="btn small" type="button" id="copyOrder">프롬프트 복사</button>
+        <button class="btn small" type="button" id="copyBrief">AI 브리프(JSON) 복사</button>
+      </div>
+      <div class="tooltip" id="otool" style="margin-top:8px"></div>
+    </div>
+    <div>
+      <p class="sec-title">EXAMPLE CONCEPTS · 예시 영상 제안</p>
+      <button class="btn primary" type="button" id="suggest">예시 영상 3개 제안받기</button>
+      <p class="status" id="sugStatus"></p>
+      <div class="concepts" id="concepts"></div>
+    </div>
+    <div><p class="sec-title">SIMILAR · 비슷한 유튜브 영상</p><div class="links" id="similar"></div></div>
+  </div>
+</aside>
+<div class="toast" id="toast" hidden></div>
+
+<script id="refsData" type="application/json">[{"id": "m01", "kind": "motion", "code": "M01", "cam": "dollyin", "name": "매크로 돌리인", "nameEn": "Macro dolly-in", "desc": "제품 표면까지 천천히 다가가며 질감을 보여 주는 접근 샷.", "prompt": "slow macro dolly-in toward the subject, shallow depth of field, gentle focus pull landing on the surface texture", "duration": "3–5초", "model": "이미지→영상", "when": "음식 단면, 크림 제형, 원단 짜임처럼 질감을 가까이 보여 줄 때", "uses": ["음식·질감", "제품 소개"], "tags": ["클로즈업", "질감", "오프닝"], "ytQuery": "macro dolly in product commercial", "youtube": [], "createdAt": 1, "fit916": "좋음"}, {"id": "m02", "kind": "motion", "code": "M02", "cam": "orbit", "name": "제품 오비트", "nameEn": "Product orbit", "desc": "제품 주위를 일정한 속도로 반 바퀴 도는 샷. 앞·옆면 정보를 한 번에 보여 줌.", "prompt": "smooth 180-degree orbit around the product at eye level, constant speed, product stays centered and sharp", "duration": "4–6초", "model": "이미지→영상 / video-to-video", "when": "패키지나 제품의 앞·옆면을 한 컷에 보여 줄 때", "uses": ["제품 소개"], "tags": ["패키지", "회전"], "ytQuery": "product orbit shot commercial", "youtube": [], "createdAt": 2, "fit916": "좋음"}, {"id": "m03", "kind": "motion", "code": "M03", "cam": "pour", "name": "슬로모 쏟아짐", "nameEn": "Slow-motion pour", "desc": "재료나 음료가 쏟아지고 튀어 오르는 순간을 느리게 보여 주는 컷.", "prompt": "high-speed slow motion of the product pouring into a glass or bowl, droplets and pieces bouncing and settling, crisp detail", "duration": "3–4초", "model": "텍스트·이미지→영상", "when": "음료, 시리얼, 커피 원두처럼 쏟아지는 순간으로 시선을 잡을 때", "uses": ["음식·질감", "훅"], "tags": ["슬로모션", "하이라이트"], "ytQuery": "slow motion pour commercial", "youtube": [], "createdAt": 3, "fit916": "좋음"}, {"id": "m04", "kind": "motion", "code": "M04", "cam": "topdown", "name": "탑다운 구성품 등장", "nameEn": "Top-down ingredient slide", "desc": "위에서 고정한 화면에 구성품이나 재료가 하나씩 미끄러져 들어오는 구성.", "prompt": "locked-off top-down overhead shot, items slide into frame one by one and arrange neatly around the product", "duration": "5–8초", "model": "이미지→영상", "when": "구성품, 재료, 성분을 하나씩 소개할 때", "uses": ["정보형", "음식·질감"], "tags": ["플랫레이", "구성품"], "ytQuery": "top down flat lay stop motion ad", "youtube": [], "createdAt": 4, "fit916": "보통"}, {"id": "m05", "kind": "motion", "code": "M05", "cam": "follow", "name": "낮은 시점 팔로우", "nameEn": "Low-angle handheld follow", "desc": "낮은 눈높이에서 살짝 흔들리며 따라가는 핸드헬드. 실생활 느낌.", "prompt": "low-angle handheld follow shot close to the floor, natural sway, following the subject as it moves through a real home", "duration": "4–6초", "model": "모션 컨트롤 (참고 영상 필요)", "caution": "AI는 손발이나 다리를 왜곡하기 쉬워요. 실사 촬영본에 스타일만 입히는 쪽이 안전해요", "when": "아이, 반려동물, 사용자를 따라가는 일상 후기 장면", "uses": ["후기·신뢰", "감성·브랜드"], "tags": ["라이프스타일", "핸드헬드"], "ytQuery": "handheld follow shot lifestyle", "youtube": [], "createdAt": 5, "fit916": "보통"}, {"id": "m06", "kind": "motion", "code": "M06", "cam": "wipe", "name": "와이프 리빌", "nameEn": "Foreground wipe reveal", "desc": "앞쪽 물체가 화면을 가로지르며 제품을 드러내는 전환 샷.", "prompt": "a foreground object wipes across the frame from left to right, revealing the product behind it in the same move", "duration": "2–3초", "model": "이미지→영상 (끝 프레임 지정)", "when": "컷을 넘기면서 제품을 공개할 때", "uses": ["제품 소개", "훅"], "tags": ["전환", "리빌"], "ytQuery": "wipe reveal transition product video", "youtube": [], "createdAt": 6, "fit916": "좋음"}, {"id": "m07", "kind": "motion", "code": "M07", "cam": "snapzoom", "name": "스냅 줌", "nameEn": "Snap zoom", "desc": "첫 1초에 빠르게 확 당기는 줌. 숏폼 훅용.", "prompt": "fast snap zoom-in on the subject with slight motion blur, punchy energetic start", "duration": "1–2초", "model": "텍스트·이미지→영상", "when": "쇼츠 첫 1초에 스크롤을 멈추게 할 때", "uses": ["훅"], "tags": ["숏폼", "에너지"], "ytQuery": "snap zoom shorts hook", "youtube": [], "createdAt": 7, "fit916": "좋음"}, {"id": "m08", "kind": "motion", "code": "M08", "cam": "crane", "name": "아래에서 위로 상승", "nameEn": "Pedestal rise", "desc": "제품 높이에서 카메라가 수직으로 올라가 사람 얼굴이나 전체 장면에서 멈춤.", "prompt": "vertical crane-up from product level to the person's face, steady and slow, ending on a warm reaction", "duration": "4–5초", "model": "이미지→영상 (시작·끝 프레임)", "when": "제품에서 사용하는 사람의 표정으로 이어지는 마지막 장면", "uses": ["감성·브랜드"], "tags": ["엔딩", "감성"], "ytQuery": "crane up reveal commercial", "youtube": [], "createdAt": 8, "fit916": "좋음"}, {"id": "m09", "kind": "motion", "code": "M09", "cam": "slide", "name": "패럴랙스 슬라이드", "nameEn": "Parallax slide", "desc": "앞·뒤 레이어가 다른 속도로 움직이는 옆 이동 샷. 단조로운 정물에 깊이감.", "prompt": "slow lateral slider move with strong foreground parallax, background softly out of focus", "duration": "4–6초", "model": "이미지→영상", "when": "제품 정물 컷에 깊이감을 줄 때", "uses": ["제품 소개"], "tags": ["깊이감", "정물"], "ytQuery": "slider parallax product shot", "youtube": [], "createdAt": 9, "fit916": "보통"}, {"id": "m10", "kind": "motion", "code": "M10", "cam": "static", "name": "고정 점프컷", "nameEn": "Locked-off jump cuts", "desc": "카메라는 고정, 대상만 바뀌는 리듬 컷.", "prompt": "locked-off static camera, subject changes between beats as rhythmic jump cuts, same framing every cut", "duration": "컷당 1–2초", "model": "이미지 여러 장 → 편집", "when": "색상·옵션별 비교나 정보형 쇼츠의 설명 구간", "uses": ["정보형"], "tags": ["리듬", "편집"], "ytQuery": "jump cut product explainer shorts", "youtube": [], "createdAt": 10, "fit916": "좋음"}, {"id": "m11", "kind": "motion", "code": "M11", "cam": "pushin", "name": "임팩트 푸시인", "nameEn": "Impact push-in", "desc": "강조하고 싶은 순간에 카메라가 빠르게 다가가며 힘을 싣는 샷.", "prompt": "sudden fast push-in toward the subject at the key moment, brief hold, slight shake on impact", "duration": "1–2초", "model": "이미지→영상", "when": "핵심 문구나 제품이 등장하는 순간을 강조할 때", "uses": ["훅", "제품 소개"], "tags": ["강조", "임팩트"], "ytQuery": "impact push in camera move", "source": {"label": "NolanX 액션 · 카메라 규칙", "url": "https://javaexpert.tistory.com/1760"}, "youtube": [], "createdAt": 11, "fit916": "좋음"}, {"id": "m12", "kind": "motion", "code": "M12", "cam": "lateral", "name": "래터럴 트래킹", "nameEn": "Lateral tracking", "desc": "피사체와 나란히 옆으로 이동하며 따라가는 샷. 이동 방향을 컷마다 같게 유지.", "prompt": "lateral tracking shot moving parallel to the subject, steady speed, subject stays in the same screen position, left to right", "duration": "3–6초", "model": "이미지→영상 / 모션 컨트롤", "when": "걷는 사람, 달리는 반려동물, 매장 진열대를 옆에서 따라갈 때", "uses": ["감성·브랜드"], "tags": ["따라가기", "연속성"], "ytQuery": "lateral tracking shot walking", "source": {"label": "NolanX 액션 · 카메라 규칙", "url": "https://javaexpert.tistory.com/1760"}, "youtube": [], "createdAt": 12, "fit916": "주의"}, {"id": "m13", "kind": "motion", "code": "M13", "cam": "cut", "name": "동작 중 컷", "nameEn": "Match-on-action cut", "desc": "동작이 진행되는 중간에 컷을 넘겨 두 샷을 자연스럽게 잇는 편집.", "prompt": "cut on motion: end this shot mid-action and start the next shot continuing the same action from a new angle, same direction of movement", "duration": "컷 전환", "model": "샷 2개 생성 → 편집", "caution": "두 샷의 이동 방향과 조명 방향이 같아야 자연스러워요", "when": "뚜껑을 여는 동작에서 따르는 동작으로 넘어갈 때", "uses": ["정보형"], "tags": ["편집", "연속성"], "ytQuery": "match on action cut examples", "source": {"label": "NolanX 편집 연속성 규칙", "url": "https://javaexpert.tistory.com/1760"}, "youtube": [], "createdAt": 13, "fit916": "좋음"}, {"id": "m14", "kind": "motion", "code": "M14", "cam": "stopmotion", "name": "스톱모션 프레임 이동", "nameEn": "Stop-motion stepping", "desc": "물체가 프레임 단위로 한 칸씩 툭툭 움직이는 손맛 있는 움직임.", "prompt": "stop-motion animation, the subject moves in visible frame-by-frame steps across a tabletop set, slight handmade jitter", "duration": "3–8초", "model": "Flick 스톱모션", "when": "구성품이 줄지어 박스 안으로 걸어 들어가는 귀여운 연출", "uses": ["스톱모션", "감성·브랜드"], "tags": ["스톱모션", "손맛"], "ytQuery": "stop motion product commercial", "source": {"label": "Flick 스톱모션", "url": "https://flick.art/ko/tools/stop-motion"}, "youtube": [], "createdAt": 14, "fit916": "좋음"}, {"id": "m15", "kind": "motion", "code": "M15", "cam": "pan", "name": "팬", "nameEn": "Pan", "desc": "카메라 위치는 그대로, 고개만 좌우로 돌리듯 화면을 훑는 샷.", "prompt": "slow pan from left to right across the scene over 4 seconds, camera position fixed, ending on the product", "duration": "3–5초", "model": "이미지→영상", "when": "매장 진열대나 공간을 훑다가 마지막에 제품에 멈출 때", "fit916": "보통", "uses": ["감성·브랜드", "제품 소개"], "tags": ["기본", "훑기"], "ytQuery": "pan shot examples cinematography", "youtube": [], "source": {"label": "Carat 카메라 모션 갤러리", "url": "https://carat.im/prompt-gallery/camera-motion"}, "createdAt": 14.01}, {"id": "m16", "kind": "motion", "code": "M16", "cam": "tilt", "name": "틸트 업", "nameEn": "Tilt up", "desc": "카메라 위치는 그대로, 고개를 아래에서 위로 드는 샷.", "prompt": "slow tilt up from the product on the table to the person's face over 3 seconds, camera position fixed", "duration": "2–4초", "model": "이미지→영상", "when": "제품에서 시작해 쓰는 사람의 표정으로 올라갈 때. 세로 화면에 특히 잘 맞아요", "fit916": "좋음", "uses": ["감성·브랜드", "후기·신뢰"], "tags": ["기본", "세로 추천"], "ytQuery": "tilt up shot examples", "youtube": [], "source": {"label": "Atlabs 카메라 무빙 프롬프트 가이드", "url": "https://www.atlabs.ai/blog/ultimate-prompt-guide-best-camera-movement-prompts-for-ai-videos-2026"}, "createdAt": 14.02}, {"id": "m17", "kind": "motion", "code": "M17", "cam": "zoom", "name": "렌즈 줌 인", "nameEn": "Optical zoom-in", "desc": "카메라는 그대로, 렌즈만 당겨 확대. 배경 거리감이 그대로라 화면이 평평하게 느껴져요.", "prompt": "slow optical zoom-in on the product, camera does not move, background perspective stays flat", "duration": "3–5초", "model": "이미지→영상", "when": "다큐나 뉴스 느낌으로 디테일을 확대할 때", "fit916": "좋음", "uses": ["정보형"], "tags": ["기본", "줌"], "ytQuery": "zoom vs dolly shot difference", "youtube": [], "source": {"label": "Carat 카메라 모션 갤러리", "url": "https://carat.im/prompt-gallery/camera-motion"}, "caution": "돌리인과 헷갈리기 쉬워요. 입체감이 필요하면 돌리인을 쓰세요", "createdAt": 14.03}, {"id": "m18", "kind": "motion", "code": "M18", "cam": "pullback", "name": "풀백 리빌", "nameEn": "Pull-back reveal", "desc": "가까이서 시작해 뒤로 빠지며 주변 상황을 드러내는 샷.", "prompt": "start on an extreme close-up of the product, then slowly pull back over 5 seconds to reveal the whole scene around it", "duration": "4–6초", "model": "이미지→영상", "when": "엔딩에서 제품이 놓인 공간과 사람을 한 번에 보여 줄 때", "fit916": "좋음", "uses": ["감성·브랜드", "훅"], "tags": ["리빌", "엔딩"], "ytQuery": "pull back reveal shot", "youtube": [], "source": {"label": "Atlabs 카메라 무빙 프롬프트 가이드", "url": "https://www.atlabs.ai/blog/ultimate-prompt-guide-best-camera-movement-prompts-for-ai-videos-2026"}, "createdAt": 14.04}, {"id": "m19", "kind": "motion", "code": "M19", "cam": "truck", "name": "트럭 (좌우 평행 이동)", "nameEn": "Truck left / right", "desc": "카메라가 옆으로 평행 이동. 팬과 달리 바라보는 방향은 그대로예요.", "prompt": "camera trucks right parallel to the shelf at a steady speed, products pass through the frame one by one", "duration": "3–6초", "model": "이미지→영상", "when": "진열대나 색상 옵션을 순서대로 보여 줄 때", "fit916": "주의", "uses": ["제품 소개", "정보형"], "tags": ["기본", "옆 이동"], "ytQuery": "truck shot camera movement", "youtube": [], "source": {"label": "Carat 카메라 모션 갤러리", "url": "https://carat.im/prompt-gallery/camera-motion"}, "createdAt": 14.049999999999999}, {"id": "m20", "kind": "motion", "code": "M20", "cam": "pedestal", "name": "페데스탈 다운", "nameEn": "Pedestal down", "desc": "기울이지 않고 카메라 높이만 수직으로 내리는 샷.", "prompt": "camera pedestals down vertically from above the product to table level over 3 seconds, no tilt", "duration": "2–4초", "model": "이미지→영상", "when": "위에서 내려오며 제품을 정면으로 맞이할 때", "fit916": "좋음", "uses": ["제품 소개"], "tags": ["기본", "수직 이동"], "ytQuery": "pedestal camera movement", "youtube": [], "source": {"label": "Carat 카메라 모션 갤러리", "url": "https://carat.im/prompt-gallery/camera-motion"}, "createdAt": 14.06}, {"id": "m21", "kind": "motion", "code": "M21", "cam": "dollyzoom", "name": "돌리 줌 (버티고)", "nameEn": "Dolly zoom", "desc": "다가가면서 동시에 줌 아웃. 피사체 크기는 그대로인데 배경만 늘어나는 어지러운 효과.", "prompt": "dolly zoom (vertigo effect): camera moves toward the subject while zooming out, subject size stays the same while the background stretches, 2 seconds", "duration": "1–2초", "model": "이미지→영상", "when": "\"이게 진짜야?\" 같은 충격이나 깨달음의 순간", "fit916": "좋음", "uses": ["훅"], "tags": ["효과", "강조"], "ytQuery": "dolly zoom vertigo effect examples", "youtube": [], "source": {"label": "Layer 카메라 · VFX 프리셋", "url": "https://layer.ai/features/camera-and-vfx-presets"}, "caution": "한 영상에 한 번만 쓰세요. 반복하면 어지러워요", "createdAt": 14.07}, {"id": "m22", "kind": "motion", "code": "M22", "cam": "crashzoom", "name": "크래시 줌", "nameEn": "Crash zoom", "desc": "눈 깜짝할 새 확 당기는 아주 빠른 줌. 예능식 강조.", "prompt": "extremely fast crash zoom into the subject's face or the product, slight motion blur, under half a second", "duration": "0.5–1초", "model": "텍스트·이미지→영상", "when": "예능식 리액션, 가격이나 문구 강조", "fit916": "좋음", "uses": ["훅"], "tags": ["효과", "예능"], "ytQuery": "crash zoom effect", "youtube": [], "source": {"label": "Layer 카메라 · VFX 프리셋", "url": "https://layer.ai/features/camera-and-vfx-presets"}, "createdAt": 14.08}, {"id": "m23", "kind": "motion", "code": "M23", "cam": "whippan", "name": "위프 팬", "nameEn": "Whip pan", "desc": "카메라를 휙 돌려 모션 블러로 다음 장면으로 넘기는 전환.", "prompt": "fast whip pan to the right with heavy motion blur, used as a transition into the next shot", "duration": "0.5–1초", "model": "이미지→영상 (끝 프레임 지정)", "when": "비트에 맞춰 장면을 넘길 때, 전후 비교 전환", "fit916": "보통", "uses": ["훅", "정보형"], "tags": ["전환"], "ytQuery": "whip pan transition", "youtube": [], "source": {"label": "Atlabs 카메라 무빙 프롬프트 가이드", "url": "https://www.atlabs.ai/blog/ultimate-prompt-guide-best-camera-movement-prompts-for-ai-videos-2026"}, "createdAt": 14.09}, {"id": "m24", "kind": "motion", "code": "M24", "cam": "fpv", "name": "FPV 드론 다이브", "nameEn": "FPV drone dive", "desc": "드론이 빠르게 날아 들어가며 공간을 통과하는 샷.", "prompt": "FPV drone shot diving fast from above the building, flying through the entrance into the store, smooth banking turns", "duration": "3–5초", "model": "텍스트·이미지→영상", "when": "매장이나 공간을 소개하는 에너지 있는 첫 장면", "fit916": "보통", "uses": ["훅", "감성·브랜드"], "tags": ["드론", "효과"], "ytQuery": "fpv drone shot commercial", "youtube": [], "source": {"label": "Layer 카메라 · VFX 프리셋", "url": "https://layer.ai/features/camera-and-vfx-presets"}, "caution": "실내 통과처럼 복잡한 경로는 자주 무너져요. 짧게 끊어 만드세요", "createdAt": 14.1}, {"id": "m25", "kind": "motion", "code": "M25", "cam": "bullettime", "name": "불릿 타임", "nameEn": "Bullet time", "desc": "시간이 멈춘 듯한 순간 주위를 카메라가 도는 효과.", "prompt": "bullet time effect: the action freezes mid-air while the camera orbits 90 degrees around the frozen moment, then time resumes", "duration": "2–4초", "model": "텍스트·이미지→영상", "when": "튀는 물방울, 던진 제품처럼 멈춘 순간을 강조할 때", "fit916": "좋음", "uses": ["훅", "음식·질감"], "tags": ["효과", "슬로모션"], "ytQuery": "bullet time effect product", "youtube": [], "source": {"label": "Layer 카메라 · VFX 프리셋", "url": "https://layer.ai/features/camera-and-vfx-presets"}, "createdAt": 14.11}, {"id": "m26", "kind": "motion", "code": "M26", "cam": "through", "name": "오브젝트 통과 샷", "nameEn": "Through-object shot", "desc": "창틀, 잎사귀, 문틈 같은 앞 물체 사이를 지나 안으로 들어가는 샷.", "prompt": "camera pushes forward through a gap in the foreground, such as a window frame or leaves, and continues toward the product", "duration": "3–5초", "model": "이미지→영상", "when": "공간 안으로 들어가는 듯한 몰입형 오프닝", "fit916": "좋음", "uses": ["감성·브랜드"], "tags": ["몰입", "오프닝"], "ytQuery": "through object camera shot", "youtube": [], "source": {"label": "Carat 카메라 모션 갤러리", "url": "https://carat.im/prompt-gallery/camera-motion"}, "createdAt": 14.12}, {"id": "m27", "kind": "motion", "code": "M27", "cam": "infinitezoom", "name": "인피니트 줌", "nameEn": "Infinite zoom", "desc": "계속 확대되며 장면 안의 장면으로 끝없이 들어가는 효과.", "prompt": "infinite zoom: a continuous zoom-in that passes seamlessly into a new scene inside the previous one, repeating twice", "duration": "4–8초", "model": "이미지→영상 (시작·끝 프레임)", "when": "\"알고 보니 그 안에…\" 같은 스토리 전환, 반복 재생 영상", "fit916": "좋음", "uses": ["훅"], "tags": ["효과", "루프"], "ytQuery": "infinite zoom ai video", "youtube": [], "source": {"label": "Carat 카메라 모션 갤러리", "url": "https://carat.im/prompt-gallery/camera-motion"}, "caution": "장면마다 이미지를 따로 준비해야 해요. 시작·끝 프레임을 지정할 수 있는 도구에서 쓰세요", "createdAt": 14.129999999999999}, {"id": "m28", "kind": "motion", "code": "M28", "cam": "orbit360", "name": "360 오비트", "nameEn": "360° orbit", "desc": "피사체 주위를 한 바퀴 완전히 도는 샷.", "prompt": "full 360-degree orbit around the product at constant speed, product stays centered and sharp", "duration": "5–8초", "model": "이미지→영상 (뒷면 사진 함께)", "when": "신발, 피규어처럼 모든 면이 중요한 제품", "fit916": "좋음", "uses": ["제품 소개"], "tags": ["회전"], "ytQuery": "360 orbit product shot", "youtube": [], "source": {"label": "Atlabs 카메라 무빙 프롬프트 가이드", "url": "https://www.atlabs.ai/blog/ultimate-prompt-guide-best-camera-movement-prompts-for-ai-videos-2026"}, "caution": "사진에 없는 뒷면을 AI가 상상해서 라벨과 형태가 바뀌기 쉬워요. 뒷면 사진을 함께 넣거나 180도로 줄이세요", "createdAt": 14.14}, {"id": "m29", "kind": "motion", "code": "M29", "cam": "aerial", "name": "에어리얼 리빌", "nameEn": "Aerial reveal", "desc": "높은 곳에서 천천히 내려다보며 장소 전체를 보여 주는 샷.", "prompt": "slow aerial drone shot rising and tilting down to reveal the whole neighborhood, the store in the center of the frame", "duration": "4–6초", "model": "텍스트·이미지→영상", "when": "동네나 매장 위치를 소개하는 첫 장면", "fit916": "보통", "uses": ["감성·브랜드"], "tags": ["드론", "오프닝"], "ytQuery": "aerial reveal drone shot", "youtube": [], "source": {"label": "Carat 카메라 모션 갤러리", "url": "https://carat.im/prompt-gallery/camera-motion"}, "createdAt": 14.15}, {"id": "m30", "kind": "motion", "code": "M30", "cam": "rackfocus", "name": "랙 포커스", "nameEn": "Rack focus", "desc": "카메라는 고정, 초점만 앞에서 뒤로 옮겨 시선을 넘기는 샷.", "prompt": "rack focus: focus shifts from the blurred foreground object to the product in the background over 2 seconds, camera static", "duration": "2–3초", "model": "이미지→영상", "when": "두 대상을 잇거나 시선을 제품으로 넘길 때", "fit916": "좋음", "uses": ["제품 소개", "감성·브랜드"], "tags": ["초점"], "ytQuery": "rack focus shot examples", "youtube": [], "source": {"label": "Atlabs 카메라 무빙 프롬프트 가이드", "url": "https://www.atlabs.ai/blog/ultimate-prompt-guide-best-camera-movement-prompts-for-ai-videos-2026"}, "createdAt": 14.16}, {"id": "s01", "kind": "style", "code": "S01", "palette": ["#FFFFFF", "#EDEFF2", "#C9CED6", "#2B2F36"], "contrast": "2:1", "name": "클린 화이트 스튜디오", "nameEn": "High-key studio", "desc": "밝은 흰 배경, 부드러운 확산광. 상세페이지·쇼핑 쇼츠에 무난.", "prompt": "bright high-key white studio, soft diffused key light, clean soft shadows, commercial product photography look", "when": "상세페이지나 쇼핑 쇼츠처럼 제품이 또렷해야 할 때", "uses": ["제품 소개"], "tags": ["깔끔", "커머스"], "ytQuery": "white studio product commercial", "youtube": [], "createdAt": 15}, {"id": "s02", "kind": "style", "code": "S02", "palette": ["#F6E7CF", "#D9A86C", "#8A5A33", "#3E2C1E"], "contrast": "2:1", "name": "아침 햇살 주방", "nameEn": "Morning kitchen light", "desc": "창가 햇살이 드는 나무 주방. 따뜻하고 신뢰감 있는 일상 톤.", "prompt": "warm morning window light, natural wooden kitchen, soft linen textures, calm lifestyle commercial tone", "when": "식품, 주방용품, 홈카페처럼 따뜻한 일상을 보여 줄 때", "uses": ["감성·브랜드", "후기·신뢰"], "tags": ["따뜻함", "일상"], "ytQuery": "morning kitchen lifestyle commercial", "youtube": [], "createdAt": 16}, {"id": "s03", "kind": "style", "code": "S03", "palette": ["#C8C2B4", "#8C8577", "#5A5E52", "#2E302B"], "contrast": "2:1", "name": "다큐 리얼", "nameEn": "Documentary natural", "desc": "자연색, 약한 그레인, 실제 집 같은 공간. 후기·인터뷰 톤.", "prompt": "documentary look, natural color, slight film grain, real lived-in home, available light", "when": "고객 후기나 전문가 인터뷰", "uses": ["후기·신뢰"], "tags": ["후기", "인터뷰"], "ytQuery": "documentary style brand video", "youtube": [], "createdAt": 17}, {"id": "s04", "kind": "style", "code": "S04", "palette": ["#F3E9F7", "#CFE3F5", "#F8D9C4", "#5B6B8C"], "contrast": "1:1", "name": "아이소메트릭 설명 일러스트", "nameEn": "Isometric 3D explainer", "desc": "부드러운 3D 아이소메트릭 일러스트. 원리를 설명하는 유튜브에 맞음.", "prompt": "clean isometric 3D explainer illustration, soft matte materials, muted pastel palette, simple labeled objects, gentle studio lighting", "when": "성분, 작동 원리, 서비스 흐름을 그림으로 설명할 때", "uses": ["정보형"], "tags": ["설명형", "3D"], "ytQuery": "isometric 3d explainer animation", "youtube": [], "createdAt": 18}, {"id": "s05", "kind": "style", "code": "S05", "palette": ["#1A1714", "#4A3424", "#C98A4B", "#F1D3A8"], "contrast": "8:1", "name": "시네마틱 로우키", "nameEn": "Low-key cinematic", "desc": "단일 키라이트, 깊은 그림자. 프리미엄·고급 무드.", "prompt": "low-key cinematic lighting, single hard key light, deep shadows, rich contrast, subtle warm grade", "when": "향수, 주얼리, 전자기기처럼 고급스럽게 보여야 할 때", "uses": ["감성·브랜드"], "tags": ["프리미엄", "무드"], "ytQuery": "low key cinematic product commercial", "youtube": [], "createdAt": 19}, {"id": "s06", "kind": "style", "code": "S06", "palette": ["#FAD4DC", "#CDE8E0", "#FFF1B8", "#9C7BD1"], "contrast": "1:1", "name": "파스텔 팝", "nameEn": "Pastel pop", "desc": "단색 파스텔 배경, 경쾌한 도형. 젊고 가벼운 SNS 톤.", "prompt": "solid pastel color backdrop, playful pop styling, bold simple shapes, even bright lighting", "when": "인스타 릴스처럼 가볍고 밝게 갈 때", "uses": ["훅"], "tags": ["SNS", "컬러"], "ytQuery": "pastel color product reels", "youtube": [], "createdAt": 20}, {"id": "s07", "kind": "style", "code": "S07", "palette": ["#E9C79A", "#B97A3E", "#6B3F1D", "#FFF4E3"], "contrast": "4:1", "name": "매크로 푸드 텍스처", "nameEn": "Macro food texture", "desc": "아주 가까운 접사, 선명한 디테일과 하이라이트. 원재료 품질 강조.", "prompt": "extreme macro food texture, crisp micro detail, specular highlights, shallow depth of field, appetizing color", "when": "음식, 디저트, 커피 원두의 질감을 강조할 때", "uses": ["음식·질감"], "tags": ["질감", "클로즈업"], "ytQuery": "macro food texture commercial", "youtube": [], "createdAt": 21}, {"id": "s08", "kind": "style", "code": "S08", "palette": ["#F2D8B0", "#C77B4A", "#7A4B3A", "#2F2A26"], "contrast": "2:1", "name": "35mm 필름 웜톤", "nameEn": "35mm warm film", "desc": "따뜻한 색, 약한 할레이션과 그레인. 감성 브랜드 필름.", "prompt": "35mm film look, warm tones, gentle halation on highlights, soft grain, nostalgic and tender mood", "when": "브랜드 스토리, 감성 다큐 필름", "uses": ["감성·브랜드"], "tags": ["감성", "필름"], "ytQuery": "35mm film look brand film", "youtube": [], "createdAt": 22}, {"id": "s09", "kind": "style", "code": "S09", "palette": ["#E8B4A0", "#9CC5A1", "#F3E3B5", "#6E5A4B"], "contrast": "2:1", "name": "펠트 · 클레이 스톱모션", "nameEn": "Felt and clay stop-motion", "desc": "점토와 펠트로 만든 인형과 작은 탁상 세트. 따뜻하고 손으로 만든 느낌.", "prompt": "handmade stop-motion look, clay and felt characters, small tabletop set, soft practical lighting, visible fingerprints and fabric texture", "caution": "캐릭터를 한 번 고정해 모든 샷에서 재사용하세요", "when": "브랜드 캐릭터를 귀엽게 등장시키는 짧은 광고", "uses": ["스톱모션", "감성·브랜드"], "tags": ["점토", "펠트"], "ytQuery": "clay felt stop motion commercial", "source": {"label": "Flick 스톱모션", "url": "https://flick.art/ko/tools/stop-motion"}, "youtube": [], "createdAt": 23}, {"id": "s10", "kind": "style", "code": "S10", "palette": ["#F4EBDD", "#E36F4C", "#3E7CB1", "#2B2B2B"], "contrast": "1:1", "name": "종이 컷아웃 스톱모션", "nameEn": "Paper cut-out stop-motion", "desc": "종이를 오려 붙인 납작한 레이어 세트. 설명형 장면에도 잘 맞음.", "prompt": "paper cut-out stop-motion, layered colored paper and cardboard, flat handmade shapes, gentle shadows between layers", "when": "원재료가 어디서 오는지 그림책처럼 설명할 때", "uses": ["스톱모션", "정보형"], "tags": ["종이"], "ytQuery": "paper cut out stop motion animation", "source": {"label": "Flick 스톱모션", "url": "https://flick.art/ko/tools/stop-motion"}, "youtube": [], "createdAt": 24}, {"id": "s11", "kind": "style", "code": "S11", "palette": ["#0F1418", "#2F4A55", "#D9A066", "#F2E6D0"], "contrast": "4:1", "name": "시네마 렌즈 룩", "nameEn": "Cinema lens look", "desc": "85mm 렌즈, 얕은 심도, 필름 그레인과 은은한 번짐.", "prompt": "cinema lens look, 85mm, T1.8 shallow depth of field, subtle film grain, soft bloom and halation on highlights, 24fps motion blur", "when": "'시네마틱하게'를 구체적인 광학 조건으로 바꿔 쓰고 싶을 때", "uses": ["감성·브랜드"], "tags": ["시네마틱", "렌즈"], "ytQuery": "85mm cinematic look product", "source": {"label": "NolanX 렌즈 룩 규칙", "url": "https://javaexpert.tistory.com/1760"}, "youtube": [], "createdAt": 25}]</script>
+<script>
+(function(){
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const ytSearch = q => "https://www.youtube.com/results?search_query=" + encodeURIComponent(q);
+  const isYT = u => /^https:\/\/(www\.|m\.)?(youtube\.com|youtu\.be)\//i.test(u);
+  const isHex = h => /^#[0-9a-f]{3,8}$/i.test(h);
+  const domId = k => k.replace(/[^a-z0-9]/gi,"_");
+  const store = { get(k){ try{return localStorage.getItem(k)}catch(e){return null} }, set(k,v){ try{localStorage.setItem(k,v)}catch(e){} } };
+  const pad = n => String(n).padStart(2,"0");
+
+  /* ================= knowledge ================= */
+  const USES = ["제품 소개","훅","정보형","음식·질감","감성·브랜드","후기·신뢰","스톱모션"];
+  const CATS = [
+    {id:"tpl", label:"스크립트 구조", note:"영상 전체의 뼈대. 막대는 단계별 시간 배분이고, 공통 설정의 길이에 맞춰 다시 계산됩니다.", p:"T"},
+    {id:"motion", label:"카메라 무빙", note:"카메라와 피사체가 어떻게 움직이는지. 미리보기의 빨간 카메라가 실제 이동 경로예요.", p:"M"},
+    {id:"style", label:"룩 · 스타일", note:"색감, 재질, 매체. 팔레트와 공에 비친 조명 대비로 분위기를 보여 줍니다.", p:"S"},
+    {id:"shot", label:"샷 크기", note:"화면에 어디까지 담을지. 같은 인물을 각 샷 크기로 잘라 보여 줍니다.", p:"F"},
+    {id:"angle", label:"앵글", note:"카메라 높이와 기울기. 같은 피사체도 높이에 따라 다르게 읽힙니다.", p:"A"},
+    {id:"light", label:"조명 대비", note:"밝은 쪽과 어두운 쪽의 비율. 클수록 그림자가 깊고 분위기가 무거워져요.", p:"L"}
+  ];
+  const TOOL_GROUPS = [["free","ChatGPT · Claude Code"],["paid","유료 영상 AI 사이트"]];
+  const TOOLS = [
+    {id:"chatgpt", g:"free", name:"ChatGPT (컷별 이미지 → 쇼츠)", tip:"ChatGPT로 단계마다 장면 이미지를 한 장씩 만들고, 편집 앱에서 이어 붙이거나 영상 도구의 첫 프레임으로 씁니다. 첫 이미지에서 제품 모양·라벨·색을 확정하고, 다음 이미지부터는 \"앞 이미지와 같은 제품\"이라고 이어서 요청하세요. 쓸 수 있는 생성 기능은 요금제에 따라 다를 수 있어요."},
+    {id:"claudecode", g:"free", name:"Claude Code (코드로 모션그래픽)", tip:"실사 대신 글자·도형·아이콘·그래프가 움직이는 모션그래픽 영상을 코드로 만들어 MP4로 내보냅니다. 카메라 무빙 카드는 화면 줌·이동 효과로, 룩 카드는 색과 배경 스타일로 바꿔 달라고 하면 돼요. 정보형 · 비교형 쇼츠에 특히 잘 맞습니다."},
+    {id:"kling", g:"paid", name:"Kling 3.0 (이미지→영상)", tip:"제품 사진을 첫 프레임으로 넣고 프롬프트는 움직임 위주로 쓰세요. 샷 하나에 10초 이내가 안정적이에요."},
+    {id:"klingmc", g:"paid", name:"Kling 모션 컨트롤", tip:"제품·캐릭터 이미지와 움직임을 따라 할 참고 영상을 함께 넣습니다. 움직임은 참고 영상이 정하니 프롬프트는 장면·분위기만 쓰면 됩니다."},
+    {id:"klingv2v", g:"paid", name:"Kling o3 video-to-video", tip:"찍어 둔 영상을 넣고 룩만 바꿀 때 씁니다. 원본의 움직임과 카메라는 유지되고, 한 번에 15초까지예요."},
+    {id:"h3", g:"paid", name:"MiniMax H3", tip:"레퍼런스 이미지 → 영상으로 돌리세요. 샷별로 따로 만들고 괜찮은 샷은 그대로 두는 편이 효율적이에요."},
+    {id:"seedance", g:"paid", name:"Seedance 2.0", tip:"@image 1, @video 1처럼 입력을 번호로 연결해 적고, 이어 만들 때는 이전 영상의 마지막 프레임 상태에서 계속하라고 명시하세요."},
+    {id:"flick", g:"paid", name:"Flick 스톱모션", tip:"펠트, 점토, 종이 컷아웃 같은 재질을 꼭 적고, 스타일을 한 번 고정해 모든 장면에 같게 씁니다. 장면을 캔버스에서 이어 붙여 편집해요."},
+    {id:"genspark", g:"paid", name:"Genspark (이미지 먼저)", tip:"Genspark로 첫 프레임 이미지를 먼저 만들고, 그 이미지를 영상 도구에 넣어 움직이세요. 이미지 단계에서 라벨과 색을 확정하는 게 핵심이에요."}
+  ];
+  const TEMPLATES = [
+    {id:"shorts", g:"short", name:"틱톡 · 릴스 · 쇼츠", en:"Short-form", use:"숏폼, 빠른 팁, 제품 티저", when:"쿠팡 · 스마트스토어 제품 쇼츠나 릴스처럼 15–45초 안에 한 가지만 전할 때", len:"15–45초", beats:[["패턴 깨기",12,0],["핵심 아이디어 하나",33,1],["데모 · 증명",40,2],["저장 · 시도 유도",15,5]]},
+    {id:"ad15", g:"short", name:"광고 심리 구조", en:"Ad psychology", use:"15–30초 제품 광고", when:"약속 하나를 감정으로 기억시키는 짧은 광고", len:"15–30초", src:"NolanX", beats:[["문제 상황",25,0],["제품 경험",35,1],["감정 보상",25,2],["브랜드 기억",15,5]]},
+    {id:"drama", g:"short", name:"숏드라마 훅", en:"Short-drama hook", use:"시리즈형 숏폼, 스토리 광고", when:"다음 편을 보게 만드는 스토리형 콘텐츠", len:"15–60초", src:"NolanX", beats:[["1–3초 위기 · 반전",15,0],["갈등 고조",60,1],["다음 편 연결",25,4]]},
+    {id:"marketing", g:"short", name:"마케팅", en:"Marketing", use:"광고, 캠페인, 출시", when:"신제품 출시나 시즌 캠페인 광고", len:"30–90초", beats:[["주의 끌기",12,0],["고충",20,1],["해결책",28,2],["이점",30,3],["행동 유도",10,5]]},
+    {id:"webinar", g:"short", name:"라이브 · 클래스 예고", en:"Live intro", use:"라이브커머스, 원데이 클래스, 이벤트 홍보", when:"라이브 방송이나 클래스 전에 참여를 끌어올 때", len:"30–90초", beats:[["주제 약속",20,0],["시청자 고충",20,1],["진행자 신뢰",20,2],["얻어갈 것",30,3],["참여 유도",10,5]]},
+    {id:"sales", g:"trust", name:"영업 아웃리치", en:"Sales outreach", use:"거래처 · 입점 제안 영상", when:"바이어나 거래처 한 사람에게 보내는 맞춤 제안 영상", len:"30–60초", beats:[["맞춤 도입",15,0],["상대 고충 짚기",25,1],["빠른 가치",25,2],["증명",25,3],["부드러운 제안",10,5]]},
+    {id:"testimonial", g:"trust", name:"고객 후기", en:"Testimonial", use:"소셜 증명, 상세페이지", when:"실제 고객 후기로 신뢰를 쌓을 때", len:"60–120초", caution:"실제 고객 후기와 사실만 넣으세요", beats:[["고객 소개",15,0],["사용 전 고민",20,1],["선택 이유",25,2],["달라진 점",30,3],["추천",10,5]]},
+    {id:"case", g:"trust", name:"사례 연구", en:"Case study", use:"B2B 제안, 입점 설득", when:"도입 성과를 숫자로 보여 줄 때", len:"2–4분", beats:[["과제",20,0],["해결 방향",20,1],["도입 과정",25,2],["측정 성과",25,3],["교훈",10,5]]},
+    {id:"explainer", g:"edu", name:"설명 영상", en:"Explainer", use:"제품 · 성분 · 원리 설명", when:"성분, 기능, 원리처럼 낯선 개념을 풀어 줄 때", len:"60–120초", beats:[["훅",10,0],["문제",20,1],["간단한 설명",30,2],["예시",30,3],["행동 유도",10,5]]},
+    {id:"youtube", g:"edu", name:"유튜브 롱폼", en:"YouTube long-form", use:"교육, 리뷰, 전문가 인터뷰", when:"전문가와 함께 깊게 설명하는 영상", len:"5–12분", beats:[["훅",5,0],["시청 약속",5,1],["챕터 안내",5,4],["본론",70,2],["요약",10,3],["구독 유도",5,5]]},
+    {id:"demo", g:"edu", name:"제품 데모", en:"Product demo", use:"사용법, 조립 · 설치 안내", when:"사용 순서나 설치 방법을 보여 줄 때", len:"90초–3분", beats:[["필요성",15,0],["제품 등장",15,1],["핵심 사용 흐름",40,2],["결과",20,3],["행동 유도",10,5]]},
+    {id:"tutorial", g:"edu", name:"튜토리얼", en:"Tutorial", use:"방법 안내, 따라 하기", when:"단계별로 따라 하게 만들 때", len:"2–5분", beats:[["도입",8,0],["배울 내용",8,4],["1단계",25,1],["2단계",25,2],["3단계",24,3],["요약",10,5]]},
+    {id:"training", g:"edu", name:"교육", en:"Training", use:"직원 · 파트너 교육", when:"직원이나 판매 파트너에게 제품을 교육할 때", len:"3–7분", beats:[["학습 목표",8,0],["왜 중요한지",10,1],["절차",37,2],["실제 예시",20,3],["이해 점검",15,4],["요약",10,5]]},
+    {id:"sop", g:"edu", name:"업무 절차 (SOP)", en:"SOP", use:"포장 · 출고 · 매장 운영 절차", when:"반복 업무를 영상 매뉴얼로 남길 때", len:"2–6분", beats:[["작업 개요",10,0],["준비물",15,1],["단계별 절차",45,2],["흔한 실수",20,3],["핵심 수칙",10,5]]},
+    {id:"onboarding", g:"edu", name:"온보딩", en:"Onboarding", use:"신규 고객 · 직원 안내", when:"첫 구매 고객에게 시작법을 안내할 때", len:"2–5분", beats:[["환영",10,0],["맥락",15,1],["주요 흐름",40,2],["첫 행동",20,3],["도움받는 곳",15,5]]},
+    {id:"aigen", g:"edu", name:"AI 영상 생성기용 대본", en:"AI video script", use:"AI 아바타, 문서 기반 영상", when:"장면마다 내레이션 · 화면 프롬프트 · 자막을 함께 정리할 때", len:"30초–3분", schema:["장면","내레이션","시각 프롬프트","화면 텍스트","타이밍","재생성 메모"]}
+  ];
+  const TPL_USES = {short:["훅","제품 소개"], trust:["후기·신뢰"], edu:["정보형"]};
+  const SHOTS = [
+    {id:"EWS", ko:"익스트림 와이드", en:"extreme wide shot", use:"공간의 규모, 오프닝", when:"브랜드 영상 첫 장면에서 매장이나 장소의 규모를 보여 줄 때", vb:"-160 -150 420 560", uses:["감성·브랜드"]},
+    {id:"WS", ko:"와이드 · 롱샷", en:"wide shot", use:"인물과 장소를 함께", when:"사람과 공간을 함께, 매장 전경이나 생활 장면", vb:"-70 -60 240 320", uses:["감성·브랜드"]},
+    {id:"FS", ko:"풀샷", en:"full shot", use:"전신 동작", when:"착용샷, 운동, 산책처럼 전신 움직임을 보여 줄 때", vb:"-25 8 150 200", uses:["후기·신뢰"]},
+    {id:"MFS", ko:"미디엄 풀", en:"medium full shot", use:"무릎 위, 동작 + 표정", when:"제품을 쓰는 동작과 표정을 함께", vb:"-10 6 120 160", uses:["후기·신뢰"]},
+    {id:"MS", ko:"미디엄", en:"medium shot", use:"허리 위, 설명하는 사람", when:"진행자나 전문가가 설명할 때", vb:"2 4 96 128", uses:["정보형"]},
+    {id:"MCU", ko:"미디엄 클로즈업", en:"medium close-up", use:"가슴 위, 인터뷰", when:"후기 인터뷰나 라이브 진행 화면", vb:"14 6 72 96", uses:["후기·신뢰","정보형"]},
+    {id:"CU", ko:"클로즈업", en:"close-up", use:"얼굴 · 손 · 패키지", when:"패키지 정면, 먹는 순간, 손에 쥔 제품을 크게", vb:"29 6 42 56", uses:["제품 소개","음식·질감"]},
+    {id:"ECU", ko:"익스트림 클로즈업", en:"extreme close-up", use:"눈빛 · 질감 하나", when:"음식 단면, 크림 질감, 버튼 디테일 하나로 시선을 잡을 때", vb:"41 18 18 24", uses:["음식·질감","훅"]}
+  ];
+  const ANGLES = [
+    {id:"eye", ko:"아이 레벨", en:"eye-level angle", read:"중립, 공감", when:"인터뷰 · 후기처럼 대등하게 말할 때", x:150, y:100, uses:["후기·신뢰"]},
+    {id:"low", ko:"로우 앵글", en:"low angle looking up", read:"크고 당당하게", when:"제품을 듬직하고 프리미엄하게 보이게", x:170, y:250, uses:["제품 소개"]},
+    {id:"high", ko:"하이 앵글", en:"high angle looking down", read:"작고 귀엽게, 보호 본능", when:"아이, 반려동물, 작은 소품을 귀엽게", x:190, y:24, uses:["감성·브랜드"]},
+    {id:"overhead", ko:"오버헤드 (탑다운)", en:"top-down overhead angle", read:"정리 · 정보 · 플랫레이", when:"음식 플랫레이나 구성품을 펼쳐 보여 줄 때", x:380, y:18, uses:["정보형","음식·질감"]},
+    {id:"canted", ko:"더치 (기울임)", en:"canted dutch angle", read:"불안 · 긴장 · 반전", when:"\"이거 써도 괜찮을까?\" 같은 문제 제기 훅", x:250, y:160, tilt:22, uses:["훅"]},
+    {id:"pet", ko:"바닥 눈높이", en:"low camera close to the floor", read:"아이 · 반려동물 시점, 친밀감", when:"아이나 반려동물 입장에서 보는 일상", x:200, y:220, uses:["감성·브랜드","후기·신뢰"]}
+  ];
+  const LIGHTS = [
+    {id:"1", r:"1:1", ko:"플랫", en:"flat even lighting, 1:1 key-to-fill ratio", use:"그림자 없이 깔끔하게", when:"상세페이지 · 쇼핑 쇼츠처럼 제품 정보가 잘 보여야 할 때", dark:"#D4D4D4", uses:["제품 소개","정보형"]},
+    {id:"2", r:"2:1", ko:"부드러움", en:"soft lighting, about 2:1 key-to-fill ratio", use:"자연스럽고 편안하게", when:"후기 · 라이프스타일 장면", dark:"#9E9E9E", uses:["후기·신뢰","감성·브랜드"]},
+    {id:"4", r:"4:1", ko:"드라마틱", en:"dramatic lighting, 4:1 key-to-fill ratio", use:"입체감 · 고급감", when:"프리미엄 제품 컷, 음식 · 화장품 질감 강조", dark:"#565656", uses:["음식·질감","감성·브랜드"]},
+    {id:"8", r:"8:1+", ko:"어둡고 긴장", en:"low-key lighting, 8:1 or higher contrast", use:"미스터리 · 반전", when:"문제 제기형 훅의 첫 1–2초", dark:"#1C1C1C", uses:["훅"]}
+  ];
+  const LAYERS = [
+    ["CORE","핵심 상황","장면의 상황과 감정 목적 한 문장","제품 + 스크립트 구조 + 분위기","--rec"],
+    ["IDENTITY LOCK","정체성 고정","바뀌면 안 되는 것에 ID 부여 (PRODUCT_01)","제품 이름","--motion"],
+    ["WORLD","세계 · 장르","장소, 팔레트, 재질, 조명 논리","룩 · 스타일 카드","--style"],
+    ["MEDIUM","매체 · 사실감","실사 / 3D / 스톱모션 결정, 피할 오류 명시","룩 카드 + 금지 목록","--c3"],
+    ["SOUND","사운드 규칙","BGM 여부, 현장음, 효과음, 대사","공통 설정의 사운드","--c4"],
+    ["SHOT","샷 설계","단계별 카메라 움직임, 프레이밍, 앵글, 조명","카메라 무빙 · 샷 · 앵글 · 조명 카드","--motion"],
+    ["CONTINUITY","연속성 유지","다음 샷까지 이어갈 상태","라벨 방향 · 조명 방향 · 이동 방향","--muted"]
+  ];
+  const RULES = [
+    {t:"액션 · 카메라 · 공간", items:[
+      ["action-choreography-camera-logic","액션 동선","누가 밀고 누가 받는지, 힘의 방향과 카메라 위치를 먼저 정한다"],
+      ["cinematic-hit-marking-action-director","타격 타이밍","15초를 4–5구간으로 쪼개고 충돌 순간을 0.1초 단위로 표시"],
+      ["continuity-editing-axis-match","축 · 방향 연속성","180도 규칙을 지키고 시선과 이동 방향을 컷마다 맞춘다"],
+      ["scene-blocking-and-staging","블로킹","인물 위치 변화로 관계를 보여 주고, 피사체 경로와 카메라 경로를 따로 쓴다"]]},
+    {t:"룩 · 렌즈 · 조명 · 샷", items:[
+      ["cinema-studio-lens-look","렌즈 룩","85mm, 얕은 심도, 그레인, 블룸, 할레이션처럼 광학 조건으로 룩을 지시"],
+      ["lighting-continuity-design","조명 연속성","대비비와 키 · 필 · 림 위치를 샷 사이에서 추적"],
+      ["director-visual-language","추상어 번역","'시네마틱하게'를 앵글 · 렌즈 · 움직임 · 팔레트로 바꿔 쓴다"],
+      ["shot-size-and-angle-language","샷 · 앵글 언어","ECU부터 EWS까지, 로우 · 하이 · 탑다운 · 더치의 목적을 구분"]]},
+    {t:"스토리 · 대본 · 광고", items:[
+      ["cinematic-story-architecture","스토리 뼈대","욕망 · 장애물 · 전환 · 보상을 3–7개 비트로, 첫 3초 훅 필수"],
+      ["screenplay-fountain-format","대본 형식","장소 표기와 화면에 보이는 행동 중심으로 쓴다"],
+      ["storyboard-shot-design","스토리보드","샷마다 길이 · 프레이밍 · 감정 목적 · 다음 샷 연결을 정의"],
+      ["short-drama-hook-engineering","숏드라마 훅","1–3초 위기 · 반전 → 고조 → 다음 편 연결"],
+      ["dialogue-performance-blocking","대사 연기","대사마다 목적과 속뜻, 몸 반응을 붙인다"],
+      ["commercial-ad-psychology","광고 심리","약속 하나: 문제 → 제품 경험 → 감정 보상 → 브랜드 기억"]]},
+    {t:"연속성 · 정체성 · 레퍼런스", items:[
+      ["long-form-continuity-bible","연속성 바이블","얼굴 · 의상 · 소품 · 날씨 · 이동 방향을 시리즈 내내 기록"],
+      ["world-asset-identity-lock","정체성 ID","HERO_01처럼 ID를 주고 바뀌지 않는 특징과 바뀌는 행동을 분리"],
+      ["environment-scene-extraction-bible","장소 바이블","전경 · 중경 · 배경 · 재질을 고정, 사람이 없어야 하면 명시"],
+      ["modular-film-prompt-bible","모듈형 프롬프트","정체성 → 세계 → 매체 → 사운드 → 샷 → 연속성 순서"],
+      ["reference-driven-video-prompting","레퍼런스 기반","이미지를 다시 묘사하지 말고 움직임과 카메라만 지시"],
+      ["sd2-pe","Seedance 연장","@image · @video를 정확히 매핑, 이어 붙일 땐 마지막 프레임 상태에서 계속"]]}
+  ];
+  const RECIPES = [
+    ["반복 등장 캐릭터 · 마스코트", ["world-asset-identity-lock","long-form-continuity-bible","modular-film-prompt-bible","storyboard-shot-design"]],
+    ["이미지 레퍼런스로 영상 만들기", ["reference-driven-video-prompting","sd2-pe","world-asset-identity-lock","director-visual-language"]],
+    ["숏폼 드라마 · 스토리 광고", ["short-drama-hook-engineering","cinematic-story-architecture","dialogue-performance-blocking","shot-size-and-angle-language"]],
+    ["15초 액션 · 다이내믹 컷", ["action-choreography-camera-logic","cinematic-hit-marking-action-director","continuity-editing-axis-match","lighting-continuity-design"]],
+    ["기본 3종 (무엇을 만들든)", ["modular-film-prompt-bible","world-asset-identity-lock","storyboard-shot-design"]]
+  ];
+  const SETS = [
+    {g:"free", tool:"claudecode", sec:15, name:"모션그래픽 정보 쇼츠", desc:"글자 · 아이콘이 리듬 있게 바뀌는 정보형 쇼츠를 Claude Code로", keys:["tpl:shorts","ref:m07","ref:m10","ref:m11","ref:s04","light:1"], cap:["이거 모르면 손해","핵심은 딱 하나","3초 전후 비교","저장해 두고 써요"]},
+    {g:"free", tool:"claudecode", sec:60, name:"가격 · 성분 비교 설명 영상", desc:"구성품을 하나씩 등장시키고 숫자로 비교하는 설명 영상을 Claude Code로", keys:["tpl:explainer","ref:m04","ref:m10","ref:s06","light:1"], cap:["가격 차이, 왜?","겉보기엔 비슷","성분 3가지","숫자로 보면","더 알아보기"]},
+    {g:"free", tool:"chatgpt", sec:15, prop:"box", name:"컷별 이미지로 만드는 제품 쇼츠", desc:"ChatGPT로 단계마다 제품 이미지를 만들어 이어 붙이는 쇼츠", keys:["tpl:shorts","ref:m01","ref:m02","ref:s01","shot:CU","light:1"], cap:["이 패키지 보이세요?","딱 하나만 기억","가까이서 보면","링크에서 확인"]},
+    {g:"free", tool:"chatgpt", sec:15, prop:"cup", name:"감성 브랜드 스틸 컷", desc:"ChatGPT 이미지 몇 장에 슬라이드 움직임을 더한 브랜드 숏", keys:["tpl:ad15","ref:m09","ref:s08","shot:MS","light:2"], cap:["바쁜 아침","한 잔의 여유","그 순간의 온기","브랜드 로고"]},
+    {g:"paid", tool:"kling", sec:15, prop:"box", name:"쇼핑몰 제품 설명 쇼츠", desc:"3초 훅 뒤에 패키지와 핵심 정보 하나를 깔끔하게", keys:["tpl:shorts","ref:m07","ref:m02","ref:s01","shot:CU","light:1"], cap:["3초만 보세요","핵심 기능 하나","직접 보여드림","프로필 링크"]},
+    {g:"paid", tool:"kling", sec:15, prop:"cup", name:"카페 · 음식 신메뉴 릴스", desc:"쏟아지는 순간과 질감 클로즈업으로 식욕을 자극", keys:["tpl:shorts","ref:m03","ref:m01","ref:s07","shot:ECU","light:4"], cap:["신메뉴 나왔어요","이 질감 보세요","한 입 더 가까이","오늘만 할인"]},
+    {g:"paid", tool:"kling", sec:15, prop:"bottle", name:"뷰티 · 향수 프리미엄 컷", desc:"로우 앵글과 깊은 그림자로 고급스럽게", keys:["tpl:ad15","ref:m02","ref:m09","ref:s05","angle:low","light:4"], cap:["건조한 저녁","한 방울의 향","오래 남는 잔향","브랜드 로고"]},
+    {g:"paid", tool:"flick", sec:15, prop:"clay", name:"스톱모션 브랜드 숏", desc:"점토 · 펠트 질감으로 따뜻하게 기억되는 짧은 광고", keys:["tpl:ad15","ref:m14","ref:s09","angle:overhead","light:2"], cap:["상자가 열리면","하나씩 걸어 나와요","짠, 완성!","브랜드 로고"]},
+    {g:"paid", tool:"klingmc", sec:60, prop:"person", name:"고객 후기 · 신뢰", desc:"실제 생활 공간에서 담는 자연스러운 후기", keys:["tpl:testimonial","ref:m05","ref:s03","shot:MCU","angle:eye","light:2"], cap:["직장인 김OO 님","고민이 많았어요","선택한 이유","달라진 점","추천해요"]},
+    {g:"paid", tool:"kling", sec:30, prop:"store", name:"동네 매장 소개", desc:"아침 햇살 톤으로 공간과 사람을 함께 보여 주기", keys:["tpl:marketing","ref:m12","ref:s02","shot:WS","light:2"], cap:["골목 끝 작은 가게","늘 같은 고민","그래서 만들었어요","이런 점이 좋아요","지도에서 찾기"]}
+  ];
+  const CAMS = {pan:"팬",tilt:"틸트",zoom:"렌즈 줌",pullback:"풀백",truck:"트럭",pedestal:"페데스탈",dollyzoom:"돌리 줌",crashzoom:"크래시 줌",whippan:"위프 팬",fpv:"FPV 드론",bullettime:"불릿 타임",through:"오브젝트 통과",infinitezoom:"인피니트 줌",orbit360:"360 오비트",aerial:"에어리얼",rackfocus:"랙 포커스",dollyin:"돌리인",orbit:"오비트",pour:"쏟아짐",topdown:"탑다운",follow:"따라가기",wipe:"와이프",snapzoom:"스냅 줌",crane:"크레인 업",slide:"슬라이드",static:"고정 컷",pushin:"임팩트 푸시인",lateral:"래터럴 트래킹",cut:"동작 중 컷",stopmotion:"스톱모션",generic:"기타"};
+  const SOUND_EN = {bgm:"single BGM track only, no overlapping music; light foley allowed.", sfx:"no music; detailed foley and ASMR sounds that match each action (pouring, crunching, clicks).", voice:"natural Korean voice-over or on-camera dialogue synced to the beats, one soft BGM track under the voice.", mute:"no audio; silent output, music and captions will be added in editing."};
+  const SOUND_KO = {bgm:"BGM 한 곡만", sfx:"효과음 · ASMR 중심", voice:"내레이션 · 대사 포함", mute:"무음"};
+  const AVOID = "warped hands or fingers, melting or morphing product shapes, extra limbs, flicker, garbled text on labels";
+
+  /* ================= visuals ================= */
+  const C = "var(--motion)";
+  const prod = (x=74,y=20) => `<rect x="${x}" y="${y}" width="22" height="28" rx="3" style="fill:var(--style-soft);stroke:var(--style);stroke-width:1.5"/><rect x="${x+5}" y="${y+8}" width="12" height="6" rx="1" style="fill:var(--style)"/>`;
+  const camAt = (x,y,r=0) => `<g transform="translate(${x} ${y}) rotate(${r})" opacity=".35"><rect x="-9" y="-6" width="13" height="12" rx="2" style="fill:var(--ink)"/><path d="M4 -3 L11 -7 L11 7 L4 3Z" style="fill:var(--ink)"/></g>`;
+  const ln = d => `<path d="${d}" style="fill:none;stroke:${C};stroke-width:2;stroke-linecap:round;stroke-dasharray:4 3" marker-end="url(#arr)"/>`;
+  const bowl = (x,y) => `<path d="M${x-14} ${y} Q${x} ${y+14} ${x+14} ${y} Z" style="fill:var(--style)"/>`;
+  const dog = (x,y,r=8) => `<circle cx="${x}" cy="${y}" r="${r}" style="fill:var(--ink)"/><path d="M${x-r+1} ${y-r+2} l-3 -6 l6 3z M${x+r-1} ${y-r+2} l3 -6 l-6 3z" style="fill:var(--ink)"/>`;
+  function picBody(k){
+    switch(k){
+      case "dollyin": return {g: camAt(20,34)+ln("M34 34 L64 34")+prod(), p:"M20 34 L58 34", r:0};
+      case "orbit": return {g: prod(74,18)+`<ellipse cx="85" cy="34" rx="34" ry="14" style="fill:none;stroke:var(--line)"/>`+camAt(52,46,-20), p:"M52 46 A34 14 0 0 0 118 34 A34 14 0 0 0 52 46", r:-20};
+      case "pour": return {g: bowl(60,52)+`<g>${[[52,8],[60,16],[66,4],[57,26],[64,32],[70,22]].map(([x,y],i)=>`<rect x="${x}" y="${y}" width="4" height="4" rx="1" style="fill:var(--style)"><animate attributeName="y" values="${y-6};${44};${y-6}" dur="${1.6+i*.15}s" repeatCount="indefinite"/></rect>`).join("")}</g>`+camAt(98,30,180), p:"M98 30 L98 30", r:180, nomove:true};
+      case "topdown": return {g:`<rect x="34" y="8" width="52" height="48" rx="3" style="fill:none;stroke:var(--line)"/>`+prod(49,18)+`<circle cx="22" cy="20" r="4" style="fill:var(--c3)"><animate attributeName="cx" values="14;40;14" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="100" cy="46" r="4" style="fill:var(--style)"><animate attributeName="cx" values="108;80;108" dur="2.4s" repeatCount="indefinite"/></circle><text x="60" y="63" text-anchor="middle" style="font:8px var(--f-mono);fill:var(--muted)">TOP VIEW</text>`, p:"", nomove:true};
+      case "follow": return {g: `<g>${dog(0,38)}<animateTransform attributeName="transform" type="translate" values="60 0;100 0;60 0" dur="2.4s" repeatCount="indefinite"/></g>`+camAt(30,42), p:"M24 42 q8 -6 16 0 t16 0 t16 0 q-8 6 -16 0 t-16 0 t-16 0", r:0};
+      case "wipe": return {g: prod()+`<rect x="0" y="4" width="16" height="56" rx="3" style="fill:var(--muted);opacity:.6"><animate attributeName="x" values="0;104;0" dur="2.4s" repeatCount="indefinite"/></rect>`, p:"", nomove:true};
+      case "snapzoom": return {g:`<rect x="16" y="6" width="88" height="52" rx="3" style="fill:none;stroke:var(--rec);stroke-width:1.5"><animate attributeName="x" values="16;46;46;16" keyTimes="0;.15;.8;1" dur="2.4s" repeatCount="indefinite"/><animate attributeName="y" values="6;15;15;6" keyTimes="0;.15;.8;1" dur="2.4s" repeatCount="indefinite"/><animate attributeName="width" values="88;28;28;88" keyTimes="0;.15;.8;1" dur="2.4s" repeatCount="indefinite"/><animate attributeName="height" values="52;36;36;52" keyTimes="0;.15;.8;1" dur="2.4s" repeatCount="indefinite"/></rect>`+prod(49,18), p:"", nomove:true};
+      case "crane": return {g: bowl(88,54)+dog(88,16,9)+camAt(50,52,-20)+ln("M60 50 L60 22"), p:"M50 52 L50 16 L50 52", r:-20};
+      case "slide": return {g:`<rect x="30" y="10" width="8" height="44" rx="2" style="fill:var(--muted);opacity:.55"><animate attributeName="x" values="40;20;40" dur="3s" repeatCount="indefinite"/></rect><rect x="104" y="14" width="8" height="40" rx="2" style="fill:var(--muted);opacity:.35"><animate attributeName="x" values="108;98;108" dur="3s" repeatCount="indefinite"/></rect>`+prod(66,18), p:"M18 58 L100 58 L18 58", r:0, dur:3};
+      case "static": return {g: camAt(18,32)+[0,1,2].map(i=>`<g opacity="0"><rect x="40" y="14" width="70" height="40" rx="2" style="fill:none;stroke:var(--line)"/><circle cx="${60+i*15}" cy="${34}" r="${7+i*2}" style="fill:var(--style)"/><animate attributeName="opacity" values="${[0,1,2].map(j=>j===i?1:0).join(";")}" calcMode="discrete" dur="2.4s" repeatCount="indefinite"/></g>`).join("")+`<text x="75" y="62" text-anchor="middle" style="font:8px var(--f-mono);fill:var(--muted)">CUT · CUT · CUT</text>`, p:"", nomove:true};
+      case "pushin": return {g: camAt(18,34)+prod()+`<path d="M70 12 l-6 -6 M98 12 l6 -6 M70 56 l-6 6 M98 56 l6 6" style="stroke:var(--rec);stroke-width:2;stroke-linecap:round"><animate attributeName="opacity" values="0;0;1;0" keyTimes="0;.55;.65;1" dur="2.4s" repeatCount="indefinite"/></path>`, p:"M18 34 L62 34 L18 34", r:0, kt:"0;.6;1"};
+      case "lateral": return {g: `<g>${dog(0,20)}<animateTransform attributeName="transform" type="translate" values="30 0;90 0;30 0" dur="2.4s" repeatCount="indefinite"/></g>`, p:"M30 52 L90 52 L30 52", r:-90};
+      case "cut": return {g:`<rect x="10" y="10" width="44" height="44" rx="3" style="fill:none;stroke:var(--line)"/><rect x="66" y="10" width="44" height="44" rx="3" style="fill:none;stroke:var(--line)"/><circle cx="40" cy="32" r="7" style="fill:var(--style)"/><circle cx="76" cy="32" r="7" style="fill:var(--style)"/><path d="M60 4 L60 60" style="stroke:var(--rec);stroke-width:2;stroke-dasharray:3 3"/>`+ln("M26 32 L34 32")+ln("M86 32 L100 32"), p:"", nomove:true};
+      case "stopmotion": return {g:`<rect x="6" y="6" width="108" height="52" rx="3" style="fill:none;stroke:var(--line)"/>`+[0,1,2,3,4,5,6,7,8].map(i=>`<rect x="${10+i*12}" y="9" width="6" height="4" style="fill:var(--line)"/><rect x="${10+i*12}" y="51" width="6" height="4" style="fill:var(--line)"/>`).join("")+`<circle cx="26" cy="36" r="7" style="fill:var(--style)"><animate attributeName="cx" values="26;48;70;92" calcMode="discrete" dur="2s" repeatCount="indefinite"/><animate attributeName="cy" values="36;32;28;24" calcMode="discrete" dur="2s" repeatCount="indefinite"/></circle>`, p:"", nomove:true};
+      case "pan": return {g: prod(84,18)+`<g><path d="M24 40 L70 20 L70 60 Z" style="fill:var(--motion);opacity:.18"/><animateTransform attributeName="transform" type="rotate" values="-22 24 40;18 24 40;-22 24 40" dur="3s" repeatCount="indefinite"/></g>`+camAt(24,40)+`<text x="24" y="60" text-anchor="middle" style="font:7px var(--f-mono);fill:var(--muted)">FIXED</text>`, p:"", nomove:true};
+      case "tilt": return {g: dog(88,14,8)+prod(78,36)+`<g><path d="M26 54 L76 30 L76 62 Z" style="fill:var(--motion);opacity:.18"/><animateTransform attributeName="transform" type="rotate" values="8 26 54;-38 26 54;8 26 54" dur="3s" repeatCount="indefinite"/></g>`+camAt(26,54), p:"", nomove:true};
+      case "zoom": return {g: camAt(18,34)+prod(66,18)+`<rect x="44" y="6" width="66" height="52" rx="3" style="fill:none;stroke:var(--rec);stroke-width:1.5"><animate attributeName="x" values="44;64;44" dur="3s" repeatCount="indefinite"/><animate attributeName="y" values="6;16;6" dur="3s" repeatCount="indefinite"/><animate attributeName="width" values="66;26;66" dur="3s" repeatCount="indefinite"/><animate attributeName="height" values="52;32;52" dur="3s" repeatCount="indefinite"/></rect><text x="18" y="54" text-anchor="middle" style="font:7px var(--f-mono);fill:var(--muted)">LENS</text>`, p:"", nomove:true};
+      case "pullback": return {g: prod(74,20)+`<rect x="74" y="20" width="22" height="28" rx="3" style="fill:none;stroke:var(--rec);stroke-width:1.5"><animate attributeName="x" values="78;12;78" dur="3.2s" repeatCount="indefinite"/><animate attributeName="y" values="24;4;24" dur="3.2s" repeatCount="indefinite"/><animate attributeName="width" values="14;104;14" dur="3.2s" repeatCount="indefinite"/><animate attributeName="height" values="20;56;20" dur="3.2s" repeatCount="indefinite"/></rect>`+`<circle cx="22" cy="44" r="5" style="fill:var(--c3)"/><circle cx="104" cy="14" r="4" style="fill:var(--style)"/>`, p:"M62 34 L22 34 L62 34", r:0, dur:3.2};
+      case "truck": return {g: [0,1,2,3].map(i=>`<rect x="${16+i*26}" y="10" width="18" height="24" rx="2" style="fill:var(--style-soft);stroke:var(--style)"/>`).join("")+ln("M24 54 L96 54"), p:"M14 56 L104 56 L14 56", r:-90};
+      case "pedestal": return {g: prod(78,30)+ln("M44 12 L44 40"), p:"M30 8 L30 44 L30 8", r:0};
+      case "dollyzoom": return {g: `<line x1="56" y1="4" x2="56" y2="60" style="stroke:var(--line);stroke-width:3"><animate attributeName="x1" values="66;50;66" dur="2.4s" repeatCount="indefinite"/><animate attributeName="x2" values="66;50;66" dur="2.4s" repeatCount="indefinite"/></line><line x1="108" y1="4" x2="108" y2="60" style="stroke:var(--line);stroke-width:3"><animate attributeName="x1" values="104;118;104" dur="2.4s" repeatCount="indefinite"/><animate attributeName="x2" values="104;118;104" dur="2.4s" repeatCount="indefinite"/></line>`+dog(84,34,9), p:"M14 34 L44 34 L14 34", r:0};
+      case "crashzoom": return {g:`<rect x="16" y="6" width="88" height="52" rx="3" style="fill:none;stroke:var(--rec);stroke-width:1.5"><animate attributeName="x" values="16;50;50;16" keyTimes="0;.06;.8;1" dur="1.6s" repeatCount="indefinite"/><animate attributeName="y" values="6;18;18;6" keyTimes="0;.06;.8;1" dur="1.6s" repeatCount="indefinite"/><animate attributeName="width" values="88;20;20;88" keyTimes="0;.06;.8;1" dur="1.6s" repeatCount="indefinite"/><animate attributeName="height" values="52;28;28;52" keyTimes="0;.06;.8;1" dur="1.6s" repeatCount="indefinite"/></rect>`+dog(60,32,8)+`<path d="M40 12 l-6 -4 M80 12 l6 -4 M40 52 l-6 4 M80 52 l6 4" style="stroke:var(--rec);stroke-width:2;stroke-linecap:round"/>`, p:"", nomove:true};
+      case "whippan": return {g: [0,1,2,3,4].map(i=>`<line x1="${20+i*6}" y1="${14+i*9}" x2="${70+i*8}" y2="${14+i*9}" style="stroke:var(--muted);stroke-width:2;stroke-linecap:round"><animate attributeName="opacity" values="0;.8;0" dur="1.4s" begin="${i*0.08}s" repeatCount="indefinite"/></line>`).join("")+prod(88,18), p:"", nomove:true};
+      case "fpv": return {g:`<rect x="70" y="20" width="40" height="40" style="fill:var(--style-soft);stroke:var(--style)"/><rect x="84" y="42" width="12" height="18" style="fill:var(--style)"/>`+`<path d="M8 6 C 40 6, 50 52, 92 50" style="fill:none;stroke:var(--motion);stroke-width:2;stroke-dasharray:4 3"/>`, p:"M8 6 C 40 6, 50 52, 92 50", r:30};
+      case "bullettime": return {g:[[56,22],[64,16],[72,24],[60,30],[70,32]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.5" style="fill:var(--motion)"/>`).join("")+`<rect x="58" y="34" width="14" height="18" rx="3" style="fill:var(--style-soft);stroke:var(--style)"/><path d="M34 44 A30 16 0 0 0 96 44" style="fill:none;stroke:var(--line);stroke-dasharray:3 3"/><text x="64" y="62" text-anchor="middle" style="font:7px var(--f-mono);fill:var(--muted)">FREEZE</text>`, p:"M34 44 A30 16 0 0 0 96 44", r:-20};
+      case "through": return {g:`<rect x="38" y="6" width="22" height="52" style="fill:none;stroke:var(--ink);stroke-width:6;opacity:.55"/>`+prod(84,18), p:"M10 34 L74 34", r:0};
+      case "infinitezoom": return {g:`<g><animateTransform attributeName="transform" type="scale" values="1;2.2" dur="2.4s" repeatCount="indefinite" additive="sum"/>`+[0,1,2].map(i=>`<rect x="${60-24/(i+1)}" y="${32-15/(i+1)}" width="${48/(i+1)}" height="${30/(i+1)}" rx="2" style="fill:none;stroke:var(--style);stroke-width:1.2"/>`).join("")+`</g>`, p:"", nomove:true};
+      case "orbit360": return {g: prod(74,18)+`<ellipse cx="85" cy="34" rx="34" ry="14" style="fill:none;stroke:var(--line)"/>`, p:"M51 34 A34 14 0 1 0 119 34 A34 14 0 1 0 51 34", r:0, dur:3.6};
+      case "aerial": return {g:[0,1,2,3,4].map(i=>`<rect x="${14+i*20}" y="${44-(i%2)*8}" width="14" height="${16+(i%2)*8}" style="fill:${i===2?'var(--style)':'var(--style-soft)'};stroke:var(--style)"/>`).join(""), p:"M24 8 L96 4 L24 8", r:60, dur:3.6};
+      case "rackfocus": return {g: camAt(14,34)+`<circle cx="44" cy="40" r="10" style="fill:var(--c3)"><animate attributeName="opacity" values="1;.25;1" dur="3s" repeatCount="indefinite"/></circle>`+`<g>${prod(84,14)}<animate attributeName="opacity" values=".3;1;.3" dur="3s" repeatCount="indefinite"/></g><text x="64" y="62" text-anchor="middle" style="font:7px var(--f-mono);fill:var(--muted)">FOCUS</text>`, p:"", nomove:true};
+      default: return {g: camAt(24,34)+prod(), p:"", nomove:true};
+    }
+  }
+  function pic(k){
+    const b = picBody(k || "generic");
+    const mover = !b.nomove && b.p ? `<g class="mover"><g transform="rotate(${b.r||0})"><rect x="-7" y="-5" width="11" height="10" rx="2" style="fill:var(--rec)"/><path d="M4 -3 L9 -6 L9 6 L4 3Z" style="fill:var(--rec)"/></g><animateMotion dur="${b.dur||2.4}s" repeatCount="indefinite" path="${b.p}"${b.kt?` keyPoints="0;.5;1" keyTimes="${b.kt}" calcMode="linear"`:""}/></g>` : "";
+    return `<svg viewBox="0 0 120 64" role="img" aria-label="${esc(CAMS[k]||"카메라 움직임")} 미리보기">${b.g}${mover}</svg>`;
+  }
+  function sphere(dark, gid){
+    return `<svg class="sphere" viewBox="0 0 84 84" aria-hidden="true"><defs><radialGradient id="${gid}" cx="32%" cy="30%" r="80%"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#E6E6E6"/><stop offset="1" stop-color="${dark}"/></radialGradient></defs><ellipse cx="44" cy="76" rx="26" ry="5" fill="${dark}" opacity=".35"/><circle cx="42" cy="40" r="30" fill="url(#${gid})"/></svg>`;
+  }
+  const CONTRAST_DARK = {"1:1":"#D4D4D4","2:1":"#9E9E9E","4:1":"#565656","8:1":"#1C1C1C","8:1+":"#1C1C1C"};
+  function styleVis(r){
+    const pal = (r.palette||[]).filter(isHex);
+    return `<div class="swatchrow"><div class="swatch">${pal.map(h=>`<span style="background:${h}"></span>`).join("") || `<span style="background:var(--line)"></span>`}</div>${sphere(CONTRAST_DARK[r.contrast]||"#9E9E9E","sg_"+domId(r.id))}</div>`;
+  }
+  function angleSVG(cur, mini){
+    const head = {x:380, y:100};
+    const list = mini ? ANGLES.filter(a=>a.id===cur) : ANGLES;
+    const cams = list.map(a => {
+      const ang = Math.atan2(head.y - a.y, head.x - a.x) * 180/Math.PI + (a.tilt||0);
+      const on = a.id===cur;
+      return `<line x1="${a.x}" y1="${a.y}" x2="${head.x}" y2="${head.y}" style="stroke:${on?'var(--rec)':'var(--line)'};stroke-width:${on?3:1.2};stroke-dasharray:${on?'0':'4 4'}"/>
+        <g transform="translate(${a.x} ${a.y}) rotate(${ang.toFixed(1)}) scale(${mini?2.2:1.4})"><rect x="-9" y="-6" width="13" height="12" rx="2" style="fill:${on?'var(--rec)':'var(--ink)'}"/><path d="M4 -3 L11 -7 L11 7 L4 3Z" style="fill:${on?'var(--rec)':'var(--ink)'}"/></g>`;
+    }).join("");
+    return `<svg viewBox="${mini?'100 0 440 300':'0 0 640 300'}" role="img" aria-label="카메라 앵글 위치">
+      <rect x="0" y="270" width="640" height="30" style="fill:var(--style-soft)"/>
+      <use href="#person" transform="translate(330 70)"/>
+      <g transform="translate(470 238)"><circle cx="0" cy="0" r="14" style="fill:var(--muted)"/><path d="M-12 -8 l-4 -10 l9 5z M12 -8 l4 -10 l-9 5z" style="fill:var(--muted)"/><rect x="-18" y="8" width="44" height="22" rx="10" style="fill:var(--muted)"/></g>
+      ${cams}</svg>`;
+  }
+  function allocate(t, D){
+    const total = t.beats.reduce((a,b)=>a+b[1],0); let acc = 0;
+    return t.beats.map(([name,w,k]) => { const s = acc; acc += w; return {name, w, k, s:Math.round(s/total*D*2)/2, e:Math.round(acc/total*D*2)/2}; });
+  }
+  const fmt = n => Number.isInteger(n) ? String(n) : n.toFixed(1);
+  function timelineHTML(segs, thin){
+    return `<div class="tl${thin?' thin':''}">${segs.map(s=>`<div class="b k${s.k}" style="flex:${s.w} 1 0" title="${esc(s.name)} ${fmt(s.s)}–${fmt(s.e)}s">${thin?"":`<b>${esc(s.name)}</b><span>${fmt(s.s)}–${fmt(s.e)}s</span>`}</div>`).join("")}</div>`;
+  }
+
+  /* ================= settings ================= */
+  $("#s_tool").innerHTML = TOOL_GROUPS.map(([g,label])=>`<optgroup label="${esc(label)}">${TOOLS.filter(t=>t.g===g).map(t=>`<option value="${t.id}">${esc(t.name)}</option>`).join("")}</optgroup>`).join("");
+  let saved = {}; try{ saved = JSON.parse(store.get("settings")||"{}") || {}; }catch(e){ saved = {}; }
+  const SET = Object.assign({subj:"", tool:"chatgpt", aspect:"9:16", dur:"30", mood:"", sound:"bgm"}, saved);
+  $("#s_sound").value = SET.sound; $("#s_subj").value = SET.subj; $("#s_tool").value = SET.tool; $("#s_aspect").value = SET.aspect; $("#s_dur").value = SET.dur; $("#s_mood").value = SET.mood;
+  [["#s_subj","subj"],["#s_tool","tool"],["#s_aspect","aspect"],["#s_dur","dur"],["#s_mood","mood"],["#s_sound","sound"]].forEach(([id,k]) => $(id).addEventListener("input", () => {
+    SET[k] = $(id).value; store.set("settings", JSON.stringify(SET)); renderSections(); renderOrder(); renderWizard();
+  }));
+  const D = () => Number(SET.dur) || 30;
+  const orient = () => SET.aspect==="9:16"||SET.aspect==="4:5" ? "vertical" : SET.aspect==="1:1" ? "square" : "horizontal";
+
+  /* ================= items ================= */
+  const state = { refs:[], loaded:false, cat:"all", use:"", q:"", det:{}, more:{}, openAdd:null, confirmDel:null,
+    order: (()=>{ try{ return JSON.parse(store.get("order")||"[]") || []; }catch(e){ return []; } })(),
+    paused: store.get("paused")==="1" || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) };
+  let db = null, sample = null;
+
+  function refItems(){
+    const counters = {motion:0, style:0};
+    return state.refs.map(r => {
+      counters[r.kind] = (counters[r.kind]||0) + 1;
+      const code = r.code || ((r.kind==="motion"?"M":"S") + pad(counters[r.kind]));
+      const medium = mediumOf(r.prompt);
+      return { key:"ref:"+r.id, ref:r, db:true, cat:r.kind, code, name:r.name, en:r.nameEn, desc:r.desc, when:r.when||r.bestFor, caution:r.caution, dur:r.duration,
+        uses:r.uses||[], tags:r.tags||[], ytq:r.ytQuery, yt:(r.youtube||[]).filter(y=>isYT(y.url)), src:r.source, fit:r.fit916,
+        visual: () => r.kind==="motion" ? pic(r.cam) : styleVis(r), pad: r.kind!=="motion",
+        simple: () => r.kind==="motion" ? `==제품==, camera: ${r.prompt||r.name}` : `==제품==, ${r.prompt||r.name}`,
+        detail: () => r.kind==="motion"
+          ? `Subject: ==제품==.\nCamera move: ${r.prompt||r.name}.\nTiming: ${r.duration?r.duration.replace("초"," seconds"):"one"} single shot, ease in and out.\nFrame: ${SET.aspect} ${orient()}.\nAvoid: ${AVOID}.`
+          : `Subject: ==제품==.\nLook: ${r.prompt||r.name}.\n${(r.palette||[]).length?`Palette: ${r.palette.join(", ")}.\n`:""}${r.contrast?`Lighting contrast: about ${r.contrast} key-to-fill.\n`:""}Medium: ${medium}.\nKeep the package shape, label and colors identical in every shot.`,
+        en_prompt: r.prompt };
+    });
+  }
+  function mediumOf(p){ return /stop.?motion|clay|felt|paper cut/i.test(p||"") ? "handmade stop-motion, visible frame-by-frame stepping, real tabletop materials" : /3D|illustration/i.test(p||"") ? "stylized 3D render, consistent materials across shots" : "photorealistic live-action"; }
+  function staticItems(){
+    const out = [];
+    TEMPLATES.forEach((t,i) => out.push({ key:"tpl:"+t.id, cat:"tpl", code:"T"+pad(i+1), t, name:t.name, en:t.en, desc:t.use, when:t.when, caution:t.caution, dur:t.len, uses:TPL_USES[t.g]||[], tags:t.src?[t.src]:[],
+      ytq: t.name + " 영상 구성 예시", pad:true,
+      visual: () => t.schema ? `<div class="schema">${t.schema.map(x=>`<span>${esc(x)}</span>`).join("")}</div>` : `<div class="tlwrap">${timelineHTML(allocate(t, D()))}<i class="playhead"></i></div>`,
+      simple: () => t.schema ? `For each scene write: ${t.schema.join(" | ")}.` : `Structure for ==제품==: ${t.beats.map(b=>b[0]).join(" → ")}.`,
+      detail: () => t.schema ? `Write the script as a table, one row per scene, columns: scene, narration, visual prompt, on-screen text, timing, regeneration notes.\nSubject: ==제품==. Total ${D()}s, ${SET.aspect}.` : `Subject: ==제품==. Total ${D()} seconds, ${SET.aspect} ${orient()}.\n` + allocate(t, D()).map((s,j)=>`Beat ${j+1} (${fmt(s.s)}–${fmt(s.e)}s): ${s.name}`).join("\n") }));
+    SHOTS.forEach((s,i) => out.push({ key:"shot:"+s.id, cat:"shot", code:"F"+pad(i+1), name:s.ko, en:s.id+" · "+s.en, desc:s.use, when:s.when, uses:s.uses, tags:[], ytq: s.en+" examples cinematography",
+      visual: () => `<svg viewBox="${s.vb.split(" ").map((v,j)=>j===2? (+v*4/3*16/9*3/4).toFixed(0) : v).join(" ")}" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#scene"/><use href="#person"/></svg>`,
+      simple: () => `${s.en} of ==제품==`, detail: () => `Framing: ${s.en} (${s.id}) of ==제품==, ${s.use}.\nKeep the package label readable and centered in a ${SET.aspect} frame.` }));
+    ANGLES.forEach((a,i) => out.push({ key:"angle:"+a.id, cat:"angle", code:"A"+pad(i+1), name:a.ko, en:a.en, desc:a.read, when:a.when, uses:a.uses, tags:[], ytq: a.en+" shot examples",
+      visual: () => angleSVG(a.id, true), simple: () => `${a.en} on ==제품==`, detail: () => `Camera angle: ${a.en}, so the subject reads as ${a.read}.\nKeep this angle consistent within the shot; ${SET.aspect} ${orient()}.` }));
+    LIGHTS.forEach((l,i) => out.push({ key:"light:"+l.id, cat:"light", code:"L"+pad(i+1), name:l.r+" "+l.ko, en:l.en, desc:l.use, when:l.when, uses:l.uses, tags:[], ytq: l.r+" lighting ratio key fill", pad:true,
+      visual: () => `<div class="swatchrow" style="justify-content:center">${sphere(l.dark,"lg_"+l.id)}</div>`,
+      simple: () => `${l.en}`, detail: () => `Lighting: ${l.en}.\nKeep the same key light direction across every shot of ==제품==.` }));
+    return out;
+  }
+  let ITEMS = [];
+  const itemOf = key => ITEMS.find(i=>i.key===key);
+  function rebuild(){ ITEMS = refItems().concat(staticItems()); }
+
+  /* ================= fill slots ================= */
+  const fillText = t => t.replace(/==(.+?)==/g, (m,k) => k==="제품" ? (SET.subj.trim() || "[제품]") : "["+k+"]");
+  const fillHTML = t => esc(t).replace(/==(.+?)==/g, (m,k) => `<mark>${esc(k==="제품" ? (SET.subj.trim() || "제품") : k)}</mark>`);
+  function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true,1800); }
+  async function copy(text, fallbackEl){
+    try{ await navigator.clipboard.writeText(text); toast("복사했어요"); }
+    catch(e){ if(fallbackEl){ const r=document.createRange(); r.selectNodeContents(fallbackEl); const s=getSelection(); s.removeAllRanges(); s.addRange(r); } toast("텍스트를 선택해 두었어요. 직접 복사해 주세요"); }
+  }
+
+  /* ================= filters ================= */
+  function renderChips(){
+    const count = c => ITEMS.filter(i=>c==="all"||i.cat===c).length;
+    $("#catChips").innerHTML = `<button class="chip" data-cat="all" aria-pressed="${state.cat==="all"}">전체<small>${count("all")}</small></button>` +
+      CATS.map(c=>`<button class="chip" data-cat="${c.id}" aria-pressed="${state.cat===c.id}">${esc(c.label)}<small>${count(c.id)}</small></button>`).join("");
+    $("#useChips").innerHTML = `<span class="lab">용도</span>` + USES.map(u=>`<button class="chip" data-use="${esc(u)}" aria-pressed="${state.use===u}">${esc(u)}</button>`).join("");
+    const nM = ITEMS.filter(i=>i.cat==="motion").length, nS = ITEMS.filter(i=>i.cat==="style").length;
+    $("#stats").innerHTML = `<span><b>${ITEMS.length}</b>가지 카드</span><span><b>${nM}</b>카메라 무빙</span><span><b>${nS}</b>룩</span><span><b>${TEMPLATES.length}</b>스크립트 구조</span><span><b>${SHOTS.length+ANGLES.length+LIGHTS.length}</b>샷 · 앵글 · 조명</span>`;
+  }
+  $("#catChips").addEventListener("click", e => { const b=e.target.closest("[data-cat]"); if(!b) return; state.cat=b.dataset.cat; renderChips(); renderSections(); });
+  $("#useChips").addEventListener("click", e => { const b=e.target.closest("[data-use]"); if(!b) return; state.use = state.use===b.dataset.use ? "" : b.dataset.use; renderChips(); renderSections(); });
+  $("#q").addEventListener("input", e => { state.q = e.target.value; renderSections(); });
+  function applyPause(){
+    document.body.classList.toggle("paused", state.paused);
+    $("#pauseBtn").setAttribute("aria-pressed", String(state.paused));
+    document.querySelectorAll("svg").forEach(s => { try{ state.paused ? s.pauseAnimations() : s.unpauseAnimations(); }catch(e){} });
+  }
+  $("#pauseBtn").addEventListener("click", () => { state.paused = !state.paused; store.set("paused", state.paused?"1":"0"); applyPause(); });
+
+  /* ================= sections ================= */
+  function cardHTML(it){
+    const inOrder = state.order.includes(it.key);
+    const det = !!state.det[it.key];
+    const r = it.ref;
+    const did = domId(it.key);
+    return `<article class="card ${inOrder?'in':''}" data-key="${esc(it.key)}">
+      <div class="prev${it.pad?' pad':''}">${it.visual()}</div>
+      <div class="chead"><span class="code">${esc(it.code)}</span>${it.dur?`<span class="dur">${esc(it.dur)}</span>`:""}</div>
+      <div><h3>${esc(it.name)}</h3>${it.en?`<div class="en">${esc(it.en)}</div>`:""}</div>
+      ${it.desc?`<p>${esc(it.desc)}</p>`:""}
+      ${it.when?`<div class="when"><b>이럴 때</b>${esc(it.when)}</div>`:""}
+      ${it.fit?`<div class="fit fit-${it.fit==="좋음"?"good":it.fit==="주의"?"warn":"mid"}">세로 9:16 · <b>${esc(it.fit)}</b></div>`:""}
+      ${it.caution?`<div class="caution">주의 · ${esc(it.caution)}</div>`:""}
+      ${(it.uses.length||it.tags.length)?`<div class="tags">${it.uses.map(u=>`<button type="button" class="tag" data-usetag="${esc(u)}">#${esc(u)}</button>`).join("")}${it.tags.map(t=>`<button type="button" class="tag" data-tag="${esc(t)}">#${esc(t)}</button>`).join("")}</div>`:""}
+      <div class="pbox">
+        <div class="ptabs"><span class="lab">AI에게 이렇게</span><div>
+          <button type="button" data-act="simple" aria-pressed="${!det}">간단</button><button type="button" data-act="detail" aria-pressed="${det}">자세히</button></div></div>
+        <pre class="prompt" id="p_${did}">${fillHTML(det ? it.detail() : it.simple())}</pre>
+      </div>
+      ${it.yt && it.yt.length ? `<div class="yt"><span class="lab">저장한 유튜브</span>${it.yt.map(y=>`<a href="${esc(y.url)}" target="_blank" rel="noopener">${esc(y.title||y.url)}</a>`).join("")}</div>`:""}
+      ${it.src && it.src.url ? `<div class="src">출처 <a href="${esc(it.src.url)}" target="_blank" rel="noopener">${esc(it.src.label||it.src.url)}</a></div>`:""}
+      ${state.openAdd===it.key?`<form class="inline-form" data-ytform="${esc(it.key)}">
+          <input id="yu_${did}" placeholder="유튜브 링크 붙여넣기">
+          <input id="yn_${did}" placeholder="메모 (예: 0:12 오비트 구간)">
+          <div class="row"><button type="button" class="btn small ghost" data-act="closeyt">취소</button><button class="btn small primary" type="submit">링크 저장</button></div>
+        </form>`:""}
+      <div class="actions">
+        <button type="button" class="btn small ${inOrder?'added':'primary'}" data-act="order">${inOrder?"담김 · 빼기":"+ 주문서에 담기"}</button>
+        <button type="button" class="btn small" data-act="copy">복사</button>
+        <a class="btn small ghost" href="card/${esc(it.code.toLowerCase())}.html">자세히</a>
+        ${it.ytq?`<a class="btn small" href="${ytSearch(it.ytq)}" target="_blank" rel="noopener">비슷한 영상 ↗</a>`:""}
+        ${it.db?`<button type="button" class="btn small ghost" data-act="addyt">+ 링크</button>`:""}
+        ${it.db ? (state.confirmDel===it.key
+          ? `<button type="button" class="btn small" data-act="del" style="color:var(--rec)">정말 삭제</button><button type="button" class="btn small ghost" data-act="nodel">취소</button>`
+          : `<button type="button" class="btn small ghost" data-act="askdel">삭제</button>`) : ""}
+      </div>
+    </article>`;
+  }
+  function renderSections(){
+    const q = state.q.trim().toLowerCase();
+    const match = it => (state.cat==="all"||it.cat===state.cat) && (!state.use || it.uses.includes(state.use)) &&
+      (!q || [it.code,it.name,it.en,it.desc,it.when,it.uses.join(" "),it.tags.join(" ")].join(" ").toLowerCase().includes(q));
+    const html = CATS.filter(c => state.cat==="all" || state.cat===c.id).map(c => {
+      const list = ITEMS.filter(i=>i.cat===c.id && match(i));
+      const isDb = c.id==="motion" || c.id==="style";
+      let body;
+      if(isDb && !state.loaded) body = `<div class="empty">레퍼런스를 불러오는 중입니다.</div>`;
+      else if(isDb && state.loaded && !db && !state.refs.length) body = `<div class="empty">저장된 레퍼런스를 불러올 수 없어요. claude.ai에 로그인한 상태로 열어 주세요.</div>`;
+      else if(!list.length){ if(q || state.use) return ""; body = `<div class="empty">아직 카드가 없어요. 위의 <b>+ 레퍼런스 추가</b>로 첫 카드를 등록해 보세요.</div>`; }
+      else {
+        const LIM = 6, folded = state.cat==="all" && !q && !state.use && !state.more[c.id] && list.length > LIM + 2;
+        const shown = folded ? list.slice(0, LIM) : list;
+        body = shown.map(cardHTML).join("") + (folded ? `<button type="button" class="btn morebtn" data-more="${c.id}">${esc(c.label)} ${list.length-LIM}개 더 보기 ↓</button>` : "");
+      }
+      return `<section class="catsec" id="cat-${c.id}"><div class="cathead"><h2>${esc(c.label)}</h2><span class="n">${c.p} · ${list.length}개</span><p>${esc(c.note)}</p></div><div class="grid">${body}</div></section>`;
+    }).join("");
+    $("#sections").innerHTML = html || `<div class="empty">조건에 맞는 카드가 없어요. 검색어나 용도 필터를 지워 보세요.</div>`;
+    applyPause();
+  }
+  $("#sections").addEventListener("click", async e => {
+    const ut = e.target.closest("[data-usetag]"); if(ut){ state.use = ut.dataset.usetag; renderChips(); renderSections(); return; }
+    const tg = e.target.closest("[data-tag]"); if(tg){ state.q = tg.dataset.tag; $("#q").value = state.q; renderSections(); return; }
+    const b = e.target.closest("[data-act]"); if(!b) return;
+    const card = b.closest("[data-key]"); const key = card && card.dataset.key; const it = itemOf(key); if(!it) return;
+    const act = b.dataset.act;
+    if(act==="simple"||act==="detail"){ state.det[key] = act==="detail"; renderSections(); return; }
+    if(act==="order"){ toggleOrder(key); return; }
+    if(act==="copy"){ copy(fillText(state.det[key] ? it.detail() : it.simple()), document.getElementById("p_"+domId(key))); return; }
+    if(act==="addyt"){ state.openAdd = key; renderSections(); const i=document.getElementById("yu_"+domId(key)); i&&i.focus(); return; }
+    if(act==="closeyt"){ state.openAdd = null; renderSections(); return; }
+    if(act==="askdel"){ state.confirmDel = key; renderSections(); return; }
+    if(act==="nodel"){ state.confirmDel = null; renderSections(); return; }
+    if(act==="del" && db && it.ref){
+      try{ await db.doc("refs/"+it.ref.id).delete(); state.order = state.order.filter(k=>k!==key); saveOrder(); toast("삭제했어요"); }
+      catch(err){ toast("삭제하지 못했어요. 편집 권한이 있는지 확인해 주세요"); }
+      state.confirmDel = null;
+    }
+  });
+  $("#sections").addEventListener("submit", async e => {
+    const f = e.target.closest("[data-ytform]"); if(!f) return; e.preventDefault();
+    const key = f.dataset.ytform, it = itemOf(key); if(!it || !it.ref || !db) return;
+    const url = document.getElementById("yu_"+domId(key)).value.trim(), title = document.getElementById("yn_"+domId(key)).value.trim();
+    if(!isYT(url)){ toast("youtube.com 또는 youtu.be 링크만 저장할 수 있어요"); return; }
+    try{ await db.doc("refs/"+it.ref.id).update({ youtube:[...(it.ref.youtube||[]), {url,title}] }); state.openAdd=null; toast("링크를 저장했어요"); }
+    catch(err){ toast("저장하지 못했어요. 편집 권한이 있는지 확인해 주세요"); }
+  });
+
+  /* ================= sets ================= */
+  /* ---------- set previews (9:16 animated mock) ---------- */
+  const VIG = {"1:1":0,"2:1":.18,"4:1":.38,"8:1":.55,"8:1+":.55};
+  function propHTML(kind, pal){
+    const a = pal[2]||"#888", b = pal[3]||"#333", c = pal[1]||"#ccc";
+    switch(kind){
+      case "bottle": return `<div class="pr pr-bottle" style="--a:${a};--b:${b}"><i></i></div>`;
+      case "cup": return `<div class="pr pr-cup" style="--a:${a};--b:${b}"><i></i></div><div class="pr-steam"><i></i><i></i></div>`;
+      case "person": return `<div class="pr pr-person" style="--a:${b};--b:${a}"><i></i></div>`;
+      case "store": return `<div class="pr pr-store" style="--a:${a};--b:${b}"><i></i></div>`;
+      case "clay": return `<div class="pr pr-clay" style="--a:${a};--b:${b}"><i></i></div>`;
+      default: return `<div class="pr pr-box" style="--a:${b};--b:${c}"><i></i></div>`;
+    }
+  }
+  function ccScene(j, n, cap, pal){
+    const ink = pal[3]||"#222", acc = pal[2]||"#d33", bg = pal[0]||"#fff";
+    const st = `style="--ink:${ink};--acc:${acc};--bgc:${bg}"`;
+    if(j===0) return `<div class="cc" ${st}><div class="cc-hook">${esc(cap)}</div><div class="cc-dots"><i></i><i></i><i></i></div></div>`;
+    if(j===n-1) return `<div class="cc" ${st}><div class="cc-title">${esc(cap)}</div><div class="cc-cta">저장하기</div></div>`;
+    const k = (j-1)%3;
+    if(k===0) return `<div class="cc" ${st}><div class="cc-title">${esc(cap)}</div><div class="cc-bars"><i style="--w:86%"></i><i style="--w:58%"></i><i style="--w:34%"></i></div></div>`;
+    if(k===1) return `<div class="cc" ${st}><div class="cc-title">${esc(cap)}</div><div class="cc-list"><i></i><i></i><i></i></div></div>`;
+    return `<div class="cc" ${st}><div class="cc-num">87%</div><div class="cc-title">${esc(cap)}</div></div>`;
+  }
+  function pvExtras(m){
+    if(m==="pour") return `<div class="pv-drops">${"<i></i>".repeat(7)}</div>`;
+    if(m==="topdown") return `<div class="pv-items"><i></i><i></i><i></i><i></i></div>`;
+    if(m==="wipe") return `<div class="pv-wipe"></div>`;
+    if(m==="slide"||m==="lateral") return `<div class="pv-fg"></div>`;
+    return "";
+  }
+  function pvHTML(set){
+    const items = set.keys.map(itemOf).filter(Boolean);
+    const tplIt = items.find(i=>i.cat==="tpl" && !i.t.schema); const t = tplIt ? tplIt.t : TEMPLATES[0];
+    const motions = items.filter(i=>i.cat==="motion"); const style = items.find(i=>i.cat==="style"); const lightIt = items.find(i=>i.cat==="light");
+    const pal = ((style && style.ref && style.ref.palette) || ["#EEEEEE","#CCCCCC","#999999","#333333"]).filter(isHex);
+    const ratio = lightIt ? lightIt.name.split(" ")[0] : ((style && style.ref && style.ref.contrast) || "2:1");
+    const mode = set.tool==="claudecode" ? "cc" : set.tool==="chatgpt" ? "gpt" : "live";
+    const n = t.beats.length, W = t.beats.reduce((x,b)=>x+b[1],0), T = Math.max(5, n*1.5);
+    const durs = t.beats.map(b=>Math.max(0.9, b[1]/W*T));
+    const segs = allocate(t, set.sec||15);
+    const bg = mode==="cc" ? (pal[0]||"#fff") : `linear-gradient(160deg, ${pal[0]||"#eee"}, ${pal[1]||"#ccc"})`;
+    const scenes = t.beats.map((b,j)=>{
+      const m = motions.length ? (motions[Math.min(j,motions.length-1)].ref.cam || "static") : "static";
+      const cap = (set.cap||[])[j] || b[0];
+      const cam = mode==="gpt" ? "kb" : mode==="cc" ? "none" : m;
+      const inner = mode==="cc" ? ccScene(j,n,cap,pal) : propHTML(set.prop||"box", pal);
+      return `<div class="pv-scene${j===0?" on":""}" style="--d:${durs[j].toFixed(2)}s;background:${bg}">
+        <div class="pv-cam cam-${cam}">${inner}</div>${mode==="cc"?"":pvExtras(m)}
+        <div class="pv-vig" style="opacity:${mode==="cc"?0:(VIG[ratio]??.18)}"></div>
+        ${mode==="cc"?"":`<div class="pv-cap">${esc(cap)}</div>`}
+        <span class="pv-tc">${fmt(segs[j].s)}–${fmt(segs[j].e)}s</span>${mode==="gpt"?`<span class="pv-img">IMG ${j+1}/${n}</span>`:""}
+      </div>`;
+    }).join("");
+    return `<div class="pv pv-${mode}" data-durs="${durs.map(d=>d.toFixed(2)).join(",")}" role="img" aria-label="${esc(set.name)} 움직임 예시">${scenes}<div class="pv-bar"><i></i></div></div>`;
+  }
+  const PV_START = performance.now();
+  function pvTick(now){
+    if(!state.paused){
+      document.querySelectorAll(".pv").forEach(pv=>{
+        const d = pv._d || (pv._d = pv.dataset.durs.split(",").map(Number));
+        const T = d.reduce((x,y)=>x+y,0);
+        let t = ((now-PV_START)/1000) % T, k = 0;
+        while(k < d.length-1 && t > d[k]){ t -= d[k]; k++; }
+        if(pv._k !== k){ pv._k = k; pv.querySelectorAll(".pv-scene").forEach((sc,i)=>sc.classList.toggle("on", i===k)); }
+        const done = d.slice(0,k).reduce((x,y)=>x+y,0) + t;
+        const bar = pv.querySelector(".pv-bar i"); if(bar) bar.style.width = (done/T*100).toFixed(1)+"%";
+      });
+    }
+    requestAnimationFrame(pvTick);
+  }
+  requestAnimationFrame(pvTick);
+  const SET_GROUP_NOTE = {free:"구독 중인 ChatGPT나 Claude Code만 있으면 바로 따라 할 수 있는 조합이에요. 세트를 담으면 주문서 프롬프트도 그 도구에 맞게 바뀝니다.", paid:"Kling, Flick 같은 영상 생성 사이트에서 쓰는 조합이에요. 실사에 가까운 움직임이 필요할 때 고르세요."};
+  function renderSets(){
+    $("#sets").innerHTML = TOOL_GROUPS.map(([g,label]) => `<div class="setgrp"><div class="setgrp-head"><h3>${esc(label)}</h3><p>${esc(SET_GROUP_NOTE[g])}</p></div><div class="sets">` +
+      SETS.map((s,i)=>({s,i})).filter(o=>o.s.g===g).map(({s,i})=>{
+        const codes = s.keys.map(k=>{ const it=itemOf(k); return it ? `<span class="code" title="${esc(it.name)}">${esc(it.code)} ${esc(it.name)}</span>` : ""; }).join("");
+        const tool = TOOLS.find(t=>t.id===s.tool);
+        return `<div class="set"><div class="pvwrap">${pvHTML(s)}<span class="pvlab">움직임 예시</span></div><div class="setinfo"><span class="lab">${esc(tool?tool.name:"")}</span><b>${esc(s.name)}</b><span class="note">${esc(s.desc)}</span><div class="codes">${codes}</div><div><button class="btn small primary" type="button" data-set="${i}">세트 담기</button></div></div></div>`;
+      }).join("") + `</div></div>`).join("");
+  }
+  $("#sets").addEventListener("click", e => {
+    const b = e.target.closest("[data-set]"); if(!b) return;
+    const set = SETS[+b.dataset.set];
+    const keys = set.keys.filter(k=>itemOf(k));
+    keys.forEach(k => { if(!state.order.includes(k)) state.order.push(k); });
+    if(set.tool){ SET.tool = set.tool; $("#s_tool").value = set.tool; store.set("settings", JSON.stringify(SET)); }
+    saveOrder(); renderSections(); openOrder(); toast(keys.length+"개 카드를 담았어요");
+  });
+
+  /* ================= add reference ================= */
+  $("#f_cam").innerHTML = Object.entries(CAMS).map(([k,v])=>`<option value="${k}">${v}</option>`).join("");
+  $("#f_uses").innerHTML = USES.map((u,i)=>`<label><input type="checkbox" id="fu_${i}" value="${esc(u)}">${esc(u)}</label>`).join("");
+  const addform = $("#addform");
+  $("#toggleAdd").addEventListener("click", () => { addform.hidden = !addform.hidden; if(!addform.hidden){ addform.scrollIntoView({block:"nearest"}); $("#f_name").focus(); } });
+  $("#cancelAdd").addEventListener("click", () => { addform.hidden = true; });
+  addform.addEventListener("submit", async e => {
+    e.preventDefault();
+    const st = $("#addStatus");
+    if(!db){ st.textContent = "저장소에 연결되지 않아 저장할 수 없어요."; return; }
+    const yt = $("#f_yt").value.split("\n").map(s=>s.trim()).filter(Boolean);
+    const bad = yt.filter(u=>!isYT(u));
+    if(bad.length){ st.textContent = "유튜브 링크가 아닌 줄이 있어요: " + bad[0]; return; }
+    const kind = $("#f_kind").value;
+    const nums = state.refs.filter(r=>r.kind===kind).map(r=>parseInt(String(r.code||"").slice(1),10)).filter(n=>!isNaN(n));
+    const doc = { kind, code:(kind==="motion"?"M":"S")+pad((nums.length?Math.max(...nums):0)+1),
+      name:$("#f_name").value.trim(), nameEn:$("#f_en").value.trim(), duration:$("#f_dur").value.trim(), desc:$("#f_desc").value.trim(), when:$("#f_when").value.trim(),
+      prompt:$("#f_snip").value.trim(), uses:[...document.querySelectorAll("#f_uses input:checked")].map(i=>i.value),
+      tags:$("#f_tags").value.split(",").map(s=>s.trim()).filter(Boolean), ytQuery:$("#f_ytq").value.trim(),
+      youtube: yt.map(url=>({url,title:""})), createdAt: Date.now() };
+    if(kind==="motion") doc.cam = $("#f_cam").value; else doc.palette = $("#f_pal").value.split(",").map(s=>s.trim()).filter(isHex);
+    if(!doc.name){ st.textContent = "이름을 적어 주세요."; return; }
+    try{ await db.collection("refs").add(doc); addform.reset(); addform.hidden = true; st.textContent=""; toast(doc.code+" 카드를 저장했어요"); }
+    catch(err){ st.textContent = "저장하지 못했어요. 편집 권한이 있는지 확인해 주세요."; }
+  });
+
+  /* ================= order sheet ================= */
+  function saveOrder(){ store.set("order", JSON.stringify(state.order)); renderOrder(); }
+  function toggleOrder(key){
+    const i = state.order.indexOf(key);
+    if(i>=0){ state.order.splice(i,1); toast("주문서에서 뺐어요"); } else { state.order.push(key); toast("주문서에 담았어요"); }
+    saveOrder(); renderSections();
+  }
+  function orderParts(keys){
+    const items = (keys||state.order).map(itemOf).filter(Boolean);
+    const by = c => items.filter(i=>i.cat===c);
+    const tplIt = by("tpl").filter(i=>!i.t.schema).pop();
+    return { items, t: tplIt ? tplIt.t : TEMPLATES[0], tplPicked: !!tplIt, motions: by("motion"), styles: by("style"),
+      shot: by("shot").pop(), angle: by("angle").pop(), light: by("light").pop(), schema: by("tpl").some(i=>i.t.schema) };
+  }
+  function buildOrderPrompt(keys){
+    const o = orderParts(keys); if(!o.items.length) return "";
+    const segs = allocate(o.t, D()); const subj = SET.subj.trim() || "the product";
+    const world = o.styles.length ? o.styles.map(s=>s.en_prompt||s.name).join(" + ") : "clean commercial look matching the product's own colors";
+    const medium = mediumOf(o.styles.map(s=>s.en_prompt).join(" "));
+    const framing = [o.shot && SHOTS.find(s=>"shot:"+s.id===o.shot.key).en, o.angle && o.angle.en, o.light && o.light.en].filter(Boolean).join(", ");
+    const shots = segs.map((s,j) => { const m = o.motions.length ? o.motions[Math.min(j, o.motions.length-1)] : null;
+      return `  ${j+1}. ${fmt(s.s)}–${fmt(s.e)}s (${s.name}): ${m ? (m.en_prompt||m.name) + `, over ${fmt(Math.max(0.5,s.e-s.s))} seconds` : "static camera, subject anchored in frame"}`; }).join("\n");
+    const lines = [
+      `CORE: ${subj} — ${o.t.name} structure, ${D()}s total, ${SET.aspect} ${orient()}.${SET.mood.trim()?" Mood: "+SET.mood.trim()+".":""}`,
+      `IDENTITY LOCK: PRODUCT_01 = ${subj}; package shape, label and colors stay identical in every shot.`,
+      `WORLD: ${world}.`,
+      `MEDIUM: ${medium}. Avoid ${AVOID}.`,
+      `SOUND: ${SOUND_EN[SET.sound]||SOUND_EN.bgm}`,
+      `SHOT PLAN${framing?" ("+framing+")":""}:\n${shots}`,
+      `CONTINUITY: keep label facing camera, same key-light direction and palette, movement left to right across cuts.`
+    ];
+    if(SET.tool==="claudecode") lines.push(`BUILD WITH CODE: make this as a ${SET.aspect} motion-graphics video with HTML/CSS/JS, then render it to MP4. Interpret each camera move as a screen transform (zoom, pan, scale, slide) and each look as colors, background and type style. Use text, shapes, icons and simple charts instead of photoreal footage. One BGM track only.`);
+    if(SET.tool==="chatgpt") lines.push(`IMAGE WORKFLOW: first create one still image per beat in ${SET.aspect}, keeping PRODUCT_01 identical in every image (same shape, label, colors). Write each image prompt separately, then suggest the order and duration for editing them into a video.`);
+    if(SET.tool==="seedance") lines.splice(2,0,`REFERENCES: @image 1 = PRODUCT_01 front packshot; @video 1 = motion reference (optional). When extending, continue from the last frame of the previous clip.`);
+    if(o.schema) lines.push(`SCRIPT FORMAT: one row per beat with scene, narration, visual prompt, on-screen text, timing, regeneration notes.`);
+    return lines.join("\n");
+  }
+  function buildBrief(){
+    const o = orderParts(); if(!o.items.length) return "";
+    return JSON.stringify({
+      subject:SET.subj, tool:(TOOLS.find(t=>t.id===SET.tool)||{}).name, aspect_ratio:SET.aspect, total_duration_sec:D(), mood:SET.mood,
+      cards:o.items.map(i=>({code:i.code, category:i.cat, name:i.name, prompt:fillText(i.detail())})),
+      script_structure:{ name:o.t.name, beats:allocate(o.t,D()).map(x=>({beat:x.name, from_sec:x.s, to_sec:x.e})) },
+      sound_policy:SOUND_EN[SET.sound]||SOUND_EN.bgm,
+      references_youtube:o.items.flatMap(i=>(i.yt||[]).map(y=>y.url)),
+      prompt:buildOrderPrompt()
+    }, null, 2);
+  }
+  function renderOrder(){
+    const o = orderParts();
+    $("#orderCnt").innerHTML = o.items.length ? `주문서 · <b>${o.items.length}</b>개 담김 · ${esc(o.items.map(i=>i.code).join(" "))}` : `주문서 · <b>0</b>개 · 카드를 담아 보세요`;
+    if($("#drawer").hidden) return;
+    $("#olist").innerHTML = o.items.length ? o.items.map(i=>`<span class="oitem"><span class="code">${esc(i.code)}</span>${esc(i.name)}<button type="button" data-rm="${esc(i.key)}" aria-label="${esc(i.name)} 빼기">×</button></span>`).join("") : `<span class="note">아직 담은 카드가 없어요. 카드의 "+ 주문서에 담기"나 바로 쓰는 조합을 눌러 보세요.</span>`;
+    $("#otl").innerHTML = timelineHTML(allocate(o.t, D())) + `<p class="status">${esc(o.t.name)}${o.tplPicked?"":" (구조 카드를 담지 않아 기본값)"} · 권장 ${esc(o.t.len)} · 카메라 무빙 ${o.motions.length}개가 순서대로 배정됩니다</p>`;
+    const warn = SET.aspect==="9:16" ? o.motions.filter(m=>m.fit==="주의") : [];
+    if(warn.length) $("#otl").innerHTML += `<p class="status err">세로 9:16에서는 ${esc(warn.map(m=>m.name).join(", "))}이(가) 좁아 보일 수 있어요. 틸트 · 푸시인 · 오비트처럼 위아래나 앞뒤로 움직이는 무빙을 추천해요.</p>`;
+    if(o.motions.length > o.t.beats.length) $("#otl").innerHTML += `<p class="status err">카메라 무빙이 구조 단계(${o.t.beats.length}개)보다 많아서 뒤쪽 ${o.motions.length-o.t.beats.length}개는 쓰이지 않아요. 한 샷에는 무빙 하나가 기본이에요.</p>`;
+    $("#oprompt").textContent = buildOrderPrompt() || "카드를 담으면 여기에 합쳐진 프롬프트가 만들어집니다.";
+    const tool = TOOLS.find(t=>t.id===SET.tool) || TOOLS[0];
+    $("#otool").innerHTML = `<b>${esc(tool.name)}</b> · ${esc(tool.tip)}`;
+    const has = o.items.length > 0;
+    $("#copyOrder").disabled = !has; $("#copyBrief").disabled = !has;
+    $("#suggest").disabled = !has || !(o.motions.length || o.styles.length);
+    $("#suggest").textContent = sample ? "예시 영상 3개 제안받기" : "예시 영상 컨셉 만들기";
+    const links = [];
+    o.items.forEach(i => (i.yt||[]).forEach(y => links.push({href:y.url, label:y.title||i.name+" 저장 영상", tag:"저장됨"})));
+    if(o.motions[0] && o.styles[0]) links.push({href:ytSearch([o.motions[0].ytq,o.styles[0].ytq].filter(Boolean).map(q=>q.split(" ").slice(0,3).join(" ")).join(" ")+" shorts"), label:`${o.motions[0].name} × ${o.styles[0].name}`, tag:"조합 검색"});
+    o.items.filter(i=>i.ytq && i.cat!=="tpl").slice(0,5).forEach(i => links.push({href:ytSearch(i.ytq), label:i.code+" "+i.name, tag:"카드"}));
+    links.push({href:ytSearch((SET.subj||"제품")+" "+(o.t.id==="shorts"?"쇼츠 광고":o.t.name)), label:(SET.subj||"제품")+" · "+o.t.name+" 사례", tag:"주제"});
+    $("#similar").innerHTML = links.map(l=>`<a href="${esc(l.href)}" target="_blank" rel="noopener"><span>${esc(l.label)}</span><span>${esc(l.tag)} ↗</span></a>`).join("");
+  }
+  function openOrder(){ $("#drawer").hidden = false; $("#scrim").hidden = false; renderOrder(); $("#closeOrder").focus(); }
+  function closeOrder(){ $("#drawer").hidden = true; $("#scrim").hidden = true; $("#openOrder").focus(); }
+  $("#openOrder").addEventListener("click", openOrder);
+  $("#closeOrder").addEventListener("click", closeOrder);
+  $("#scrim").addEventListener("click", closeOrder);
+  document.addEventListener("keydown", e => { if(e.key==="Escape" && !$("#drawer").hidden) closeOrder(); });
+  $("#clearOrder").addEventListener("click", () => { state.order = []; saveOrder(); renderSections(); $("#concepts").innerHTML=""; $("#sugStatus").textContent=""; });
+  $("#olist").addEventListener("click", e => { const b=e.target.closest("[data-rm]"); if(b) toggleOrder(b.dataset.rm); });
+  $("#copyOrder").addEventListener("click", () => { const p=buildOrderPrompt(); p && copy(p, $("#oprompt")); });
+  $("#copyBrief").addEventListener("click", () => { const b=buildBrief(); b && copy(b, $("#oprompt")); });
+
+  function parseTimes(shots){
+    let ok = true;
+    const segs = shots.map((sh,i)=>{ const mm = String(sh.time||"").match(/(\d+(?:\.\d+)?)\s*[–\-~]\s*(\d+(?:\.\d+)?)/); if(!mm){ ok=false; return null; } return {name:sh.desc||"", s:+mm[1], e:+mm[2], w:Math.max(0.2,(+mm[2])-(+mm[1])), k:i%6}; });
+    return ok ? segs : shots.map((sh,i)=>({name:sh.desc||"", s:0, e:0, w:1, k:i%6}));
+  }
+  function renderConcepts(list){
+    $("#concepts").innerHTML = list.map((c,i)=>`<div class="concept">
+      <h4>${esc(c.title)}</h4>
+      ${c.hook?`<div class="hook">${esc(c.hook)}</div>`:""}
+      ${timelineHTML(parseTimes(c.shots||[]), true)}
+      <ul class="shots">${(c.shots||[]).map(sh=>`<li><span class="tc">${esc(sh.time)}</span><span>${esc(sh.desc)}${sh.camera?`<small>카메라 · ${esc(sh.camera)}</small>`:""}${sh.vo?`<small>내레이션 · ${esc(sh.vo)}</small>`:""}${sh.text?`<small>화면 텍스트 · ${esc(sh.text)}</small>`:""}</span></li>`).join("")}</ul>
+      ${c.prompt_en?`<pre class="dprompt">${esc(c.prompt_en)}</pre>`:""}
+      ${c.model_tip?`<div class="status">${esc(c.model_tip)}</div>`:""}
+      <div class="btnrow">
+        ${c.prompt_en?`<button type="button" class="btn small" data-copy="${i}">이 프롬프트 복사</button>`:""}
+        ${(c.yt_queries||[]).slice(0,3).map(q=>`<a class="btn small" href="${ytSearch(q)}" target="_blank" rel="noopener">▶ ${esc(q)}</a>`).join("")}
+      </div></div>`).join("");
+    $("#concepts").querySelectorAll("[data-copy]").forEach(b=>b.addEventListener("click",()=>copy(list[+b.dataset.copy].prompt_en)));
+  }
+  function templateConcept(){
+    const o = orderParts(); const segs = allocate(o.t, D());
+    return [{ title:`${o.styles[0]?o.styles[0].name+" 무드 · ":""}${o.t.name}`, hook:`담은 카드를 그대로 이어 붙인 기본 구성입니다.`,
+      shots: segs.map((x,j)=>{ const m = o.motions.length ? o.motions[Math.min(j,o.motions.length-1)] : null; return {time:`${fmt(x.s)}–${fmt(x.e)}s`, desc:x.name, camera: m ? m.name : "고정"}; }),
+      prompt_en: buildOrderPrompt(), model_tip:(TOOLS.find(t=>t.id===SET.tool)||{}).tip||"", yt_queries:o.items.map(i=>i.ytq).filter(Boolean).slice(0,3) }];
+  }
+  $("#suggest").addEventListener("click", async () => {
+    const o = orderParts(); if(!o.items.length) return;
+    const st = $("#sugStatus"); st.className = "status";
+    if(!sample){ renderConcepts(templateConcept()); st.textContent = "기본 템플릿으로 만든 컨셉이에요."; return; }
+    const segs = allocate(o.t, D()); const tool = TOOLS.find(t=>t.id===SET.tool) || TOOLS[0];
+    const btn = $("#suggest"); btn.disabled = true; st.textContent = "컨셉을 만드는 중입니다…";
+    const input = `너는 숏폼 광고 영상 감독이다. 아래 주문서로 AI 영상 생성에 바로 쓸 예시 영상 컨셉 3개를 제안해라.
+
+주제/제품: ${SET.subj}
+도구: ${tool.name} (${tool.tip})
+화면비: ${SET.aspect}, 전체 길이: ${D()}초${SET.mood.trim()?", 분위기: "+SET.mood.trim():""}
+스크립트 구조: ${o.t.name} — ${segs.map(x=>`${x.name}(${fmt(x.s)}–${fmt(x.e)}s)`).join(" → ")}
+담은 카드:
+${o.items.map(i=>`- ${i.code} ${i.name} [${i.cat}]: ${fillText(i.simple())}`).join("\n")}
+
+규칙:
+- 3개 컨셉은 서로 다른 목적(시선 끄는 훅, 정보 전달, 감성·신뢰)으로 구분하되 모두 스크립트 구조의 단계 순서를 따른다.
+- 담은 카메라 무빙과 룩을 실제 샷에 배정해 쓴다.
+- shots는 단계에 맞춰 3~6개, time은 "0–2s" 형식, 마지막 샷은 ${D()}s에서 끝난다.
+- 각 shot: desc(화면 내용), camera(카메라 움직임·샷 크기), vo(내레이션, 없으면 빈 문자열), text(짧은 화면 자막) — 모두 한국어.
+- 식품 · 화장품 · 건강 관련 제품이라면 효능을 과장하거나 의학적 효과를 단정하지 않는다.
+- 제품 라벨·모양이 샷마다 같도록 하고, 사운드는 "${SOUND_KO[SET.sound]||SOUND_KO.bgm}" 전제로 쓴다.
+- prompt_en: 첫 샷용 영문 프롬프트 한 단락(60~110단어). 피해야 할 오류(뭉개진 손, 녹아내리는 제품, 깨진 글자)를 명시.
+- yt_queries: 유튜브에서 비슷한 영상을 찾을 검색어 2~3개. URL은 절대 만들지 마라.
+- model_tip: 선택한 도구에서 이 컨셉을 만드는 요령 한 문장.
+
+JSON만 출력: {"concepts":[{"title":"","hook":"","shots":[{"time":"","desc":"","camera":"","vo":"","text":""}],"prompt_en":"","model_tip":"","yt_queries":[""]}]}`;
+    try{
+      const out = await sample.json(input, { modelTier:"default" });
+      const list = (out && Array.isArray(out.concepts)) ? out.concepts : [];
+      if(!list.length) throw {code:"empty"};
+      renderConcepts(list); st.textContent = "";
+    }catch(err){
+      if(err && err.code==="not_granted"){ sample = null; }
+      renderConcepts(templateConcept());
+      st.className = "status err";
+      st.textContent = err && err.code==="rate_limited" ? "요청이 많아 잠시 뒤에 다시 시도해 주세요. 우선 기본 구성을 보여 드려요." : "AI 제안을 받지 못해 기본 구성을 보여 드려요.";
+    }finally{ renderOrder(); }
+  });
+
+
+  /* ================= quick builder (wizard) ================= */
+  const WZ_STEPS = ["용도","도구","기본 정보","구조","카메라 무빙","룩","마무리","완성"];
+  const WZ_USE = {"제품 소개":["제품 소개","제품 하나를 깔끔하게 보여 주기"],"훅":["첫 3초 훅","스크롤을 멈추게 하는 시작"],"정보형":["정보 · 설명","팁 · 비교 · 원리 전달"],"음식·질감":["음식 · 질감","먹음직스러운 질감과 순간"],"감성·브랜드":["감성 · 브랜드","분위기로 기억되게"],"후기·신뢰":["후기 · 신뢰","실제 사용 후기로 믿음 주기"],"스톱모션":["스톱모션","점토 · 펠트 · 종이 질감 애니메이션"]};
+  const WZ_TPL = {"제품 소개":["shorts","ad15","demo","marketing"],"훅":["shorts","drama","ad15"],"정보형":["explainer","shorts","tutorial","demo"],"음식·질감":["shorts","ad15","marketing"],"감성·브랜드":["ad15","marketing","drama"],"후기·신뢰":["testimonial","shorts","case"],"스톱모션":["ad15","shorts","marketing"]};
+  const WZ_TOOLREC = {"제품 소개":["chatgpt","kling"],"훅":["kling","chatgpt"],"정보형":["claudecode"],"음식·질감":["kling"],"감성·브랜드":["chatgpt","kling"],"후기·신뢰":["klingmc"],"스톱모션":["flick"]};
+  const WZ_TOOLD = {chatgpt:"단계마다 이미지를 만들어 이어 붙이기. 무료로 시작", claudecode:"글자 · 도형 · 그래프가 움직이는 모션그래픽을 코드로", kling:"제품 사진을 첫 프레임으로 넣어 영상으로", klingmc:"참고 영상의 움직임을 그대로 따라 하기", klingv2v:"찍어 둔 영상에 룩만 새로 입히기", h3:"레퍼런스 이미지로 샷마다 영상 만들기", seedance:"이미지 · 영상을 번호로 묶어 이어 만들기", flick:"점토 · 펠트 · 종이 스톱모션 전용", genspark:"첫 프레임 이미지부터 만들고 영상으로"};
+  const WZ_DUR = {"제품 소개":"15","훅":"15","정보형":"30","음식·질감":"15","감성·브랜드":"15","후기·신뢰":"30","스톱모션":"15"};
+  const WZ_ASPECT = [["9:16","쇼츠 · 릴스 · 틱톡"],["16:9","유튜브 가로"],["1:1","피드 정사각"],["4:5","인스타 피드"]];
+  const WZ_BLANK = {step:0, max:0, use:"", tpl:"", motions:[], style:"", light:"", allM:false, allT:false};
+  const W = Object.assign({}, WZ_BLANK, (()=>{ try{ return JSON.parse(store.get("wizard")||"{}")||{}; }catch(e){ return {}; } })());
+  if(!W.use){ W.step = 0; W.max = 0; }
+  let wzDirty = false;
+  const wzSave = () => store.set("wizard", JSON.stringify(W));
+  function wzSet(k, v){ SET[k] = v; const el = $("#s_"+k); if(el) el.value = v; store.set("settings", JSON.stringify(SET)); wzDirty = true; }
+  const wzTpl = () => TEMPLATES.find(t=>t.id===W.tpl) || TEMPLATES[0];
+  const wzKeys = () => [W.tpl && "tpl:"+W.tpl, ...W.motions, W.style, W.light].filter(k => k && itemOf(k));
+  const wzVert = () => SET.aspect==="9:16" || SET.aspect==="4:5";
+  const rec = on => on ? `<span class="rec">추천</span>` : "";
+  function wzGo(n){
+    W.step = n; W.max = Math.max(W.max, n); wzSave();
+    if(wzDirty){ wzDirty = false; renderSections(); renderOrder(); }
+    renderWizard();
+    const el = $("#wiz"); if(el && el.getBoundingClientRect().top < 0) el.scrollIntoView({block:"start"});
+  }
+  function wzMotions(){
+    const vert = wzVert();
+    const score = i => (i.uses.includes(W.use)?2:0) + (vert ? (i.fit==="좋음"?1:i.fit==="주의"?-3:0) : 0);
+    return ITEMS.filter(i=>i.cat==="motion").map((i,ix)=>({i,ix,s:score(i)})).sort((a,b)=>b.s-a.s||a.ix-b.ix).map(o=>o.i);
+  }
+  const nav = (back, next) => `<div class="wiz-nav">${back?`<button type="button" class="btn" data-w="go" data-v="${W.step-1}">← 이전</button>`:"<span></span>"}${next||""}</div>`;
+  function wzStepBody(){
+    const t = wzTpl();
+    switch(W.step){
+      case 0: return `<p class="wiz-q">무엇을 만들까요?</p><p class="wiz-sub">고르면 다음 단계부터 어울리는 도구와 카드를 먼저 추천해요. 뭘 만들지 막막하면 <a href="radar/">오늘의 터진 쇼츠</a>에서 공식부터 골라 오세요.</p>
+        <div class="wiz-opts">${USES.map(u=>`<button type="button" class="wopt" data-w="use" data-v="${esc(u)}" aria-pressed="${W.use===u}"><b>${esc(WZ_USE[u][0])}</b><span class="d">${esc(WZ_USE[u][1])}</span></button>`).join("")}</div>`;
+      case 1: { const r = WZ_TOOLREC[W.use]||[];
+        return `<p class="wiz-q">어떤 도구로 만들까요?</p><p class="wiz-sub">도구마다 프롬프트 끝에 붙는 작업 방법이 달라져요. 구독 중인 게 없다면 ChatGPT부터 시작해 보세요.</p>` +
+        TOOL_GROUPS.map(([g,label])=>`<p class="wiz-grp">${esc(label)}</p><div class="wiz-opts">${TOOLS.filter(x=>x.g===g).map(x=>`<button type="button" class="wopt" data-w="tool" data-v="${x.id}" aria-pressed="${W.max>1&&SET.tool===x.id}">${rec(r.includes(x.id))}<b>${esc(x.name)}</b><span class="d">${esc(WZ_TOOLD[x.id]||"")}</span></button>`).join("")}</div>`).join("") + nav(true); }
+      case 2: return `<p class="wiz-q">무엇을, 어떤 화면으로 만들까요?</p><p class="wiz-sub">제품 이름은 비워 둬도 돼요. 프롬프트에 [제품]으로 남겨 두면 나중에 바꿔 넣을 수 있어요.</p>
+        <label class="wiz-label">제품 · 주제<input id="w_subj" value="${esc(SET.subj)}" placeholder="예: 수제 쿠키, 무선 이어폰, 동네 꽃집" autocomplete="off"></label>
+        <span class="lab">화면비</span><div class="wiz-row">${WZ_ASPECT.map(([a,l])=>`<button type="button" class="chip" data-w="aspect" data-v="${a}" aria-pressed="${SET.aspect===a}">${a}<small>${esc(l)}</small></button>`).join("")}</div>
+        <span class="lab">전체 길이</span><div class="wiz-row">${["8","15","30","45","60"].map(d=>`<button type="button" class="chip" data-w="dur" data-v="${d}" aria-pressed="${String(SET.dur)===d}">${d}초${d===WZ_DUR[W.use]?"<small>추천</small>":""}</button>`).join("")}</div>` +
+        nav(true, `<span style="display:flex;gap:6px;flex-wrap:wrap">${W.max>=7?`<button type="button" class="btn" data-w="go" data-v="7">완성 바로 보기</button>`:""}<button type="button" class="btn primary" data-w="go" data-v="3">다음 →</button></span>`);
+      case 3: { const r = WZ_TPL[W.use]||["shorts"];
+        const list = (W.allT ? r.concat(TEMPLATES.filter(x=>!x.schema && !r.includes(x.id)).map(x=>x.id)) : r).map(id=>TEMPLATES.find(x=>x.id===id)).filter(Boolean);
+        return `<p class="wiz-q">어떤 흐름으로 보여 줄까요?</p><p class="wiz-sub">${D()}초를 단계별로 나눈 시간이에요. 단계마다 카메라 무빙을 하나씩 배정하게 돼요.</p>
+        <div class="wiz-opts wide">${list.map((x,i)=>`<button type="button" class="wopt" data-w="tpl" data-v="${x.id}" aria-pressed="${W.tpl===x.id}">${rec(i===0)}<b>${esc(x.name)}</b><span class="d">${esc(x.when)}</span>${timelineHTML(allocate(x, D()), true)}<span class="d">${esc(x.beats.map(b=>b[0]).join(" → "))} · 권장 ${esc(x.len)}</span></button>`).join("")}</div>` +
+        nav(true, `<button type="button" class="btn small ghost" data-w="allT">${W.allT?"추천 구조만 보기":"다른 구조도 보기"}</button>`); }
+      case 4: { const n = t.beats.length, segs = allocate(t, D()), ms = W.motions.map(itemOf).filter(Boolean);
+        const all = wzMotions(); const shown = W.allM ? all : all.filter((i,ix)=>ix<8 || W.motions.includes(i.key));
+        return `<p class="wiz-q">장면마다 카메라를 어떻게 움직일까요?</p><p class="wiz-sub">${esc(t.name)} 구조는 ${n}단계예요. 고른 순서대로 단계에 들어가고, 최대 ${n}개까지 고를 수 있어요.${wzVert()?" 세로 화면에 잘 맞는 무빙을 앞에 놓았어요.":""}</p>
+        <ol class="wiz-map">${segs.map((s,j)=>{ const m = ms.length ? ms[Math.min(j, ms.length-1)] : null;
+          return `<li><span class="tc">${fmt(s.s)}–${fmt(s.e)}s</span><b>${esc(s.name)}</b><span class="m${m&&j<ms.length?" on":""}">${m ? (j<ms.length ? esc(m.code+" "+m.name) : esc(m.name)+" 이어서") : "고정 카메라"}</span></li>`; }).join("")}</ol>
+        <div class="wiz-row"><button type="button" class="btn small" data-w="autoM">추천으로 채우기</button>${ms.length?`<button type="button" class="btn small ghost" data-w="clearM">비우기</button>`:""}</div>
+        <div class="wiz-opts wide">${shown.map(i=>{ const k = W.motions.indexOf(i.key);
+          return `<button type="button" class="wopt" data-w="mv" data-v="${esc(i.key)}" aria-pressed="${k>=0}">${k>=0?`<span class="num">${k+1}</span>`:""}${rec(i.uses.includes(W.use))}<span class="prev">${i.visual()}</span><b>${esc(i.code)} ${esc(i.name)}</b><span class="d">${esc(i.desc||"")}</span>${i.fit?`<span class="fit fit-${i.fit==="좋음"?"good":i.fit==="주의"?"warn":"mid"}">세로 9:16 · <b>${esc(i.fit)}</b></span>`:""}</button>`; }).join("")}</div>` +
+        nav(true, `<span style="display:flex;gap:6px;flex-wrap:wrap"><button type="button" class="btn small ghost" data-w="allM">${W.allM?"추천만 보기":`무빙 ${all.length}개 전부 보기`}</button><button type="button" class="btn primary" data-w="go" data-v="5">${ms.length?"다음 →":"고정 카메라로 다음 →"}</button></span>`); }
+      case 5: { const st = ITEMS.filter(i=>i.cat==="style").map((i,ix)=>({i,ix})).sort((a,b)=>(b.i.uses.includes(W.use)-a.i.uses.includes(W.use))||a.ix-b.ix).map(o=>o.i);
+        return `<p class="wiz-q">어떤 느낌으로 찍을까요?</p><p class="wiz-sub">색감, 재질, 사실감을 정해요. 모든 장면에 같은 룩이 들어가 컷끼리 자연스럽게 이어져요.</p>
+        <div class="wiz-opts wide"><button type="button" class="wopt" data-w="style" data-v="" aria-pressed="${W.max>5&&!W.style}"><b>정하지 않기</b><span class="d">제품 원래 색을 살린 깔끔한 광고 룩으로 둬요.</span></button>${st.map(i=>`<button type="button" class="wopt" data-w="style" data-v="${esc(i.key)}" aria-pressed="${W.style===i.key}">${rec(i.uses.includes(W.use))}<span class="prev pad">${i.visual()}</span><b>${esc(i.code)} ${esc(i.name)}</b><span class="d">${esc(i.desc||"")}</span></button>`).join("")}</div>` + nav(true); }
+      case 6: return `<p class="wiz-q">마지막으로 빛과 소리만 정해요</p><p class="wiz-sub">빛 대비가 클수록 그림자가 깊고 고급스러워져요. 사운드는 프롬프트의 SOUND 줄에 들어가요.</p>
+        <span class="lab">조명 대비</span><div class="wiz-row"><button type="button" class="chip" data-w="light" data-v="" aria-pressed="${!W.light}">정하지 않기</button>${LIGHTS.map(l=>`<button type="button" class="chip" data-w="light" data-v="light:${l.id}" aria-pressed="${W.light==="light:"+l.id}">${esc(l.r)} ${esc(l.ko)}<small>${esc(l.use)}</small></button>`).join("")}</div>
+        <span class="lab">사운드</span><div class="wiz-row">${Object.entries(SOUND_KO).map(([k,v])=>`<button type="button" class="chip" data-w="sound" data-v="${k}" aria-pressed="${SET.sound===k}">${esc(v)}</button>`).join("")}</div>
+        <label class="wiz-label">분위기 · 추가 요청 (선택)<input id="w_mood" value="${esc(SET.mood)}" placeholder="예: 따뜻하고 차분하게, 초록 포인트 컬러" autocomplete="off"></label>` +
+        nav(true, `<button type="button" class="btn primary" data-w="go" data-v="7">프롬프트 만들기 →</button>`);
+      default: { const keys = wzKeys(), p = buildOrderPrompt(keys), tool = TOOLS.find(x=>x.id===SET.tool) || TOOLS[0];
+        const ms = W.motions.map(itemOf).filter(Boolean), sty = itemOf(W.style);
+        const yq = [ms[0] && ms[0].ytq, sty && sty.ytq].filter(Boolean).map(q=>q.split(" ").slice(0,3).join(" ")).join(" ") || ((SET.subj||"제품")+" 쇼츠 광고");
+        return `<p class="wiz-q">프롬프트가 완성됐어요</p><p class="wiz-sub">${esc(tool.name)}에 그대로 붙여 넣으세요. 카드를 더하거나 빼고 싶으면 주문서로 보내 다듬을 수 있어요.</p>
+        <div class="wiz-pick">${keys.map(itemOf).map(i=>`<span class="code" title="${esc(i.name)}">${esc(i.code)} ${esc(i.name)}</span>`).join("")}<span class="code">${esc(SET.aspect)} · ${D()}초 · ${esc(SOUND_KO[SET.sound]||"")}</span></div>
+        ${timelineHTML(allocate(t, D()))}
+        <pre class="dprompt" id="w_prompt" style="margin-top:10px">${esc(p)}</pre>
+        <div class="btnrow"><button type="button" class="btn primary" data-w="copy">프롬프트 복사</button><button type="button" class="btn" data-w="toOrder">주문서로 보내 다듬기</button><a class="btn" href="${ytSearch(yq+" shorts")}" target="_blank" rel="noopener">비슷한 영상 ↗</a></div>
+        <div class="tooltip" style="margin-top:10px"><b>${esc(tool.name)}</b> · ${esc(tool.tip)}</div>` +
+        nav(true, `<button type="button" class="btn ghost" data-w="reset">처음부터 다시</button>`); }
+    }
+  }
+  function wzSummary(n){
+    if(n>=W.max && n!==W.step) return "";
+    const t = TEMPLATES.find(x=>x.id===W.tpl), tool = TOOLS.find(x=>x.id===SET.tool);
+    return [W.use && WZ_USE[W.use][0], tool && tool.name.split(" (")[0], SET.aspect+" · "+D()+"초", t && t.name, W.motions.length ? W.motions.length+"개" : "고정", W.style ? (itemOf(W.style)||{}).code : "기본", W.light ? (itemOf(W.light)||{}).code : "기본", ""][n] || "";
+  }
+  function renderWizard(){
+    if(!$("#wizBody")) return;
+    $("#wizSteps").innerHTML = WZ_STEPS.map((l,n)=>`<button type="button" data-w="go" data-v="${n}" ${n===W.step?'aria-current="step"':""} class="${n<W.max||(n<=W.max&&n!==W.step&&W.max===7)?"done":""}" ${n>W.max?"disabled":""} title="${esc(wzSummary(n))}"><small>${n+1}</small>${esc(l)}</button>`).join("");
+    $("#wizBody").innerHTML = wzStepBody();
+    applyPause();
+  }
+  $("#wiz").addEventListener("click", e => {
+    const b = e.target.closest("[data-w]"); if(!b || b.disabled) return;
+    const a = b.dataset.w, v = b.dataset.v;
+    if(a==="go"){ wzGo(Math.max(0, Math.min(7, +v))); return; }
+    if(a==="use"){
+      if(W.use !== v){ Object.assign(W, {use:v, tpl:(WZ_TPL[v]||["shorts"])[0], motions:[], style:"", light:"", max:0, allM:false, allT:false}); wzSet("dur", WZ_DUR[v]||"15"); if(v==="스톱모션") wzSet("tool","flick"); }
+      wzGo(1); return;
+    }
+    if(a==="tool"){ wzSet("tool", v); wzGo(2); return; }
+    if(a==="aspect"||a==="dur"||a==="sound"){ wzSet(a, v); wzSave(); renderWizard(); return; }
+    if(a==="tpl"){ W.tpl = v; const n = wzTpl().beats.length; W.motions = W.motions.slice(0, n); wzGo(4); return; }
+    if(a==="allT"){ W.allT = !W.allT; wzSave(); renderWizard(); return; }
+    if(a==="allM"){ W.allM = !W.allM; wzSave(); renderWizard(); return; }
+    if(a==="mv"){
+      const n = wzTpl().beats.length, k = W.motions.indexOf(v);
+      if(k>=0) W.motions.splice(k,1);
+      else if(W.motions.length < n) W.motions.push(v);
+      else { toast(`${n}단계 구조라 ${n}개까지 고를 수 있어요. 번호를 눌러 하나 빼 주세요`); return; }
+      wzSave(); renderWizard(); return;
+    }
+    if(a==="autoM"){ W.motions = wzMotions().slice(0, wzTpl().beats.length).map(i=>i.key); wzSave(); renderWizard(); return; }
+    if(a==="clearM"){ W.motions = []; wzSave(); renderWizard(); return; }
+    if(a==="style"){ W.style = v; wzGo(6); return; }
+    if(a==="light"){ W.light = v; wzSave(); renderWizard(); return; }
+    if(a==="copy"){ const p = buildOrderPrompt(wzKeys()); p && copy(p, $("#w_prompt")); return; }
+    if(a==="toOrder"){ state.order = wzKeys(); saveOrder(); renderSections(); openOrder(); toast("주문서를 이 조합으로 바꿨어요"); return; }
+    if(a==="reset"){ Object.assign(W, WZ_BLANK, {motions:[]}); wzGo(0); return; }
+  });
+  $("#wiz").addEventListener("input", e => {
+    if(e.target.id==="w_subj") wzSet("subj", e.target.value);
+    if(e.target.id==="w_mood") wzSet("mood", e.target.value);
+  });
+  $("#wiz").addEventListener("keydown", e => { if(e.key==="Enter" && e.target.id==="w_subj"){ e.preventDefault(); wzGo(3); } });
+
+  function wzPreset(){
+    const h = location.hash||""; if(!h.startsWith("#make=")) return;
+    let p; try{ p = JSON.parse(decodeURIComponent(h.slice(6))); }catch(e){ return; }
+    if(!p || !USES.includes(p.use)) return;
+    const okTpl = TEMPLATES.some(t=>t.id===p.tpl && !t.schema);
+    Object.assign(W, {use:p.use, tpl: okTpl ? p.tpl : (WZ_TPL[p.use]||["shorts"])[0],
+      motions:(p.m||[]).map(c=>"ref:"+c).filter(k=>itemOf(k)), style: p.style && itemOf("ref:"+p.style) ? "ref:"+p.style : "",
+      light: p.light && itemOf("light:"+p.light) ? "light:"+p.light : "", step:2, max:7, allM:false, allT:false});
+    W.motions = W.motions.slice(0, wzTpl().beats.length);
+    if(p.kind==="long"){ wzSet("aspect","16:9"); wzSet("dur","60"); } else { wzSet("aspect","9:16"); wzSet("dur","15"); }
+    wzSave(); wzDirty=false; renderSections(); renderOrder(); renderWizard();
+    try{ history.replaceState(null,"",location.pathname+location.search+"#wiz"); }catch(e){}
+    setTimeout(()=>{ const el=$("#wiz"); if(el) el.scrollIntoView({block:"start"}); toast("터진 영상 공식을 불러왔어요. 제품 이름만 넣고 완성으로 가세요"); }, 60);
+  }
+  $("#sections").addEventListener("click", e => { const b=e.target.closest("[data-more]"); if(!b) return; state.more[b.dataset.more]=true; renderSections(); });
+  /* ================= formula / start ================= */
+  $("#layers").innerHTML = LAYERS.map((l,i)=>`<div class="layer" style="--c:var(${l[4]})"><span class="n">${i+1}</span><span><b>${esc(l[1])}</b> <span class="lab">${l[0]}</span><br>${esc(l[2])}</span><span class="from">채우는 카드 · ${esc(l[3])}</span></div>`).join("");
+  $("#rgroups").innerHTML = RULES.map(g=>`<div class="rgroup"><h3>${esc(g.t)}</h3><ul>${g.items.map(([code,ko,d])=>`<li><b>${esc(ko)}</b> — ${esc(d)}<code>${esc(code)}</code></li>`).join("")}</ul></div>`).join("");
+  $("#recipes").innerHTML = RECIPES.map(([name,flow])=>`<div class="recipe"><b>${esc(name)}</b><div class="flow">${flow.map(f=>`<span>${esc(f)}</span>`).join("<i>→</i>")}</div></div>`).join("");
+  $("#toolgrid").innerHTML = TOOL_GROUPS.map(([g,label])=>`<div class="setgrp-head" style="grid-column:1/-1"><h3>${esc(label)}</h3></div>`+TOOLS.filter(t=>t.g===g).map(t=>`<div class="tool"><b>${esc(t.name)}</b><span>${esc(t.tip)}</span>${t.id==="flick"?`<span class="src">2026년 10월 기준 매주 100크레딧 무료 · <a href="https://flick.art/ko/tools/stop-motion" target="_blank" rel="noopener">flick.art</a></span>`:""}</div>`).join("")).join("");
+
+  $("#copyAiAsk").addEventListener("click", () => copy($("#aiAsk").textContent.replace("[제품]", SET.subj.trim() || "[제품]"), $("#aiAsk")));
+
+  /* ================= boot ================= */
+  function renderAll(){ $("#toggleAdd").hidden = !db; if(!db) addform.hidden = true; rebuild(); renderChips(); renderSets(); renderSections(); renderOrder(); renderWizard(); }
+  renderAll();
+
+  const embedded = document.getElementById("refsData");
+  if(embedded){
+    try{ state.refs = JSON.parse(embedded.textContent) || []; }catch(e){ state.refs = []; }
+    state.loaded = true; renderAll();
+    wzPreset();
+    const mAdd = (location.hash||"").match(/^#add-([a-z]\d{2})$/i);
+    if(mAdd){ const it = ITEMS.find(x=>x.code.toLowerCase()===mAdd[1].toLowerCase()); if(it){ if(!state.order.includes(it.key)) state.order.push(it.key); saveOrder(); renderSections(); openOrder(); toast(it.code+" "+it.name+" 카드를 담았어요"); } }
+  } else if(window.claude && typeof window.claude.use === "function"){
+    window.claude.use("db").then(d => {
+      db = d;
+      if(!db){ state.loaded = true; renderAll(); return; }
+      db.collection("refs").orderBy("createdAt","asc").onSnapshot(snap => {
+        state.refs = snap.docs.map(x => Object.assign({id:x.id}, x.data()));
+        state.order = state.order.filter(k => !k.startsWith("ref:") || state.refs.some(r=>"ref:"+r.id===k));
+        state.loaded = true; renderAll();
+      }, () => { state.loaded = true; renderAll(); });
+    });
+    window.claude.use("sample").then(s => { sample = s; renderOrder(); });
+  } else { state.loaded = true; renderAll(); }
+})();
+</script>
+
+<script>
+(function(){document.querySelectorAll(".adslot").forEach(function(box){var ins=box.querySelector("ins");
+ if(!ins||/SLOT_|0000000000000000/.test(ins.getAttribute("data-ad-slot")+ins.getAttribute("data-ad-client")))return;
+ box.hidden=false;try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}});})();
+</script>
+</body>
+</html>
