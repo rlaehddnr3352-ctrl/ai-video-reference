@@ -4,6 +4,7 @@ name: radar-collect
 on:
   schedule:
     - cron: "30 20 * * *"
+    - cron: "7 21 * * *"   # 예비 실행(첫 실행이 빠졌을 때만 수집)
   workflow_dispatch:
 permissions:
   contents: write
@@ -18,7 +19,12 @@ jobs:
       - name: collect
         env:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
-        run: python3 radar/collect.py radar/_cand.json
+        run: |
+          today=$(TZ=Asia/Seoul date +%F)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ -f radar/_cand.json ] && python3 -c "import json,sys,datetime as d;g=json.load(open('radar/_cand.json'))['generated'];t=d.datetime.fromisoformat(g).astimezone(d.timezone(d.timedelta(hours=9))).strftime('%Y-%m-%d');sys.exit(0 if t=='$today' else 1)"; then
+            echo "오늘 후보가 이미 있어요. 건너뜀"; exit 0
+          fi
+          python3 radar/collect.py radar/_cand.json
       - name: commit
         run: |
           git config user.name "radar-bot"
