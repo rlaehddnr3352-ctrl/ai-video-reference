@@ -158,6 +158,14 @@ dialog.rd-dlg::backdrop{background:rgba(10,12,16,.6)}
 <script>
 (function(){
   const DATA_URL = "data.json", ARCHIVE = "archive/";
+  // 매일 갱신 데이터는 깃허브에서 바로 읽어요(사이트 재배포 없이 갱신). 실패하면 사이트에 있는 사본을 씁니다.
+  const GH = "https://raw.githubusercontent.com/rlaehddnr3352-ctrl/ai-video-reference/main/radar/";
+  async function getJSON(path){
+    for(const base of [GH, ""]){
+      try{ const r = await fetch(base+path, {cache:"no-cache"}); if(r.ok) return await r.json(); }catch(e){}
+    }
+    throw new Error("load fail");
+  }
   const $ = s => document.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const TPL = {shorts:["T01","틱톡 · 릴스 · 쇼츠"],ad15:["T02","광고 심리 구조"],drama:["T03","숏드라마 훅"],marketing:["T04","마케팅"],testimonial:["T07","고객 후기"],case:["T08","사례 연구"],explainer:["T09","설명 영상"],youtube:["T10","유튜브 롱폼"],demo:["T11","제품 데모"],tutorial:["T12","튜토리얼"]};
@@ -242,7 +250,7 @@ dialog.rd-dlg::backdrop{background:rgba(10,12,16,.6)}
   $("#rdSort").addEventListener("change", render); $("#rdSmall").addEventListener("change", render);
 
   async function dates(){
-    try{ const r = await fetch(ARCHIVE+"index.json", {cache:"no-cache"}); const j = await r.json(); return Array.isArray(j) ? j : []; }catch(e){ return []; }
+    try{ const j = await getJSON(ARCHIVE+"index.json"); return Array.isArray(j) ? j : []; }catch(e){ return []; }
   }
   function show(d){
     DATA = d;
@@ -252,7 +260,7 @@ dialog.rd-dlg::backdrop{background:rgba(10,12,16,.6)}
     render();
   }
   async function load(date){
-    try{ const r = await fetch(date ? `${ARCHIVE}${date}.json` : DATA_URL, {cache:"no-cache"}); show(await r.json()); }
+    try{ show(await getJSON(date ? `${ARCHIVE}${date}.json` : DATA_URL)); }
     catch(e){ $("#rdNote").textContent = "데이터를 불러오지 못했어요. 잠시 뒤 새로고침해 주세요."; }
   }
   load().then(async () => {
