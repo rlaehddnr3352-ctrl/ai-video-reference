@@ -256,6 +256,138 @@
    "url": "https://ai-video-reference-kr.netlify.app/card/t22.html"
   },
   {
+   "code": "H01",
+   "category": "hook_script_line",
+   "name": "질문형 훅",
+   "name_en": "○○, 아직도 □□ 하세요?",
+   "description": "내 얘기 같은 질문에 '나도?' 하고 멈춰요.",
+   "when_to_use": "예: 설거지, 아직도 손으로 다 하세요?",
+   "prompt_simple": "첫 문장: ○○, 아직도 □□ 하세요?",
+   "prompt_detail": "Hook line (first 0–3s, on-screen text + voice): \"○○, 아직도 □□ 하세요?\"\nExample: \"설거지, 아직도 손으로 다 하세요?\"\nFill ○○ with the product or topic and □□ with the viewer's situation. Keep it under 20 Korean characters.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/h01.html"
+  },
+  {
+   "code": "H02",
+   "category": "hook_script_line",
+   "name": "숫자 · 비율형 훅",
+   "name_en": "□□ 90%가 모르는 ○○",
+   "description": "끝까지 보면 얻는 게 분명해져요. 숫자는 근거가 있을 때만 쓰세요.",
+   "when_to_use": "예: 자취생 90%가 모르는 냉동밥 꿀팁",
+   "prompt_simple": "첫 문장: □□ 90%가 모르는 ○○",
+   "prompt_detail": "Hook line (first 0–3s, on-screen text + voice): \"□□ 90%가 모르는 ○○\"\nExample: \"자취생 90%가 모르는 냉동밥 꿀팁\"\nFill ○○ with the product or topic and □□ with the viewer's situation. Keep it under 20 Korean characters.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/h02.html"
+  },
+  {
+   "code": "H03",
+   "category": "hook_script_line",
+   "name": "결과 먼저형 훅",
+   "name_en": "이렇게 되는 데 □초 걸렸어요",
+   "description": "결과를 먼저 보여 주면 과정이 궁금해져요. 비포·애프터와 잘 맞아요.",
+   "when_to_use": "예: 이 상태가 되는 데 3분 걸렸어요",
+   "prompt_simple": "첫 문장: 이렇게 되는 데 □초 걸렸어요",
+   "prompt_detail": "Hook line (first 0–3s, on-screen text + voice): \"이렇게 되는 데 □초 걸렸어요\"\nExample: \"이 상태가 되는 데 3분 걸렸어요\"\nFill ○○ with the product or topic and □□ with the viewer's situation. Keep it under 20 Korean characters.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/h03.html"
+  },
+  {
+   "code": "H04",
+   "category": "hook_script_line",
+   "name": "주의 · 경고형 훅",
+   "name_en": "○○ 할 때 이것만은 하지 마세요",
+   "description": "손해를 피하고 싶은 마음을 건드려요. 사실이 아닌 공포 조장은 금지예요.",
+   "when_to_use": "예: 이사할 때 이것만은 하지 마세요",
+   "prompt_simple": "첫 문장: ○○ 할 때 이것만은 하지 마세요",
+   "prompt_detail": "Hook line (first 0–3s, on-screen text + voice): \"○○ 할 때 이것만은 하지 마세요\"\nExample: \"이사할 때 이것만은 하지 마세요\"\nFill ○○ with the product or topic and □□ with the viewer's situation. Keep it under 20 Korean characters.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/h04.html"
+  },
+  {
+   "code": "H05",
+   "category": "hook_script_line",
+   "name": "반전 예고형 훅",
+   "name_en": "처음엔 □□인 줄 알았는데…",
+   "description": "말을 끝내지 않으면 뒤가 궁금해서 남아요.",
+   "when_to_use": "예: 처음엔 그냥 장난감인 줄 알았는데…",
+   "prompt_simple": "첫 문장: 처음엔 □□인 줄 알았는데…",
+   "prompt_detail": "Hook line (first 0–3s, on-screen text + voice): \"처음엔 □□인 줄 알았는데…\"\nExample: \"처음엔 그냥 장난감인 줄 알았는데…\"\nFill ○○ with the product or topic and □□ with the viewer's situation. Keep it under 20 Korean characters.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/h05.html"
+  },
+  {
+   "code": "H06",
+   "category": "hook_script_line",
+   "name": "POV형 훅",
+   "name_en": "POV: □□한 날",
+   "description": "보는 사람을 상황 속 주인공으로 만들어요. POV 상황극 구조와 짝이에요.",
+   "when_to_use": "예: POV: 월요일 아침 알람이 세 번 울렸을 때",
+   "prompt_simple": "첫 문장: POV: □□한 날",
+   "prompt_detail": "Hook line (first 0–3s, on-screen text + voice): \"POV: □□한 날\"\nExample: \"POV: 월요일 아침 알람이 세 번 울렸을 때\"\nFill ○○ with the product or topic and □□ with the viewer's situation. Keep it under 20 Korean characters.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/h06.html"
+  },
+  {
+   "code": "H07",
+   "category": "hook_script_line",
+   "name": "비교형 훅",
+   "name_en": "□□ vs ○○, 뭐가 다를까?",
+   "description": "결과를 직접 확인하고 싶어서 끝까지 봐요.",
+   "when_to_use": "예: 만 원짜리 vs 오만 원짜리, 뭐가 다를까?",
+   "prompt_simple": "첫 문장: □□ vs ○○, 뭐가 다를까?",
+   "prompt_detail": "Hook line (first 0–3s, on-screen text + voice): \"□□ vs ○○, 뭐가 다를까?\"\nExample: \"만 원짜리 vs 오만 원짜리, 뭐가 다를까?\"\nFill ○○ with the product or topic and □□ with the viewer's situation. Keep it under 20 Korean characters.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/h07.html"
+  },
+  {
+   "code": "H08",
+   "category": "hook_script_line",
+   "name": "실험형 훅",
+   "name_en": "○○ 진짜 될까? 직접 해봤어요",
+   "description": "결과를 마지막까지 숨기기 좋아요. '직접 해봤더니' 구조와 짝이에요.",
+   "when_to_use": "예: 이 세제 진짜 기름때 지워질까? 직접 해봤어요",
+   "prompt_simple": "첫 문장: ○○ 진짜 될까? 직접 해봤어요",
+   "prompt_detail": "Hook line (first 0–3s, on-screen text + voice): \"○○ 진짜 될까? 직접 해봤어요\"\nExample: \"이 세제 진짜 기름때 지워질까? 직접 해봤어요\"\nFill ○○ with the product or topic and □□ with the viewer's situation. Keep it under 20 Korean characters.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/h08.html"
+  },
+  {
+   "code": "H09",
+   "category": "hook_script_line",
+   "name": "공감 고백형 훅",
+   "name_en": "□□, 저만 이런 거 아니죠?",
+   "description": "공감 댓글이 달리기 쉬워요.",
+   "when_to_use": "예: 비 오는 날 신발 젖는 거, 저만 싫은 거 아니죠?",
+   "prompt_simple": "첫 문장: □□, 저만 이런 거 아니죠?",
+   "prompt_detail": "Hook line (first 0–3s, on-screen text + voice): \"□□, 저만 이런 거 아니죠?\"\nExample: \"비 오는 날 신발 젖는 거, 저만 싫은 거 아니죠?\"\nFill ○○ with the product or topic and □□ with the viewer's situation. Keep it under 20 Korean characters.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/h09.html"
+  },
+  {
+   "code": "H10",
+   "category": "hook_script_line",
+   "name": "마무리 · 저장 유도",
+   "name_en": "필요할 때 꺼내 보게 저장해 두세요",
+   "description": "정보형은 저장이 많을수록 더 멀리 퍼져요.",
+   "when_to_use": "예: 이사 전에 꺼내 보게 저장해 두세요",
+   "prompt_simple": "마무리 문장: 필요할 때 꺼내 보게 저장해 두세요",
+   "prompt_detail": "Closing line (last 2–3s): \"필요할 때 꺼내 보게 저장해 두세요\"\nExample: \"이사 전에 꺼내 보게 저장해 두세요\"\nFill ○○ with the product or topic and □□ with the viewer's situation. Keep it under 20 Korean characters.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/h10.html"
+  },
+  {
+   "code": "H11",
+   "category": "hook_script_line",
+   "name": "마무리 · 댓글 질문",
+   "name_en": "여러분은 □□ 어떻게 하세요?",
+   "description": "답하기 쉬운 질문 하나가 댓글을 만들어요.",
+   "when_to_use": "예: 여러분은 냉동밥 어떻게 데우세요?",
+   "prompt_simple": "마무리 문장: 여러분은 □□ 어떻게 하세요?",
+   "prompt_detail": "Closing line (last 2–3s): \"여러분은 □□ 어떻게 하세요?\"\nExample: \"여러분은 냉동밥 어떻게 데우세요?\"\nFill ○○ with the product or topic and □□ with the viewer's situation. Keep it under 20 Korean characters.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/h11.html"
+  },
+  {
+   "code": "H12",
+   "category": "hook_script_line",
+   "name": "마무리 · 링크 안내",
+   "name_en": "○○ 정보는 프로필 링크에 있어요",
+   "description": "할 일을 하나만 주면 따라 해요. 광고·협찬이면 '광고' 표기를 함께 넣으세요.",
+   "when_to_use": "예: 오늘 쓴 거품기 정보는 프로필 링크에 있어요",
+   "prompt_simple": "마무리 문장: ○○ 정보는 프로필 링크에 있어요",
+   "prompt_detail": "Closing line (last 2–3s): \"○○ 정보는 프로필 링크에 있어요\"\nExample: \"오늘 쓴 거품기 정보는 프로필 링크에 있어요\"\nFill ○○ with the product or topic and □□ with the viewer's situation. Keep it under 20 Korean characters.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/h12.html"
+  },
+  {
    "code": "M01",
    "category": "camera_move",
    "name": "매크로 돌리인",
@@ -1037,6 +1169,102 @@
    "prompt_simple": "low-key lighting, 8:1 or higher contrast",
    "prompt_detail": "Lighting: low-key lighting, 8:1 or higher contrast.\nKeep the same key light direction across every shot of [product].",
    "url": "https://ai-video-reference-kr.netlify.app/card/l04.html"
+  },
+  {
+   "code": "C01",
+   "category": "caption_style",
+   "name": "상단 고정 제목 띠",
+   "name_en": "Top title band",
+   "description": "영상 내내 위쪽에 고정된 질문 · 제목 한 줄",
+   "when_to_use": "쇼츠 첫 화면부터 끝까지 '무슨 영상인지'를 알려 줄 때. 터진 쇼츠에서 가장 자주 보이는 형태예요",
+   "caution": "영상을 만들 때 프롬프트에 'keep the top 20% of the frame clean'을 넣어 띠 자리를 비워 두세요.",
+   "prompt_simple": "자막(편집에서): 위치: 화면 위 10–18% · 크기: 화면 폭의 85% 안에 두 줄까지 · 글자: 아주 굵게, 흰색 · 배경: 검정 또는 브랜드색 띠(불투명 85%) · 길이: 영상 전체",
+   "prompt_detail": "On-screen text style (add in editing, do not render text inside the AI video): a bold two-line title band fixed at the top 10–18% of the frame for the whole video, white extra-bold text on a solid dark band.\n설정값: 위치: 화면 위 10–18% · 크기: 화면 폭의 85% 안에 두 줄까지 · 글자: 아주 굵게, 흰색 · 배경: 검정 또는 브랜드색 띠(불투명 85%) · 길이: 영상 전체\nWhen generating the video, keep that area of the 9:16 frame clean for the text overlay.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/c01.html"
+  },
+  {
+   "code": "C02",
+   "category": "caption_style",
+   "name": "키워드 한 단어 강조",
+   "name_en": "Keyword highlight",
+   "description": "문장 중 핵심 단어 하나만 색 · 크기로 강조",
+   "when_to_use": "숫자, 가격, 효과처럼 기억시킬 단어가 하나 있을 때",
+   "caution": "강조는 한 화면에 한 단어만. 두세 개를 칠하면 아무것도 안 보여요.",
+   "prompt_simple": "자막(편집에서): 위치: 화면 가운데 아래(55–70%) · 기본 글자: 흰색 굵게, 검정 테두리 · 강조 단어: 노랑 또는 브랜드색, 1.2배 크게, 살짝 튀어나오는 등장(0.2초)",
+   "prompt_detail": "On-screen text style (add in editing, do not render text inside the AI video): centered caption in the lower middle, white bold text with dark outline, one keyword in bright yellow and 1.2x larger with a quick pop-in.\n설정값: 위치: 화면 가운데 아래(55–70%) · 기본 글자: 흰색 굵게, 검정 테두리 · 강조 단어: 노랑 또는 브랜드색, 1.2배 크게, 살짝 튀어나오는 등장(0.2초)\nWhen generating the video, keep that area of the 9:16 frame clean for the text overlay.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/c02.html"
+  },
+  {
+   "code": "C03",
+   "category": "caption_style",
+   "name": "단어별 팝업 (카라오케식)",
+   "name_en": "Word-by-word captions",
+   "description": "말하는 속도에 맞춰 단어가 하나씩 튀어나오는 자막",
+   "when_to_use": "내레이션 · 토크 영상에서 소리 없이 보는 사람도 끝까지 따라오게 할 때",
+   "caution": "캡컷은 자동 자막을 만든 뒤 단어가 하나씩 강조되는 스타일 템플릿을 고르면 돼요. 맞춤법은 꼭 한 번 확인하세요.",
+   "prompt_simple": "자막(편집에서): 위치: 화면 가운데(45–60%) · 한 번에 1–3단어 · 지금 말하는 단어만 색 강조 · 등장: 단어마다 0.1–0.2초 팝",
+   "prompt_detail": "On-screen text style (add in editing, do not render text inside the AI video): word-by-word animated captions in the center, 1–3 words at a time, the currently spoken word highlighted in a bright color, quick pop for each word.\n설정값: 위치: 화면 가운데(45–60%) · 한 번에 1–3단어 · 지금 말하는 단어만 색 강조 · 등장: 단어마다 0.1–0.2초 팝\nWhen generating the video, keep that area of the 9:16 frame clean for the text overlay.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/c03.html"
+  },
+  {
+   "code": "C04",
+   "category": "caption_style",
+   "name": "하단 말자막 (기본형)",
+   "name_en": "Lower subtitles",
+   "description": "대사 · 내레이션을 그대로 옮긴 기본 자막",
+   "when_to_use": "인터뷰, 후기, 롱폼처럼 말이 길 때",
+   "caution": "세로 쇼츠는 오른쪽 아이콘과 아래 설명 영역이 화면을 가려요. 자막은 그 위쪽에 두세요.",
+   "prompt_simple": "자막(편집에서): 위치: 화면 아래 65–78% (맨 아래 20%는 쇼츠 버튼·설명에 가려짐) · 최대 두 줄, 한 줄 16자 안팎 · 흰색 글자 + 검정 테두리 또는 반투명 박스",
+   "prompt_detail": "On-screen text style (add in editing, do not render text inside the AI video): standard two-line subtitles in the lower third, kept above the bottom 20% safe zone, white text with black outline.\n설정값: 위치: 화면 아래 65–78% (맨 아래 20%는 쇼츠 버튼·설명에 가려짐) · 최대 두 줄, 한 줄 16자 안팎 · 흰색 글자 + 검정 테두리 또는 반투명 박스\nWhen generating the video, keep that area of the 9:16 frame clean for the text overlay.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/c04.html"
+  },
+  {
+   "code": "C05",
+   "category": "caption_style",
+   "name": "단계 · 숫자 배지",
+   "name_en": "Step badges",
+   "description": "1, 2, 3이나 TOP3 순위를 같은 자리에 고정",
+   "when_to_use": "리스트형, 튜토리얼, 비포·애프터 단계 표시",
+   "caution": "배지 위치를 영상 내내 바꾸지 않아야 보는 사람이 '지금 몇 번째'를 바로 알아요.",
+   "prompt_simple": "자막(편집에서): 위치: 왼쪽 위 고정(제목 띠 아래) · 동그라미 또는 둥근 사각형 배지 · 숫자는 크게, 옆에 단계 이름 짧게 · 단계가 바뀔 때만 교체",
+   "prompt_detail": "On-screen text style (add in editing, do not render text inside the AI video): a round numbered step badge fixed at the upper left, large number with a short step label, swaps only when the step changes.\n설정값: 위치: 왼쪽 위 고정(제목 띠 아래) · 동그라미 또는 둥근 사각형 배지 · 숫자는 크게, 옆에 단계 이름 짧게 · 단계가 바뀔 때만 교체\nWhen generating the video, keep that area of the 9:16 frame clean for the text overlay.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/c05.html"
+  },
+  {
+   "code": "C06",
+   "category": "caption_style",
+   "name": "말풍선 · 속마음",
+   "name_en": "Speech bubble",
+   "description": "인물 · 동물 옆에 붙는 대사 말풍선",
+   "when_to_use": "반려동물 '속마음' 자막, 상황극, 두 사람 대화",
+   "caution": "동물 영상은 '말이 안 되는 상황 + 사람 말투 속마음'이 터지는 공식이에요.",
+   "prompt_simple": "자막(편집에서): 위치: 말하는 대상 머리 옆 · 흰 말풍선 + 검정 글자, 꼬리는 대상 쪽 · 한 번에 한 문장 · 대상이 움직이면 말풍선도 따라가게",
+   "prompt_detail": "On-screen text style (add in editing, do not render text inside the AI video): a white rounded speech bubble next to the character's head with short black text, tail pointing to the speaker.\n설정값: 위치: 말하는 대상 머리 옆 · 흰 말풍선 + 검정 글자, 꼬리는 대상 쪽 · 한 번에 한 문장 · 대상이 움직이면 말풍선도 따라가게\nWhen generating the video, keep that area of the 9:16 frame clean for the text overlay.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/c06.html"
+  },
+  {
+   "code": "C07",
+   "category": "caption_style",
+   "name": "손글씨 메모 · 화살표",
+   "name_en": "Handwritten note",
+   "description": "제품 디테일을 가리키는 손글씨 메모와 화살표",
+   "when_to_use": "재질, 버튼, 사이즈처럼 '여기 보세요'가 필요한 디테일 컷",
+   "caution": "정보가 많을 때 문장 대신 화살표 하나로 시선을 끌어 주세요.",
+   "prompt_simple": "자막(편집에서): 위치: 가리킬 부분 옆 · 손글씨 느낌 글꼴, 노랑·빨강 펜 색 · 화살표가 그려지듯 등장(0.3초) · 짧은 단어 2–6자",
+   "prompt_detail": "On-screen text style (add in editing, do not render text inside the AI video): a handwritten-style note with a hand-drawn arrow pointing at the product detail, appearing as if being drawn.\n설정값: 위치: 가리킬 부분 옆 · 손글씨 느낌 글꼴, 노랑·빨강 펜 색 · 화살표가 그려지듯 등장(0.3초) · 짧은 단어 2–6자\nWhen generating the video, keep that area of the 9:16 frame clean for the text overlay.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/c07.html"
+  },
+  {
+   "code": "C08",
+   "category": "caption_style",
+   "name": "가격 · 행동 유도 버튼",
+   "name_en": "CTA button",
+   "description": "마지막 2–3초에 뜨는 버튼 모양 안내",
+   "when_to_use": "'프로필 링크에서 보기', '저장하기' 같은 마지막 할 일 하나",
+   "caution": "광고 · 협찬이면 버튼 근처나 화면 위에 '광고' 표기를 함께 넣으세요.",
+   "prompt_simple": "자막(편집에서): 위치: 화면 아래 60–70% · 둥근 버튼 모양 박스, 브랜드색 배경 + 흰 글자 · 살짝 커졌다 작아지는 반복(1초) · 할 일은 하나만",
+   "prompt_detail": "On-screen text style (add in editing, do not render text inside the AI video): a rounded call-to-action button box in the lower middle for the last 2–3 seconds, brand-colored background, white text, gentle pulse.\n설정값: 위치: 화면 아래 60–70% · 둥근 버튼 모양 박스, 브랜드색 배경 + 흰 글자 · 살짝 커졌다 작아지는 반복(1초) · 할 일은 하나만\nWhen generating the video, keep that area of the 9:16 frame clean for the text overlay.",
+   "url": "https://ai-video-reference-kr.netlify.app/card/c08.html"
   }
  ]
 }
