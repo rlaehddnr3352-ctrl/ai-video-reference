@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>터진 쇼츠의 첫 3초, 5가지 공식으로 정리했어요 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="구독자 수백 명 채널이 수십만~수백만 회를 만든 쇼츠를 뜯어보고, AI 영상으로 따라 만들 수 있는 첫 3초 공식 5가지와 프롬프트를 정리했습니다.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/guide/shorts-hook-patterns.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="터진 쇼츠의 첫 3초, 5가지 공식으로 정리했어요 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="구독자 수백 명 채널이 수십만~수백만 회를 만든 쇼츠를 뜯어보고, AI 영상으로 따라 만들 수 있는 첫 3초 공식 5가지와 프롬프트를 정리했습니다.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/guide/shorts-hook-patterns.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+</style><header class="top"><nav><a class="brand" href="../">AI 영상 레퍼런스 보관함</a><a href="../#dict">레퍼런스 사전</a><a href="../guide/">가이드</a><a href="../privacy.html">소개</a></nav></header>
+<main>
+  <article>
+    <span class="eyebrow">GUIDE · 읽는 시간 약 6분</span>
+    <h1>터진 쇼츠의 첫 3초, 5가지 공식으로 정리했어요</h1>
+    <p class="lede">구독자 수백 명 채널이 수십만~수백만 회를 만든 쇼츠를 뜯어보고, AI 영상으로 따라 만들 수 있는 첫 3초 공식 5가지와 프롬프트를 정리했습니다.</p>
+    <p>쇼츠는 첫 3초에 넘겨질지가 정해집니다. 이 글은 '오늘의 터진 쇼츠' 페이지에서 매일 모으는 영상 가운데, <b>구독자 수에 비해 조회수가 수백~수천 배 나온 영상</b>들의 첫 화면을 비교해서 반복되는 공식을 뽑은 거예요. 예시 숫자는 2026년 10월 15일 기준입니다.</p>
+<p>작은 채널을 기준으로 삼은 이유는 단순해요. 구독자가 많은 채널은 구독자 덕분에 조회수가 나오지만, 구독자 100~1,000명대 채널이 수십만 회를 넘겼다면 영상 자체가 사람을 붙잡았다는 뜻이거든요.</p>
+
+<h2>공식 1. 화면 위에 질문 한 줄을 고정한다</h2>
+<p>거의 모든 영상이 첫 화면 위쪽에 큰 글자 띠를 두고 있었어요. 내용은 질문이거나, 결과를 반만 보여 주는 문장입니다. 소리를 끄고 보는 사람도 1초 안에 상황을 알 수 있어요.</p>
+<ul>
+  <li>"죽음의 손가락 '브라이니클'" — 구독자 123명 채널, 64만 회</li>
+  <li>"사기 결혼? 사진만 보고 하와이로 시집간 이유" — 구독자 1,340명 채널, 192만 회</li>
+  <li>"한국인 90% 모르는 컵라면 꿀팁" — 구독자 4,180명 채널, 472만 회</li>
+</ul>
+<p>AI 영상에서는 글자를 영상 안에 만들게 하지 말고, 편집할 때 위에 얹으세요. 영상 생성 단계에서 글자를 넣으면 철자가 깨지는 일이 많아요. 프롬프트에는 대신 <b>위쪽 20%를 비워 두라</b>고 적으면 됩니다.</p>
+<pre class="prompt">vertical 9:16 frame, main subject placed in the lower two thirds, keep the top 20% of the frame clean and uncluttered for a text overlay</pre>
+
+<h2>공식 2. 결과부터 보여 주고 과정은 나중에</h2>
+<p>"공중 물결 만지자 벌어진 일"처럼 이상한 장면이 첫 프레임에 바로 나옵니다. 설명은 그다음이에요. 구독자 665명 채널의 AI 폭포 영상은 9초짜리인데 99만 회가 나왔어요. 현실에선 못 찍는 장면을 첫 컷에 둔 게 전부입니다.</p>
+<p>AI 영상이 가장 잘하는 게 바로 이 '현실에서 안 되는 장면'이에요. 첫 컷에 그걸 쓰고, 빠르게 다가가는 움직임을 붙이세요.</p>
+<pre class="prompt">a hand slowly touches a floating wave of water suspended in mid-air above a green meadow, impact push-in toward the hand over 1.5 seconds, photorealistic, soft daylight</pre>
+
+<h2>공식 3. 한 장면, 한 표정</h2>
+<p>노래방에서 주인이 노래하는 동안 참는 표정을 짓는 강아지(구독자 8,180명, 1,050만 회), 가게 앞에서 혼자 간식을 사려는 아기(구독자 9,100명, 855만 회). 둘 다 10~15초, 장면이 사실상 하나예요. 짧고 한 장면이라 끝까지 보고 다시 보게 됩니다.</p>
+<p>AI로 만들 때는 컷을 늘리지 말고 <b>표정이 바뀌는 순간 하나</b>에 렌즈 줌 인이나 고정 점프컷을 쓰세요.</p>
+<pre class="prompt">close-up of a dog sitting next to its owner who is singing loudly, the dog's expression slowly changes from calm to visibly holding back, slow optical zoom-in on the dog's face, camera does not move</pre>
+
+<h2>공식 4. 숫자와 '이미 검증됨' 신호</h2>
+<p>"130만 조회수 김국에 소면 넣어봤더니", "꿀팁 5가지", "TOP5". 숫자는 끝까지 보면 얻는 것의 양을 약속하고, 이미 많이 본 레시피라는 말은 실패하지 않을 거라는 신호를 줍니다. 구독자 7,080명 채널의 김국 영상은 493만 회였어요.</p>
+<p>리스트형으로 만들 땐 1번 항목을 가장 센 걸로 두세요. 첫 항목에서 실망하면 2번까지 가지 않아요.</p>
+
+<h2>공식 5. 제품은 '움직이는 순간'으로 시작</h2>
+<p>제품 소개 쇼츠 중 가장 크게 터진 건 꼬리를 흔드는 강아지 모양 충전기였어요(구독자 4,510명, 1,370만 회). 제품 전체를 보여 주는 대신, 제품이 <b>예상 밖으로 움직이는 1초</b>로 시작합니다. 설명은 자막 한 줄이면 충분했어요.</p>
+<pre class="prompt">macro dolly-in toward a phone charger shaped like a small white dog plugged into a phone on a wooden desk, the dog's tail starts wagging when the phone lights up, shallow depth of field, soft window light</pre>
+<p>제품 영상이라면 썸네일과 설명에 광고 표시를 꼭 넣으세요. 이 영상도 첫 화면에 [광고] 표시가 있었어요.</p>
+
+<h2>정리: 첫 3초 체크리스트</h2>
+<div class="tw"><table>
+  <thead><tr><th>확인할 것</th><th>왜</th></tr></thead>
+  <tbody>
+    <tr><td>위쪽에 질문 한 줄이 있나</td><td>소리 없이도 1초 안에 상황 전달</td></tr>
+    <tr><td>첫 프레임이 결과·이상한 장면인가</td><td>설명보다 장면이 먼저 멈추게 함</td></tr>
+    <tr><td>장면이 하나로 끝나나</td><td>짧을수록 끝까지 보고 다시 봄</td></tr>
+    <tr><td>숫자나 검증 신호가 있나</td><td>끝까지 보면 얻는 게 분명해짐</td></tr>
+    <tr><td>AI로 만든 장면은 표시했나</td><td>실제처럼 보이는 영상일수록 'AI 생성' 표시가 필요</td></tr>
+  </tbody>
+</table></div>
+<p>매일 아침 새로 터진 영상은 <a href="../radar/">오늘의 터진 쇼츠</a>에서 볼 수 있어요. 영상마다 첫 3초 재생, 터진 이유, 같은 공식으로 만드는 프롬프트 버튼이 있습니다.</p>
+
+  </article>
+  <h2>이 글에 나온 카드</h2><p>카드를 누르면 미리보기와 바로 복사할 수 있는 프롬프트가 나와요.</p><ul class="related cards"><li><a href="../card/m07.html"><b>M07 스냅 줌</b><small>첫 1초에 빠르게 확 당기는 줌. 숏폼 훅용.</small></a></li><li><a href="../card/m11.html"><b>M11 임팩트 푸시인</b><small>강조하고 싶은 순간에 카메라가 빠르게 다가가며 힘을 싣는 샷.</small></a></li><li><a href="../card/m17.html"><b>M17 렌즈 줌 인</b><small>카메라는 그대로, 렌즈만 당겨 확대. 배경 거리감이 그대로라 화면이 평평하게 느껴져요.</small></a></li><li><a href="../card/m10.html"><b>M10 고정 점프컷</b><small>카메라는 고정, 대상만 바뀌는 리듬 컷.</small></a></li><li><a href="../card/m30.html"><b>M30 랙 포커스</b><small>카메라는 고정, 초점만 앞에서 뒤로 옮겨 시선을 넘기는 샷.</small></a></li><li><a href="../card/m01.html"><b>M01 매크로 돌리인</b><small>제품 표면까지 천천히 다가가며 질감을 보여 주는 접근 샷.</small></a></li><li><a href="../card/t01.html"><b>T01 틱톡 · 릴스 · 쇼츠</b><small>숏폼, 빠른 팁, 제품 티저</small></a></li><li><a href="../card/t03.html"><b>T03 숏드라마 훅</b><small>시리즈형 숏폼, 스토리 광고</small></a></li></ul>
+  <aside class="cpbox" aria-label="광고"><span class="lab">광고 · 쿠팡</span>
+    <div class="cpwrap"><script src="https://ads-partners.coupang.com/g.js"></script> <script> new PartnersCoupang.G({"id":1038865,"template":"carousel","trackingCode":"AF0984527","width":"680","height":"140","tsource":""}); </script></div>
+    <p class="cpnote">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></aside>
+  <div class="cta"><b>사전에서 바로 해 보기</b><span>이 글에 나온 카메라 무빙, 구조, 조명 카드를 골라 담으면 7단계 프롬프트가 자동으로 만들어집니다.</span><a class="btn" href="../#dict">레퍼런스 사전 열기</a></div>
+  <h2>다른 가이드</h2>
+  <ul class="related"><li><a href="prompt-7-steps.html"><b>AI 영상 프롬프트, 7단계로 나눠 쓰면 결과가 안정된다</b><small>&quot;멋지게 만들어 줘&quot; 대신 무엇을 고정하고 무엇을 움직일지 나눠 쓰는 7단계 프롬프트 공식과 전후 비교 예시.</small></a></li><li><a href="prompt-examples.html"><b>AI 영상 프롬프트 예시 10개, 복사해서 바로 쓰기</b><small>제품 소개, 음식, 첫 3초 훅, 후기, 정보형, 스톱모션까지. Kling·Veo·Sora 같은 영상 AI에 바로 넣을 수 있는 영어 프롬프트 10개와 한글 설명.</small></a></li><li><a href="camera-moves.html"><b>카메라 무빙 30가지, 언제 어떤 움직임을 써야 할까</b><small>돌리인, 오비트, 스냅 줌부터 돌리 줌, 불릿 타임, 랙 포커스까지. 카메라 움직임마다 주는 효과, 쓰기 좋은 순간, 바로 쓰는 프롬프트 문장.</small></a></li><li><a href="shortform-structures.html"><b>15–45초 숏폼, 4가지 구조로 짜는 법</b><small>쇼츠·릴스 기본형, 광고 심리 구조, 숏드라마 훅, 고객 후기형. 초 단위 시간 배분과 예시 대본까지.</small></a></li><li><a href="fix-ai-video-errors.html"><b>AI 영상이 망가지는 7가지 이유와 고치는 법</b><small>제품 모양이 바뀌고, 글자가 깨지고, 손이 뭉개지고, 조명이 튀는 문제. 원인별로 바로 써먹는 해결법.</small></a></li></ul>
+</main>
+<footer><a href="../privacy.html">소개 · 개인정보처리방침</a></footer>
+<script>
+(function(){document.querySelectorAll(".adslot").forEach(function(box){var ins=box.querySelector("ins");
+ if(!ins||/SLOT_|0000000000000000/.test(ins.getAttribute("data-ad-slot")+ins.getAttribute("data-ad-client")))return;
+ box.hidden=false;try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}});})();
+</script>
+</body>
+</html>
