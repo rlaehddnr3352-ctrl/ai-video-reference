@@ -6,15 +6,15 @@
 프롬프트 권장 순서(7단계): CORE → IDENTITY LOCK → WORLD → MEDIUM → SOUND → SHOT → CONTINUITY.
 
 ## 데이터
-- [카드 전체 목록 (JSON, 75장)](https://ai-video-reference-kr.netlify.app/cards.json): code, category, name, name_en, description, when_to_use, fit_vertical_9x16, caution, prompt_simple, prompt_detail, url
+- [카드 전체 목록 (JSON, 89장)](https://ai-video-reference-kr.netlify.app/cards.json): code, category, name, name_en, description, when_to_use, fit_vertical_9x16, caution, prompt_simple, prompt_detail, url
 - 카드별 페이지: https://ai-video-reference-kr.netlify.app/card/<code 소문자>.html (예: https://ai-video-reference-kr.netlify.app/card/m21.html)
 
 ## 가이드
 - [AI 영상 프롬프트, 7단계로 나눠 쓰면 결과가 안정된다](https://ai-video-reference-kr.netlify.app/guide/prompt-7-steps.html): "멋지게 만들어 줘" 대신 무엇을 고정하고 무엇을 움직일지 나눠 쓰는 7단계 프롬프트 공식과 전후 비교 예시.
 - [AI 영상 프롬프트 예시 10개, 복사해서 바로 쓰기](https://ai-video-reference-kr.netlify.app/guide/prompt-examples.html): 제품 소개, 음식, 첫 3초 훅, 후기, 정보형, 스톱모션까지. Kling·Veo·Sora 같은 영상 AI에 바로 넣을 수 있는 영어 프롬프트 10개와 한글 설명.
-- [카메라 무빙 30가지, 언제 어떤 움직임을 써야 할까](https://ai-video-reference-kr.netlify.app/guide/camera-moves.html): 돌리인, 오비트, 스냅 줌부터 돌리 줌, 불릿 타임, 랙 포커스까지. 카메라 움직임마다 주는 효과, 쓰기 좋은 순간, 바로 쓰는 프롬프트 문장.
+- [카메라 무빙 38가지, 언제 어떤 움직임을 써야 할까](https://ai-video-reference-kr.netlify.app/guide/camera-moves.html): 돌리인, 오비트, 스냅 줌부터 돌리 줌, 불릿 타임, 랙 포커스, 핸드헬드, 매치 컷까지. 카메라 움직임마다 주는 효과, 쓰기 좋은 순간, 바로 쓰는 프롬프트 문장.
 - [터진 쇼츠의 첫 3초, 5가지 공식으로 정리했어요](https://ai-video-reference-kr.netlify.app/guide/shorts-hook-patterns.html): 구독자 수백 명 채널이 수십만~수백만 회를 만든 쇼츠를 뜯어보고, AI 영상으로 따라 만들 수 있는 첫 3초 공식 5가지와 프롬프트를 정리했습니다.
-- [15–45초 숏폼, 4가지 구조로 짜는 법](https://ai-video-reference-kr.netlify.app/guide/shortform-structures.html): 쇼츠·릴스 기본형, 광고 심리 구조, 숏드라마 훅, 고객 후기형. 초 단위 시간 배분과 예시 대본까지.
+- [15–45초 숏폼, 8가지 구조로 짜는 법](https://ai-video-reference-kr.netlify.app/guide/shortform-structures.html): 쇼츠·릴스 기본형, 광고 심리, 숏드라마 훅, 고객 후기, 비포·애프터, TOP N 리스트, POV 상황극, 언박싱. 초 단위 시간 배분과 예시 대본까지.
 - [AI 영상이 망가지는 7가지 이유와 고치는 법](https://ai-video-reference-kr.netlify.app/guide/fix-ai-video-errors.html): 제품 모양이 바뀌고, 글자가 깨지고, 손이 뭉개지고, 조명이 튀는 문제. 원인별로 바로 써먹는 해결법.
 
 ## 사이트
