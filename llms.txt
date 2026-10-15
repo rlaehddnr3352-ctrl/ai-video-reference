@@ -6,7 +6,7 @@
 프롬프트 권장 순서(7단계): CORE → IDENTITY LOCK → WORLD → MEDIUM → SOUND → SHOT → CONTINUITY.
 
 ## 데이터
-- [카드 전체 목록 (JSON, 109장)](https://ai-video-reference-kr.netlify.app/cards.json): code, category, name, name_en, description, when_to_use, fit_vertical_9x16, caution, prompt_simple, prompt_detail, url
+- [카드 전체 목록 (JSON, 122장)](https://ai-video-reference-kr.netlify.app/cards.json): code, category, name, name_en, description, when_to_use, fit_vertical_9x16, caution, prompt_simple, prompt_detail, url
 - 카드별 페이지: https://ai-video-reference-kr.netlify.app/card/<code 소문자>.html (예: https://ai-video-reference-kr.netlify.app/card/m21.html)
 
 ## 가이드
