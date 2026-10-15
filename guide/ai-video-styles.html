@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI 영상 스타일 13가지, 언제 뭘 골라야 할까 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="콜라주 비디오 에세이, 지도 다큐, 플랫 벡터 애니, 키네틱 타이포, UGC 후기, 말하는 사물, 로파이 루프까지. 요즘 많이 쓰는 영상 스타일의 특징과 바로 쓰는 프롬프트.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/guide/ai-video-styles.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI 영상 스타일 13가지, 언제 뭘 골라야 할까 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="콜라주 비디오 에세이, 지도 다큐, 플랫 벡터 애니, 키네틱 타이포, UGC 후기, 말하는 사물, 로파이 루프까지. 요즘 많이 쓰는 영상 스타일의 특징과 바로 쓰는 프롬프트.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/guide/ai-video-styles.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+</style><header class="top"><nav><a class="brand" href="../">AI 영상 레퍼런스 보관함</a><a href="../#dict">레퍼런스 사전</a><a href="../radar/">터진 쇼츠</a><a href="../guide/">가이드</a><a href="../privacy.html">소개</a></nav></header>
+<main>
+  <article>
+    <span class="eyebrow">GUIDE · 읽는 시간 약 9분</span>
+    <h1>AI 영상 스타일 13가지, 언제 뭘 골라야 할까</h1>
+    <p class="lede">콜라주 비디오 에세이, 지도 다큐, 플랫 벡터 애니, 키네틱 타이포, UGC 후기, 말하는 사물, 로파이 루프까지. 요즘 많이 쓰는 영상 스타일의 특징과 바로 쓰는 프롬프트.</p>
+    <p>같은 내용이라도 어떤 '룩'으로 만드느냐에 따라 보는 사람이 받는 느낌이 완전히 달라집니다. 시사 설명은 콜라주가, 과학 원리는 플랫 애니가, 제품 후기는 셀카 화면이 더 믿음직해 보이죠. 이 글은 요즘 유튜브와 숏폼에서 자주 보이는 스타일 13가지를 <b>쓰임새별로</b> 묶고, 영상 AI에 바로 넣을 수 있는 프롬프트를 정리했어요.</p>
+
+<h2>먼저 알아 둘 것: 채널 이름 대신 특징을 쓰세요</h2>
+<p>"Vox 스타일로", "○○ 채널처럼"이라고 쓰면 영상 AI는 그 이름을 정확히 알아듣지 못하거나, 특정 작품을 베낀 결과를 낼 수 있어요. 대신 그 스타일을 만드는 <b>재료</b>를 풀어 쓰세요. 종이 질감, 오려 붙인 사진, 형광펜, 빨간 동그라미처럼요. 아래 프롬프트는 모두 이렇게 특징만으로 썼습니다.</p>
+
+<h2>1. 설명 · 정보형: 자료가 많을 때</h2>
+<div class="tw"><table>
+  <thead><tr><th>스타일</th><th>특징</th><th>잘 맞는 주제</th></tr></thead>
+  <tbody>
+    <tr><td>콜라주 비디오 에세이</td><td>종이 질감, 오려 붙인 옛 사진, 형광펜 친 문장, 빨간 동그라미</td><td>시사, 역사, 사회 이슈</td></tr>
+    <tr><td>애니메이션 지도 다큐</td><td>입체 지형 위로 경로 선이 그려지고 지명 핀이 꽂힘</td><td>나라, 물류, 여행 경로</td></tr>
+    <tr><td>플랫 벡터 설명 애니</td><td>선 없는 납작한 도형, 선명한 색, 둥근 캐릭터</td><td>과학, 원리, 눈에 안 보이는 것</td></tr>
+    <tr><td>화이트보드 손그림</td><td>손이 마커로 그려 나가며 설명</td><td>교육, 절차, 단계별 논리</td></tr>
+    <tr><td>데이터 · 차트 모션</td><td>막대가 자라고 숫자가 올라감</td><td>가격·성분 비교, 추이</td></tr>
+  </tbody>
+</table></div>
+<pre class="prompt">mixed-media collage animation on textured beige paper, cut-out archival black-and-white photos with halftone print texture, highlighted newspaper sentences, hand-drawn red circles and arrows, slow parallax between layers</pre>
+<p>이 묶음은 영상 AI 한 번으로 완성하기보다 <b>Claude Code나 편집 툴로 조립</b>하는 게 결과가 안정적이에요. 지도·차트·글자처럼 정확해야 하는 요소가 많기 때문이에요. 영상 AI는 배경이나 전환용 장면에만 쓰고, 숫자와 지명은 편집에서 얹으세요.</p>
+
+<h2>2. 글자가 주인공: 소리 끄고 보는 피드</h2>
+<p><b>키네틱 타이포그래피</b>는 말에 맞춰 큰 글자가 튀어나오는 스타일이에요. 숏폼은 소리를 끄고 보는 사람이 많아서, 메시지 하나를 강하게 남기고 싶을 때 효과가 좋아요. 이 스타일은 영상 AI보다 캡컷 같은 편집 툴이나 코드로 만드는 게 정확합니다. 사이트의 자막 디자인 카드(키워드 강조, 단어별 팝업)와 함께 쓰세요.</p>
+
+<h2>3. 감성 · 분위기: 기억에 남기기</h2>
+<div class="tw"><table>
+  <thead><tr><th>스타일</th><th>특징</th><th>잘 맞는 주제</th></tr></thead>
+  <tbody>
+    <tr><td>수채화 손그림 애니</td><td>수채화 배경, 파스텔 2D</td><td>감성 브랜드, 일상</td></tr>
+    <tr><td>3D 애니메이션 캐릭터</td><td>큰 눈, 과장된 표정, 따뜻한 역광</td><td>마스코트, 반려동물, 아이</td></tr>
+    <tr><td>로파이 루프</td><td>비 오는 창가, 따뜻한 조명, 반복 재생</td><td>카페 무드, 음악 배경</td></tr>
+    <tr><td>아카이브 필름 · VHS</td><td>거친 필름 입자, 날짜 표시, 흔들림</td><td>회상, 옛날 이야기, '그때 vs 지금'</td></tr>
+  </tbody>
+</table></div>
+<pre class="prompt">cozy lo-fi loop, rainy window at night, warm desk lamp light, steam rising from a mug, very slow ambient motion, film grain, soft muted colors, seamless loop with no camera movement</pre>
+<p>로파이 루프는 카메라를 움직이지 않는 게 핵심이에요. 시작과 끝 장면이 같아야 자연스럽게 반복되니, 움직임은 김이나 빗방울처럼 작은 것에만 주세요.</p>
+
+<h2>4. 신뢰 · 재미: 광고처럼 안 보이게</h2>
+<p>요즘은 매끈한 광고 화면보다 '진짜 같은' 화면이 더 믿음을 줘요.</p>
+<ul>
+  <li><b>UGC 셀카 후기 룩</b> — 휴대폰 앞카메라로 집에서 찍은 듯한 손떨림 화면. 후기·사용 경험에 맞아요. 다만 실제 고객이 아닌 AI 인물이 "써 봤다"고 말하게 하면 가짜 후기가 됩니다. 실제 후기를 옮기거나, AI라는 걸 밝혀 주세요.</li>
+  <li><b>말하는 사물</b> — 제품에 눈과 입이 생겨 직접 자기소개를 해요. 제품 자체는 실사로 두고 얼굴만 만화처럼 얹는 게 포인트예요.</li>
+  <li><b>초현실 '만약에' 다큐</b> — 사무실에 사는 돌고래처럼 말이 안 되는 상황을 진지한 다큐처럼 찍어요. 현실에선 못 찍는 장면이라 첫 컷 훅으로 강합니다.</li>
+</ul>
+<pre class="prompt">a photoreal household object with a simple animated cartoon face, eyes and mouth move as it talks directly to the camera, the object itself stays realistic, cozy kitchen background, soft daylight</pre>
+
+<h2>한 영상에는 스타일 하나</h2>
+<p>콜라주와 3D 캐릭터, 실사 셀카를 한 영상에 섞으면 컷이 바뀔 때마다 다른 영상처럼 보여요. 스타일은 영상 전체에 하나만 정하고, 모든 컷 프롬프트 끝에 <b>같은 스타일 문장을 그대로 복사해서</b> 붙이세요. "같은 스타일로"라고만 쓰면 AI는 이전 컷을 기억하지 못합니다.</p>
+<div class="tw"><table>
+  <thead><tr><th>만들고 싶은 영상</th><th>추천 스타일</th></tr></thead>
+  <tbody>
+    <tr><td>시사·역사 설명 쇼츠</td><td>콜라주 비디오 에세이, 아카이브 필름</td></tr>
+    <tr><td>과학·원리·성분 설명</td><td>플랫 벡터 설명 애니, 데이터 · 차트 모션</td></tr>
+    <tr><td>여행·지역·물류 이야기</td><td>애니메이션 지도 다큐</td></tr>
+    <tr><td>제품 후기·사용 경험</td><td>UGC 셀카 후기 룩</td></tr>
+    <tr><td>재미있는 제품 광고 훅</td><td>말하는 사물, 초현실 '만약에' 다큐</td></tr>
+    <tr><td>브랜드 무드·배경 음악</td><td>로파이 루프, 수채화 손그림 애니</td></tr>
+  </tbody>
+</table></div>
+<p>사이트의 <a href="../#wiz">간편 만들기</a>에서 '룩' 단계에 이 스타일들이 모두 들어 있어요. 고르면 2D 스타일은 실사 대신 "같은 그림체 유지" 조건이 프롬프트에 자동으로 들어갑니다.</p>
+
+  </article>
+  <h2>이 글에 나온 카드</h2><p>카드를 누르면 미리보기와 바로 복사할 수 있는 프롬프트가 나와요.</p><ul class="related cards"><li><a href="../card/s12.html"><b>S12 콜라주 비디오 에세이</b><small>종이 질감 위에 오려 붙인 옛 사진, 형광펜 친 신문 문장, 빨간 동그라미. 해외 시사 설명 채널(Vox 계열)에서 많이 쓰는 룩.</small></a></li><li><a href="../card/s13.html"><b>S13 애니메이션 지도 다큐</b><small>위성 지도와 입체 지형 위로 경로 선이 빛나며 그려지고, 지명 핀이 꽂히는 다큐 룩. 지도 설명 유튜버들이 즐겨 쓰는 형식.</small></a></li><li><a href="../card/s14.html"><b>S14 플랫 벡터 설명 애니</b><small>굵은 선 없는 납작한 도형, 선명한 그라데이션, 둥근 캐릭터. 과학 · 원리 설명 애니메이션 채널(쿠르츠게작트 계열)에서 익숙한 룩.</small></a></li><li><a href="../card/s15.html"><b>S15 화이트보드 손그림</b><small>하얀 보드 위에 손이 마커로 그림을 그려 나가며 설명하는 룩. 단계별 논리를 보여 주기 좋아요.</small></a></li><li><a href="../card/s16.html"><b>S16 키네틱 타이포그래피</b><small>말에 맞춰 큰 글자가 튀어나오고 커졌다 작아지는 글자 중심 영상. 소리 없이 봐도 내용이 전달돼요.</small></a></li><li><a href="../card/s17.html"><b>S17 데이터 · 차트 모션</b><small>막대 · 선 그래프가 자라고 숫자가 카운트되는 정보 그래픽 룩. 근거를 숫자로 보여 줄 때.</small></a></li><li><a href="../card/s18.html"><b>S18 수채화 손그림 애니</b><small>수채화 배경에 부드러운 파스텔 색, 손으로 그린 2D 애니메이션 느낌. 평범한 일상이 따뜻하게 보여요.</small></a></li><li><a href="../card/s19.html"><b>S19 3D 애니메이션 캐릭터</b><small>큰 눈과 과장된 표정의 둥근 3D 캐릭터, 따뜻한 역광. 극장용 3D 애니메이션 같은 룩.</small></a></li><li><a href="../card/s20.html"><b>S20 UGC 셀카 후기 룩</b><small>휴대폰 앞카메라로 집에서 찍은 듯한 손떨림 후기 화면. 광고 같지 않아서 신뢰를 줘요.</small></a></li><li><a href="../card/s21.html"><b>S21 말하는 사물</b><small>집 안 물건에 눈과 입이 생겨 카메라에 대고 말하는 영상. 제품이 직접 자기소개를 해요.</small></a></li><li><a href="../card/s22.html"><b>S22 로파이 루프</b><small>창밖에 비가 내리고 따뜻한 조명 아래 천천히 움직이는 반복 영상. 이야기 없이 분위기로 머물게 해요.</small></a></li><li><a href="../card/s23.html"><b>S23 아카이브 필름 · VHS</b><small>입자가 거친 옛날 필름이나 비디오테이프 화면, 날짜 표시와 흔들림. 회상 · 옛날 이야기에 써요.</small></a></li><li><a href="../card/s24.html"><b>S24 초현실 &#x27;만약에&#x27; 다큐</b><small>말이 안 되는 상황(사무실에 사는 돌고래 등)을 아주 진지한 다큐처럼 찍는 룩. AI만 만들 수 있어서 첫 컷 훅으로 강해요.</small></a></li></ul>
+  <aside class="cpbox" aria-label="광고"><span class="lab">광고 · 쿠팡</span>
+    <div class="cpwrap"><script src="https://ads-partners.coupang.com/g.js"></script> <script> new PartnersCoupang.G({"id":1038865,"template":"carousel","trackingCode":"AF0984527","width":"680","height":"140","tsource":""}); </script></div>
+    <p class="cpnote">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></aside>
+  <div class="cta"><b>사전에서 바로 해 보기</b><span>이 글에 나온 카메라 무빙, 구조, 조명 카드를 골라 담으면 7단계 프롬프트가 자동으로 만들어집니다.</span><a class="btn" href="../#dict">레퍼런스 사전 열기</a></div>
+  <h2>다른 가이드</h2>
+  <ul class="related"><li><a href="prompt-7-steps.html"><b>AI 영상 프롬프트, 7단계로 나눠 쓰면 결과가 안정된다</b><small>&quot;멋지게 만들어 줘&quot; 대신 무엇을 고정하고 무엇을 움직일지 나눠 쓰는 7단계 프롬프트 공식과 전후 비교 예시.</small></a></li><li><a href="prompt-examples.html"><b>AI 영상 프롬프트 예시 10개, 복사해서 바로 쓰기</b><small>제품 소개, 음식, 첫 3초 훅, 후기, 정보형, 스톱모션까지. Kling·Veo·Sora 같은 영상 AI에 바로 넣을 수 있는 영어 프롬프트 10개와 한글 설명.</small></a></li><li><a href="camera-moves.html"><b>카메라 무빙 38가지, 언제 어떤 움직임을 써야 할까</b><small>돌리인, 오비트, 스냅 줌부터 돌리 줌, 불릿 타임, 랙 포커스, 핸드헬드, 매치 컷까지. 카메라 움직임마다 주는 효과, 쓰기 좋은 순간, 바로 쓰는 프롬프트 문장.</small></a></li><li><a href="shorts-hook-patterns.html"><b>터진 쇼츠의 첫 3초, 5가지 공식으로 정리했어요</b><small>구독자 수백 명 채널이 수십만~수백만 회를 만든 쇼츠를 뜯어보고, AI 영상으로 따라 만들 수 있는 첫 3초 공식 5가지와 프롬프트를 정리했습니다.</small></a></li><li><a href="shortform-structures.html"><b>15–45초 숏폼, 8가지 구조로 짜는 법</b><small>쇼츠·릴스 기본형, 광고 심리, 숏드라마 훅, 고객 후기, 비포·애프터, TOP N 리스트, POV 상황극, 언박싱. 초 단위 시간 배분과 예시 대본까지.</small></a></li><li><a href="fix-ai-video-errors.html"><b>AI 영상이 망가지는 7가지 이유와 고치는 법</b><small>제품 모양이 바뀌고, 글자가 깨지고, 손이 뭉개지고, 조명이 튀는 문제. 원인별로 바로 써먹는 해결법.</small></a></li></ul>
+</main>
+<footer><a href="../privacy.html">소개 · 개인정보처리방침</a></footer>
+<script>
+(function(){document.querySelectorAll(".adslot").forEach(function(box){var ins=box.querySelector("ins");
+ if(!ins||/SLOT_|0000000000000000/.test(ins.getAttribute("data-ad-slot")+ins.getAttribute("data-ad-client")))return;
+ box.hidden=false;try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}});})();
+</script>
+</body>
+</html>
