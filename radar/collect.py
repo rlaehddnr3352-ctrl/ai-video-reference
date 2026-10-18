@@ -3,7 +3,7 @@
 
 YouTube Data API v3로 최근 터진 한국어 숏폼·롱폼 후보를 모아 candidates.json으로 저장한다.
 사용: YT_API_KEY=... python3 collect.py [출력경로]
-쿼터: 검색 1회 100 units. 기본 설정은 하루 약 4,000 units (무료 한도 10,000).
+쿼터: 검색 1회 100 units. 기본 설정은 1회 약 4,400 units (무료 한도 10,000).
 """
 import json, os, re, sys, datetime, urllib.parse, urllib.request, http.client, concurrent.futures as cf
 
@@ -13,12 +13,14 @@ API = "https://www.googleapis.com/youtube/v3/"
 NOW = datetime.datetime.now(datetime.timezone.utc)
 
 SHORT_Q = ["AI 애니", "AI 영상", "ai 쇼츠", "강아지", "고양이", "동물", "아기", "요리", "레시피", "꿀팁",
-           "살림 꿀팁", "썰", "역사", "미스터리", "상식", "공포", "반전", "제품 리뷰", "직장인", "병맛"]
+           "살림 꿀팁", "썰", "역사", "미스터리", "상식", "공포", "반전", "제품 리뷰", "직장인", "병맛",
+           "AI 광고", "언박싱", "정리 꿀팁", "만들기"]
 LONG_Q = ["역사 이야기", "경제 이야기", "미스터리", "AI 애니메이션", "강아지", "고양이", "부업", "다큐", "썰 모음", "과학"]
 
 NEWS = re.compile(r"(뉴스|NEWS|News|KBS|MBC|SBS|JTBC|YTN|연합|채널A|채널에이|TV조선|MBN|EBS|tvN|엔터테인먼트|Entertainment|Official|공식)", re.I)
 ADS = re.compile(r"(\bCF\b|광고|캠페인|Campaign|Commercial|예고편|티저|Teaser|트레일러|Trailer|M/V|MV\b)", re.I)
 HANGUL = re.compile(r"[가-힣]")
+REUP = re.compile(r"(출처\s*[:：]?\s*(unknown|douyin|도우인|틱톡|tiktok|인스타|instagram)|douyin|抖音|가져왔|퍼왔|원본\s*영상|credit\s*[:：]|source\s*[:：])", re.I)
 
 def get(path, **params):
     params["key"] = KEY
@@ -92,16 +94,17 @@ def main():
             if NEWS.search(v["channel"]): flags.append("방송·뉴스 채널")
             if ADS.search(v["title"]): flags.append("광고·예고편")
             if not HANGUL.search(v["channel"]) and v["title"].strip().startswith("#"): flags.append("재업로드 의심(해시태그 제목)")
+            if REUP.search(v.get("desc") or ""): flags.append("재업로드 의심(설명란 출처)")
             if kind == "short":
                 if v["dur"] > 180: continue
-                if v["views"] < 300000: continue
+                if v["views"] < 200000: continue
             else:
                 if v["dur"] <= 240 or v["views"] < 100000: continue
             v["flags"] = flags
             v["mult"] = round(v["views"] / v["subs"], 1) if v["subs"] else None
             rows.append(v)
         rows.sort(key=lambda r: -(r["mult"] or 0))
-        rows = rows[:45 if kind == "short" else 30]
+        rows = rows[:70 if kind == "short" else 30]
         if kind == "short":
             with cf.ThreadPoolExecutor(8) as ex:
                 for r, s in zip(rows, ex.map(lambda r: is_short(r["id"]), rows)): r["isShorts"] = s
