@@ -1,0 +1,153 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#101014}canvas{display:block}</style>
+<script src="data.js"></script>
+</head><body><canvas id="c" width="1080" height="1920"></canvas>
+<script>
+// 이번 주 터진 쇼츠 TOP 5 — data.js(window.DATA)를 읽어 그리는 30초 9:16 템플릿. make_rank.py가 data.js와 thumbs/를 만든다.
+const W=1080,H=1920, cv=document.getElementById("c"), g=cv.getContext("2d");
+const F="'Noto Sans CJK KR', sans-serif", MONO="'DejaVu Sans Mono', monospace";
+const C={bg:"#101014", card:"#1B1B22", line:"#2C2C36", red:"#E94F37", yel:"#FFD23F", white:"#FFFFFF", mute:"#9A9AA8", teal:"#4FD1C5"};
+var READY=false;
+const D=window.DATA, R=D.items.slice().sort((a,b)=>b.rank-a.rank); // 5위 → 1위
+const TOP=R[R.length-1];
+const IMG={};
+const T_HOOK=3.0, STEP=4.2, T1=T_HOOK+STEP*4 /*19.8*/, TC=25.0, TEND=30;
+const out=x=>1-Math.pow(1-x,3), clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), seg=(t,a,b)=>clamp((t-a)/(b-a));
+const lerp=(a,b,k)=>a+(b-a)*k;
+const com=n=>Math.round(n).toLocaleString("en-US");
+const man=n=>{ const m=n/10000; return m>=10 ? com(Math.round(m))+"만" : (Math.round(m*10)/10).toString().replace(/\.0$/,"")+"만"; };
+function rr(x,y,w,h,r){ g.beginPath(); g.moveTo(x+r,y); g.arcTo(x+w,y,x+w,y+h,r); g.arcTo(x+w,y+h,x,y+h,r); g.arcTo(x,y+h,x,y,r); g.arcTo(x,y,x+w,y,r); g.closePath(); }
+function txt(s,x,y,size,color,weight=800,align="left",font=F){ g.font=`${weight} ${size}px ${font}`; g.fillStyle=color; g.textAlign=align; g.textBaseline="alphabetic"; g.fillText(s,x,y); return g.measureText(s).width; }
+function fit(s,size,weight,maxW,min=24){ let z=size; g.font=`${weight} ${z}px ${F}`; while(g.measureText(s).width>maxW&&z>min){ z-=2; g.font=`${weight} ${z}px ${F}`; } return z; }
+function wrap2(s,maxW,size,weight){ g.font=`${weight} ${size}px ${F}`; if(g.measureText(s).width<=maxW) return [s]; const ws=s.split(" "); let a=""; for(let i=0;i<ws.length;i++){ const tst=a?a+" "+ws[i]:ws[i]; if(g.measureText(tst).width>maxW&&a){ return [a, ws.slice(i).join(" ")]; } a=tst; } return [s]; }
+function grain(seed){ g.save(); g.globalAlpha=.05; let s=seed*9301+49297; for(let i=0;i<1400;i++){ s=(s*9301+49297)%233280; const x=s/233280*W; s=(s*9301+49297)%233280; const y=s/233280*H; g.fillStyle=i%2?"#fff":"#000"; g.fillRect(x,y,2,2);} g.restore(); }
+function cover(img,x,y,w,h){ const s=Math.max(w/img.width,h/img.height), sw=w/s, sh=h/s; g.drawImage(img,(img.width-sw)/2,(img.height-sh)/2,sw,sh,x,y,w,h); }
+
+function header(t){
+  const a=seg(t,0,.35);
+  g.save(); g.globalAlpha=a;
+  g.fillStyle="rgba(0,0,0,.6)"; rr(60,96,960,236,26); g.fill();
+  g.fillStyle=C.red; g.fillRect(60,96,12,236);
+  txt(D.range+" · 구독자 대비 조회수 순위", 104, 152, 30, C.mute, 600);
+  const HT=(D.label||"이번 주")+" 터진 쇼츠";
+  txt(HT, 104, 228, 74, C.white, 900);
+  const w=g.measureText(HT).width;
+  txt("TOP 5", 104+w+24, 228, 74, C.yel, 900);
+  txt("작은 채널이 대박 난 영상만 골랐어요", 104, 292, 36, "#D8D8E0", 600);
+  g.restore();
+}
+
+function hook(t){
+  const fadeOut=1-seg(t,T_HOOK-.35,T_HOOK); if(fadeOut<=0) return;
+  const k1=out(seg(t,.15,.6)), k2=out(seg(t,.7,1.9)), k3=out(seg(t,1.9,2.3));
+  g.save();
+  // 1위 썸네일을 흐리게 깔아 무슨 영상인지 바로 보이게
+  const im=IMG[TOP.rank]; if(im){ g.save(); g.globalAlpha=fadeOut*.55*k1; g.filter="blur(22px)"; cover(im,-60,-60,W+120,H+120); g.restore(); g.save(); g.globalAlpha=fadeOut*.84; g.fillStyle=C.bg; g.fillRect(0,0,W,H); g.restore(); }
+  g.globalAlpha=fadeOut*k1;
+  txt("구독자", W/2, 640, 54, C.mute, 700, "center");
+  txt(com(TOP.subs)+"명", W/2, 780, 150, C.white, 900, "center");
+  g.globalAlpha=fadeOut*clamp(k2*3);
+  txt("인 채널이", W/2, 860, 48, C.mute, 700, "center");
+  txt("조회수 "+man(lerp(0,TOP.views,k2))+" 회", W/2, 1030, 112, C.yel, 900, "center");
+  if(k3>0){
+    g.globalAlpha=fadeOut*k3;
+    g.save(); g.translate(W/2,1210); g.rotate(-0.06); const sc=lerp(1.6,1,k3); g.scale(sc,sc);
+    g.fillStyle=C.red; rr(-270,-92,540,140,22); g.fill();
+    txt("×"+com(TOP.views/TOP.subs)+"배", 0, 18, 96, C.white, 900, "center"); g.restore();
+    txt("어떻게 이렇게 터졌을까?", W/2, 1400, 50, C.white, 700, "center");
+  }
+  g.restore();
+}
+
+function rankCard(t, r, t0, len){
+  const lt=t-t0; if(lt<-0.1||lt>len+0.05) return;
+  const inK=out(seg(lt,0,.45)), outK=seg(lt,len-.3,len);
+  const slide=lerp(140,0,inK)-outK*160, alpha=inK*(1-outK);
+  const gold = r.rank===1, acc = gold?C.yel:C.red;
+  g.save(); g.globalAlpha=alpha; g.translate(slide,0);
+  // phone-shaped thumbnail (left)
+  const px=80, py=380, pw=380, ph=676, im=IMG[r.rank];
+  g.save(); rr(px-8,py-8,pw+16,ph+16,40); g.fillStyle="#000"; g.fill(); g.lineWidth=4; g.strokeStyle=acc; g.stroke(); g.restore();
+  g.save(); rr(px,py,pw,ph,32); g.clip();
+  if(im){ const z=lerp(1.08,1,out(seg(lt,0,len))); const w=pw*z,h=ph*z; cover(im,px-(w-pw)/2,py-(h-ph)/2,w,h); } else { g.fillStyle=C.card; g.fillRect(px,py,pw,ph); }
+  const gr=g.createLinearGradient(0,py+ph-150,0,py+ph); gr.addColorStop(0,"rgba(0,0,0,0)"); gr.addColorStop(1,"rgba(0,0,0,.75)"); g.fillStyle=gr; g.fillRect(px,py+ph-150,pw,150);
+  txt("@"+r.channel, px+22, py+ph-26, fit("@"+r.channel,30,700,pw-40,20), "#FFFFFF", 700);
+  g.restore();
+  // rank badge on thumbnail corner
+  g.save(); g.fillStyle=acc; g.beginPath(); g.arc(px+8,py+8,54,0,Math.PI*2); g.fill();
+  txt(String(r.rank), px+8, py+34, 74, gold?C.bg:C.white, 900, "center"); g.restore();
+  // right column
+  const rx=500, rw=520;
+  txt(gold?"1위":r.rank+"위", rx, py+60, 56, acc, 900);
+  const fz=fit(r.fmt,32,800,rw-48,22); g.font=`800 ${fz}px ${F}`; const cw=g.measureText(r.fmt).width+40;
+  g.fillStyle=C.card; rr(rx,py+92,cw,58,29); g.fill(); g.strokeStyle=C.line; g.lineWidth=2; g.stroke();
+  txt(r.fmt, rx+20, py+132, fz, C.white, 800);
+  const lines=wrap2("“"+r.title+"”", rw, 40, 700); const tz=lines.length>1?36:40;
+  lines.slice(0,2).forEach((l,i)=>txt(l, rx, py+218+i*50, fit(l,tz,700,rw,24), "#E8E8EE", 700));
+  txt(r.dur+"초 쇼츠", rx, py+340, 32, C.mute, 600);
+  // numbers in the right column
+  const k=out(seg(lt,.45,1.6));
+  txt("구독자", rx, py+430, 32, C.mute, 700); txt(com(r.subs)+"명", rx+120, py+430, 40, C.white, 900);
+  g.fillStyle=C.line; rr(rx,py+450,rw,26,13); g.fill(); g.fillStyle=C.teal; rr(rx,py+450,Math.max(12,rw*r.subs/r.views),26,13); g.fill();
+  txt("조회수", rx, py+536, 32, C.mute, 700); txt(man(r.views*k)+" 회", rx+120, py+536, 40, C.yel, 900);
+  g.fillStyle=C.line; rr(rx,py+556,rw,26,13); g.fill(); g.fillStyle=C.yel; rr(rx,py+556,Math.max(12,rw*k),26,13); g.fill();
+  // multiplier stamp (below)
+  const mk=out(seg(lt,1.5,1.9)), mult=r.views/r.subs;
+  if(mk>0){ g.save(); g.globalAlpha=alpha*mk; g.translate(W/2, 1180); g.rotate(-0.035); g.scale(lerp(1.5,1,mk),lerp(1.5,1,mk));
+    g.fillStyle=acc; rr(-300,-78,600,120,20); g.fill();
+    txt("×"+com(mult)+"배", 0, 22, 86, gold?C.bg:C.white, 900, "center"); g.restore(); }
+  // why
+  const wk=out(seg(lt,2.0,2.5));
+  if(wk>0){ g.save(); g.globalAlpha=alpha*wk;
+    txt("터진 이유", 90, 1330, 32, C.mute, 700);
+    const wl=wrap2(r.why, 900, 46, 900); wl.slice(0,2).forEach((l,i)=>txt(l, 90, 1395+i*60, fit(l,46,900,900,28), C.white, 900));
+    g.restore(); }
+  g.restore();
+}
+
+function cta(t){
+  const k=out(seg(t,TC,TC+.6)); if(k<=0) return;
+  g.save(); g.globalAlpha=k;
+  g.fillStyle="rgba(16,16,20,.95)"; g.fillRect(0,360,W,1260);
+  // five thumbnails strip
+  R.slice().reverse().forEach((r,i)=>{ const im=IMG[r.rank]; const x=90+i*184, y=410, w=164, h=292; const ik=out(seg(t,TC+i*.08,TC+.4+i*.08));
+    g.save(); g.globalAlpha=k*ik; rr(x,y,w,h,18); g.clip(); if(im) cover(im,x,y,w,h); else { g.fillStyle=C.card; g.fillRect(x,y,w,h);} g.restore();
+    g.save(); g.globalAlpha=k*ik; g.fillStyle=i===0?C.yel:C.red; g.beginPath(); g.arc(x+24,y+24,22,0,Math.PI*2); g.fill(); txt(String(r.rank), x+24, y+36, 30, i===0?C.bg:C.white, 900, "center"); g.restore(); });
+  txt("이런 영상을", W/2, 800, 58, C.white, 800, "center");
+  txt("매일 아침 7시에", W/2, 878, 58, C.yel, 900, "center");
+  txt("자동으로 모아 드려요", W/2, 956, 58, C.white, 800, "center");
+  const items=[["▶","첫 3초에 뭐가 나오는지"],["?","왜 터졌는지 한 줄 분석"],["✎","똑같이 만드는 AI 프롬프트"]];
+  items.forEach(([ic,s],i)=>{ const ik=out(seg(t,TC+.5+i*.3,TC+.9+i*.3)); g.save(); g.globalAlpha=k*ik; const y=1080+i*96;
+    g.fillStyle=C.card; rr(170,y-58,740,78,20); g.fill(); txt(ic, 214, y-6, 38, C.red, 900, "center", "DejaVu Sans,"+F); txt(s, 262, y-6, 40, C.white, 800); g.restore(); });
+  const bk=out(seg(t,TC+1.6,TC+2.1));
+  g.save(); g.globalAlpha=k*bk; const pulse=1+0.03*Math.sin((t-TC)*6);
+  g.translate(W/2,1440); g.scale(pulse,pulse);
+  g.fillStyle=C.red; rr(-430,-66,860,116,58); g.fill();
+  txt("오늘의 터진 쇼츠 보러 가기", 0, 8, 48, C.white, 900, "center"); g.restore();
+  g.save(); g.globalAlpha=k*bk;
+  txt("ai-video-reference-kr.netlify.app/radar", W/2, 1570, 36, C.yel, 700, "center", MONO);
+  txt("무료 · 회원가입 없음 · 프로필 링크", W/2, 1620, 32, C.mute, 600, "center");
+  g.restore();
+  g.restore();
+}
+
+function footnote(t){
+  if(t<T_HOOK||t>TC) return;
+  txt("영상 출처: 각 유튜브 채널(@표기) · 숫자: 공개 조회수·구독자, 레이더 기록 "+D.range, 90, 1610, 24, "#6E6E7A", 500);
+}
+
+function render(t){
+  g.fillStyle=C.bg; g.fillRect(0,0,W,H);
+  g.save(); g.strokeStyle="rgba(255,255,255,.035)"; g.lineWidth=2; const off=(t*30)%120;
+  for(let x=-120+off;x<W;x+=120){ g.beginPath(); g.moveTo(x,0); g.lineTo(x,H); g.stroke(); }
+  for(let y=-120+off;y<H;y+=120){ g.beginPath(); g.moveTo(0,y); g.lineTo(W,y); g.stroke(); }
+  g.restore();
+  hook(t);
+  R.forEach((r,i)=>{ const t0= r.rank===1 ? T1 : T_HOOK+STEP*i; const len = r.rank===1 ? TC-T1 : STEP; rankCard(t,r,t0,len); });
+  const fl=Math.max(0,1-Math.abs(t-T1)/.25); if(fl>0){ g.save(); g.globalAlpha=fl*.5; g.fillStyle="#fff"; g.fillRect(0,0,W,H); g.restore(); }
+  cta(t); footnote(t); header(t);
+  grain(Math.floor(t*12));
+}
+Promise.all([document.fonts.load(`900 40px 'Noto Sans CJK KR'`)].concat(R.map(r=>new Promise(res=>{ if(!r.thumb) return res(); const im=new Image(); im.onload=()=>{IMG[r.rank]=im;res();}; im.onerror=()=>res(); im.src=r.thumb; }))))
+  .then(()=>{ render(0); READY=true; });
+</script></body></html>
