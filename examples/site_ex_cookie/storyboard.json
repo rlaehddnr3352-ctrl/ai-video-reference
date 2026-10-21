@@ -1,0 +1,44 @@
+{
+ "output_name": "site_ex_cookie",
+ "aspect": "9:16",
+ "shot_seconds": 5.0,
+ "style_suffix": "No text, letters, numbers, logos, stickers, subtitles or captions anywhere in the frame; the kraft bag is completely plain. No people's faces. Audio: only soft quiet room ambience, no music, no singing, no voice.",
+ "shots": [
+  {
+   "id": "S1a",
+   "seed": 7101,
+   "prompt": "Photorealistic food commercial, vertical 9:16 frame. Warm morning window light from the left, soft lighting about 2:1 key-to-fill, natural light wooden kitchen counter, soft linen textures, beige and brown palette, calm cozy lifestyle commercial tone. Extreme macro shot of one freshly baked chocolate chip cookie lying on the counter, glossy melted chocolate chips and crumbly golden-brown edges. Camera: slow macro dolly-in toward the cookie surface, shallow depth of field, gentle focus pull landing on the melted chocolate texture.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "S1b",
+   "seed": 7111,
+   "prompt": "Photorealistic food commercial, vertical 9:16 frame. Warm morning window light from the left, soft lighting about 2:1 key-to-fill, natural light wooden kitchen counter, soft linen textures, beige and brown palette, calm cozy lifestyle commercial tone. Extreme macro shot of one freshly baked chocolate chip cookie lying on the counter, glossy melted chocolate chips and crumbly golden-brown edges. Camera: slow macro dolly-in toward the cookie surface, shallow depth of field, gentle focus pull landing on the melted chocolate texture.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "S2a",
+   "seed": 7102,
+   "prompt": "Photorealistic food commercial, vertical 9:16 frame. Warm morning window light from the left, soft lighting about 2:1 key-to-fill, natural light wooden kitchen counter, soft linen textures, beige and brown palette, calm cozy lifestyle commercial tone. High-speed slow motion: several round chocolate chip cookies tumble out of a plain unlabeled brown kraft paper bag into a white ceramic bowl, crumbs bouncing and settling, crisp detail. Camera fixed at a low side angle.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "S3a",
+   "seed": 7103,
+   "prompt": "Photorealistic food commercial, vertical 9:16 frame. Warm morning window light from the left, soft lighting about 2:1 key-to-fill, natural light wooden kitchen counter, soft linen textures, beige and brown palette, calm cozy lifestyle commercial tone. A neat stack of five round chocolate chip cookies on a small white plate next to a plain unlabeled brown kraft paper bag, a folded linen napkin beside them. Camera: smooth slow orbit around the cookie stack at eye level, constant speed, the stack stays centered and sharp.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "S4a",
+   "seed": 7104,
+   "prompt": "Photorealistic food commercial, vertical 9:16 frame. Warm morning window light from the left, soft lighting about 2:1 key-to-fill, natural light wooden kitchen counter, soft linen textures, beige and brown palette, calm cozy lifestyle commercial tone. Extreme close-up of a warm chocolate chip cookie being gently broken in half by two hands, melted chocolate stretching between the halves; then the camera slowly pulls back to reveal the sunlit kitchen counter with a plain unlabeled brown kraft paper bag and a glass of milk.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "S4b",
+   "seed": 7114,
+   "prompt": "Photorealistic food commercial, vertical 9:16 frame. Warm morning window light from the left, soft lighting about 2:1 key-to-fill, natural light wooden kitchen counter, soft linen textures, beige and brown palette, calm cozy lifestyle commercial tone. Extreme close-up of a warm chocolate chip cookie being gently broken in half by two hands, melted chocolate stretching between the halves; then the camera slowly pulls back to reveal the sunlit kitchen counter with a plain unlabeled brown kraft paper bag and a glass of milk.",
+   "gen_seconds": 5.0
+  }
+ ]
+}
