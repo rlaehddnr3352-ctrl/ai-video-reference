@@ -1,0 +1,69 @@
+{
+ "name": "site_ex_dogtreat",
+ "hook": [
+  "AI로 만든 강아지 간식 광고",
+  "카드 4장 골라서 만들었어요"
+ ],
+ "hook_sec": 3.2,
+ "tag": "광고 예시 · 가상 제품 · AI 생성 영상",
+ "common": "T01 쇼츠 기본형 · S06 파스텔 팝 · L01 플랫 조명",
+ "tool": "→ 합쳐진 프롬프트 그대로 MiniMax H3로 생성",
+ "split": 10.3,
+ "explain_dur": 15.5,
+ "check_at": [
+  3.0,
+  8.6,
+  12.5
+ ],
+ "item": "강아지 간식",
+ "shots": [
+  {
+   "id": "S1",
+   "src": "C1",
+   "in": 0.3,
+   "dur": 4.0,
+   "still_at": 3.5,
+   "sub": "산책 다녀오면 늘 이 눈빛인데",
+   "code": "M17",
+   "name": "렌즈 줌 인",
+   "when": "디테일을 천천히 확대할 때",
+   "prompt": "slow optical zoom-in on the product, camera does not move"
+  },
+  {
+   "id": "S2",
+   "src": "C2",
+   "in": 0.4,
+   "dur": 4.0,
+   "still_at": 3.0,
+   "sub": "꼭꼭 씹는 간식 하나 꺼내면",
+   "code": "M01",
+   "name": "매크로 돌리인",
+   "when": "질감을 가까이 보여 줄 때",
+   "prompt": "slow macro dolly-in toward the subject, shallow depth of field, gentle focus pull"
+  },
+  {
+   "id": "S3",
+   "src": "C3",
+   "in": 0.4,
+   "dur": 4.0,
+   "still_at": 2.0,
+   "sub": "신나서 달려오다가",
+   "code": "M05",
+   "name": "낮은 시점 팔로우",
+   "when": "반려동물·사람을 따라갈 때",
+   "prompt": "low-angle handheld follow shot close to the floor, natural sway"
+  },
+  {
+   "id": "S4",
+   "src": "C4",
+   "in": 0.3,
+   "dur": 4.6,
+   "still_at": 1.5,
+   "sub": "오늘도 꼬리가 바빠요",
+   "code": "M18",
+   "name": "풀백 리빌",
+   "when": "엔딩에서 공간 전체를 보여 줄 때",
+   "prompt": "start on an extreme close-up, then slowly pull back to reveal the whole scene"
+  }
+ ]
+}

@@ -1,4 +1,25 @@
-{"_note": "TOP 5가 최근 7일과 겹치거나 5편이 안 되는 날, used가 비어 있는 예시를 위에서부터 하나 꺼내 씁니다. 쓰면 used에 게시 날짜를 적습니다. 각 폴더: video.mp4, cover.jpg, caption.txt, yt_title.txt",
+{
+ "_note": "TOP 5가 최근 7일과 겹치거나 5편이 안 되는 날, used가 비어 있는 예시를 위에서부터 하나 꺼내 씁니다. 쓰면 used에 게시 날짜를 적습니다. 각 폴더: video.mp4, cover.jpg, caption.txt, yt_title.txt",
  "items": [
-  {"dir": "site_ex_cookie", "used": "2026-10-22"}
- ]}
+  {
+   "dir": "site_ex_cookie",
+   "used": "2026-10-22"
+  },
+  {
+   "dir": "site_ex_serum",
+   "used": ""
+  },
+  {
+   "dir": "site_ex_coffee",
+   "used": ""
+  },
+  {
+   "dir": "site_ex_dogtreat",
+   "used": ""
+  },
+  {
+   "dir": "site_ex_sneaker",
+   "used": ""
+  }
+ ]
+}

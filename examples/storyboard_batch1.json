@@ -1,0 +1,116 @@
+{
+ "output_name": "site_ex_batch1",
+ "aspect": "9:16",
+ "shot_seconds": 5.0,
+ "style_suffix": "No text, letters, numbers, logos, stickers, subtitles or captions anywhere in the frame; every package and product is completely plain. No human faces. Audio: only soft quiet ambience, no music, no singing, no voice.",
+ "shots": [
+  {
+   "id": "A1",
+   "seed": 8101,
+   "prompt": "Photorealistic cosmetics commercial, vertical 9:16 frame. Bright high-key white studio, soft diffused key light, clean soft shadows, flat even lighting about 1:1, commercial product photography look. The product is a frosted glass serum bottle with a glass dropper cap, completely plain with no label. Water droplets on a clear glass sheet in the foreground are in sharp focus while the frosted serum bottle stands blurred behind; camera static, rack focus: focus slowly shifts from the droplets to the serum bottle in the background.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "A2",
+   "seed": 8102,
+   "prompt": "Photorealistic cosmetics commercial, vertical 9:16 frame. Bright high-key white studio, soft diffused key light, clean soft shadows, flat even lighting about 1:1, commercial product photography look. The product is a frosted glass serum bottle with a glass dropper cap, completely plain with no label. Extreme close-up, high-speed slow motion: a single clear golden serum drop falls from the glass dropper and lands on a clean glass plate, a tiny soft splash and ripple, crisp detail.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "A3",
+   "seed": 8103,
+   "prompt": "Photorealistic cosmetics commercial, vertical 9:16 frame. Bright high-key white studio, soft diffused key light, clean soft shadows, flat even lighting about 1:1, commercial product photography look. The product is a frosted glass serum bottle with a glass dropper cap, completely plain with no label. The frosted serum bottle stands on a small white round pedestal; camera makes a smooth slow orbit around the bottle at eye level, constant speed, the bottle stays centered and sharp.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "A4",
+   "seed": 8104,
+   "prompt": "Photorealistic cosmetics commercial, vertical 9:16 frame. Bright high-key white studio, soft diffused key light, clean soft shadows, flat even lighting about 1:1, commercial product photography look. The product is a frosted glass serum bottle with a glass dropper cap, completely plain with no label. The frosted serum bottle surrounded by a few small white flowers and shallow clear water rippling gently around its base; camera does not move, slow optical zoom-in onto the bottle.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "B1",
+   "seed": 8201,
+   "prompt": "Photorealistic cafe drink commercial, vertical 9:16 frame. 35mm film look, warm tones, gentle halation on highlights, soft grain, nostalgic and tender mood, soft lighting about 2:1 key-to-fill, warm afternoon sunlight. The product is a plain unlabeled brown kraft paper coffee bean pouch. Locked-off top-down overhead shot of a light wooden table: the plain kraft coffee pouch in the center, then a tall glass of ice, a small bowl of roasted coffee beans and a small milk jug slide into frame one by one and arrange neatly around it.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "B2",
+   "seed": 8202,
+   "prompt": "Photorealistic cafe drink commercial, vertical 9:16 frame. 35mm film look, warm tones, gentle halation on highlights, soft grain, nostalgic and tender mood, soft lighting about 2:1 key-to-fill, warm afternoon sunlight. The product is a plain unlabeled brown kraft paper coffee bean pouch. High-speed slow motion: fresh white milk pours into a tall glass of iced black coffee, swirling clouds of milk spreading between the ice cubes, crisp detail.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "B3",
+   "seed": 8203,
+   "prompt": "Photorealistic cafe drink commercial, vertical 9:16 frame. 35mm film look, warm tones, gentle halation on highlights, soft grain, nostalgic and tender mood, soft lighting about 2:1 key-to-fill, warm afternoon sunlight. The product is a plain unlabeled brown kraft paper coffee bean pouch. A tall glass of iced latte with condensation droplets on a cafe table by the window; camera makes a sudden fast push-in toward the glass, brief hold, slight shake on impact.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "B4",
+   "seed": 8204,
+   "prompt": "Photorealistic cafe drink commercial, vertical 9:16 frame. 35mm film look, warm tones, gentle halation on highlights, soft grain, nostalgic and tender mood, soft lighting about 2:1 key-to-fill, warm afternoon sunlight. The product is a plain unlabeled brown kraft paper coffee bean pouch. Starts on an extreme close-up of the iced latte, then the camera slowly pulls back to reveal a cozy sunlit cafe window seat with the plain kraft coffee pouch beside the glass.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "C1",
+   "seed": 8301,
+   "prompt": "Photorealistic pet commercial, vertical 9:16 frame. Solid pastel pink and mint backdrop, playful pop styling, bold simple shapes, even bright flat lighting. A small fluffy white bichon dog. The product is a plain unlabeled pastel paper pouch of chewy jerky dog treats. The small fluffy white dog sits on a pastel pink floor looking up eagerly with bright eyes and tilting its head; camera does not move, slow optical zoom-in on the dog's face.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "C2",
+   "seed": 8302,
+   "prompt": "Photorealistic pet commercial, vertical 9:16 frame. Solid pastel pink and mint backdrop, playful pop styling, bold simple shapes, even bright flat lighting. A small fluffy white bichon dog. The product is a plain unlabeled pastel paper pouch of chewy jerky dog treats. A few chewy brown jerky dog treats on a small pastel mint plate next to the plain pastel pouch; slow macro dolly-in toward the treats, shallow depth of field, focus landing on the treat texture.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "C3",
+   "seed": 8303,
+   "prompt": "Photorealistic pet commercial, vertical 9:16 frame. Solid pastel pink and mint backdrop, playful pop styling, bold simple shapes, even bright flat lighting. A small fluffy white bichon dog. The product is a plain unlabeled pastel paper pouch of chewy jerky dog treats. Low-angle handheld follow shot close to the floor, natural sway, following the small fluffy white dog as it trots happily across a bright pastel room.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "C3b",
+   "seed": 8313,
+   "prompt": "Photorealistic pet commercial, vertical 9:16 frame. Solid pastel pink and mint backdrop, playful pop styling, bold simple shapes, even bright flat lighting. A small fluffy white bichon dog. The product is a plain unlabeled pastel paper pouch of chewy jerky dog treats. Low-angle handheld follow shot close to the floor, natural sway, following the small fluffy white dog as it trots happily across a bright pastel room.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "C4",
+   "seed": 8304,
+   "prompt": "Photorealistic pet commercial, vertical 9:16 frame. Solid pastel pink and mint backdrop, playful pop styling, bold simple shapes, even bright flat lighting. A small fluffy white bichon dog. The product is a plain unlabeled pastel paper pouch of chewy jerky dog treats. Starts on an extreme close-up of the small white dog happily chewing a jerky treat, then the camera slowly pulls back to reveal the bright pastel room with the plain pastel treat pouch beside the dog.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "D1",
+   "seed": 8401,
+   "prompt": "Photorealistic sportswear commercial, vertical 9:16 frame. Low-key cinematic lighting, single hard key light, deep shadows, rich contrast, dramatic 4:1 lighting, subtle warm grade, wet city street at night with bokeh lights. The product is a plain white running sneaker with no logo. Lateral tracking shot moving parallel to a runner's feet in plain white running sneakers running on wet asphalt at night, steady speed, the feet stay in the same screen position, left to right, splashes from the wet road.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "D2",
+   "seed": 8402,
+   "prompt": "Photorealistic sportswear commercial, vertical 9:16 frame. Low-key cinematic lighting, single hard key light, deep shadows, rich contrast, dramatic 4:1 lighting, subtle warm grade, wet city street at night with bokeh lights. The product is a plain white running sneaker with no logo. Bullet time: a plain white running sneaker mid-stride lands in a shallow puddle and the moment freezes with water droplets suspended in the air while the camera orbits 90 degrees around the frozen moment, then time resumes.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "D2b",
+   "seed": 8412,
+   "prompt": "Photorealistic sportswear commercial, vertical 9:16 frame. Low-key cinematic lighting, single hard key light, deep shadows, rich contrast, dramatic 4:1 lighting, subtle warm grade, wet city street at night with bokeh lights. The product is a plain white running sneaker with no logo. Bullet time: a plain white running sneaker mid-stride lands in a shallow puddle and the moment freezes with water droplets suspended in the air while the camera orbits 90 degrees around the frozen moment, then time resumes.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "D3",
+   "seed": 8403,
+   "prompt": "Photorealistic sportswear commercial, vertical 9:16 frame. Low-key cinematic lighting, single hard key light, deep shadows, rich contrast, dramatic 4:1 lighting, subtle warm grade, wet city street at night with bokeh lights. The product is a plain white running sneaker with no logo. A single plain white running sneaker on a dark reflective floor with a rim light; smooth slow orbit around the sneaker at eye level, constant speed, the sneaker stays centered and sharp.",
+   "gen_seconds": 5.0
+  },
+  {
+   "id": "D4",
+   "seed": 8404,
+   "prompt": "Photorealistic sportswear commercial, vertical 9:16 frame. Low-key cinematic lighting, single hard key light, deep shadows, rich contrast, dramatic 4:1 lighting, subtle warm grade, wet city street at night with bokeh lights. The product is a plain white running sneaker with no logo. Low camera starts at a pair of plain white running sneakers standing on wet pavement and slowly cranes up to reveal the runner's silhouette from behind against blurred city lights, steady and slow.",
+   "gen_seconds": 5.0
+  }
+ ]
+}
