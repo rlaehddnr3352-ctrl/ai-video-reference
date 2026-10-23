@@ -1,0 +1,42 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 앱·홈페이지 소개 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 휴대폰 속 앱 화면으로 보여 주는 3단계 사용법
+바꿔 쓰는 법: [APP NAME], 화면에 나올 상품 4개, 버튼 문구만 바꾸면 우리 앱이나 스마트스토어 구매 과정 영상이 돼요. 실제 화면 캡처가 있으면 '각 화면을 이 이미지처럼 그려줘'라고 붙여 주세요.
+
+프롬프트 전문 ①
+Build a 12-second vertical (1080x1920) app demo video as one HTML file with Canvas 2D, with window.render(t) drawing frame t deterministically.
+
+App: [APP NAME], a [WHAT THE APP DOES]. Brand color: [COLOR].
+Show a realistic phone mockup in the center (rounded body, notch, soft shadow) on a light background with a big step caption above it.
+
+Screens (draw the UI yourself with shapes and text — no screenshots):
+0–3.2s  Home screen: app name, search bar, a promo banner ("[PROMO LINE]"), a 2x2 grid of product cards. A tap indicator (circle that shrinks + ripple) taps the first card, which gets a highlight border. Caption: "① 고르고".
+3.2–6.6s  Slide-left transition to a detail screen: large product visual, name, price, a quantity stepper that goes 1 → 2 with taps, total price updates, then the bottom CTA button is pressed (scale 0.95). Caption: "② 담고".
+6.6–9s  Cart icon badge pops with a bounce, then the screen wipes to a full-color success screen with a drawn check mark and "주문 완료!". Caption: "③ 끝!".
+9–12s  Phone scales down slightly; headline "[HEADLINE]" and the app name appear below; fade out.
+
+Motion: ease-out cubic on everything, back-ease on pops, 0.35s screen transitions. Clean Korean UI typography (Noto Sans KR).
+
+② 주소를 치면 웹사이트가 조립되는 소개 영상
+바꿔 쓰는 법: 주소, 헤드라인, 기능 3개, 버튼 문구, 대표 색만 바꾸면 우리 홈페이지·스마트스토어 소개 영상이 돼요. 실제 홈페이지 캡처가 있으면 '이 구성대로 블록을 쌓아 줘'라고 붙여 주세요.
+
+프롬프트 전문 ②
+Create an 11-second vertical (1080x1920) website intro video as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Site: [DOMAIN]. Brand: [BRAND]. Hero headline: "[HERO HEADLINE]". Three feature cards: [FEATURE 1], [FEATURE 2], [FEATURE 3]. CTA button: "[CTA]". Brand color: [COLOR].
+
+Draw a browser window (traffic-light dots, rounded address bar) centered on a soft gradient background.
+0–2.5s: the window pops in; the address bar types the domain at ~16 chars/s with a blinking caret; an Enter key-cap graphic presses at the end.
+2.5–3s: a thin loading bar runs across the top of the page.
+3–6.5s: the page assembles block by block — nav bar, hero headline (rises in), hero image block (a colored shape composition), then three feature cards slide up with a 0.15s stagger, each with a drawn icon.
+6.5–8.5s: an arrow cursor moves along a curved path to the CTA button, hovers (button darkens), clicks (ripple) — a toast "[TOAST MESSAGE]" slides in at the top.
+8.5–11s: the browser shrinks a bit; the domain appears big under it; fade out.
+
+Clean modern web aesthetic, Noto Sans KR, monospace for the URL.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+효과음: Kenney (CC0)
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

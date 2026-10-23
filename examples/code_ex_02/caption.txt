@@ -1,0 +1,23 @@
+영상 AI 없이 만든 앱·홈페이지 소개 영상 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 휴대폰 속 앱 화면으로 보여 주는 3단계 사용법
+휴대폰 목업 안에서 실제 앱처럼 화면이 넘어가며 '고르고 → 담고 → 주문 완료'를 보여 줘요. 손가락 탭 표시와 단계 자막이 함께 움직여요.
+
+② 주소를 치면 웹사이트가 조립되는 소개 영상
+브라우저 주소창에 사이트 주소가 타이핑되고, 엔터를 치면 페이지가 블록 단위로 조립돼요. 마우스 커서가 버튼을 누르는 것까지 보여 줘요.
+
+📋 프롬프트 핵심 (① / ②)
+Build a 12-second vertical (1080x1920) app demo video as one HTML file with Canvas 2D, with window.render(t) drawing frame t deterministically.
+App: [APP NAME], a [WHAT THE APP DOES]. Brand color: [COLOR].
+Show a realistic phone mockup in the center (rounded body, notch, soft shadow) on a light background with a big step caption above it.
+
+Create an 11-second vertical (1080x1920) website intro video as one HTML file with Canvas 2D.
+Site: [DOMAIN]. Brand: [BRAND]. Hero headline: "[HERO HEADLINE]". Three feature cards: [FEATURE 1], [FEATURE 2], [FEATURE 3]. CTA button: "[CTA]". Brand color: [COLOR].
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

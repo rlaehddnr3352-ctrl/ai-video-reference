@@ -1,0 +1,42 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 할인 이벤트 광고 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 가격이 뚝 떨어지는 마감 할인 카운트다운
+바꿔 쓰는 법: 상품명, 정가·할인가·할인율, 마감 문구만 바꾸면 돼요. 타이머 시작 시간을 실제 남은 시간으로 바꾸고 싶으면 '03:00:00부터'처럼 적어 주세요.
+
+프롬프트 전문 ①
+Create a 10-second vertical (1080x1920) flash-sale countdown ad as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Product: [PRODUCT NAME]. Regular price: [39,000원]. Sale price: [19,900원]. Discount badge: [-49%]. Deadline text: "[오늘 밤 12시 마감]".
+Palette: black, electric yellow #ffe14d, hot red.
+
+0–1s: yellow diagonal stripes sweep across a black screen; "TIME SALE" slams in.
+1–4s: a big seven-segment-style digital timer (draw segments as rounded bars) counts down quickly from 02:59:59 with the seconds blurring; a progress bar under it drains.
+3–5.5s: the product card slides in; the regular price is shown, then a red strike line draws across it from left to right.
+5.5–7s: the sale price drops from above and lands with a squash-and-stretch bounce and a screen shake of 8px; the discount badge stamps in at an angle with a starburst behind it.
+7–10s: a "[오늘만]" pill blinks twice per second, the deadline text sits under the price; fade out.
+
+Bold Korean type (Noto Sans KR Black), thick shapes, high contrast.
+
+② 슬롯머신으로 뽑는 오늘의 혜택
+바꿔 쓰는 법: [EVENT NAME], 릴에 들어갈 혜택 6개, 당첨 혜택, 마감 문구만 바꾸면 우리 가게 이벤트 영상이 돼요. 레버 대신 '버튼을 누르는 손가락'으로 바꿔 달라고 해도 됩니다.
+
+프롬프트 전문 ②
+Create an 11-second vertical (1080x1920) slot-machine promo animation as one HTML file with Canvas 2D. window.render(t) draws frame t deterministically.
+
+Event: "[EVENT NAME]" for [BRAND]. Reel symbols (text labels drawn on tiles): [1+1], [무료배송], [10%], [★], [20%], [사은품]. Winning symbol: [WINNING BENEFIT].
+
+Machine: a chunky rounded cabinet in [BRAND COLOR] with a marquee of bulbs around the top sign that chase in sequence, three reel windows with glass highlights, and a lever on the right with a red ball.
+0–1.5s: the cabinet rises into frame with a bounce; marquee reads "[EVENT NAME]".
+1.5–2.2s: the lever is pulled down and springs back.
+2–6.8s: the three reels spin with motion blur (draw stretched, semi-transparent tiles), then stop one by one at 5.0s, 5.7s and 6.6s with a slight overshoot and settle; the last reel slows down suspensefully.
+6.8–9s: all three show the winning symbol — the bulbs flash in unison, a winning line glows across the reels, confetti bursts, and a banner "[WIN MESSAGE]" drops in.
+9–11s: CTA "[CTA — e.g. 오늘 자정까지]" pulses below, then fade out.
+
+Style: playful casino-arcade, bold Korean type (Noto Sans KR Black), dark purple background with sparkles.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+효과음: Kenney (CC0)
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽
