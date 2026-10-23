@@ -1,0 +1,36 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 3D 제품 광고 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 3D 제품 박스가 회전하는 쇼케이스
+바꿔 쓰는 법: [PRODUCT NAME], 라벨 색, 앞면 문구만 바꾸면 돼요. 실제 패키지 사진이 있으면 '앞면 텍스처로 이 이미지를 써 줘'라고 하면 우리 상자가 그대로 돌아요. 병이나 캔이면 상자 대신 원기둥으로 바꿔 달라고 하세요.
+
+프롬프트 전문 ①
+Create a 10-second vertical (1080x1920) 3D product showcase as one HTML file using Three.js (ES module from a CDN). Expose window.render(t) that sets the scene state for time t and renders one frame, so it can be captured frame by frame.
+
+Product: a box package for "[PRODUCT NAME]" — draw each face's label on an offscreen 2D canvas and use it as a CanvasTexture (front: logo + product name + "[KEY CLAIM]", sides: color band + small text, top: logo).
+Scene: dark studio, glossy floor that catches a soft reflection, key light from front-left, rim light from behind in [ACCENT COLOR], soft ambient fill, ACES tone mapping.
+
+0–2s: camera starts wide and low; the box drops onto the turntable with a small bounce.
+2–7s: the box turns a full 360° with ease-in-out while the camera slowly dollies in and rises a bit.
+7–10s: the box settles front-facing; a 2D overlay shows "[PRODUCT NAME]" and "[ONE-LINE BENEFIT]" rising in; fade out.
+
+Keep everything driven by t (no requestAnimationFrame clock) so the output is deterministic.
+
+② 탄산 기포 속에서 회전하는 3D 캔
+바꿔 쓰는 법: 음료 이름, 맛, 라벨 색, 문구만 바꾸면 돼요. 실제 라벨 디자인 이미지가 있으면 '캔 라벨 텍스처로 이 이미지를 써 줘'라고 하세요.
+
+프롬프트 전문 ②
+Create a 10-second vertical (1080x1920) 3D beverage can shot as one HTML file using Three.js. Expose window.render(t) that sets the whole scene for time t (seconds) and renders one frame — no requestAnimationFrame clock — so it can be recorded frame by frame.
+
+Product: [DRINK NAME], flavor "[FLAVOR]", label color [COLOR], claim "[CLAIM — e.g. 제로 칼로리]".
+
+Can: CylinderGeometry body with a CanvasTexture label (draw the label on a 2D canvas: color band, product name vertically centered, small claim text, wrap-around stripes), metallic top/bottom caps (slightly smaller cylinders, metalness 1).
+Background: vertical gradient in a fresh tone; 150 bubbles (small transparent spheres or point sprites) rising with slight wobble and looping.
+0–2s: the can tilts in from below with a spin.
+2–7s: the can rotates slowly (one full turn) while a bright specular light sweeps across it from left to right twice; small water droplets (tiny glossy spheres) cling to the body.
+7–10s: the can settles at a 10° tilt; 2D overlay with product name, flavor and claim pops in; fade out.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

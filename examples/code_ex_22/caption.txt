@@ -1,0 +1,22 @@
+영상 AI 없이 만든 포스터·무드 광고 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 액자 속 제품이 밖으로 튀어나오는 포스터
+벽에 걸린 포스터 속 풍경이 살아 움직이다가, 제품이 액자 테두리를 넘어 앞으로 튀어나와요. 입체감 있는 SNS 광고 첫 장면용이에요.
+
+② 로우폴리 섬에 해가 뜨는 3D 장면
+각진 로우폴리 섬과 출렁이는 바다 위로 해가 떠오르며 하늘색이 밤에서 아침으로 바뀌어요. 숙소·여행·힐링 브랜드 무드 영상에 좋아요.
+
+📋 프롬프트 핵심 (① / ②)
+Create a 10-second vertical (1080x1920) "out of the frame" poster animation as one HTML file with Canvas 2D.
+Product: [PRODUCT — draw as a simple shape, e.g. bottle/can/box] in [COLOR]. Poster scene: [SCENE — e.g. 맑은 하늘과 언덕]. Headline: "[HEADLINE]".
+
+Create an 11-second vertical (1080x1920) low-poly 3D scene as one HTML file using Three.js.
+Mood line: "[MOOD LINE]". Brand: [BRAND NAME].
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

@@ -1,0 +1,37 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 문제 해결 설명 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 문제 장면에서 해결 장면으로 넘어가는 설명
+바꿔 쓰는 법: 문제 문장, 해결 문장, 제품 이름, 결과 문구만 바꾸면 돼요. 등장인물·소품(계산대, QR)을 우리 업종에 맞게 '병원 접수대로'처럼 바꿔 달라고 하면 돼요.
+
+프롬프트 전문 ①
+Create a 12-second vertical (1080x1920) problem → solution explainer as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Problem: "[PROBLEM — e.g. 손님이 메뉴를 몰라 계속 물어본다]". Solution: "[SOLUTION — e.g. 테이블 QR 메뉴판]". Product: [PRODUCT NAME]. Result stat: "[RESULT — 예시 수치]".
+
+Part 1 (0–5s, desaturated gray-blue palette, slight shake): a counter scene drawn flat: a staff figure (simple circle head + rounded body) and 3 customer figures with "?" speech bubbles popping repeatedly; a stress meter bar fills to red; caption "PROBLEM" label + problem sentence.
+Transition (5–5.8s): the whole frame flips like a card around the vertical axis (scaleX 1 → 0 → 1) and the palette switches to warm saturated colors.
+Part 2 (5.8–10s): same scene, but each table has a small QR stand; customers' bubbles change to hearts/checks; the staff figure relaxes; the stress meter drains to green; caption "SOLUTION" + solution sentence.
+10–12s: product name and result stat pop; fade out.
+
+Simple geometric characters (no faces beyond dots), Noto Sans KR.
+
+② 화살표가 돌며 이어지는 순환 구조 설명
+바꿔 쓰는 법: 순환 단계 4개와 가운데 문구만 바꾸면 돼요. 단계가 3개나 5개면 '노드 5개로'라고 적어 주세요.
+
+프롬프트 전문 ②
+Create a 12-second vertical (1080x1920) cycle diagram explainer as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Cycle steps (4): [STEP 1], [STEP 2], [STEP 3], [STEP 4]. Center label: "[CENTER LABEL — e.g. 선순환]". Short descriptions under each node: [DESC 1–4].
+
+0–1s: title "[TITLE]" rises in.
+1–5s: four circular nodes (one color each) pop in at the 12, 3, 6 and 9 o'clock positions around a big circle; after each node, a curved arrow arc draws to the next node (ease-in-out), with an arrowhead that rotates with the tangent.
+5–10s: a glowing dot travels around the loop twice, faster the second time; each node pulses when the dot passes. The center label shows a counter (e.g. "×1 → ×2 → ×4") that increases each lap; the whole ring rotates very slowly.
+10–12s: the descriptions fade in under the nodes; fade out.
+
+Bold modern infographic style on a dark background, Noto Sans KR.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

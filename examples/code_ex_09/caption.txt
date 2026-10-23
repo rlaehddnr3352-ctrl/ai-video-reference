@@ -1,0 +1,23 @@
+영상 AI 없이 만든 브랜드 감성 영상 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 한 단어씩 꽂히는 키네틱 타이포 브랜드 선언
+화면을 꽉 채운 큰 글자가 박자에 맞춰 한 단어씩 꽂히고, 배경색이 매번 뒤집혀요. 마지막에 브랜드 이름이 정리되며 끝나요.
+
+② 흐르는 그라디언트 위 감성 문구 루프
+부드러운 색 덩어리가 천천히 섞이며 흐르는 배경 위로 짧은 감성 문구가 바뀌어요. 끝과 처음이 이어지는 루프라 매장 모니터나 배경 영상으로 좋아요.
+
+📋 프롬프트 핵심 (① / ②)
+Make a 10-second vertical (1080x1920) kinetic typography video as one HTML file with Canvas 2D.
+Message (one word per beat): [WORD 1] / [WORD 2] / [WORD 3] / [WORD 4] / [WORD 5]. Brand: [BRAND NAME], tagline: [TAGLINE].
+Palette: [ACCENT COLOR], near-black #111, warm off-white.
+
+Create a 12-second seamless-loop vertical (1080x1920) mood video as one HTML file with Canvas 2D.
+Brand: [BRAND]. Words that cycle: "[WORD 1]", "[WORD 2]", "[WORD 3]". Small caption: "[CAPTION]". Palette: [3–4 colors].
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

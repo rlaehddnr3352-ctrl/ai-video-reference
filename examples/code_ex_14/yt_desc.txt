@@ -1,0 +1,38 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 상세페이지용 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 요금제·옵션 비교표가 펼쳐지는 영상
+바꿔 쓰는 법: 옵션 이름·가격과 비교 항목 4개, 각 옵션에 포함되는지(O/X)만 바꾸면 돼요. 상품 구성(1개/3개/6개 세트)을 비교해도 잘 어울려요.
+
+프롬프트 전문 ①
+Create an 11-second vertical (1080x1920) plan/option comparison animation as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Options (name, price, color): [BASIC 9,900원], [STANDARD 19,900원], [PREMIUM 29,900원]. Recommended: [STANDARD].
+Feature rows: [FEATURE 1], [FEATURE 2], [FEATURE 3], [FEATURE 4] with which option includes which.
+
+0–1.2s: title "[TITLE]" rises in.
+1.2–3s: three tall columns rise from the bottom with a 0.15s stagger; each header shows the name and price (price counts up).
+3–7s: feature labels appear on the left column of a table; for each row, check marks (drawn strokes that draw on) or faint dashes appear in each column, row by row, 0.7s apart.
+7–9s: the recommended column scales up 1.08x and lifts with a stronger shadow; a ribbon "추천" folds onto its top corner; the other columns dim slightly.
+9–11s: CTA "[CTA]" button pulses under the table; fade out.
+
+Clean SaaS pricing-page look, light background, Noto Sans KR, prices in Inter.
+
+② 질문 카드가 뒤집혀 답이 나오는 FAQ
+바꿔 쓰는 법: 질문과 답 3쌍, 문의 채널만 바꾸면 돼요. 실제 고객 문의 중 가장 많이 받는 것 3개를 넣으면 문의 응대 시간이 줄어요.
+
+프롬프트 전문 ②
+Create a 12-second vertical (1080x1920) FAQ video as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Brand: [BRAND]. Three Q&A pairs: [Q1 / A1], [Q2 / A2], [Q3 / A3].
+
+0–1s: header "자주 묻는 질문" with a small "Q&A" badge.
+1–10s: each pair gets 3s: a card (rounded, soft shadow) slides up showing a big "Q" and the question; after 1s it flips around its vertical axis (scaleX 1 → 0 → 1 with a tiny vertical lift and shadow change) to reveal the back side colored [ACCENT] with a big "A" and the answer typed in at ~20 chars/s; then the card shrinks and docks into a small stack at the bottom, and the next card enters.
+10–12s: the three docked cards fan out slightly; "더 궁금한 건 [CONTACT]" appears; fade out.
+
+Clean, friendly customer-service tone, Noto Sans KR.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

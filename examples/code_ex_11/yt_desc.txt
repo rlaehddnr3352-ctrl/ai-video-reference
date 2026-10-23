@@ -1,0 +1,39 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 이벤트 참여 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 돌림판을 돌려 혜택을 뽑는 이벤트 영상
+바꿔 쓰는 법: 칸 8개의 혜택과 색, 당첨 칸, 참여 방법 문구만 바꾸면 돼요. 칸 수가 6개나 10개여도 '칸을 6개로'라고 하면 각도를 알아서 계산해요.
+
+프롬프트 전문 ①
+Create an 11-second vertical (1080x1920) prize-wheel event video as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Event: "[EVENT TITLE]". Wheel slots (label, color) — 8 slots: [SLOT 1] … [SLOT 8]. Winning slot: [WINNER].
+
+Wheel: big circle with 8 colored wedges, labels rotated along each wedge, a thick white rim with bulbs (small circles that light up in a chasing pattern), a center hub with the brand initial, and a pointer at the top.
+0–1s: the wheel spins in from small with a bounce; title rises in.
+1–7.5s: the wheel spins fast then decelerates with a cubic ease-out so it lands exactly on the winning slot (compute the final angle so the winner's center is under the pointer); the pointer flicks back each time a wedge boundary passes (spring wobble).
+7.5–9s: the winning wedge glows and scales out a little; confetti bursts; banner "[WIN MESSAGE]" drops.
+9–11s: "[HOW TO JOIN]" line; fade out.
+
+Bright, festive, Noto Sans KR Black for labels.
+
+② 섞인 카드 중 하나를 뒤집는 '오늘의 추천'
+바꿔 쓰는 법: 후보 3개와 오늘 뽑힐 것, 이유 한 줄만 바꾸면 매일 새 영상이 돼요. '오늘의 메뉴', '오늘의 운세템'처럼 시리즈 이름도 바꿔 보세요.
+
+프롬프트 전문 ②
+Create an 11-second vertical (1080x1920) "pick a card" video as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Series name: "[SERIES — e.g. 오늘의 추천]". Three hidden picks (name, color): [PICK 1], [PICK 2], [PICK 3]. The chosen card: [PICK 2]. Reason line: "[WHY TODAY]".
+
+0–1.5s: three cards face-up show their items briefly, then flip face-down together (scaleX flip) to a patterned back (diagonal stripes + logo circle).
+1.5–5.5s: shuffle — cards swap positions along arcs in pairs, 6 swaps getting faster; use bezier arc paths and slight rotation while moving; add motion trail ghosts.
+5.5–6.5s: a pointing-hand icon (simple drawn shape) taps the middle card; the other two slide away and fade.
+6.5–8s: the chosen card moves to center, scales up 1.4x and flips to reveal the item with a burst of sparkles.
+8–11s: reason line + "[CTA]" appear; fade out.
+
+Playful game-show colors, rounded cards with shadow, Noto Sans KR.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

@@ -1,0 +1,22 @@
+영상 AI 없이 만든 테크 출시 영상 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 레트로 CRT 모니터 느낌의 출시 영상
+오래된 브라운관 화면처럼 주사선과 색 번짐이 있는 화면에 부팅 글자가 찍히고, 지직거리는 글리치와 함께 제품 이름이 등장해요.
+
+② 빛의 터널을 빠르게 통과하는 속도감 영상
+네온 고리로 된 터널을 카메라가 빠르게 통과하며 점점 빨라지고, 끝에서 하얗게 빠져나오며 메시지가 나와요. 빠른 배송·속도·업그레이드 강조용이에요.
+
+📋 프롬프트 핵심 (① / ②)
+Create an 11-second vertical (1080x1920) retro-futuristic launch video as one HTML file with Canvas 2D.
+Product: [PRODUCT NAME], version "[VERSION]", one-liner "[ONE-LINER]". Accent: phosphor green #39ff88 with magenta/cyan chromatic split.
+
+Create a 10-second vertical (1080x1920) 3D tunnel fly-through as one HTML file using Three.js.
+Message: "[MESSAGE — e.g. 더 빠르게]", sub line "[SUB LINE]". Neon colors: [COLOR A], [COLOR B].
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

@@ -1,0 +1,37 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 게임 감성 광고 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 주문을 외우면 상품이 나타나는 픽셀아트 마법사
+바꿔 쓰는 법: 소환할 상품, 주문 문구, 능력치 3개(예: 보습력·향·가성비), 마지막 문구만 바꾸면 돼요. 상품 사진이 있으면 '이 상품을 32x32 픽셀아트로 그려 줘'라고 하세요.
+
+프롬프트 전문 ①
+Create an 11-second vertical (1080x1920) pixel-art animation as one HTML file with Canvas 2D (imageSmoothingEnabled = false). Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Story: a pixel wizard summons [PRODUCT]. Spell text: "[SPELL — e.g. 신상 소환!]". Item name: "[ITEM NAME]". Price/label: "[LABEL]".
+
+Draw everything as pixel sprites from small string arrays (one character per pixel, palette map), scaled up 12–16x. Night sky with twinkling pixel stars, a stone floor made of pixel tiles.
+0–1.5s: the wizard bounces in place (2-frame idle animation, 0.25s per frame); a game-style dialog box at the bottom types the spell with a blinking ▼.
+1.5–4s: the wizard raises the staff; a magic circle (rotating pixel ring with runes = small squares) appears on the floor; pixel sparkles spiral upward.
+4–6s: flash (white frame for 2 frames), screen shake, and the item sprite appears floating above the circle with a pixel glow outline; "ITEM GET!" banner drops in like a retro game.
+6–9s: an RPG-style stat box shows the item name and 3 stats with bars filling ("[STAT 1]", "[STAT 2]", "[STAT 3]").
+9–11s: "[CTA]" in a blinking 'PRESS START' style; fade out.
+
+Limited 16-color palette, crisp pixels, no anti-aliasing.
+
+② 레트로 게임 캐릭터가 코인을 먹으며 달리는 광고
+바꿔 쓰는 법: 코인에 쓸 혜택 3개(예: 무료배송·1+1·적립 5%), 마지막 제품과 문구만 바꾸면 돼요. 캐릭터를 우리 마스코트로 바꾸고 싶으면 '이 캐릭터를 16x16 픽셀로'라고 이미지와 함께 주세요.
+
+프롬프트 전문 ②
+Create a 12-second vertical (1080x1920) retro side-scrolling game ad as one HTML file with Canvas 2D (crisp pixels, imageSmoothingEnabled false). Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Hero: a small pixel character (draw from a string array, 2-frame run cycle). Collectibles = benefits: coins labeled "[BENEFIT 1]", "[BENEFIT 2]", "[BENEFIT 3]". Goal: a flag pole + a pixel version of [PRODUCT]. HUD: score, coin count, timer.
+
+World: parallax layers — sky gradient, far pixel mountains (slow), clouds (medium), ground tiles with grass top (fast). The camera scrolls right at constant speed; the hero stays around 30% from the left.
+0–8s: the hero runs; at 3 timed moments it jumps (parabolic arc) over a block/pipe and hits a coin: the coin spins (scaleX oscillates), pops "+[BENEFIT]" text that floats up, and the score increments with a little bump. A brick with "?" gets bumped and releases a power-up.
+8–10s: the flag pole arrives; the hero slides down; "STAGE CLEAR" banner in a pixel font; fireworks made of pixel squares.
+10–12s: product sprite and "[CTA]" appear in the HUD style; fade out.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

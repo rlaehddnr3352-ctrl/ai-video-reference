@@ -1,0 +1,22 @@
+영상 AI 없이 만든 퀴즈·레이싱 참여 영상 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 4지선다 퀴즈쇼로 참여를 부르는 영상
+TV 퀴즈쇼처럼 문제가 뜨고 보기 4개가 나온 뒤 타이머가 줄어들어요. 정답이 공개되면 댓글 참여를 유도해요. 댓글 이벤트용이에요.
+
+② 위에서 내려다보는 배송 레이싱 게임 영상
+위에서 본 도로를 우리 배송 트럭이 장애물을 피해 달리며 다른 차들을 앞지르고, 결승선에서 '1등 도착'이 떠요. 빠른 배송을 재미있게 보여 줘요.
+
+📋 프롬프트 핵심 (① / ②)
+Create a 12-second vertical (1080x1920) quiz-show video as one HTML file with Canvas 2D.
+Question: "[QUESTION]". Options A–D: [OPTION A], [OPTION B], [OPTION C], [OPTION D]. Correct: [B]. Follow-up: "[COMMENT PROMPT — e.g. 정답 맞힌 분 댓글로!]".
+
+Create an 11-second vertical (1080x1920) top-down racing game video as one HTML file with Canvas 2D.
+Hero vehicle: a delivery truck in [BRAND COLOR] with "[BRAND]" on the roof. Rivals: three gray cars labeled "[RIVAL LABEL — e.g. 일반 배송]". Finish banner: "[FINISH TEXT]".
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

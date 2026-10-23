@@ -1,0 +1,23 @@
+영상 AI 없이 만든 3D 제품 광고 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 3D 제품 박스가 회전하는 쇼케이스
+브랜드 라벨을 입힌 3D 상자가 스튜디오 조명 아래에서 천천히 돌고, 카메라가 다가가며 제품 이름과 핵심 문구가 떠올라요.
+
+② 탄산 기포 속에서 회전하는 3D 캔
+라벨을 입힌 3D 캔이 기포가 올라오는 배경 속에서 회전하고, 시원한 조명이 표면을 훑고 지나가요. 음료·화장품 용기 광고 컷으로 좋아요.
+
+📋 프롬프트 핵심 (① / ②)
+Create a 10-second vertical (1080x1920) 3D product showcase as one HTML file using Three.js (ES module from a CDN).
+Product: a box package for "[PRODUCT NAME]" — draw each face's label on an offscreen 2D canvas and use it as a CanvasTexture (front: logo + product name + "[KEY CLAIM]", sides: color band + small text, top: logo).
+Scene: dark studio, glossy floor that catches a soft reflection, key light from front-left, rim light from behind in [ACCENT COLOR], soft ambient fill, ACES tone mapping.
+
+Create a 10-second vertical (1080x1920) 3D beverage can shot as one HTML file using Three.js.
+Product: [DRINK NAME], flavor "[FLAVOR]", label color [COLOR], claim "[CLAIM — e.g. 제로 칼로리]".
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

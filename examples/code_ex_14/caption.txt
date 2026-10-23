@@ -1,0 +1,23 @@
+영상 AI 없이 만든 상세페이지용 영상 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 요금제·옵션 비교표가 펼쳐지는 영상
+세 가지 옵션 카드가 올라오고 혜택 항목에 체크가 한 줄씩 찍혀요. 추천 옵션이 앞으로 튀어나오며 리본이 붙어요.
+
+② 질문 카드가 뒤집혀 답이 나오는 FAQ
+질문이 적힌 카드가 하나씩 나와 뒤집히며 답이 보여요. 자주 받는 문의 3개를 영상으로 정리해 상세페이지나 채널 공지에 쓰기 좋아요.
+
+📋 프롬프트 핵심 (① / ②)
+Create an 11-second vertical (1080x1920) plan/option comparison animation as one HTML file with Canvas 2D.
+Options (name, price, color): [BASIC 9,900원], [STANDARD 19,900원], [PREMIUM 29,900원]. Recommended: [STANDARD].
+Feature rows: [FEATURE 1], [FEATURE 2], [FEATURE 3], [FEATURE 4] with which option includes which.
+
+Create a 12-second vertical (1080x1920) FAQ video as one HTML file with Canvas 2D.
+Brand: [BRAND]. Three Q&A pairs: [Q1 / A1], [Q2 / A2], [Q3 / A3].
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

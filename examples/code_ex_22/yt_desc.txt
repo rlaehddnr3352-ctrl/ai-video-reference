@@ -1,0 +1,39 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 포스터·무드 광고 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 액자 속 제품이 밖으로 튀어나오는 포스터
+바꿔 쓰는 법: 제품 모양과 색, 포스터 속 풍경, 헤드라인만 바꾸면 돼요. 실제 제품 누끼(PNG)가 있으면 '이 이미지를 튀어나오는 제품으로 써 줘'라고 하세요.
+
+프롬프트 전문 ①
+Create a 10-second vertical (1080x1920) "out of the frame" poster animation as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Product: [PRODUCT — draw as a simple shape, e.g. bottle/can/box] in [COLOR]. Poster scene: [SCENE — e.g. 맑은 하늘과 언덕]. Headline: "[HEADLINE]".
+
+0–1.5s: a framed poster hangs on a plain wall (thick white mat, thin dark frame, soft cast shadow). Inside, a flat illustrated landscape with parallax layers (sky gradient, sun, two hill layers, drifting clouds).
+1.5–4s: the camera slowly pushes in; the layers move at different speeds; the product sits small inside the scene.
+4–5.5s: the product scales up and moves toward the viewer, breaking the frame — draw it AFTER the frame so it overlaps the border, add a stronger shadow on the wall and a few paper-shard pieces at the break point.
+5.5–8s: the product floats gently in front (bob ±10px) while the headline rises in below the frame.
+8–10s: brand line appears; fade out.
+
+Flat vector illustration, warm palette, Noto Sans KR.
+
+② 로우폴리 섬에 해가 뜨는 3D 장면
+바꿔 쓰는 법: 문구와 브랜드 이름만 바꾸면 돼요. 섬 위 건물을 '카페', '텐트', '등대'처럼 우리 업종에 맞게 바꿔 달라고 하면 돼요.
+
+프롬프트 전문 ②
+Create an 11-second vertical (1080x1920) low-poly 3D scene as one HTML file using Three.js. Expose window.render(t) that sets the whole scene for time t (seconds) and renders one frame — no requestAnimationFrame clock — so it can be recorded frame by frame.
+
+Mood line: "[MOOD LINE]". Brand: [BRAND NAME].
+
+Scene (flatShading: true on all materials for the faceted look):
+- an island built from a squashed icosahedron/cone with vertex noise (green top, sand rim), 5–7 cone trees, one small cabin made of two boxes and a prism roof with a warm emissive window;
+- an ocean plane with a vertex wave (update positions each frame from t) in deep teal;
+- a sun sphere (emissive) that rises from behind the horizon along an arc.
+Sky: background color and fog interpolate night navy → dawn pink → morning sky blue as the sun rises; light intensity follows.
+Camera: slow orbit around the island (about 40° total) with a slight push-in.
+0–2s night (stars as small points), 2–7s sunrise, 7–11s morning — the mood line and brand name appear as a 2D overlay at 7.5s; fade out.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

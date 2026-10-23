@@ -1,0 +1,36 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 테크 출시 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 레트로 CRT 모니터 느낌의 출시 영상
+바꿔 쓰는 법: 제품 이름, 버전, 부팅 로그에 나올 기능 5줄만 바꾸면 돼요. 개발 도구·앱·게임 출시처럼 '테크' 느낌이 필요한 제품에 잘 맞아요.
+
+프롬프트 전문 ①
+Create an 11-second vertical (1080x1920) retro-futuristic launch video as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Product: [PRODUCT NAME], version "[VERSION]", one-liner "[ONE-LINER]". Accent: phosphor green #39ff88 with magenta/cyan chromatic split.
+
+Look: a curved CRT screen inside a dark bezel, horizontal scanlines, a rolling bright band moving down, slight barrel vignette, flicker (opacity jitter ±3%), RGB channel offset on big text (draw the text three times in red/green/blue with 'lighter' compositing and small x offsets).
+0–1.2s: power-on — a thin white line expands vertically into the full screen.
+1.2–4.5s: boot log types line by line in a monospace font ("› loading modules ... OK" style, 5–6 lines with your product's features), a block cursor blinks.
+4.5–6s: glitch burst — random horizontal slices shift sideways, color blocks flash, the screen jumps twice.
+6–9s: the product name appears huge with chromatic aberration that settles to zero; version tag and one-liner type under it.
+9–11s: a small "[DATE / LINK]" line, then power-off (collapse to a horizontal line, then a dot).
+
+No images; everything drawn.
+
+② 빛의 터널을 빠르게 통과하는 속도감 영상
+바꿔 쓰는 법: 메시지와 숫자 단위만 바꾸면 돼요. 숫자는 '배송 시간', '처리 속도' 같은 우리 강점을 넣으세요. 색을 브랜드 색 두 가지로 바꾸면 더 우리 것 같아요.
+
+프롬프트 전문 ②
+Create a 10-second vertical (1080x1920) 3D tunnel fly-through as one HTML file using Three.js. Expose window.render(t) that sets the whole scene for time t (seconds) and renders one frame — no requestAnimationFrame clock — so it can be recorded frame by frame.
+
+Message: "[MESSAGE — e.g. 더 빠르게]", sub line "[SUB LINE]". Neon colors: [COLOR A], [COLOR B].
+
+Scene: 80 torus rings (thin tube) spaced along a gently curving path (CatmullRomCurve3), each ring emissive with color alternating A/B and brightness pulsing; between rings, a few streak lines (thin stretched boxes) along the walls. Black background with exponential fog so far rings fade.
+Camera: moves along the curve using getPointAt(u) and looks ahead at getPointAt(u+0.01). Speed ramps up: slow for 0–2s, accelerating to fast 2–7s (add slight FOV widening for speed feel), then at 7.5s flies into a bright white exit (fade the screen to white via a 2D overlay).
+2D overlay: a speed readout "[NUMBER] km/h" counting up in a corner; on the white exit, the message and sub line in black bold.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

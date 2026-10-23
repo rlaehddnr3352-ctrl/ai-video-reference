@@ -1,0 +1,22 @@
+영상 AI 없이 만든 후기·성과 영상 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 숫자 카운트업으로 보여 주는 브랜드 성과
+카드 3장이 차례로 올라오며 큰 숫자가 0부터 빠르게 올라가고, 진행 막대와 아이콘이 함께 채워져요. 상세페이지 첫 화면이나 광고 마지막 장면용이에요.
+
+② 별점과 후기 카드가 쌓이는 구매 후기 영상
+후기 카드가 한 장씩 날아와 쌓이고, 별이 하나씩 채워지며 마지막에 평균 별점이 크게 나와요. 실제 고객 후기를 넣어 쓰는 템플릿이에요.
+
+📋 프롬프트 핵심 (① / ②)
+Create a 10-second vertical (1080x1920) "proof in numbers" motion graphic as one HTML file with Canvas 2D.
+Headline: "[HEADLINE]". Three stats (label, value, unit, color, icon): [재구매율 68%], [누적 판매 12,400개], [평균 별점 4.9/5]. Footer note: "[SOURCE / DATE]".
+
+Create an 11-second vertical (1080x1920) customer-review highlight video as one HTML file with Canvas 2D.
+Brand: [BRAND]. Reviews (masked name, text, stars): [REVIEW 1], [REVIEW 2], [REVIEW 3], [REVIEW 4] — use real reviews only. Average: [4.9], review count: [N개].
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

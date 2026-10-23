@@ -1,0 +1,23 @@
+영상 AI 없이 만든 로고 오프닝 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 조각이 날아와 맞춰지는 로고 리빌
+흩어진 삼각형 조각 80여 개가 날아와 로고 마크를 완성하고, 브랜드 이름과 한 줄 슬로건이 이어서 나와요.
+
+② 떨어지는 블록이 쌓여 로고가 되는 퍼즐 게임 영상
+퍼즐 게임처럼 위에서 블록이 하나씩 떨어져 쌓이고, 다 쌓이면 줄이 반짝이며 브랜드 마크가 완성돼요. 게임 감성 로고 오프닝이에요.
+
+📋 프롬프트 핵심 (① / ②)
+Create a 10-second vertical (1080x1920) logo reveal as one HTML file using Canvas 2D.
+Brand: [BRAND NAME] / Korean name: [한글 이름] / slogan: [SLOGAN]
+Colors: gradient from [COLOR 1] to [COLOR 2] on a near-black background.
+
+Create an 11-second vertical (1080x1920) falling-block puzzle logo reveal as one HTML file with Canvas 2D.
+Logo mark: a simple pixel shape of [LETTER/SYMBOL] defined on a 10x14 grid (string array, '#' = filled). Brand: [BRAND NAME], tagline "[TAGLINE]". Block colors: 5–6 bright colors.
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

@@ -1,0 +1,22 @@
+영상 AI 없이 만든 브랜드 스토리 영상 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 선이 그어지며 이어지는 브랜드 연혁 타임라인
+세로선이 아래로 그어지면서 연도 점이 하나씩 켜지고, 옆에 그해의 사건이 카드로 붙어요. 회사 소개·브랜드 스토리·이력 정리에 좋아요.
+
+② 행성처럼 도는 서비스 구성 3D 다이어그램
+가운데 큰 구 주위를 작은 구 네 개가 궤도를 그리며 돌고, 각 구에 기능 이름표가 따라다녀요. 서비스 구성·브랜드 라인업 소개에 좋아요.
+
+📋 프롬프트 핵심 (① / ②)
+Create a 12-second vertical (1080x1920) brand-history timeline as one HTML file with Canvas 2D.
+Brand: [BRAND]. Milestones (year, event): [YEAR 1 — EVENT], [YEAR 2 — EVENT], [YEAR 3 — EVENT], [YEAR 4 — EVENT], [YEAR 5 — EVENT].
+
+Create an 11-second vertical (1080x1920) 3D "ecosystem" orbit diagram as one HTML file using Three.js.
+Center: [MAIN SERVICE]. Orbiting items (4): [ITEM 1], [ITEM 2], [ITEM 3], [ITEM 4], each with a color.
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

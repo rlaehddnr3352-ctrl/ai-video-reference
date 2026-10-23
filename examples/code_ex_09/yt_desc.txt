@@ -1,0 +1,36 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 브랜드 감성 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 한 단어씩 꽂히는 키네틱 타이포 브랜드 선언
+바꿔 쓰는 법: 다섯 단어(한 문장을 5개로 나눈 것)와 브랜드 이름, 색 하나만 바꾸세요. 박자를 노래에 맞추려면 'BPM 120에 맞춰 한 박에 한 단어'처럼 숫자를 같이 적어 주면 돼요.
+
+프롬프트 전문 ①
+Make a 10-second vertical (1080x1920) kinetic typography video as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Message (one word per beat): [WORD 1] / [WORD 2] / [WORD 3] / [WORD 4] / [WORD 5]. Brand: [BRAND NAME], tagline: [TAGLINE].
+Palette: [ACCENT COLOR], near-black #111, warm off-white.
+
+0–6.5s: five beats of 1.3s. On each beat the background flips color (accent / black / off-white), and the word slams in at screen-filling size: starts at 160% scale with slight skew, snaps to 100% with a back-out ease in 0.25s, a thick underline wipes in under it, and small lines from the previous word fly off the top. Add a 2-frame white flash at each cut.
+6.5–8.5s: the five words stack together as a tidy left-aligned poster on black, each line sliding in from the left with a 0.08s stagger.
+8.5–10s: the brand name and tagline appear at the bottom; fade out.
+
+Typography only — no images. Heavy Korean sans (Noto Sans KR Black), tight letter spacing.
+
+② 흐르는 그라디언트 위 감성 문구 루프
+바꿔 쓰는 법: 단어 3개, 브랜드 이름, 색 3~4가지만 바꾸면 돼요. 끝과 처음이 이어지는 루프라 매장 TV나 행사 배경 화면으로 반복 재생하기 좋아요.
+
+프롬프트 전문 ②
+Create a 12-second seamless-loop vertical (1080x1920) mood video as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame. Frame 0 and frame 12s must look identical.
+
+Brand: [BRAND]. Words that cycle: "[WORD 1]", "[WORD 2]", "[WORD 3]". Small caption: "[CAPTION]". Palette: [3–4 colors].
+
+Background: 5 large soft color blobs (radial gradients with big radius) moving on closed Lissajous paths whose periods divide 12s exactly, blended with 'screen' or 'lighter'; then a heavy blur (ctx.filter = "blur(80px)") and fine film grain on top.
+Center: an elegant serif headline. Each word lasts 4s: it fades in with letter-spacing contracting from wide to normal and a slight upward drift, holds, and fades out with a soft blur.
+Bottom: the brand name in small caps-style tracking and the caption.
+
+Calm, premium, slow. No hard cuts.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

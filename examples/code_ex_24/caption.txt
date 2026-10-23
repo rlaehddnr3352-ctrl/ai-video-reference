@@ -1,0 +1,22 @@
+영상 AI 없이 만든 문제 해결 설명 영상 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 문제 장면에서 해결 장면으로 넘어가는 설명
+앞부분은 회색 톤으로 손님이 헤매는 '문제' 장면, 화면이 뒤집히며 밝은 톤의 '해결' 장면으로 바뀌어요. 서비스·도구가 무엇을 해결하는지 보여 주기 좋아요.
+
+② 화살표가 돌며 이어지는 순환 구조 설명
+네 개의 원이 원형으로 배치되고 화살표가 차례로 이어지며 계속 돌아요. 한 바퀴 돌 때마다 가운데 숫자가 커져 '선순환'을 보여 줘요.
+
+📋 프롬프트 핵심 (① / ②)
+Create a 12-second vertical (1080x1920) problem → solution explainer as one HTML file with Canvas 2D.
+Problem: "[PROBLEM — e.g. 손님이 메뉴를 몰라 계속 물어본다]". Solution: "[SOLUTION — e.g. 테이블 QR 메뉴판]". Product: [PRODUCT NAME]. Result stat: "[RESULT — 예시 수치]".
+
+Create a 12-second vertical (1080x1920) cycle diagram explainer as one HTML file with Canvas 2D.
+Cycle steps (4): [STEP 1], [STEP 2], [STEP 3], [STEP 4]. Center label: "[CENTER LABEL — e.g. 선순환]". Short descriptions under each node: [DESC 1–4].
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

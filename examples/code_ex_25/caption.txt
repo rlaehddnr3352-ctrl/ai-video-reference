@@ -1,0 +1,22 @@
+영상 AI 없이 만든 엔딩·메시지 영상 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 구독·좋아요·알림을 누르는 엔드카드
+프로필 원이 나오고 마우스 커서가 구독 버튼, 좋아요, 알림 종을 차례로 눌러요. 유튜브·쇼츠 영상 마지막 5~9초에 붙이는 엔드카드예요.
+
+② 도미노가 연달아 넘어지며 로고를 여는 3D 영상
+곡선으로 늘어선 도미노가 차례로 쓰러지고, 마지막 도미노가 큰 블록을 넘어뜨리면 그 뒤에서 메시지가 나타나요. '작은 행동이 큰 결과로' 같은 메시지에 좋아요.
+
+📋 프롬프트 핵심 (① / ②)
+Create a 9-second vertical (1080x1920) channel end card as one HTML file with Canvas 2D.
+Channel: [CHANNEL NAME], handle "[@HANDLE]", profile color [COLOR], one-liner "[WHAT THE CHANNEL IS ABOUT]". Next video teaser text: "[NEXT VIDEO TITLE]".
+
+Create an 11-second vertical (1080x1920) 3D domino chain as one HTML file using Three.js.
+Message on the final block: "[MESSAGE]". Brand: [BRAND]. Domino colors: gradient [COLOR A] → [COLOR B].
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

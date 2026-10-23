@@ -1,0 +1,41 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 퀴즈·레이싱 참여 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 4지선다 퀴즈쇼로 참여를 부르는 영상
+바꿔 쓰는 법: 문제, 보기 4개, 정답, 마지막 참여 문구만 바꾸면 돼요. 정답 공개를 다음 영상으로 미루고 싶으면 '정답 공개 없이 타이머에서 끝내 줘'라고 하세요.
+
+프롬프트 전문 ①
+Create a 12-second vertical (1080x1920) quiz-show video as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Question: "[QUESTION]". Options A–D: [OPTION A], [OPTION B], [OPTION C], [OPTION D]. Correct: [B]. Follow-up: "[COMMENT PROMPT — e.g. 정답 맞힌 분 댓글로!]".
+
+Stage look: dark blue studio with spotlight beams sweeping (semi-transparent triangles), a hexagon-shaped question panel with a glowing border.
+0–1.5s: "QUIZ" logo spins in; spotlights sweep.
+1.5–3s: question types into the panel.
+3–4.5s: four option bars (A/B/C/D badges) slide in from alternating sides.
+4.5–8.5s: a circular countdown timer from 5 to 0 shrinks around the number, ticking color from green to red; the bars pulse subtly; at 2 seconds left the screen gets a red vignette pulse.
+8.5–10s: wrong options dim; the correct option flashes gold three times and a check mark draws in; "+100" pops.
+10–12s: the follow-up line appears with a comment-bubble icon; fade out.
+
+TV quiz show energy, Noto Sans KR Black.
+
+② 위에서 내려다보는 배송 레이싱 게임 영상
+바꿔 쓰는 법: 트럭 색과 브랜드 이름, 경쟁 차 문구, 결승 문구만 바꾸면 돼요. 트럭 대신 '오토바이'나 '드론'으로 바꿔 달라고 해도 돼요.
+
+프롬프트 전문 ②
+Create an 11-second vertical (1080x1920) top-down racing game video as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Hero vehicle: a delivery truck in [BRAND COLOR] with "[BRAND]" on the roof. Rivals: three gray cars labeled "[RIVAL LABEL — e.g. 일반 배송]". Finish banner: "[FINISH TEXT]".
+
+View: top-down road that scrolls downward (lane dashes, roadside grass and trees moving faster than the road for parallax), 3 lanes.
+0–1s: a "3-2-1-GO" countdown with big numbers scaling in/out.
+1–8s: the road scrolls with increasing speed; the truck changes lanes smoothly (ease-in-out lateral moves) to dodge cones and overtake the rival cars one by one — each overtake triggers a small "PASS!" popup and a position indicator updates (4th → 1st). Speed lines appear at the screen edges as speed increases. A mini progress bar at the top shows distance to the finish.
+8–9.5s: the checkered finish line scrolls in; the truck crosses it; "1ST" medal pops.
+9.5–11s: finish text and brand; fade out.
+
+Clean arcade style with flat shapes, Inter + Noto Sans KR.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

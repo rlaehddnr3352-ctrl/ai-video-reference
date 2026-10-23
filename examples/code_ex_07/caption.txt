@@ -1,0 +1,22 @@
+영상 AI 없이 만든 라이브·주문 알림 영상 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 공항 전광판처럼 글자가 촤르르 넘어가는 공지
+검은 전광판의 글자 칸이 촤르르 넘어가다가 한 칸씩 멈추며 공지 문구가 완성돼요. 라이브 방송, 오픈 시간, 이벤트 알림에 딱이에요.
+
+② 잠금화면에 주문 알림이 쏟아지는 영상
+휴대폰 잠금화면에 주문·좋아요·문의 알림이 계속 쌓이고, 주문 수 카운터가 올라가요. '이거 하고 나서 생긴 일' 같은 후킹 영상에 좋아요.
+
+📋 프롬프트 핵심 (① / ②)
+Create an 11-second vertical (1080x1920) split-flap display announcement as one HTML file with Canvas 2D.
+Message lines (max 7 characters each): "[LINE 1]", "[LINE 2]", "[LINE 3]". Footer: "[BRAND / CHANNEL]".
+
+Create an 11-second vertical (1080x1920) "notification flood" video as one HTML file with Canvas 2D.
+Story hook: "[HOOK — e.g. 광고 켜고 30분 뒤]". Notifications (app name, message): [N1], [N2], … (7 items). Result line: "[RESULT]".
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

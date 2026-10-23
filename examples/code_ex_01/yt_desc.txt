@@ -37,6 +37,5 @@ Machine: a chunky rounded cabinet in [BRAND COLOR] with a marquee of bulbs aroun
 Style: playful casino-arcade, bold Korean type (Noto Sans KR Black), dark purple background with sparkles.
 
 만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
-효과음: Kenney (CC0)
 
 #AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

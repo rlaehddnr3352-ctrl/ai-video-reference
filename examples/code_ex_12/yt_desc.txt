@@ -1,0 +1,39 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 오픈·출시 티저 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 흩어진 입자가 모여 글자가 되는 3D 오프닝
+바꿔 쓰는 법: 모을 단어(짧을수록 선명해요)와 아래 문구, 색 두 가지만 바꾸면 돼요. 로고 PNG가 있으면 '글자 대신 이 이미지 모양으로 입자를 모아 줘'라고 하세요.
+
+프롬프트 전문 ①
+Create an 11-second vertical (1080x1920) particle text reveal as one HTML file using Three.js. Expose window.render(t) that sets the whole scene for time t (seconds) and renders one frame — no requestAnimationFrame clock — so it can be recorded frame by frame.
+
+Text to form: "[WORD — short, e.g. OPEN]". Subtitle (2D overlay): "[SUBTITLE]". Colors: [COLOR A] and [COLOR B].
+
+How: draw the word on an offscreen 2D canvas, sample the filled pixels on a grid to get ~4000 target points (x,y) and give each a small random z. Each particle also gets a random start position inside a large sphere.
+0–2s: particles drift and twinkle in the sphere (size flicker), camera slowly rotates.
+2–5.5s: particles travel to their targets along a swirl — interpolate with ease-in-out per particle with a random delay (0–0.8s) and add a rotation around the Y axis that decreases to zero on arrival.
+5.5–8s: the word holds and breathes (tiny noise offsets); color shifts across the word from A to B; the subtitle fades in below as a 2D overlay.
+8–9.5s: particles burst outward from the center with velocity and gravity, fading.
+9.5–11s: fade out.
+
+Use THREE.Points with additive blending, a soft round sprite (generate a radial gradient CanvasTexture), dark background.
+
+② 어둠 속 실루엣을 비추는 신제품 티저
+바꿔 쓰는 법: 제품 모양(병·상자·기기 중 무엇인지)과 색, 출시일, 티저 문구만 바꾸면 돼요. 실제 제품 실루엣 PNG가 있으면 '이 이미지의 윤곽으로 그려 줘'라고 하세요.
+
+프롬프트 전문 ②
+Create an 11-second vertical (1080x1920) product teaser as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Product: [PRODUCT NAME] (draw it as a simple stylized silhouette — e.g. a bottle, box or device — with [PRODUCT COLOR]). Launch date: [DATE]. Teaser line: "[TEASER LINE]".
+
+0–1.5s: pitch black with dust particles drifting in a faint beam; a small line "[COMING SOON IN KOREAN]" fades in.
+1.5–6s: one or two spotlights (radial gradients, additive) wander over the stage. Where the light passes, only the edge of the product shows (rim-light outline and a little glossy highlight); the rest stays black. The teaser line types in at the top.
+6–7.5s: the lights converge on the center, flicker twice, then a full stage light snaps on: the product appears in full color with a reflection on a glossy floor and a soft bloom.
+7.5–11s: the date appears in large thin numbers, then the product name below; slow push-in on everything; fade out.
+
+Mood: cinematic, mysterious, film grain, vignette.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

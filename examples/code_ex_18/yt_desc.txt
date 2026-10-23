@@ -1,0 +1,37 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 성장 그래프 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 막대그래프로 보여 주는 성장 전후
+바꿔 쓰는 법: 월별 숫자 8개, 단위, 변화가 생긴 달과 이유만 바꾸면 돼요. 숫자는 실제 기록으로 넣어야 하고, 성장률은 첫 달과 마지막 달로 계산해서 넣어 주세요.
+
+프롬프트 전문 ①
+Create an 11-second vertical (1080x1920) growth chart explainer as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Title: "[TITLE]". Monthly values (label, value): [3월 120], [4월 135], … [10월 420] (8 bars). Unit: "[UNIT — e.g. 만원]". Turning point: month [7월] with note "[WHAT CHANGED — e.g. 숏폼 시작]".
+
+0–1s: title and a thin axis draw in (y-axis gridlines fade in with value labels).
+1–6s: bars grow from the baseline one after another (0.45s apart) with ease-out-back; each bar's value label counts up above it. Bars before the turning point are muted gray-blue; from the turning point onward they are [ACCENT COLOR].
+6–7.5s: a vertical dashed marker drops at the turning point with a callout bubble "[WHAT CHANGED]".
+7.5–9s: a smooth trend line draws across the bar tops; a big "+[GROWTH]%" badge pops at the top-right comparing first and last month.
+9–11s: hold; footnote "[SOURCE]"; fade out.
+
+Clean report style, white background, navy text, Inter for numbers + Noto Sans KR.
+
+② 카메라가 도는 3D 막대 차트
+바꿔 쓰는 법: 막대 5개의 이름과 값, 강조할 막대, 핵심 문구만 바꾸면 돼요. 2D 차트보다 '고급 보고서·발표' 느낌을 내고 싶을 때 좋아요.
+
+프롬프트 전문 ②
+Create an 11-second vertical (1080x1920) 3D bar chart as one HTML file using Three.js. Expose window.render(t) that sets the whole scene for time t (seconds) and renders one frame — no requestAnimationFrame clock — so it can be recorded frame by frame.
+
+Title: "[TITLE]". Bars (label, value): [A 32], [B 48], [C 41], [D 77], [E 59]. Highlight bar: [D]. Unit: "[UNIT]".
+
+Scene: a glossy dark floor with a subtle grid, five rounded-look boxes (BoxGeometry, slightly bevel by scaling a second inner box) spaced along X, soft studio lighting with a rim light.
+0–1s: title appears (2D overlay); camera starts low and close.
+1–5s: bars grow from height 0 to value with ease-out-back, 0.3s stagger; each bar's 2D label (value counting up + name) follows the projected top position of the bar (project the 3D point to screen each frame).
+5–8.5s: camera orbits ~70° and rises to a 3/4 view; the highlight bar turns emissive [ACCENT COLOR], others desaturate; a callout "[KEY MESSAGE]" connects to it.
+8.5–11s: hold; footnote "[SOURCE]"; fade out.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

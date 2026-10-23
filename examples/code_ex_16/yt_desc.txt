@@ -1,0 +1,36 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 3D 무드 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 물결치는 3D 큐브 바닥 위 브랜드 타이틀
+바꿔 쓰는 법: 브랜드 이름과 두 가지 색만 바꾸면 돼요. 음악이 있으면 '박자에 맞춰 파도가 한 번씩 튀게'라고 BPM을 함께 적어 주세요.
+
+프롬프트 전문 ①
+Create a 10-second vertical (1080x1920) 3D intro as one HTML file using Three.js. Expose window.render(t) that sets the whole scene for time t (seconds) and renders one frame — no requestAnimationFrame clock — so it can be recorded frame by frame.
+
+Brand: [BRAND NAME], subtitle "[SUBTITLE]". Gradient colors: [COLOR A] → [COLOR B].
+
+Scene: a 16 x 28 grid of small rounded-looking cubes (InstancedMesh for speed) on a dark background, seen from a low 3/4 angle with fog fading the far rows.
+Motion: each cube's height = sin(distance from a moving center × frequency − t × speed) so ripples spread outward; cube color interpolates between the two colors by height; a slow camera dolly forward and a slight orbit.
+0–2s: the grid rises from flat (amplitude 0 → 1).
+2–7s: ripples travel; a second ripple source appears at 4s to create interference patterns.
+7–10s: a 2D overlay shows the brand name with letter-by-letter rise and the subtitle; waves calm down; fade out.
+
+Lighting: hemisphere light + one directional light with soft shadows off for speed; ACES tone mapping.
+
+② 빛이 도는 금속 오브젝트 무드 루프
+바꿔 쓰는 법: 문구 한 줄과 조명 색 3가지만 바꾸면 돼요. 매듭 대신 '구', '링', '우리 로고를 두껍게 만든 모양'으로 바꿔 달라고 할 수도 있어요.
+
+프롬프트 전문 ②
+Create a 10-second seamless-loop vertical (1080x1920) 3D mood piece as one HTML file using Three.js. Expose window.render(t) that sets the whole scene for time t (seconds) and renders one frame — no requestAnimationFrame clock — so it can be recorded frame by frame. Frame at 0s and 10s must match.
+
+Object: a TorusKnotGeometry (high segment count) with MeshStandardMaterial metalness 1, roughness 0.18, color near white.
+Lights: three colored point lights ([COLOR A], [COLOR B], [COLOR C]) orbiting the object on tilted circles with periods 10s, 5s and 10/3s so the loop is exact; a faint ambient light. Add an environment-like look by placing a few large emissive planes (soft gradient) around the scene so the metal has something to reflect.
+Motion: the knot rotates exactly one full turn on Y and half a turn on X over 10s; the camera breathes in/out ±3%.
+Overlay (2D): a single centered line "[LINE]" in light serif that fades in from 2s to 8s, plus a tiny brand mark at the bottom. Add subtle grain.
+
+Dark background with a soft radial glow behind the object.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

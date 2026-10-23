@@ -1,0 +1,25 @@
+영상 AI 없이 만든 사용법 설명 영상 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 그림과 함께 보는 3단계 방법 설명
+1·2·3 단계 카드가 점선으로 이어지며 차례로 나오고, 각 단계마다 그림이 움직이며 핵심 숫자를 보여 줘요. 사용법·레시피·절차 설명용이에요.
+
+② 지도 위 점선을 따라가는 배송 과정 설명
+단순화한 지도 위로 점선 경로가 그어지고 트럭이 따라 달려요. 경유지마다 시간이 찍히며 '밤에 주문하면 아침 도착' 같은 과정을 한눈에 보여 줘요.
+
+📋 프롬프트 핵심 (① / ②)
+Create a 12-second vertical (1080x1920) three-step explainer as one HTML file with Canvas 2D.
+Topic: "[TOPIC — e.g. 핸드드립 3단계]". Steps (title, key number, illustration idea):
+1) [STEP 1] — e.g. "원두 20g 갈기", illustration: beans dropping into a grinder bowl.
+2) [STEP 2] — e.g. "92℃ 물 300ml, 3번 나눠 붓기", illustration: a kettle spout pouring a wavy stream, water level rising in 3 jumps.
+3) [STEP 3] — e.g. "2분 30초 기다리기", illustration: a circular timer ring filling with a counting clock.
+
+Create an 11-second vertical (1080x1920) delivery-route explainer as one HTML file with Canvas 2D.
+Story: "[HEADLINE — e.g. 밤 11시 주문, 아침 7시 도착]". Stops (name, time): [창고 23:00 출발], [허브 02:30 분류], [동네 06:10 출발], [우리 집 07:00 도착].
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

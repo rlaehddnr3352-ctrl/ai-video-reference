@@ -1,0 +1,23 @@
+영상 AI 없이 만든 기능 소개 모션 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 도형 하나가 UI 요소로 계속 변신하는 영상
+동그라미 하나가 스위치, 버튼, 슬라이더, 카드, 앱 아이콘으로 매끄럽게 모양을 바꾸며 이어져요. 앱·서비스 브랜딩이나 디자이너 소개용이에요.
+
+② 화면을 3칸으로 나눠 기능 3개를 한 번에
+화면이 가로로 세 칸으로 갈라지며 칸마다 기능 하나씩 아이콘 애니메이션과 함께 소개돼요. 마지막에 칸이 합쳐지며 제품 이름이 나와요.
+
+📋 프롬프트 핵심 (① / ②)
+Create a 12-second vertical (1080x1920) shape-morphing UI animation as one HTML file with Canvas 2D.
+One rounded rectangle is the hero. It morphs through these states, interpolating width, height, corner radius and color with ease-in-out (0.7s morph, ~1.2s hold each):
+1) circle "[LABEL 1]" → 2) toggle switch (pill with a knob that slides on) → 3) primary button with text "[BUTTON TEXT]" that gets pressed (scale 0.96 + ripple) → 4) slider track with a handle that drags from 20% to 80% while a value counts → 5) a…
+
+Create a 10-second vertical (1080x1920) three-panel feature video as one HTML file with Canvas 2D.
+Product: [PRODUCT NAME]. Features (title, icon idea, accent, panel color): [FEATURE 1], [FEATURE 2], [FEATURE 3].
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

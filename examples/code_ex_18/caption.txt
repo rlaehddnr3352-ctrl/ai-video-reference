@@ -1,0 +1,22 @@
+영상 AI 없이 만든 성장 그래프 영상 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 막대그래프로 보여 주는 성장 전후
+월별 막대가 하나씩 솟아오르고, 변화가 생긴 달에 '이때부터' 표시가 붙으며 추세선이 그어져요. 매출·방문자·팔로워 성장 보고에 좋아요.
+
+② 카메라가 도는 3D 막대 차트
+바닥에서 3D 막대가 솟아오르고 카메라가 천천히 돌아가며 비교를 보여 줘요. 가장 높은 막대에 불이 들어오며 핵심 숫자가 강조돼요.
+
+📋 프롬프트 핵심 (① / ②)
+Create an 11-second vertical (1080x1920) growth chart explainer as one HTML file with Canvas 2D.
+Title: "[TITLE]". Monthly values (label, value): [3월 120], [4월 135], … [10월 420] (8 bars). Unit: "[UNIT — e.g. 만원]". Turning point: month [7월] with note "[WHAT CHANGED — e.g. 숏폼 시작]".
+
+Create an 11-second vertical (1080x1920) 3D bar chart as one HTML file using Three.js.
+Title: "[TITLE]". Bars (label, value): [A 32], [B 48], [C 41], [D 77], [E 59]. Highlight bar: [D]. Unit: "[UNIT]".
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

@@ -1,0 +1,41 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 사용법 설명 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 그림과 함께 보는 3단계 방법 설명
+바꿔 쓰는 법: 주제와 3단계 문장, 각 단계 그림 설명만 바꾸면 돼요. 숫자(그램·온도·시간)를 꼭 넣으면 보는 사람이 바로 따라 할 수 있어요.
+
+프롬프트 전문 ①
+Create a 12-second vertical (1080x1920) three-step explainer as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Topic: "[TOPIC — e.g. 핸드드립 3단계]". Steps (title, key number, illustration idea):
+1) [STEP 1] — e.g. "원두 20g 갈기", illustration: beans dropping into a grinder bowl.
+2) [STEP 2] — e.g. "92℃ 물 300ml, 3번 나눠 붓기", illustration: a kettle spout pouring a wavy stream, water level rising in 3 jumps.
+3) [STEP 3] — e.g. "2분 30초 기다리기", illustration: a circular timer ring filling with a counting clock.
+
+Layout: three stacked cards with big step numbers in circles on the left; a dashed connector line draws downward from card to card.
+0–1s: title rises in.
+1–9.5s: each step gets ~2.8s: card slides in from the right, its number circle pops (back ease), the illustration animates, the key number is highlighted in [ACCENT COLOR] bold.
+9.5–12s: a summary pill "[ONE-LINE SUMMARY]" pops below; fade out.
+
+Warm, friendly flat style, cream background, brown accents, Noto Sans KR.
+
+② 지도 위 점선을 따라가는 배송 과정 설명
+바꿔 쓰는 법: 경유지 4곳의 이름과 시간, 첫 문장만 바꾸면 돼요. 실제 지명을 쓰고 싶으면 '지도는 간단한 모양으로, 이름만 표시'라고 해야 지도 오류가 안 생겨요.
+
+프롬프트 전문 ②
+Create an 11-second vertical (1080x1920) delivery-route explainer as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Story: "[HEADLINE — e.g. 밤 11시 주문, 아침 7시 도착]". Stops (name, time): [창고 23:00 출발], [허브 02:30 분류], [동네 06:10 출발], [우리 집 07:00 도착].
+
+Map: a simplified, stylized land shape (soft blob, NOT a real map) on a pale blue sea, with a few faint roads and tiny tree dots.
+0–1.2s: map fades/zooms in slightly; headline drops in at the top.
+1.2–8s: a dashed route draws from stop to stop along a curvy path; a small truck icon follows the drawing tip, rotating to the path direction. At each stop a pin drops with a bounce and a time label card appears next to it. A digital clock in the corner advances from the first to the last time as the truck moves.
+8–9.5s: the destination pin turns into a house icon with a check; a "도착!" bubble pops.
+9.5–11s: footer "[BRAND / SERVICE NAME]"; fade out.
+
+Flat, friendly map illustration, Noto Sans KR, Inter for times.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

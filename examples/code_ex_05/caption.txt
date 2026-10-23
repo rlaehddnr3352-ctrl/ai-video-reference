@@ -1,0 +1,23 @@
+영상 AI 없이 만든 숫자로 설득하는 광고 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 도넛 차트로 보여 주는 성분·비율 설명
+도넛 차트가 한 조각씩 그려지며 비율 숫자가 올라가고, 오른쪽 범례와 가운데 총합이 함께 채워져요. 성분, 예산, 시간 배분 설명에 그대로 쓸 수 있어요.
+
+② 월 가격을 하루 가격으로 쪼개 보여 주는 영상
+월 가격이 30칸 달력으로 쪼개지며 하루 금액이 계산되고, 일상의 익숙한 지출과 나란히 비교돼요. 구독·정기배송 가격 설득에 좋아요.
+
+📋 프롬프트 핵심 (① / ②)
+Make an 11-second vertical (1080x1920) data explainer as one HTML file with Canvas 2D.
+Topic: "[TITLE — e.g. 우리 제품 한 봉지에 들어 있는 것]"
+Data (label, percent, color): [LABEL A 41%], [LABEL B 32%], [LABEL C 19%], [LABEL D 8%]. Center total: [TOTAL + UNIT].
+
+Create an 11-second vertical (1080x1920) "price per day" explainer as one HTML file with Canvas 2D.
+Product: [PRODUCT / SERVICE]. Monthly price: [29,900원]. Days: 30. Comparison item: [COMPARISON — e.g. 편의점 커피 1잔 1,500원].
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

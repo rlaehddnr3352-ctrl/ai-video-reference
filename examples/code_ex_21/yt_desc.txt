@@ -1,0 +1,39 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 기능 소개 모션 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 도형 하나가 UI 요소로 계속 변신하는 영상
+바꿔 쓰는 법: 변신 단계 이름과 색, 마지막 앱 이름만 바꾸면 돼요. 우리 앱에 있는 실제 UI 요소(예: 장바구니 버튼, 별점)를 단계로 넣어 달라고 하면 더 우리 것처럼 보여요.
+
+프롬프트 전문 ①
+Create a 12-second vertical (1080x1920) shape-morphing UI animation as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+One rounded rectangle is the hero. It morphs through these states, interpolating width, height, corner radius and color with ease-in-out (0.7s morph, ~1.2s hold each):
+1) circle "[LABEL 1]" → 2) toggle switch (pill with a knob that slides on) → 3) primary button with text "[BUTTON TEXT]" that gets pressed (scale 0.96 + ripple) → 4) slider track with a handle that drags from 20% to 80% while a value counts → 5) a card (white, shadow) whose inner lines and image block draw in → 6) an app icon with a simple glyph, which finally reveals "[APP NAME]" under it.
+A small caption under the shape names each state and swaps with a vertical slide.
+Background: soft dark navy with a subtle dot grid that slowly drifts. Everything centered.
+
+End (11–12s): fade to black. Use Noto Sans KR for captions.
+
+② 화면을 3칸으로 나눠 기능 3개를 한 번에
+바꿔 쓰는 법: 기능 3개의 이름과 색만 바꾸면 돼요. 칸마다 들어갈 그림(배터리·물방울·잎사귀)을 '우리 기능에 맞는 그림으로 바꿔 줘'라고 하면 알아서 그려 줘요.
+
+프롬프트 전문 ②
+Create a 10-second vertical (1080x1920) three-panel feature video as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Product: [PRODUCT NAME]. Features (title, icon idea, accent, panel color): [FEATURE 1], [FEATURE 2], [FEATURE 3].
+
+0–1s: the screen splits into three horizontal bands — each band wipes in from alternating sides (left/right/left).
+1–6.5s: each panel animates its own mini-illustration, staggered by 0.6s:
+  panel 1 a battery that fills in quick steps with a lightning bolt pulsing,
+  panel 2 water drops falling and bouncing off a shield shape,
+  panel 3 a leaf/loop arrow rotating with small particles.
+  Each panel's title slams in on the right with a big index number ("01", "02", "03") in outline style.
+6.5–8s: the bands slide together and merge into one solid color; the product name scales in center.
+8–10s: tagline "[TAGLINE]" fades in; fade out.
+
+Bold, sporty, saturated colors; Noto Sans KR Black + Inter for numbers.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

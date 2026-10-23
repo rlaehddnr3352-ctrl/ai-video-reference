@@ -1,0 +1,41 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 로고 오프닝 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 조각이 날아와 맞춰지는 로고 리빌
+바꿔 쓰는 법: [BRAND NAME], [SLOGAN], 두 가지 색만 바꾸면 돼요. 로고 SVG가 있으면 같이 붙여 넣고 '이 모양 안을 삼각형 조각으로 채워서 모아줘'라고 하면 우리 로고로 맞춰져요.
+
+프롬프트 전문 ①
+Create a 10-second vertical (1080x1920) logo reveal as one HTML file using Canvas 2D.
+Expose window.render(t) that draws the frame at time t (seconds) deterministically, so I can record it frame by frame.
+
+Brand: [BRAND NAME] / Korean name: [한글 이름] / slogan: [SLOGAN]
+Colors: gradient from [COLOR 1] to [COLOR 2] on a near-black background.
+
+Timeline
+0–3.2s: about 80 triangular shards start scattered off-screen, spinning, and fly in one after another to snap into a circular logo mark (concentric rings cut into triangles). Use a back-out ease so each shard overshoots slightly.
+3.2–4.2s: a diagonal light sweep passes over the finished mark; a thin ring pulses outward.
+4.2–6s: the brand name rises in letter by letter under the mark, then the Korean name fades in.
+6–8.5s: the slogan appears in a pill-shaped label; a soft glow breathes behind the mark.
+8.5–10s: hold, then fade to black.
+
+Style: premium and minimal, subtle film grain, vignette, bold sans-serif (Noto Sans KR Black). No stock images.
+
+② 떨어지는 블록이 쌓여 로고가 되는 퍼즐 게임 영상
+바꿔 쓰는 법: 10x14 칸 그림(로고의 첫 글자나 심볼 모양)과 브랜드 이름, 슬로건만 바꾸면 돼요. 칸 그림은 '#'과 '.'으로 그려서 붙여 넣으면 그대로 쌓여요.
+
+프롬프트 전문 ②
+Create an 11-second vertical (1080x1920) falling-block puzzle logo reveal as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Logo mark: a simple pixel shape of [LETTER/SYMBOL] defined on a 10x14 grid (string array, '#' = filled). Brand: [BRAND NAME], tagline "[TAGLINE]". Block colors: 5–6 bright colors.
+
+Look: a classic puzzle-game well (dark playfield with a thin grid, bezel frame), a side panel with "SCORE", "LINES", and a "NEXT" preview box.
+0–8s: blocks drop one at a time from the top into their target cells, filling from the bottom row upward. Each block falls with gravity (ease-in), lands with a 2-frame squash and a tiny dust puff; drops get faster over time (start 0.25s apart, end 0.05s). The score increases on every landing; the NEXT box shows the upcoming color.
+8–9s: completed rows flash white in sequence (like line clears) but stay; then the whole shape glows and the playfield grid fades away, leaving the mark.
+9–11s: brand name and tagline slide in under the mark in a pixel-ish font; fade out.
+
+Bright retro-arcade palette on near-black, Inter/Press-Start-like monospace for HUD.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

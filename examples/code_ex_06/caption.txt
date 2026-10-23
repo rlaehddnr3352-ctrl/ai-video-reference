@@ -1,0 +1,22 @@
+영상 AI 없이 만든 카페·음료 광고 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 음료가 차오르는 카페 신메뉴 소개
+음료 잔이 층층이 차오르고 메뉴 카드가 옆으로 넘어가며 신메뉴 3개를 소개해요. 카페·디저트 가게 SNS와 매장 모니터용이에요.
+
+② 잔이 층층이 차오르는 음료 레시피
+빈 잔에 재료가 한 층씩 부어지며 차오르고, 층마다 재료 이름과 양이 선으로 연결돼 붙어요. 음료·칵테일·스무디 레시피 설명용이에요.
+
+📋 프롬프트 핵심 (① / ②)
+Create an 11-second vertical (1080x1920) new-menu promo for a cafe as one HTML file with Canvas 2D.
+Cafe: [CAFE NAME]. Three drinks (name, price, 3 layer colors bottom→top): [DRINK 1], [DRINK 2], [DRINK 3]. Badge: "[NEW / 시즌 한정]".
+
+Create a 12-second vertical (1080x1920) layered drink recipe animation as one HTML file with Canvas 2D.
+Drink: [DRINK NAME]. Layers bottom → top (ingredient, amount, color): [딸기청 40ml #e63946], [우유 200ml #fdf6ec], [에스프레소 1샷 #6f4518]. Garnish: [GARNISH].
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

@@ -1,0 +1,23 @@
+영상 AI 없이 만든 3D 무드 영상 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 물결치는 3D 큐브 바닥 위 브랜드 타이틀
+수백 개의 작은 큐브가 파도처럼 오르내리며 색이 번지고, 그 위로 브랜드 이름이 떠올라요. 오프닝·인트로 배경으로 쓰기 좋아요.
+
+② 빛이 도는 금속 오브젝트 무드 루프
+매끈한 금속 매듭 오브젝트가 천천히 돌고, 주변을 도는 세 가지 색 조명이 표면에 비쳐 색이 계속 바뀌어요. 끝과 처음이 이어지는 루프 배경이에요.
+
+📋 프롬프트 핵심 (① / ②)
+Create a 10-second vertical (1080x1920) 3D intro as one HTML file using Three.js.
+Brand: [BRAND NAME], subtitle "[SUBTITLE]". Gradient colors: [COLOR A] → [COLOR B].
+
+Create a 10-second seamless-loop vertical (1080x1920) 3D mood piece as one HTML file using Three.js.
+Object: a TorusKnotGeometry (high segment count) with MeshStandardMaterial metalness 1, roughness 0.18, color near white.
+Lights: three colored point lights ([COLOR A], [COLOR B], [COLOR C]) orbiting the object on tilted circles with periods 10s, 5s and 10/3s so the loop is exact; a faint ambient light. Add an environment-like look by placing a few large emissive planes (soft gradient) around the scene so the…
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

@@ -1,0 +1,37 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 후기·성과 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 숫자 카운트업으로 보여 주는 브랜드 성과
+바꿔 쓰는 법: 숫자 3개와 단위, 출처 문구만 우리 실제 데이터로 바꿔 쓰세요. 숫자는 반드시 확인 가능한 실제 값으로 넣어야 광고 심의에서 문제가 없어요.
+
+프롬프트 전문 ①
+Create a 10-second vertical (1080x1920) "proof in numbers" motion graphic as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Headline: "[HEADLINE]". Three stats (label, value, unit, color, icon): [재구매율 68%], [누적 판매 12,400개], [평균 별점 4.9/5]. Footer note: "[SOURCE / DATE]".
+
+0–1.2s: headline rises in character by character at the top.
+1.2–6.5s: three white cards (rounded 36px, soft shadow) slide up one after another (0.9s apart). In each card: a colored circular icon pops with a back ease, the big number counts up from 0 with ease-out-expo (keep thousands separators and decimals stable), and a thin progress bar fills to the matching ratio. When a count finishes, the number does a small 1.06x bump.
+6.5–8.5s: the cards nudge together, a ribbon "[SHORT CLAIM]" stamps on the last card at a slight angle.
+8.5–10s: footer note and brand name fade in; fade out.
+
+Style: light gray-blue background with faint grid, navy text, tabular numbers (Inter or similar), Korean labels in Noto Sans KR.
+
+② 별점과 후기 카드가 쌓이는 구매 후기 영상
+바꿔 쓰는 법: 후기 4개는 반드시 실제 고객 후기로 바꿔 넣으세요(이름은 김** 처럼 가려서). 평균 별점과 후기 수도 실제 값으로 넣어야 해요.
+
+프롬프트 전문 ②
+Create an 11-second vertical (1080x1920) customer-review highlight video as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Brand: [BRAND]. Reviews (masked name, text, stars): [REVIEW 1], [REVIEW 2], [REVIEW 3], [REVIEW 4] — use real reviews only. Average: [4.9], review count: [N개].
+
+0–1s: headline "[HEADLINE]" rises in; a small label "실제 구매 후기" under it.
+1–7s: four review cards (white, rounded, avatar circle with the first letter, masked name, star row, text) fly in one by one from alternating sides with a slight rotation, land in a loose stack (each new card overlaps the previous by 40%), and their 5 stars fill one after another with a little pop.
+7–9s: the stack slides up and shrinks; a big rating "[4.9]" counts up with a row of five large stars filling to the matching fraction.
+9–11s: "[REVIEW COUNT]" and the brand name appear; fade out.
+
+Pastel background, soft shadows, Noto Sans KR. Keep the stars as drawn shapes (no emoji).
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

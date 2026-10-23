@@ -1,0 +1,38 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 개념 설명 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 화이트보드에 손으로 그리듯 설명하는 공식
+바꿔 쓰는 법: 개념 이름, 공식, 예시 숫자, 마지막 팁 한 줄만 바꾸면 돼요. 단계가 많은 개념이면 '상자를 4개로 늘려 줘'처럼 적어 주세요.
+
+프롬프트 전문 ①
+Create a 12-second vertical (1080x1920) whiteboard-sketch explainer as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Concept: [CONCEPT — e.g. 광고 수익률 ROAS]. Formula: "[FORMULA — e.g. 매출 ÷ 광고비 × 100]". Worked example: [EXAMPLE — e.g. 광고비 10만 원, 매출 40만 원 → 400%].
+
+Look: off-white board with faint texture, marker strokes in black, blue and red; strokes drawn progressively (animate each path with lineDash/lineDashOffset or by drawing a growing subset of points) with slight hand wobble. Text appears as if written: reveal each line left to right with a clipping rect, slightly uneven baseline.
+0–1.5s: the concept name is written at the top and circled.
+1.5–5s: two boxes are drawn ("[INPUT A]" and "[INPUT B]") with arrows pointing to a result box; the formula is written between them.
+5–9s: the example numbers are written into the boxes; the result box fills with a quick hatch shading; the result number is underlined twice in red.
+9–12s: a sticky note "[TIP]" slaps onto the corner with a slight rotation; fade out.
+
+No hand graphic needed. Noto Sans KR in a heavy weight for 'marker' text.
+
+② 공이 굴러 내려가며 보여 주는 원리 설명
+바꿔 쓰는 법: 설명할 개념과 핵심 문장만 바꾸면 돼요. 다른 원리(예: 가격 최적점 찾기)도 '곡선과 공으로 설명해 줘'라고 하면 같은 방식으로 만들 수 있어요.
+
+프롬프트 전문 ②
+Create a 12-second vertical (1080x1920) concept explainer as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Concept: [CONCEPT — e.g. 경사 하강법: AI가 오차를 줄이는 방법]. Key sentence: "[KEY SENTENCE]".
+
+Draw a smooth curve (a valley with one shallow local dip and one deeper global minimum) across the middle of the screen with a soft gradient fill under it and a labeled axis "오차".
+0–1.5s: title rises in; the curve draws from left to right.
+1.5–9s: a ball starts high on the left. Every 0.6s it takes a "step": draw the tangent line at the ball (short segment), an arrow pointing downhill, then the ball rolls along the curve to the new position (x_new = x − learningRate × slope, computed numerically from the curve function). Steps get smaller near the bottom. Show a small panel: step count and current error value updating. After settling briefly in the shallow dip, add one bigger 'momentum' step that hops out and continues to the deepest point.
+9–12s: the lowest point gets a flag "가장 낮은 오차"; the key sentence appears; fade out.
+
+Clean educational style (dark navy board, chalk-like colors), Noto Sans KR, Inter numbers.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

@@ -1,0 +1,22 @@
+영상 AI 없이 만든 게임 감성 광고 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 주문을 외우면 상품이 나타나는 픽셀아트 마법사
+8비트 게임 같은 픽셀 마법사가 지팡이를 휘두르면 별가루가 모여 상품이 '짠' 하고 소환돼요. 게임 감성 이벤트·신상 공개에 좋아요.
+
+② 레트로 게임 캐릭터가 코인을 먹으며 달리는 광고
+옛날 횡스크롤 게임처럼 캐릭터가 달리고 점프하며 코인(혜택)을 모으다가, 마지막 깃발에서 '스테이지 클리어'와 함께 제품이 나와요.
+
+📋 프롬프트 핵심 (① / ②)
+Create an 11-second vertical (1080x1920) pixel-art animation as one HTML file with Canvas 2D (imageSmoothingEnabled = false).
+Story: a pixel wizard summons [PRODUCT]. Spell text: "[SPELL — e.g. 신상 소환!]". Item name: "[ITEM NAME]". Price/label: "[LABEL]".
+
+Create a 12-second vertical (1080x1920) retro side-scrolling game ad as one HTML file with Canvas 2D (crisp pixels, imageSmoothingEnabled false).
+Hero: a small pixel character (draw from a string array, 2-frame run cycle). Collectibles = benefits: coins labeled "[BENEFIT 1]", "[BENEFIT 2]", "[BENEFIT 3]". Goal: a flag pole + a pixel version of [PRODUCT]. HUD: score, coin count, timer.
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠

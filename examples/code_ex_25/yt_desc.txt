@@ -1,0 +1,35 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 엔딩·메시지 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 구독·좋아요·알림을 누르는 엔드카드
+바꿔 쓰는 법: 채널 이름, 핸들, 색, 다음 영상 제목만 바꾸면 돼요. 쇼츠 마지막에 붙이거나, 가로 영상이면 '16:9로 바꿔 줘'라고 하면 돼요.
+
+프롬프트 전문 ①
+Create a 9-second vertical (1080x1920) channel end card as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Channel: [CHANNEL NAME], handle "[@HANDLE]", profile color [COLOR], one-liner "[WHAT THE CHANNEL IS ABOUT]". Next video teaser text: "[NEXT VIDEO TITLE]".
+
+0–1.2s: a profile circle (initial letter inside) scales in with a ring that draws around it; channel name and handle rise in under it.
+1.2–5.5s: three buttons sit in a row: a red pill "구독", a thumbs/heart "좋아요", a bell "알림". An arrow cursor moves to each in turn along smooth curves and clicks: 구독 turns gray with text "구독중" and a small check; 좋아요 fills and bursts small hearts; 알림 bell rings (rotates ±20° a few times) and shows a tiny badge.
+5.5–8s: a "다음 영상" card slides up with a thumbnail block and the next-video title; a progress ring fills around a play icon.
+8–9s: fade out.
+
+Clean dark background with subtle glow in the channel color, Noto Sans KR.
+
+② 도미노가 연달아 넘어지며 로고를 여는 3D 영상
+바꿔 쓰는 법: 마지막 블록에 쓸 메시지와 브랜드 문구, 색 두 가지만 바꾸면 돼요. 도미노 대신 '우리 제품 상자'를 세워 달라고 해도 재미있어요.
+
+프롬프트 전문 ②
+Create an 11-second vertical (1080x1920) 3D domino chain as one HTML file using Three.js. Expose window.render(t) that sets the whole scene for time t (seconds) and renders one frame — no requestAnimationFrame clock — so it can be recorded frame by frame.
+
+Message on the final block: "[MESSAGE]". Brand: [BRAND]. Domino colors: gradient [COLOR A] → [COLOR B].
+
+Scene: a clean light floor with soft shadows; 30 thin dominoes placed along an S-curve, each facing the path direction. A final large block stands at the end with the message printed on its front (CanvasTexture).
+Physics-free animation: each domino i starts falling at time t0 + i×0.18s and rotates forward 0 → 72° with ease-in (gravity feel), stopping against the next one; the camera tracks the falling front along the curve (lerp to the current domino position with an offset) and pulls back at the end.
+At the end, the last domino hits the big block, which tips over backward slowly (0 → 90°) revealing the message face upward; the camera cranes up to look down at it.
+2D overlay at the end: the brand line "[BRAND LINE]"; fade out.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

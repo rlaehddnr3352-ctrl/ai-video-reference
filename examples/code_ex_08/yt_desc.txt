@@ -1,0 +1,39 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 공감형 제품 광고 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 가운데 손잡이를 밀어 보는 비포·애프터
+바꿔 쓰는 법: 무엇이 바뀌는지(전/후 장면 설명), 제품 이름, 혜택 한 줄을 바꾸면 돼요. 실제 전후 사진 2장이 있으면 '이 두 이미지를 BEFORE/AFTER로 써 줘'라고 하면 사진 비교 영상이 됩니다.
+
+프롬프트 전문 ①
+Create an 11-second vertical (1080x1920) before/after comparison as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Subject: [WHAT CHANGES — e.g. 정리 전/후 선반]. Product: [PRODUCT NAME]. Before label "BEFORE", after label "AFTER".
+Draw both scenes yourself as flat illustrations: BEFORE is gray, cluttered, items tilted at random angles; AFTER is warm, colorful, items lined up in matching boxes with labels.
+
+0–1.5s: BEFORE fills the screen; a title "[TITLE]" drops in at the top.
+1.5–7.5s: a vertical divider with a round handle (arrows inside) enters from the right and sweeps left to right and back twice with ease-in-out, revealing AFTER on its left side (clip-rect). The labels BEFORE/AFTER ride along at each side of the divider. Small sparkles pop on AFTER whenever the divider passes the middle.
+7.5–9s: divider slides all the way so AFTER is full screen; a check badge pops.
+9–11s: product name and a one-line benefit "[BENEFIT]" rise in at the bottom; fade out.
+
+Flat vector look, soft shadows, Noto Sans KR.
+
+② '이런 분께 추천해요' 체크리스트 영상
+바꿔 쓰는 법: 고민 4개, 제품 이름, 해결 문장만 바꾸면 돼요. 고객 리뷰나 문의에서 자주 나오는 말을 고민 항목으로 쓰면 공감이 훨씬 커요.
+
+프롬프트 전문 ②
+Create an 11-second vertical (1080x1920) "checklist" ad as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Title: "[이런 분께 추천해요]". Pain points (4): [PAIN 1], [PAIN 2], [PAIN 3], [PAIN 4]. Product: [PRODUCT NAME] with "[ONE-LINE SOLUTION]".
+
+Paper-note look: off-white lined notepad background with a red margin line and a few tape strips.
+0–1s: title written in a marker-like heavy font, with a hand-drawn underline that draws on.
+1–7s: each pain point fades in on a line, then a checkbox gets a hand-drawn check mark (stroke drawn progressively with a slight wobble, marker color [ACCENT]) — 1.4s per item. Add a tiny pop to the checkbox when checked.
+7–8.5s: all four lines get a highlighter swipe; then the note slides up.
+8.5–11s: the product appears with a circled "정답!" annotation and an arrow drawn toward it; solution line below; fade out.
+
+Hand-made, friendly feel. Noto Sans KR for text.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

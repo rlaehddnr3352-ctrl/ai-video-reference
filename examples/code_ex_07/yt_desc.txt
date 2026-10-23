@@ -1,0 +1,39 @@
+▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+
+영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 라이브·주문 알림 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
+
+① 공항 전광판처럼 글자가 촤르르 넘어가는 공지
+바꿔 쓰는 법: 세 줄 문구(줄마다 7글자 이하)와 맨 아래 채널 이름만 바꾸면 돼요. 라이브커머스 예고, 매장 오픈 시간, 이벤트 마감 공지에 잘 맞아요.
+
+프롬프트 전문 ①
+Create an 11-second vertical (1080x1920) split-flap display announcement as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Message lines (max 7 characters each): "[LINE 1]", "[LINE 2]", "[LINE 3]". Footer: "[BRAND / CHANNEL]".
+
+Draw a matte black board with rows of flap tiles (dark gray rounded tiles with a thin horizontal split line through the middle and a subtle top highlight).
+0–1s: the board slides in from below; all tiles show blank.
+1–7s: each row flips: every tile cycles through random characters (Korean syllables and digits) — show a flip by drawing the top half folding down (scale Y from 1 to 0 on the upper half, then the next character's lower half unfolding). Tiles settle on their final character left to right with ~0.08s stagger; rows start 1.2s apart. Add a tiny shake to each tile when it locks.
+7–9s: the finished message holds; an amber "LIVE" lamp blinks at the top corner.
+9–11s: footer text slides in; fade out.
+
+Typeface: bold Korean sans in warm white on the tiles. Background: dark charcoal with a soft spotlight on the board.
+
+② 잠금화면에 주문 알림이 쏟아지는 영상
+바꿔 쓰는 법: 알림 7개의 앱 이름과 문구를 우리 상황으로 바꾸고, 첫 문장(후킹)과 결과 문구를 넣으면 돼요. 숫자는 실제로 있었던 일로만 넣어 주세요.
+
+프롬프트 전문 ②
+Create an 11-second vertical (1080x1920) "notification flood" video as one HTML file with Canvas 2D. Expose window.render(t) that draws the frame at time t (seconds) deterministically, so it can be recorded frame by frame.
+
+Story hook: "[HOOK — e.g. 광고 켜고 30분 뒤]". Notifications (app name, message): [N1], [N2], … (7 items). Result line: "[RESULT]".
+
+A phone lock screen fills most of the frame: blurred colorful wallpaper, big clock "[TIME]" and date.
+0–1.5s: the hook text sits above the phone; the clock ticks a minute forward.
+1.5–8s: notifications drop in from the top one after another, each 0.85s apart, accelerating slightly. Each card is a frosted rounded rectangle with an app icon square, app name, "지금", and message. New cards push older ones down with spring easing; the phone buzzes (2px shake) on each arrival. A counter badge "주문 N건" in the corner increments when an order notification lands.
+8–9.5s: notifications compress into a stacked pile; the counter scales up big.
+9.5–11s: result line and brand name; fade out.
+
+iOS-like look, Noto Sans KR. All notification text is example content to be replaced.
+
+만든 영상을 mp4로 뽑을 땐 Claude에게 "render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘"라고 하면 돼요.
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽

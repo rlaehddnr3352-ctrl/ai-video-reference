@@ -77,7 +77,7 @@ def build(n, outroot):
     open(f"{od}/caption.txt", "w", encoding="utf-8").write(cap)
     desc = (f"▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://{SITE}/\n\n영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 {theme} 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.\n\n"
             f"① {ma['title']}\n바꿔 쓰는 법: {ma['how']}\n\n프롬프트 전문 ①\n{ma['prompt']}\n\n② {mb['title']}\n바꿔 쓰는 법: {mb['how']}\n\n프롬프트 전문 ②\n{mb['prompt']}\n\n"
-            f"만든 영상을 mp4로 뽑을 땐 Claude에게 \"render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘\"라고 하면 돼요.\n효과음: Kenney (CC0)\n\n#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽")
+            f"만든 영상을 mp4로 뽑을 땐 Claude에게 \"render(t)로 초당 30장 캡처해서 mp4로 합쳐 줘\"라고 하면 돼요.\n\n#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽")
     desc = desc.replace("<", "‹").replace(">", "›")  # YouTube rejects angle brackets
     if len(desc) > 4900: desc = desc[:4890] + "…"
     open(f"{od}/yt_desc.txt", "w", encoding="utf-8").write(desc)

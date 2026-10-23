@@ -1,0 +1,22 @@
+영상 AI 없이 만든 오픈·출시 티저 2편 🎬
+Claude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.
+
+① 흩어진 입자가 모여 글자가 되는 3D 오프닝
+공간에 흩어져 반짝이던 수천 개의 입자가 소용돌이치며 모여 글자를 만들고, 마지막에 다시 터지듯 흩어져요. 오픈·런칭 공지 오프닝에 좋아요.
+
+② 어둠 속 실루엣을 비추는 신제품 티저
+깜깜한 무대에서 스포트라이트가 이리저리 움직이며 제품 윤곽만 살짝 보여 주다가, 마지막에 조명이 켜지며 정체가 공개돼요. 출시일 예고용이에요.
+
+📋 프롬프트 핵심 (① / ②)
+Create an 11-second vertical (1080x1920) particle text reveal as one HTML file using Three.js.
+Text to form: "[WORD — short, e.g. OPEN]". Subtitle (2D overlay): "[SUBTITLE]". Colors: [COLOR A] and [COLOR B].
+
+Create an 11-second vertical (1080x1920) product teaser as one HTML file with Canvas 2D.
+Product: [PRODUCT NAME] (draw it as a simple stylized silhouette — e.g. a bottle, box or device — with [PRODUCT COLOR]). Launch date: [DATE]. Teaser line: "[TEASER LINE]".
+
+[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
+🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+
+어떤 제품으로 만들어 보고 싶어요?
+
+#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠
