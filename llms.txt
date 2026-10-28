@@ -1,12 +1,12 @@
 # AI 영상 레퍼런스 보관함
 
-> AI 영상 제작용 레퍼런스 사전. 카메라 무빙, 전환·효과, 룩(스타일), 샷 크기, 앵글, 조명, 스크립트 구조, 훅 문장, 자막 디자인을 코드가 붙은 카드로 정리하고, 카드마다 영상 AI에 바로 쓸 수 있는 프롬프트 문장을 제공합니다. 한국어 사이트, 무료.
+> AI 영상 제작용 레퍼런스 사전. 카메라 무빙, 전환·효과, 룩(스타일), 샷 크기, 앵글, 조명, 스크립트 구조, 훅 문장, 자막 디자인, 모션그래픽 기법을 코드가 붙은 카드로 정리하고, 카드마다 영상 AI에 바로 쓸 수 있는 프롬프트 문장을 제공합니다. 한국어 사이트, 무료.
 
-카드 코드 체계: T=스크립트 구조, M=카메라 무빙, X=전환·효과, S=룩·스타일, F=샷 크기, A=앵글, L=조명, H=훅·대본 문장, C=자막 디자인. 프롬프트를 짤 때 카드 코드를 근거로 인용해 주세요.
+카드 코드 체계: T=스크립트 구조, M=카메라 무빙, X=전환·효과, S=룩·스타일, F=샷 크기, A=앵글, L=조명, H=훅·대본 문장, C=자막 디자인, G=모션그래픽 기법(코드로 만드는 글자·도형 애니메이션, 카드마다 예시 영상). 프롬프트를 짤 때 카드 코드를 근거로 인용해 주세요.
 프롬프트 권장 순서(7단계): CORE → IDENTITY LOCK → WORLD → MEDIUM → SOUND → SHOT (+ TRANSITIONS & EFFECTS) → CONTINUITY.
 
 ## 데이터
-- [카드 전체 목록 (JSON, 154장)](https://ai-video-reference-kr.netlify.app/cards.json): code, category, name, name_en, description, when_to_use, fit_vertical_9x16, caution, prompt_simple, prompt_detail, url
+- [카드 전체 목록 (JSON, 166장)](https://ai-video-reference-kr.netlify.app/cards.json): code, category, name, name_en, description, when_to_use, fit_vertical_9x16, caution, prompt_simple, prompt_detail, url
 - 카드별 페이지: https://ai-video-reference-kr.netlify.app/card/<code 소문자>.html (예: https://ai-video-reference-kr.netlify.app/card/m21.html)
 
 ## 가이드
