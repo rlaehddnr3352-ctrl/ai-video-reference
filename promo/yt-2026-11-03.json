@@ -1,0 +1,10 @@
+{
+  "mode": "example",
+  "post": "2026-11-03",
+  "video": "https://raw.githubusercontent.com/rlaehddnr3352-ctrl/ai-video-reference/promo-tools/examples/code_ex_08/video.mp4",
+  "title": "영상 AI 없이 만든 공감형 제품 광고 2편 — 프롬프트 공개 #shorts",
+  "description": "▶ 이 카드들로 프롬프트 바로 만들기: https://ai-video-reference-kr.netlify.app/\n\n영상 AI 없이 만든 공감형 제품 광고 2편 🎬\nClaude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.\n\n① 가운데 손잡이를 밀어 보는 비포·애프터\n화면 가운데 세로 손잡이가 좌우로 움직이며 정리 전과 정리 후를 번갈아 보여 줘요. 수납·청소·리모델링·보정 전후 비교에 바로 쓸 수 있어요.\n\n② '이런 분께 추천해요' 체크리스트 영상\n고민 항목이 하나씩 나오며 체크 표시가 손으로 그리듯 그어지고, 다 체크되면 제품이 '정답'처럼 등장해요. 공감형 광고 도입부에 좋아요.\n\n📋 프롬프트 핵심 (① / ②)\nCreate an 11-second vertical (1080x1920) before/after comparison as one HTML file with Canvas 2D.\nSubject: [WHAT CHANGES — e.g. 정리 전/후 선반]. Product: [PRODUCT NAME]. Before label \"BEFORE\", after label \"AFTER\".\nDraw both scenes yourself as flat illustrations: BEFORE is gray, cluttered, items tilted at random angles; AFTER is warm, colorful, items lined up in matching boxes with labels.\n\nCreate an 11-second vertical (1080x1920) \"checklist\" ad as one HTML file with Canvas 2D.\nTitle: \"[이런 분께 추천해요]\". Pain points (4): [PAIN 1], [PAIN 2], [PAIN 3], [PAIN 4]. Product: [PRODUCT NAME] with \"[ONE-LINE SOLUTION]\".\n\n[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.\n🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)\n\n어떤 제품으로 만들어 보고 싶어요?\n\n#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠",
+  "tags": "AI영상,AI광고,프롬프트,카메라무빙,AI 영상 만들기,숏폼,",
+  "ai": true,
+  "pin_comment": "📌 영상에 나온 카드로 프롬프트를 바로 만들 수 있어요 👉 https://ai-video-reference-kr.netlify.app/ (무료 · 회원가입 없음) 어떤 제품으로 만들어 보고 싶어요?"
+}
