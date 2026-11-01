@@ -235,7 +235,7 @@ dialog.rd-dlg::backdrop{background:rgba(10,12,16,.6)}
         <div class="dl-sec"><h3>왜 터졌나</h3><p>${esc(x.why)}</p></div>
         ${x.caution?`<div class="dl-caution">주의 · ${esc(x.caution)}</div>`:""}
         <div class="dl-sec"><h3>이 공식에 맞는 카드</h3><div class="dl-cards">${cards.map(([c,n])=>`<a href="../card/${c.toLowerCase()}.html"><span class="code">${esc(c)}</span>${esc(n)}</a>`).join("")}</div></div>
-        <div class="dl-cta"><a class="btn primary" href="${make}">이 공식으로 프롬프트 만들기 →</a><a class="btn" href="${ytUrl(x)}" target="_blank" rel="noopener">유튜브에서 보기 ↗</a></div>
+        <div class="dl-cta"><a class="btn primary" href="${make}">이 공식으로 프롬프트 만들기 →</a><a class="btn" href="../guide/reverse-engineering.html?ref=${encodeURIComponent(ytUrl(x))}#tool">구조 뜯어보기</a><a class="btn" href="${ytUrl(x)}" target="_blank" rel="noopener">유튜브에서 보기 ↗</a></div>
         <p class="dl-basis">분석 기준 · ${esc(x.basis||"")} · 업로드 ${esc((x.date||"").replace(/(\d{4})(\d\d)(\d\d)/,"$1.$2.$3"))}</p>
       </div></div>`;
     const d = $("#rdDlg"); if(!d.open) d.showModal();
