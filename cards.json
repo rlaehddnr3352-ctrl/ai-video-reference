@@ -1770,7 +1770,7 @@
    "description": "큰 글자 속으로 들어가며 다음 장면으로",
    "when_to_use": "제목 → 본론으로 넘어갈 때. 브랜드명이나 키워드 하나로 오프닝을 열 때",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 글자 관통 줌(letter fly-through): 화면을 꽉 채운 굵은 글자를 마스크로 쓰고, 글자 안에 다음 장면을 보여 주다가 한 글자 속으로 빠르게 줌인해서 다음 장면으로 넘어가.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: letter fly-through: a huge bold word is used as a mask, the next scene shows inside the letters, then the camera zooms exponentially into one letter until the next scene fills the frame.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it as the transition between two beats. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: letter fly-through: a huge bold word is used as a mask, the next scene shows inside the letters, then the camera zooms exponentially into one letter until the next scene fills the frame.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it as the transition between two beats. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 99-knockout-zoom and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g01.html"
   },
   {
@@ -1781,7 +1781,7 @@
    "description": "폰·모니터 화면 안으로 들어가기",
    "when_to_use": "앱, 웹사이트, 상세페이지를 소개할 때. '이 화면 안을 보면' 하고 넘어갈 때",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 화면 속 다이브(screen dive): 휴대폰 목업을 화면 가운데 두고, 폰 화면 속으로 줌인해서 화면 속 내용이 전체 화면이 되게 이어서 보여 줘.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: screen dive: a phone or monitor mockup sits in the frame, the camera zooms into its screen until the screen content becomes the full frame, seamless.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it as the transition between two beats. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: screen dive: a phone or monitor mockup sits in the frame, the camera zooms into its screen until the screen content becomes the full frame, seamless.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it as the transition between two beats. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 122-app-promo and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g02.html"
   },
   {
@@ -1792,7 +1792,7 @@
    "description": "평면 글자에 깊이감 주기",
    "when_to_use": "순위 · 제목 카드를 입체적으로 보이게 할 때. 로고나 키워드 소개",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 텍스트 샌드위치(text sandwich): 큰 글자를 앞·뒤 두 레이어로 나누고, 동그란 오브젝트가 그 사이를 지나가게 해서 글자 뒤로 갔다가 앞으로 나오는 깊이감을 만들어.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: text sandwich: an object passes between two layers of the same big word, behind the top half and in front of the bottom half, giving the flat text depth.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: text sandwich: an object passes between two layers of the same big word, behind the top half and in front of the bottom half, giving the flat text depth.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 139-text-behind and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g03.html"
   },
   {
@@ -1803,7 +1803,7 @@
    "description": "동그라미가 퍼지며 다음 장면",
    "when_to_use": "목록형 쇼츠에서 항목과 항목 사이. 밝고 경쾌하게 넘길 때",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 원 팝 전환(circle pop transition): 화면 가운데서 색이 다른 원이 차례로 커지며 퍼지고, 마지막 원 안에 다음 장면이 보이게 전환해.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: circle pop transition: colored circles burst outward from the center one after another, the last circle reveals the next scene inside it.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it as the transition between two beats. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: circle pop transition: colored circles burst outward from the center one after another, the last circle reveals the next scene inside it.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it as the transition between two beats. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 93-transition-kit and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g04.html"
   },
   {
@@ -1814,7 +1814,7 @@
    "description": "네모 칸으로 부서지며 바뀜",
    "when_to_use": "비포 → 애프터, 오늘 → 내일처럼 상태가 바뀌는 순간",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 픽셀 디졸브(pixel dissolve): 화면을 작은 정사각형 칸으로 나누고, 칸들이 무작위 순서로 작아지며 사라지면서 아래에 다음 장면이 드러나게 해.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: pixel dissolve: the frame breaks into a grid of square cells that shrink away in random order, revealing the next scene underneath.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it as the transition between two beats. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: pixel dissolve: the frame breaks into a grid of square cells that shrink away in random order, revealing the next scene underneath.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it as the transition between two beats. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 153-particle-dissolve and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g05.html"
   },
   {
@@ -1825,7 +1825,7 @@
    "description": "단어가 박자에 맞춰 쾅쾅",
    "when_to_use": "첫 3초 훅 문장, 대사 없이 글자로만 끌고 가는 쇼츠",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 키네틱 타이포(kinetic typography): 문장을 단어 단위로 나눠 박자에 맞춰 한 단어씩 튕기듯 커졌다 자리 잡게 하고, 핵심 단어는 강조색으로, 등장할 때 화면을 살짝 흔들어.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: kinetic typography: words slam onto the screen one by one in rhythm, each with a quick overshoot scale and a small camera shake, key words in accent color.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: kinetic typography: words slam onto the screen one by one in rhythm, each with a quick overshoot scale and a small camera shake, key words in accent color.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 96-kinetic-camera and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g06.html"
   },
   {
@@ -1836,7 +1836,7 @@
    "description": "글줄이 아래에서 스르륵 올라옴",
    "when_to_use": "정보형 요약, 인용 문장, 브랜드 메시지를 차분하게 보여 줄 때",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 마스크 리빌(mask reveal): 색 막대가 먼저 지나가고, 글줄이 보이지 않는 선 아래에서 한 줄씩 위로 올라오며 나타나게 해.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: mask reveal: each line of text rises up from behind an invisible edge, line by line, with a solid color bar wiping across before the text appears.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: mask reveal: each line of text rises up from behind an invisible edge, line by line, with a solid color bar wiping across before the text appears.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 67-gsap-splittext and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g07.html"
   },
   {
@@ -1847,7 +1847,7 @@
    "description": "공항 전광판처럼 글자가 촤르륵",
    "when_to_use": "순위 발표, 오늘의 메뉴, 출발 · 도착 콘셉트, 숫자 공개",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 스플릿 플랩(split-flap display): 공항 출발 전광판처럼 글자 칸마다 무작위 글자가 촤르륵 넘어가다가 칸마다 차례로 멈춰 최종 문구가 되게 해.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: split-flap display: each character tile flips through random letters like an airport departure board before landing on the final text, tiles stopping one after another.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: split-flap display: each character tile flips through random letters like an airport departure board before landing on the final text, tiles stopping one after another.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 98-split-flap and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g08.html"
   },
   {
@@ -1858,7 +1858,7 @@
    "description": "숫자가 굴러가며 올라감",
    "when_to_use": "조회수, 판매량, 후기 수, 할인 금액처럼 숫자로 신뢰를 줄 때",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 롤링 카운터(rolling odometer counter): 자릿수마다 숫자가 세로로 굴러가는 계수기처럼 돌다가 왼쪽부터 차례로 멈춰 최종 숫자가 되게 해.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: rolling odometer counter: each digit rolls vertically like a mechanical counter and stops one after another on the final number, comma separated.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: rolling odometer counter: each digit rolls vertically like a mechanical counter and stops one after another on the final number, comma separated.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 90-measure-hud and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g09.html"
   },
   {
@@ -1869,7 +1869,7 @@
    "description": "도형이 다른 도형으로 변신",
    "when_to_use": "단계 · 과정 설명, 아이콘으로 개념을 바꿔 보여 줄 때",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 셰이프 모핑(shape morph): 원이 사각형, 삼각형, 별 순서로 끊김 없이 모양이 바뀌고 색도 함께 바뀌게 해.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: shape morph: one flat shape smoothly reshapes into the next (circle → square → triangle → star), color changing with it, no cut.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: shape morph: one flat shape smoothly reshapes into the next (circle → square → triangle → star), color changing with it, no cut.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 68-gsap-morphsvg and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g10.html"
   },
   {
@@ -1880,7 +1880,7 @@
    "description": "선이 그려지며 결과 등장",
    "when_to_use": "성장 · 변화 그래프, 전후 비교 수치, 경로 · 지도 표시",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 라인 드로잉(line draw): 꺾은선이 왼쪽에서 오른쪽으로 스스로 그려지고, 선 끝에 점이 따라가다가 마지막에 결과 숫자 배지가 튀어나오게 해.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: line draw: a line chart draws itself from left to right with a dot leading the stroke, then a result badge pops up at the end.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: line draw: a line chart draws itself from left to right with a dot leading the stroke, then a result badge pops up at the end.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 125-route-map and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g11.html"
   },
   {
@@ -1891,7 +1891,7 @@
    "description": "화면이 지지직 깨졌다 돌아옴",
    "when_to_use": "반전 · 경고 · 출시 직전처럼 긴장감을 줄 때, 테크 · 게임 콘셉트",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 글리치(glitch): 글자가 짧게 끊기며 빨강·파랑 채널로 어긋나고, 가로 줄로 잘려 밀리고, 주사선이 지나가다가 다시 깨끗하게 돌아오게 해.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: glitch: the text jitters with RGB channel split, horizontal slice offsets and scanlines in short bursts, then snaps back clean.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: glitch: the text jitters with RGB channel split, horizontal slice offsets and scanlines in short bursts, then snaps back clean.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 23-vhs and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g12.html"
   },
   {
@@ -1902,7 +1902,7 @@
    "description": "반투명 유리 카드 UI",
    "when_to_use": "앱 · 서비스 소개, 수치 카드, 세련된 테크 느낌을 줄 때",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 글래스모피즘(glassmorphism): 색이 다른 흐린 원들이 천천히 떠다니는 배경 위에, 뒤가 뿌옇게 비치는 반투명 유리 카드가 튀어 올라오고, 카드 위로 빛 반사가 한 번 스쳐 가게 해.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: glassmorphism: frosted translucent glass cards with a soft white border float over colorful blurred blobs that slowly drift, a light reflection sweeps across the glass.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: glassmorphism: frosted translucent glass cards with a soft white border float over colorful blurred blobs that slowly drift, a light reflection sweeps across the glass.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 121-mesh-gradient and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g13.html"
   },
   {
@@ -1913,7 +1913,7 @@
    "description": "흩어진 점이 모여 글자로",
    "when_to_use": "브랜드명 · 키워드 공개, 오프닝 로고, '모이면 커진다' 같은 메시지",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 파티클 집합(particle assemble): 화면에 흩어져 떠다니던 작은 점 수백 개가 날아와 모여 단어 모양이 되고, 잠깐 멈췄다가 다시 흩어지게 해.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: particle assemble: hundreds of small glowing dots drift around the screen, then fly in and gather to form a word, hold, and burst apart again.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: particle assemble: hundreds of small glowing dots drift around the screen, then fly in and gather to form a word, hold, and burst apart again.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 17-hangul-particles and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g14.html"
   },
   {
@@ -1924,7 +1924,7 @@
    "description": "순위가 바뀌는 막대 그래프",
    "when_to_use": "연도별 순위 변화, 시장 점유율, '몇 년 만에 1위' 이야기",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 차트 바 레이스(bar chart race): 가로 막대들이 연도별 숫자에 맞춰 길어지고, 서로 추월하며 순위가 부드럽게 바뀌고, 구석에 큰 연도 숫자가 넘어가게 해.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: bar chart race: horizontal bars grow and change length year by year, bars overtake each other and reorder smoothly by value, a big year counter in the corner.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: bar chart race: horizontal bars grow and change length year by year, bars overtake each other and reorder smoothly by value, a big year counter in the corner.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 32-dataviz-motion and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g15.html"
   },
   {
@@ -1935,7 +1935,7 @@
    "description": "종이 문서에 형광펜 · 동그라미",
    "when_to_use": "뉴스 · 통계 · 근거를 보여 주는 설명 영상, 신뢰가 필요한 정보",
    "prompt_simple": "HTML/CSS/JS로 6초짜리 세로(9:16) 모션 그래픽을 만들고 MP4로 렌더링해 줘. 주제는 [product]. 기법은 Vox 스타일 종이 설명(Vox-style paper explainer): 질감 있는 종이 배경에 테이프로 붙인 문서가 있고, 핵심 문장에 형광펜이 그어지고, 카메라가 그 문장으로 다가가며 숫자에 빨간 손그림 동그라미가 쳐지게 해.",
-   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: Vox-style paper explainer: a paper document taped on a textured background, a marker highlight sweeps across one key sentence, the camera pushes in, a hand-drawn red circle marks the number and a label pops up.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.",
+   "prompt_detail": "Build a 9:16 motion-graphics clip in HTML/CSS/JS (canvas or DOM), then render it frame by frame to MP4 (e.g. Playwright screenshots + ffmpeg, or HyperFrames).\nTechnique: Vox-style paper explainer: a paper document taped on a textured background, a marker highlight sweeps across one key sentence, the camera pushes in, a hand-drawn red circle marks the number and a label pops up.\nSubject: [product]. Length 6s, 30fps, loop-friendly first and last frame.\nUse flat shapes, bold type and 2–3 brand colors; drive every animation from one time value t so each frame is deterministic.\nUse it inside one beat. Keep the bottom 15% free for captions.\nIf the aimotion skill (github.com/kstost/cokacmotion) is installed, read the notes of demo 101-marker-annotate and borrow only its technique, not its scene.",
    "url": "https://ai-video-reference-kr.netlify.app/card/g16.html"
   },
   {

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>코드로 모션 영상 만들기 — Claude Code · aimotion 스킬 사용법, 원리부터 렌더링까지 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="요즘 AI가 만드는 모션 영상은 영상 생성 모델이 아니라 코드로 그린 경우가 많아요. 브라우저가 코드를 그림으로 그리는 원리, 끊김 없이 MP4로 뽑는 방법, aimotion 스킬 설치와 기법 가져다 쓰는 법, 장점과 한계까지.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/guide/code-motion-video.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="코드로 모션 영상 만들기 — Claude Code · aimotion 스킬 사용법, 원리부터 렌더링까지 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="요즘 AI가 만드는 모션 영상은 영상 생성 모델이 아니라 코드로 그린 경우가 많아요. 브라우저가 코드를 그림으로 그리는 원리, 끊김 없이 MP4로 뽑는 방법, aimotion 스킬 설치와 기법 가져다 쓰는 법, 장점과 한계까지.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/guide/code-motion-video.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "코드로 AI 모션 영상 만드는 원리와 방법", "description": "요즘 AI가 만드는 모션 영상은 영상 생성 모델이 아니라 코드로 그린 경우가 많아요. 브라우저가 코드를 그림으로 그리는 원리, 끊김 없이 MP4로 뽑는 방법, aimotion 스킬 설치와 기법 가져다 쓰는 법, 장점과 한계까지.", "inLanguage": "ko", "mainEntityOfPage": "https://ai-video-reference-kr.netlify.app/guide/code-motion-video.html", "datePublished": "2026-10-13", "dateModified": "2026-11-08", "image": "https://ai-video-reference-kr.netlify.app/og.png", "author": {"@type": "Person", "name": "김동욱", "url": "https://ai-video-reference-kr.netlify.app/privacy.html"}, "publisher": {"@type": "Organization", "name": "AI 영상 레퍼런스 보관함", "url": "https://ai-video-reference-kr.netlify.app/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "AI 영상 레퍼런스 보관함", "item": "https://ai-video-reference-kr.netlify.app/"}, {"@type": "ListItem", "position": 2, "name": "가이드", "item": "https://ai-video-reference-kr.netlify.app/guide/"}, {"@type": "ListItem", "position": 3, "name": "코드로 AI 모션 영상 만드는 원리와 방법", "item": "https://ai-video-reference-kr.netlify.app/guide/code-motion-video.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "코딩을 전혀 몰라도 만들 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "네. 코드는 Claude Code 같은 코딩 에이전트가 짜요. 만들고 싶은 장면을 말로 설명하고, 결과를 보며 고칠 점을 말로 알려 주면 돼요."}}, {"@type": "Question", "name": "aimotion은 무료인가요?", "acceptedAnswer": {"@type": "Answer", "text": "네. MIT 라이선스로 공개된 오픈소스라 무료로 쓸 수 있고, 기법을 구현한 코드는 옮겨 써도 돼요. 다만 데모가 그린 장면 · 문구 · 색은 기법을 보여 주는 예시라서 영상에는 원리만 가져다 써야 해요."}}, {"@type": "Question", "name": "영상 생성 AI와 무엇이 다른가요?", "acceptedAnswer": {"@type": "Answer", "text": "영상 생성 AI는 학습한 영상과 비슷한 화면을 새로 만들어 내고, 코드 모션은 수식과 규칙으로 화면을 정확히 그려요. 그래서 코드 모션은 글자 · 숫자 · 로고가 깨지지 않고 몇 번을 다시 만들어도 같은 결과가 나와요. 실사 인물과 풍경은 영상 생성 AI가 더 잘해요."}}, {"@type": "Question", "name": "만든 영상을 MP4로 어떻게 받나요?", "acceptedAnswer": {"@type": "Answer", "text": "에이전트에게 \"render(t)로 1/30초마다 프레임을 캡처해 MP4로 합쳐 줘\"라고 하면 돼요. 실시간 화면 녹화보다 끊김이 없고 화질도 좋아요."}}]}</script>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+.faq h3{font-size:16px;margin:22px 0 6px}.faq p{margin:0 0 10px}
+</style><header class="top"><nav><a class="brand" href="../">AI 영상 레퍼런스 보관함</a><a href="../#dict">레퍼런스 사전</a><a href="../radar/">터진 쇼츠</a><a href="../guide/">가이드</a><a href="../prompts/video/">영상 프롬프트</a><a href="../privacy.html">소개</a></nav></header>
+<main>
+  <article>
+    <span class="eyebrow">GUIDE · 읽는 시간 약 7분 · 업데이트 2026-11-08</span>
+    <h1>코드로 AI 모션 영상 만드는 원리와 방법</h1>
+    <p class="lede">요즘 AI가 만드는 모션 영상은 영상 생성 모델이 아니라 코드로 그린 경우가 많아요. 브라우저가 코드를 그림으로 그리는 원리, 끊김 없이 MP4로 뽑는 방법, aimotion 스킬 설치와 기법 가져다 쓰는 법, 장점과 한계까지.</p>
+    <p>요즘 SNS에서 보이는 매끈한 모션 영상 중에는 영상 생성 AI가 아니라 <b>코딩 AI가 코드로 그린 것</b>이 많아요. 점이 물결처럼 퍼지고, 글자가 젤리처럼 출렁이고, 로고가 금속처럼 반짝이는 장면도 이미지 한 장 없이 코드만으로 나와요. 코드를 몰라도 괜찮아요. 코드는 AI가 짜고, 우리는 무엇을 만들지와 어떤 기법을 쓸지만 정하면 됩니다.</p>
+<p>이 글은 유튜브 '코드깎는노인'의 영상 <a href="https://www.youtube.com/watch?v=B_s4nWIqCUA" target="_blank" rel="noopener">AI 모션 영상, 실제로는 이렇게 만듭니다</a>와 그가 공개한 오픈소스 <a href="https://github.com/kstost/cokacmotion" target="_blank" rel="noopener">aimotion</a>을 바탕으로, 직접 써 보며 정리했어요. 기법 166편은 <a href="../prompts/code-motion/">코드 모션 기법 목록</a>에서 데모로 볼 수 있어요.</p>
+
+<h2>1. 코드가 어떻게 영상이 될까</h2>
+<ol>
+  <li><b>브라우저는 코드를 그림으로 그리는 프로그램이에요.</b> "여기에 동그라미 하나"라고 적으면 화면에 동그라미가 나와요.</li>
+  <li><b>숫자를 바꾸며 다시 그리면 움직여요.</b> 동그라미의 가로 위치를 숫자 하나로 정해 두고 그 숫자를 조금씩 바꿔 매번 다시 그리면, 동그라미가 움직이기 시작해요.</li>
+  <li><b>영상은 1초에 30장(많게는 60장) 넘어가는 그림이에요.</b> 그러니 영상을 만든다는 건, 시각마다 그림 한 장을 정확히 그려 내는 일이에요.</li>
+  <li><b>모든 움직임을 '시각 t' 하나로 계산해요.</b> 같은 t를 넣으면 언제나 같은 그림이 나오게 짜 두면, 어느 순간으로 건너뛰어도 똑같은 장면이 나와요.</li>
+  <li><b>실시간 재생 대신 한 장씩 찍어 이어 붙여요.</b> 브라우저에서 실시간으로 돌리면 무거운 장면에서 프레임이 빠지기도 해요. 그래서 시계를 1/30초씩 옮기며 한 장씩 그리고, 다 그려지면 캡처해 차례로 MP4로 합쳐요. 한 장에 몇 초가 걸려도 결과는 끊김 없이 부드러워요.</li>
+</ol>
+<pre class="prompt">이 장면을 HTML 한 장으로 만들어 줘. 모든 움직임은 render(t) 함수 하나로 계산해서 같은 t엔 같은 그림이 나오게 하고,
+Playwright로 t를 1/30초씩 옮기며 1080×1920 프레임을 캡처한 뒤 ffmpeg로 30fps MP4를 만들어 줘.</pre>
+<p>이 '프레임 단위 렌더링'을 대신 해 주는 도구도 있어요(HyperFrames, Remotion 등). 어떤 도구를 쓰든 원리는 같아요.</p>
+
+<h2>2. 코드로 어디까지 만들 수 있을까</h2>
+<p>생각보다 훨씬 넓어요. aimotion은 기법을 12개 분류로 나눠 데모 166편을 담았어요.</p>
+<div class="tw"><table>
+  <thead><tr><th>분류</th><th>예시</th></tr></thead>
+  <tbody>
+    <tr><td><a href="../prompts/code-motion/#g=g01">웹 그래픽 기법</a></td><td>먹 번짐(SVG 필터), 성운 · 오로라(셰이더), 물속 잉크(유체 계산), 파티클</td></tr>
+    <tr><td><a href="../prompts/code-motion/#g=g02">아날로그 표현</a></td><td>수채화, 유화, 목판화, 리소그래프, 8mm 필름, VHS, 종이 스톱모션, 붓글씨, 네온</td></tr>
+    <tr><td><a href="../prompts/code-motion/#g=g05">실험 타이포그래피</a></td><td>말랑한 글자, 타는 글자, 빛으로 쓴 글자, 김 서린 창에 쓴 글자</td></tr>
+    <tr><td><a href="../prompts/code-motion/#g=g10">타이포그래피 모션그래픽</a></td><td>말하는 자막, 예능 자막, 손글씨 쓰기, 플랩 전광판, 한글 조합, 글자 뒤 피사체</td></tr>
+    <tr><td><a href="../prompts/code-motion/#g=g11">모션그래픽 디자인</a></td><td>로고 리빌, 앱 소개, 방송 그래픽, 지도 경로, 통계 아이콘, 메신저 대화</td></tr>
+    <tr><td><a href="../prompts/code-motion/#g=g09">영상 표현력</a></td><td>표정 리그 · 립싱크, 장면 전환, 사진 시차(2.5D), 스케일 줌, 전후 비교, 불릿 타임</td></tr>
+    <tr><td><a href="../prompts/code-motion/#g=g12">3D 장면</a></td><td>제품 턴테이블, 분해도, 툰 셰이딩, 틸트시프트 미니어처, 지구본 경로</td></tr>
+  </tbody>
+</table></div>
+<p>예를 들어 '물속 잉크'는 화면을 작은 칸으로 나눠 칸마다 물의 속도를 담고, 힘 더하기 → 압력 맞추기 → 흐름 따라 잉크 옮기기를 되풀이해 만들어요. '종이 인형극'은 일부러 1초에 12번만 그림을 바꾸고 가장자리를 짧은 직선으로 끊어 손으로 오린 느낌을 내요. '새벽 호숫가'는 사진 한 장에 깊이 지도를 더해 가까운 것은 많이, 먼 것은 조금 움직이는 2.5D 시차예요. 원리는 복잡하지만, 다 알아야 만들 수 있는 건 아니에요. 코드는 에이전트가 짜니까요.</p>
+
+<h2>3. 직접 만들어 보기: Claude Code</h2>
+<ol>
+  <li><b>빈 폴더를 하나 만들고 그 안에서 Claude Code를 실행해요.</b></li>
+  <li><b>만들고 싶은 장면을 말로 적어요.</b> 예: "물속에 잉크가 번지듯 나타나는 제목을 6초짜리 세로 영상으로 만들어 줘."</li>
+  <li><b>결과를 보고 고칠 점을 말로 알려 줘요.</b> 코드를 짜고, 고치고, 렌더링해 확인하는 일은 에이전트가 해요. 처음부터 원하는 그림이 나오진 않으니 몇 번 왕복할 각오를 하세요.</li>
+</ol>
+
+<h2>4. 기법을 가져다 쓰기: aimotion 스킬</h2>
+<p>aimotion은 기법 하나마다 짧은 데모 하나와 <b>구현 노트</b>(몇 초에 무엇이 보이는지, 어떤 원리인지, 소스의 몇 번째 줄인지)와 소스 전체를 묶은 Claude Code 스킬이에요. 설치해 두면 에이전트가 장면에 필요한 기법을 스스로 찾아 원리를 읽고 그 기술만 가져다 써요.</p>
+<pre class="prompt">claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion</pre>
+<p>Claude Code 안에서는 <code>/plugin marketplace add kstost/cokacmotion</code>, <code>/plugin install aimotion@aimotion</code>으로 설치해요. 설치가 번거로우면 요청할 때 저장소 주소를 같이 적어도 돼요. 에이전트가 저장소를 받아 안내 문서부터 읽어요.</p>
+<p>쓰는 방법은 데모를 짚어 주는 것뿐이에요.</p>
+<pre class="prompt">aimotion의 98-split-flap 기법만 참고해서, 우리 카페 '오늘의 메뉴' 3가지를 공항 전광판처럼 보여 주는 6초 세로 영상을 만들어 줘.
+데모의 장면 · 문구 · 색은 쓰지 말고 원리만 가져와.</pre>
+<p><b>중요한 규칙:</b> 데모에서 가져오는 건 <b>기술</b>(효과를 만드는 원리와 구현)뿐이에요. 데모의 소재 · 장면 · 문구 · 색 · 구도를 그대로 옮기면 안 돼요. aimotion 스킬 자체에도 이 규칙이 가장 먼저 적혀 있어요. 코드 모션 기법 목록의 '프롬프트 복사' 버튼에는 이 규칙이 미리 들어 있어요.</p>
+
+<h2>5. 코드로 만든 영상, 좋은 점과 어려운 점</h2>
+<div class="tw"><table>
+  <thead><tr><th>좋은 점</th><th>어려운 점</th></tr></thead>
+  <tbody>
+    <tr><td>글자가 진짜 글자라 4K로 키워도 선명하고, 한글이 깨지지 않아요</td><td>브라우저에서 바로 볼 때는 매 프레임을 실시간으로 그려야 해서 무거운 장면은 버벅여요(미리 굽거나 해상도를 낮춰요)</td></tr>
+    <tr><td>대본이 바뀌면 시간표만 다시 뽑으면 되고, 몇 번을 다시 만들어도 같은 결과가 나와요</td><td>그래픽 카드를 많이 쓰는 장면은 한꺼번에 여러 개 띄우기 어려워요</td></tr>
+    <tr><td>코드라서 무엇을 고쳤는지 줄 단위로 비교하고 언제든 되돌릴 수 있어요. 영상을 문서처럼 다뤄요</td><td>에이전트도 처음부터 원하는 그림을 내지는 못해서, 보고 말로 고치는 왕복이 몇 번 필요해요</td></tr>
+  </tbody>
+</table></div>
+<p>실사 인물이나 자연스러운 풍경은 여전히 영상 생성 AI(클링 · Veo · 시댄스 등)가 잘해요. 그래서 실사 컷은 영상 AI로, 제목 · 자막 · 숫자 · 로고 · 그래픽은 코드로 만들어 합치는 방식이 가장 효율적이에요.</p>
+
+<h2>이 사이트에서 이어서 보기</h2>
+<ul>
+  <li><a href="../prompts/code-motion/">코드 모션 기법 166편</a>: aimotion 데모를 분류 · 검색으로 찾고, 데모 재생 · 구현 노트 · 프롬프트를 바로 써요.</li>
+  <li><a href="../#cat-mg">모션그래픽 기법 카드</a>: 글자 관통 줌, 스플릿 플랩, 롤링 카운터처럼 자주 쓰는 기법을 우리가 직접 만든 예시 영상으로 보고, 주문서에 담을 수 있어요.</li>
+  <li><a href="../prompts/video/">영상 프롬프트 50</a>: 코드로 만든 광고 영상 예시와 바꿔 쓰는 프롬프트예요.</li>
+</ul>
+
+<section class="faq">
+<h2 id="faq">자주 묻는 질문</h2>
+  <h3>코딩을 전혀 몰라도 만들 수 있나요?</h3>
+  <p>네. 코드는 Claude Code 같은 코딩 에이전트가 짜요. 만들고 싶은 장면을 말로 설명하고, 결과를 보며 고칠 점을 말로 알려 주면 돼요.</p>
+  <h3>aimotion은 무료인가요?</h3>
+  <p>네. MIT 라이선스로 공개된 오픈소스라 무료로 쓸 수 있고, 기법을 구현한 코드는 옮겨 써도 돼요. 다만 데모가 그린 장면 · 문구 · 색은 기법을 보여 주는 예시라서 영상에는 원리만 가져다 써야 해요.</p>
+  <h3>영상 생성 AI와 무엇이 다른가요?</h3>
+  <p>영상 생성 AI는 학습한 영상과 비슷한 화면을 새로 만들어 내고, 코드 모션은 수식과 규칙으로 화면을 정확히 그려요. 그래서 코드 모션은 글자 · 숫자 · 로고가 깨지지 않고 몇 번을 다시 만들어도 같은 결과가 나와요. 실사 인물과 풍경은 영상 생성 AI가 더 잘해요.</p>
+  <h3>만든 영상을 MP4로 어떻게 받나요?</h3>
+  <p>에이전트에게 "render(t)로 1/30초마다 프레임을 캡처해 MP4로 합쳐 줘"라고 하면 돼요. 실시간 화면 녹화보다 끊김이 없고 화질도 좋아요.</p>
+</section>
+
+  </article>
+  <h2>이 글에 나온 카드</h2><p>카드를 누르면 미리보기와 바로 복사할 수 있는 프롬프트가 나와요.</p><ul class="related cards"><li><a href="../card/g01.html"><b>G01 글자 관통 줌</b><small>큰 글자 속으로 들어가며 다음 장면으로</small></a></li><li><a href="../card/g06.html"><b>G06 키네틱 타이포</b><small>단어가 박자에 맞춰 쾅쾅</small></a></li><li><a href="../card/g08.html"><b>G08 스플릿 플랩</b><small>공항 전광판처럼 글자가 촤르륵</small></a></li><li><a href="../card/g11.html"><b>G11 라인 드로잉</b><small>선이 그려지며 결과 등장</small></a></li><li><a href="../card/g14.html"><b>G14 파티클 집합</b><small>흩어진 점이 모여 글자로</small></a></li><li><a href="../card/g16.html"><b>G16 Vox 스타일 종이 설명</b><small>종이 문서에 형광펜 · 동그라미</small></a></li><li><a href="../card/c03.html"><b>C03 단어별 팝업 (카라오케식)</b><small>말하는 속도에 맞춰 단어가 하나씩 튀어나오는 자막</small></a></li><li><a href="../card/c07.html"><b>C07 손글씨 메모 · 화살표</b><small>제품 디테일을 가리키는 손글씨 메모와 화살표</small></a></li><li><a href="../card/m53.html"><b>M53 어스 줌아웃 (지구까지)</b><small>주인공에서 시작해 동네 → 도시 → 지구 밖까지 한 번에 빠지는 바이럴 줌아웃.</small></a></li></ul>
+  <aside class="cpbox" aria-label="광고"><span class="lab">광고 · 쿠팡</span>
+    <div class="cpwrap"><script src="https://ads-partners.coupang.com/g.js"></script> <script> new PartnersCoupang.G({"id":1038865,"template":"carousel","trackingCode":"AF0984527","width":"680","height":"140","tsource":""}); </script></div>
+    <p class="cpnote">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></aside>
+  <div class="cta"><b>사전에서 바로 해 보기</b><span>이 글에 나온 카메라 무빙, 구조, 조명 카드를 골라 담으면 7단계 프롬프트가 자동으로 만들어집니다.</span><a class="btn" href="../#dict">레퍼런스 사전 열기</a></div>
+  <h2>다른 가이드</h2>
+  <ul class="related"><li><a href="prompt-7-steps.html"><b>AI 영상 프롬프트, 7단계로 나눠 쓰면 결과가 안정된다</b><small>&quot;멋지게 만들어 줘&quot; 대신 무엇을 고정하고 무엇을 움직일지 나눠 쓰는 7단계 프롬프트 공식과 전후 비교 예시.</small></a></li><li><a href="prompt-examples.html"><b>AI 영상 프롬프트 예시 10개, 복사해서 바로 쓰기</b><small>제품 소개, 음식, 첫 3초 훅, 후기, 정보형, 스톱모션까지. Kling·Veo·Sora 같은 영상 AI에 바로 넣을 수 있는 영어 프롬프트 10개와 한글 설명.</small></a></li><li><a href="reverse-engineering.html"><b>떡상 쇼츠 리버스 엔지니어링, 구조만 뜯어서 내 영상으로</b><small>잘 된 쇼츠를 컷 타이밍 · 훅 · 자막 · 소리 · 카메라로 뜯어보고, 같은 틀로 내 제품 영상을 다시 만드는 방법. 무료로 직접 하는 법, AI 채팅으로 하는 법, Claude Code + Hypit 설치 · 사용법과 프롬프트 생성 도구.</small></a></li><li><a href="ai-video-styles.html"><b>AI 영상 스타일 13가지, 언제 뭘 골라야 할까</b><small>콜라주 비디오 에세이, 지도 다큐, 플랫 벡터 애니, 키네틱 타이포, UGC 후기, 말하는 사물, 로파이 루프까지. 요즘 많이 쓰는 영상 스타일의 특징과 바로 쓰는 프롬프트.</small></a></li><li><a href="camera-moves.html"><b>카메라 무빙 53가지, 언제 어떤 움직임을 써야 할까</b><small>돌리인, 오비트, 스냅 줌부터 돌리 줌, 불릿 타임, 랙 포커스, 핸드헬드, 매치 컷까지. 카메라 움직임마다 주는 효과, 쓰기 좋은 순간, 바로 쓰는 프롬프트 문장.</small></a></li><li><a href="shorts-hook-patterns.html"><b>터진 쇼츠의 첫 3초, 5가지 공식으로 정리했어요</b><small>구독자 수백 명 채널이 수십만~수백만 회를 만든 쇼츠를 뜯어보고, AI 영상으로 따라 만들 수 있는 첫 3초 공식 5가지와 프롬프트를 정리했습니다.</small></a></li><li><a href="shortform-structures.html"><b>15–45초 숏폼, 8가지 구조로 짜는 법</b><small>쇼츠·릴스 기본형, 광고 심리, 숏드라마 훅, 고객 후기, 비포·애프터, TOP N 리스트, POV 상황극, 언박싱. 초 단위 시간 배분과 예시 대본까지.</small></a></li><li><a href="fix-ai-video-errors.html"><b>AI 영상이 망가지는 7가지 이유와 고치는 법</b><small>제품 모양이 바뀌고, 글자가 깨지고, 손이 뭉개지고, 조명이 튀는 문제. 원인별로 바로 써먹는 해결법.</small></a></li></ul>
+</main>
+<footer><a href="../privacy.html">소개 · 개인정보처리방침</a></footer>
+<script>
+(function(){document.querySelectorAll(".adslot").forEach(function(box){var ins=box.querySelector("ins");
+ if(!ins||/SLOT_|0000000000000000/.test(ins.getAttribute("data-ad-slot")+ins.getAttribute("data-ad-client")))return;
+ box.hidden=false;try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}});})();
+</script>
+<script data-goatcounter="https://aivideoref.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
