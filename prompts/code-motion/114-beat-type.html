@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>하나 둘 셋 넷 · 코드 모션 기법 #114 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="하나 둘 셋 넷 — 박자에 맞춰 배치되는 글자 (음악 · 댄스 쇼츠). 박자에 맞춘 글자 · 마디·박·엇박으로 짜는 타이포 레이아웃. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/prompts/code-motion/114-beat-type.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="하나 둘 셋 넷 · 코드 모션 기법 #114 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="하나 둘 셋 넷 — 박자에 맞춰 배치되는 글자 (음악 · 댄스 쇼츠). 박자에 맞춘 글자 · 마디·박·엇박으로 짜는 타이포 레이아웃. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/prompts/code-motion/114-beat-type.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "코드 모션 기법", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/"}, {"@type": "ListItem", "position": 2, "name": "하나 둘 셋 넷", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/114-beat-type.html"}]}</script></head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+.faq h3{font-size:16px;margin:22px 0 6px}.faq p{margin:0 0 10px}
+</style><style>
+.page h1,.vc h3{word-break:keep-all}
+main.wide{max-width:1100px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:18px 0 26px;padding:0;list-style:none}
+.howto li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.6;max-width:none}
+.howto b{display:block;font-family:var(--f-display);font-weight:400;font-size:18px;margin-bottom:4px}
+.howto code{font-family:var(--f-mono);font-size:12.5px;background:var(--bg);padding:1px 5px;border-radius:5px}
+.flt{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.flt input{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips button{font:inherit;font-size:13px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt{font-size:13px;color:var(--muted)}
+ol.grid{list-style:none;padding:0;margin:16px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.vc{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;max-width:none;min-width:0}
+.vc[hidden]{display:none}
+.vv{display:block;width:100%;aspect-ratio:9/16;max-height:560px;object-fit:contain;background:#0b0b0f}
+.vb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.hd{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px}
+.no{font-family:var(--f-mono);color:var(--muted)}
+.cat{font-weight:600;color:var(--rec)}
+.tg{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-radius:6px;padding:0 6px;color:var(--muted)}
+.vc h3{font-size:17px;line-height:1.4;margin:2px 0 0}
+.ds{margin:0;font-size:14px;line-height:1.6}
+.hw{margin:0;font-size:13px;line-height:1.6;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 10px}
+.hw b{display:block;color:var(--ink);font-size:12px;margin-bottom:2px}
+details summary{cursor:pointer;font-size:13px;color:var(--muted);padding:4px 0}
+.pp{font-family:var(--f-mono);font-size:12px;line-height:1.6;background:var(--bg);border-radius:8px;padding:10px 12px;margin:4px 0;white-space:pre-wrap;overflow-wrap:anywhere;max-height:360px;overflow:auto}
+.act{margin-top:auto;padding-top:4px}
+.act .cp{font:inherit;font-size:14px;padding:8px 14px;border-radius:9px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;width:100%}
+.note{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:30px;line-height:1.7}
+</style><style>
+.cm-stats{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.cm-stats span{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--surface)}
+.cm-stats b{font-family:var(--f-mono);margin-right:4px}
+.inst{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin:16px 0 22px}
+.inst h2{font-size:17px;margin:0 0 10px}
+.code{position:relative;max-width:100%;box-sizing:border-box;font-family:var(--f-mono);font-size:12.5px;line-height:1.7;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 72px 10px 12px;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.code .cbtn{position:absolute;top:8px;right:8px}
+.cbtn{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:3px 10px;cursor:pointer}
+.picks{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(132px,1fr);gap:10px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x mandatory}
+.picks a{scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
+.picks img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block;background:#111}
+.picks b{display:block;font-size:13px;margin-top:6px;line-height:1.35}
+.picks small{display:block;font-size:11.5px;color:var(--muted);line-height:1.4}
+.flt2{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.flt2 input[type=search]{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.flt2 .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+.flt2 select{font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt2{font-size:13px;color:var(--muted);margin-left:auto}
+.cmgrid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.cmc{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.cmc .ph{display:block;position:relative;aspect-ratio:4/5;background:#111}
+.cmc .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+.cmc .no{position:absolute;left:8px;top:8px;font-family:var(--f-mono);font-size:11px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;padding:2px 6px}
+.cmc .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cmc h3{font-size:16px;margin:0;line-height:1.35}
+.cmc h3 a{color:inherit;text-decoration:none}
+.cmc .ln{margin:0;font-size:13.5px;line-height:1.55}
+.cmc .tc{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tg2{font-size:11px;border-radius:6px;padding:1px 7px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.tg2.u{color:var(--ink)}
+.w-light{color:#2f8f5b}.w-mid{color:#b7791f}.w-heavy{color:var(--rec)}
+.cmc .ft{display:flex;gap:6px;margin-top:auto;padding-top:6px}
+.cmc .ft a,.cmc .ft button{flex:1;text-align:center;font:inherit;font-size:13px;border-radius:9px;padding:8px 6px;cursor:pointer;text-decoration:none}
+.cmc .ft a{background:var(--ink);color:var(--bg);border:1px solid var(--ink)}
+.cmc .ft button{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.note2{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:28px;line-height:1.7}
+/* detail */
+.crumb{font-size:13px;color:var(--muted);margin:0 0 10px}.crumb a{color:inherit}
+.cmd{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:28px;align-items:start}
+.cmd>*{min-width:0}
+.player{position:sticky;top:12px}
+.stage{position:relative;aspect-ratio:9/16;background:#000;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.stage img,.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.stage .go{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:inherit;font-size:15px;font-weight:600;background:rgba(0,0,0,.72);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:12px 20px;cursor:pointer;white-space:nowrap}
+.pl-act{display:flex;gap:8px;margin-top:8px;font-size:13px;flex-wrap:wrap}
+.pl-act a,.pl-act button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;text-decoration:none}
+.pl-note{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.5}
+.cmd h1{font-size:clamp(24px,4vw,34px);margin:4px 0 6px;line-height:1.25}
+.cmd .tech{margin:0 0 10px;color:var(--muted);font-size:14.5px}
+.oneline{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--rec);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:15px;line-height:1.6}
+.oneline b{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:2px}
+.sec{margin:26px 0 0}
+.sec>h2{font-size:20px;margin:0 0 10px;padding-top:6px;border-top:1px solid var(--line)}
+.ug{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.ug h3{font-size:15px;margin:0 0 4px}.ug p{margin:0 0 6px;font-size:14px;line-height:1.6}.ug ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.7}
+.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+.steps>li{counter-increment:s;position:relative;padding:0 0 18px 40px}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);font-family:var(--f-mono);font-size:13px;display:grid;place-items:center}
+.steps h3{font-size:15.5px;margin:3px 0 6px}.steps p{margin:0 0 6px;font-size:14px;line-height:1.6}
+.pb{display:grid;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.pb label{display:grid;gap:3px;font-size:13px;font-weight:600}
+.pb input,.pb select{font:inherit;font-weight:400;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.pb .two{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.fix{display:flex;flex-wrap:wrap;gap:6px}
+.fix button{font:inherit;font-size:13px;border:1px dashed var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer}
+.notes{font-size:14px;line-height:1.7}
+.notes h4{font-size:14.5px;margin:14px 0 4px}
+.notes code{font-family:var(--f-mono);font-size:12px;background:var(--bg);border-radius:4px;padding:0 4px}
+.notes ul{padding-left:18px}
+.tw{overflow-x:auto;margin:8px 0}.tw table{border-collapse:collapse;font-size:13px;min-width:420px}
+.tw th,.tw td{border:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left}
+.tw th{background:var(--surface)}
+.sheet{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);margin-top:8px}
+details.dev{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+details.dev summary{cursor:pointer;font-weight:600;font-size:14.5px}
+.rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.rel a{text-decoration:none;color:inherit;font-size:12.5px;line-height:1.35}
+.rel img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block;margin-bottom:4px;background:#111}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:22px;font-size:14px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:13px;border-radius:999px;padding:8px 16px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20}
+.toast.on{opacity:1}
+@media (max-width:820px){.cmd{grid-template-columns:minmax(0,1fr)}.player{position:static;max-width:340px;margin:0 auto}.pb .two{grid-template-columns:1fr}}
+</style><header class="top"><nav><a class="brand" href="../../">AI 영상 레퍼런스 보관함</a><a href="../../#dict">레퍼런스 사전</a><a href="../../radar/">터진 쇼츠</a><a href="../../guide/">가이드</a><a href="../../prompts/video/">영상 프롬프트</a><a href="../../privacy.html">소개</a></nav></header>
+<main class="wide">
+  <p class="crumb"><a href="./">코드 모션 기법</a> › <a href="./#g=g10">타이포그래피 모션그래픽</a> › #114</p>
+  <div class="cmd">
+    <aside class="player">
+      <div class="stage" id="stage"><img src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/114-beat-type.jpg" alt="하나 둘 셋 넷 데모의 절정 장면" width="360" height="640"><button type="button" class="go" id="go">▶ 여기서 데모 재생</button></div>
+      <div class="pl-act"><a href="https://kstost.github.io/cokacmotion/114-beat-type/" target="_blank" rel="noopener">새 창에서 크게 ↗</a><button type="button" id="rp" hidden>처음부터 다시</button><a href="https://github.com/kstost/cokacmotion/blob/main/skills/aimotion/demos/114-beat-type/NOTES.md" target="_blank" rel="noopener">원문 노트 ↗</a></div>
+      <p class="pl-note">데모는 영상 파일이 아니라 코드가 지금 그리는 화면이에요. 브라우저에서 가볍게 돌아가는 기법이라 미리보기와 렌더링이 빨라요. 재생 중 스페이스 · 클릭은 멈춤, ← →는 0.5초 이동이에요.</p>
+    </aside>
+    <article>
+      <span class="eyebrow">#114 · 타이포그래피 모션그래픽</span>
+      <h1>하나 둘 셋 넷</h1>
+      <p class="tech">박자에 맞춘 글자 · 마디·박·엇박으로 짜는 타이포 레이아웃</p>
+      <div class="tags"><a class="tg2 u" href="./#u=caption">자막·카피</a><span class="tg2 w-mid">보통 · 라이브러리 사용</span><span class="tg2">GSAP</span></div>
+      <div class="oneline"><b>광고 · 쇼츠에서는</b>박자에 맞춰 배치되는 글자 (음악 · 댄스 쇼츠)</div>
+
+      <section class="sec" id="guide"><h2>활용 가이드</h2><div class="ug"><h3>자막·카피로 쓸 때</h3><p>대사·내레이션에 맞춰 핵심 문구를 보여 줄 때 써요. 쇼츠 시청 유지에 가장 직접적인 효과가 있어요.</p><ul><li>대본을 단어별 시간과 함께 주면(받아쓰기 결과) 박자가 정확해져요.</li><li>강조는 한 문장에 한 단어만. 다 강조하면 아무것도 강조되지 않아요.</li><li>화면 아래 15%는 플랫폼 UI에 가려지니 비워 두세요.</li></ul></div>
+        <div class="ug"><h3>영상에 옮길 때 주의</h3><ul><li>소리 — 소리를 쓸지는 영상 스킬의 규칙을 따른다. 소리에 그림을 맞추는 방식을 참고한다</li></ul></div>
+      </section>
+
+      <section class="sec" id="make"><h2>만드는 법</h2>
+        <ol class="steps">
+          <li><h3>준비하기</h3><p>Claude Code를 열고 빈 폴더에서 시작해요. aimotion 스킬을 처음 한 번 설치해요.</p>
+            <div class="code" id="i1">claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion<button type="button" class="cbtn" data-copy="#i1t">복사</button></div><textarea id="i1t" hidden>claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion</textarea></li>
+          <li><h3>프롬프트 만들기</h3><p>칸을 채우면 아래 프롬프트가 바로 바뀌어요. 데모의 장면이 아니라 <b>내 장면</b>을 적는 게 핵심이에요.</p>
+            <div class="pb" id="pb">
+              <label>내 장면 (무엇을 보여 줄지)<input id="f-scene" placeholder="예: 동네 빵집 신메뉴 '소금빵' 출시 소식"></label>
+              <label>화면에 들어갈 문구<input id="f-text" placeholder="예: 오늘 아침 7시, 소금빵 첫 판"></label>
+              <div class="two">
+                <label>브랜드 색<input id="f-color" placeholder="예: #F2C14E, 크림색"></label>
+                <label>비율<select id="f-ratio"><option>9:16 세로 (1080×1920)</option><option>16:9 가로 (1920×1080)</option><option>1:1 정사각 (1080×1080)</option><option>4:5 피드 (1080×1350)</option></select></label>
+                <label>길이<select id="f-len"><option>5초</option><option selected>6초</option><option>8초</option><option>10초</option><option>15초</option></select></label>
+              </div>
+            </div>
+            <div class="code" id="pout"></div>
+            <div class="pl-act"><button type="button" data-copy="#pout">프롬프트 복사</button></div></li>
+          <li><h3>미리보기 보고 고치기</h3><p>Claude Code가 만든 HTML을 브라우저로 열어 확인하고, 고칠 점을 말로 알려 줘요. 자주 쓰는 수정 문장을 눌러 복사하세요.</p>
+            <div class="fix"><button type="button" data-copy="전체 속도를 1.5배 느리게 해 줘">전체 속도를 1.5배 느리게 해 줘</button><button type="button" data-copy="효과 강도를 절반으로 줄여 줘">효과 강도를 절반으로 줄여 줘</button><button type="button" data-copy="글자를 화면 위쪽 1/3 위치로 옮겨 줘">글자를 화면 위쪽 1/3 위치로 옮겨 줘</button><button type="button" data-copy="마지막 1초는 움직임을 멈추고 유지해 줘">마지막 1초는 움직임을 멈추고 유지해 줘</button><button type="button" data-copy="배경색을 브랜드 색으로 바꿔 줘">배경색을 브랜드 색으로 바꿔 줘</button><button type="button" data-copy="화면 아래 15%는 자막 자리로 비워 줘">화면 아래 15%는 자막 자리로 비워 줘</button><button type="button" data-copy="처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘">처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘</button><button type="button" data-copy="같은 영상을 16:9 가로로도 만들어 줘">같은 영상을 16:9 가로로도 만들어 줘</button></div></li>
+          <li><h3>MP4로 뽑기</h3><p>실시간 화면 녹화보다 프레임 단위 렌더링이 끊김 없고 선명해요.</p>
+            <div class="code" id="r1">이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.<button type="button" class="cbtn" data-copy="#r1t">복사</button></div><textarea id="r1t" hidden>이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.</textarea></li>
+          <li><h3>내 영상에 합치기</h3><p>제목 · 자막 · 전환처럼 실사 위에 얹을 효과라면 배경을 투명하게 뽑아 편집 프로그램(캡컷 · 프리미어)의 위 트랙에 올려요. 이미 찍은 영상이 있으면 파일을 주고 "이 영상 위에 효과를 입혀 줘"라고 해도 돼요.</p>
+            <div class="code" id="r2">배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.<button type="button" class="cbtn" data-copy="#r2t">복사</button></div><textarea id="r2t" hidden>배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.</textarea></li>
+        </ol>
+      </section>
+
+      <section class="sec" id="timeline"><h2>초 단위로 보기</h2>
+        <p class="pl-note">데모가 몇 초에 무엇을 보여 주는지예요. 장면을 따라 하려는 게 아니라, 기법이 어떤 순서와 리듬으로 쓰였는지 보는 용도예요.</p>
+        <img class="sheet" loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/114-beat-type-sheet.jpg" alt="하나 둘 셋 넷 1초 간격 장면" width="822" height="579">
+        <div class="notes"><p>고대비 포스터다. 종이(#efe6d3), 먹(#15130f), 주홍(#e2402a) 세 색만 쓰고, 마디마다 바탕이 뒤집힌다.
+- <strong>위쪽(y &lt; 1450)</strong>: 포스터. 머리줄(「네 마디 구령」, ♩=120 4/4)과 모서리 재단 표시, 네 칸짜리 박자 격자가 있다. 지금 박의 칸은 옅게 칠해지고 번호 밑에 주홍 막대가 붙는다.
+  배경에는 마디 번호를 외곽선만 남긴 큰 숫자와 망점(하프톤)이 깔린다.
+- <strong>아래쪽(y ≥ 1450)</strong>: 늘 어두운 콘솔.
+  - 위 줄: DAW식 위치 표시 <code>마디 02 박 3</code>(박 숫자는 오도미터처럼 굴러간다)와 하이햇 칸 여덟 개.
+  - 아래 줄: 네 마디 전체 악보 눈금자. 가사 음절, 하이햇 눈금, 스네어 네모, 킥 점, 탐 마름모, 크래시 고리가 있고, 주홍 재생선이 지나가면 불이 들어온다.
+  - 그 아래에 하네스 자막이 들어간다.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>시간</th>
+<th>마디·박</th>
+<th>구성</th>
+<th>무엇이 보이나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–0.5</td>
+<td>카운트인</td>
+<td>(빈 종이)</td>
+<td>하이햇 두 번에 콘솔 칸 7·8이 켜지고, 눈금자가 왼쪽부터 펼쳐진다. 반 박 전부터 재단 표시가 「하나」 자리로 좁혀 온다(예비 동작).</td>
+</tr>
+<tr>
+<td>0.5–2.5</td>
+<td>1마디</td>
+<td><strong>가운데 쌓기</strong></td>
+<td>1박 「하나」(킥, 1.2배에서 한 박 동안 <code>back.out</code>으로 안착)와 가운데 굵은 선. 2.5박 킥에 「하나」가 맥박친다. 3박 스네어에 「둘」(주홍, 560px)이 떨어지고 <strong>색 반전</strong>이 「둘」에서 원형으로 번진다.</td>
+</tr>
+<tr>
+<td>2.5–4.25</td>
+<td>2마디</td>
+<td><strong>좌우 분할</strong></td>
+<td>스네어(클랩)에서 컷. 왼쪽 반 = 1·2박, 오른쪽 반 = 3·4박이고, 두 반은 서로 반전된 색이다. 1박 「셋」은 왼쪽, 3박 「넷」(주홍)은 오른쪽에 떨어지고, 스네어에 두 반이 함께 뒤집힌다.</td>
+</tr>
+<tr>
+<td><strong>4.25</strong></td>
+<td><strong>2마디 4&amp;</strong></td>
+<td><strong>큰 낱말 하나</strong></td>
+<td><strong>엇박(밀어치기)</strong>: 다음 마디 첫 박보다 반 박 먼저, 예비 동작 없이 화면 전체가 주홍으로 컷된다. 「다시」(500px)가 −8°로 박혀 감쇠 흔들림 속에 −3°로 선다. 한 16분음표 뒤 「엇박! 02.4&amp;」 스티커가 붙고, 콘솔의 박 숫자가 「4&amp;」(주홍)로 구른다.</td>
+</tr>
+<tr>
+<td>4.5</td>
+<td>3마디 1박</td>
+<td>(구멍)</td>
+<td>와야 할 첫 박이 비어 있다. 킥도 스네어도 하이햇도 없어서 하이햇 칸 1이 빈칸으로 남는다. 2박·3.5박·4.5박 킥에 「다시」와 도돌이표의 점이 맥박친다.</td>
+</tr>
+<tr>
+<td>5.5</td>
+<td>3마디 3박</td>
+<td></td>
+<td>스네어 → 반전: 먹 바탕에 주홍 「다시」.</td>
+</tr>
+<tr>
+<td>6.5–8.5</td>
+<td>4마디</td>
+<td><strong>세로 기둥(90° 회전)</strong></td>
+<td>격자가 돌아가 네 칸이 네 줄(= 네 박)이 된다. 크래시와 함께 「처」, 이어 「음」「부」「터」가 박마다 한 줄씩 쌓인다. 오른쪽 위 세트리스트에서 지금 마디(04 처음부터)가 켜진다. 3박 스네어에 반전, 「터」는 주홍. 4박 뒤 탐 필인 세 번이 「음·부·터」를 차례로 친다. 마지막 반 박 동안 기둥이 6% 움츠러든다(예비 동작).</td>
+</tr>
+<tr>
+<td>8.5–9.0</td>
+<td>5마디 1박</td>
+<td><strong>악보</strong></td>
+<td>마지막 킥+클랩+크래시에서 컷. 포스터가 악보 자체가 된다. 행 = 마디, 열 = 박. 재생선이 열여섯 박을 <strong>한 박 안에</strong> 다시 훑으며 낱말과 드럼 표시를 박 자리에 찍는다. 「다시」는 3마디 행 왼쪽 마디줄 밖으로 반 박 내어 걸린다(엇박을 들여쓰기로 보여 준다). 콘솔도 같은 속도로 다시 재생한다.</td>
+</tr>
+<tr>
+<td>9.0–10</td>
+<td>5마디 2박</td>
+<td>여운</td>
+<td><strong>D.C.(다 카포)</strong>: 주홍 화살표가 4마디 끝에서 오른쪽과 위를 돌아 1마디 첫 칸으로 그려지고, 「D.C. 처음부터 다시」가 붙는다. 재생선과 콘솔은 <code>마디 01 박 1</code>로 돌아간다. 크래시가 울리는 동안 정지한다.</td>
+</tr>
+</tbody>
+</table></div>
+<p>글꼴(모두 <code>FONTS</code>, OFL 1.1): 한글은 Pretendard Variable(900 낱말, 800·700·600 라벨), 숫자·위치 표시는 JetBrains Mono Variable(고정폭)이다.
+크기는 세 단계다(300–560 낱말 / 140 악보 / 22–64 라벨). 큰 낱말은 자간을 −0.035em 좁혔다.</p></div>
+      </section>
+
+      <section class="sec" id="how"><h2>원리</h2>
+        <p class="pl-note">개발자용 구현 설명이에요(원작자 노트, MIT). 몰라도 만들 수 있지만, Claude에게 "이 원리 중 ○○만 써 줘"처럼 지시할 때 도움이 돼요.</p>
+        <details class="dev" open><summary>기법과 원리</summary><div class="notes"><ul>
+<li><strong>악보 표 하나가 전부를 정한다</strong>(<code>score.js</code>).</li>
+<li><code>PATTERN</code>(<code>score.js:30</code>)은 마디마다 K·S·H 세 줄의 8분음표 스텝 문자열이다(<code>x..x..x.</code>). 여기에 카운트인 하이햇, 탐 필인, 크래시, 마지막 타격을 더한다.</li>
+<li><code>WORDS</code>(<code>score.js:42</code>)는 낱말마다 <code>(마디, 박)</code>을 적은 표다. 4.5 = 4박의 &amp;.</li>
+<li><code>at(bar, beat)</code>·<code>pos(t)</code>(<code>score.js:18-24</code>)가 박 ↔ 초를 바꾼다. 모든 시간은 박 단위로 적는다.</li>
+<li><code>events()</code>(<code>score.js:59</code>)가 이것을 시간순 타격 목록 <code>{ t, bar, beat, inst, role, synco }</code>로 편다. 스네어의 역할은 자리로 정해진다: 3박이면 <code>inv</code>(반전), 마디줄이나 밀어치기면 <code>cut</code>(컷).</li>
+<li>화면은 이 목록에서 <code>KICKS</code>, <code>CUTS</code>, <code>INVS</code>를 뽑아 쓴다(<code>main.js:42-50</code>). 오디오를 분석하지 않는다.</li>
+<li><strong>타격 → 타이포 반응</strong>:</li>
+<li>킥 → <code>wordScale</code>(<code>main.js:136</code>): 그 구성에서 가장 최근에 떨어진 낱말에만, 킥마다 +7.5%를 0.22박 시상수로 감쇠시킨다. 다음 낱말이 떨어지면 맥박은 새 낱말로 넘어간다.</li>
+<li>스네어 <code>cut</code> → 구성 전환: <code>layoutAt</code>이 지난 컷 수로 다섯 구성 중 하나를 고르는 하드 컷이다(<code>main.js:52</code>, <code>main.js:402</code>).</li>
+<li>스네어 <code>inv</code> → 같은 구성을 반전 팔레트(<code>inv(P)</code> = 바탕↔글자)로 한 번 더 그린다. 착지한 낱말 중심의 원 안에만 클립해 그리고, 원의 반지름은 0.3박 동안 <code>expo.out</code>으로 화면을 덮는다(<code>main.js:502-519</code>). 분할 구성에서는 두 반이 동시에 뒤집힌다.</li>
+<li>하이햇 → 콘솔 칸 여덟 개(눌리듯 1.5배에서 돌아옴)와 눈금자 표시에 불이 들어온다(<code>main.js:419-500</code>).</li>
+<li>탐 → 기둥 음절을 하나씩 친다. 크래시 → 펀치 줌 +4.5%(<code>camera</code>, <code>main.js:157</code>).</li>
+<li>밀어치기(유일한 엇박) → 예비 동작 없이 컷하고 감쇠 흔들림(진폭 30px, 0.3박 시상수), 기울기, 스티커, 콘솔의 「4&amp;」. 바로 다음 첫 박은 악보에서 비워 두었다(<code>PATTERN[3]</code>).</li>
+<li><strong>예비 동작과 안착을 박으로 잰다.</strong></li>
+<li>예비 동작 <code>antic</code>(<code>main.js:147</code>): 낱말이 떨어지기 반 박 전부터 인쇄 재단 표시 네 개가 150px 밖에서 낱말 상자로 <code>power2.in</code>으로 좁혀 온다. 착지 뒤 반 박 머물고 한 박 반에 걸쳐 사라진다.</li>
+<li>안착: 1.2배(밀어치기 1.32배)에서 한 박 동안 <code>back.out(1.7)</code>. 스티커는 한 16분음표 늦게 <code>back.out(2.4)</code>로 붙는다. 기둥은 마지막 반 박에 움츠러든다. D.C. 화살표는 반 박 동안 그려진다.</li>
+<li>구성마다 시작부터 컷까지 1.6% 느리게 밀어 들어간다(drift).</li>
+<li><strong>다섯 구성</strong>(<code>main.js:230-400</code>). 각 함수가 바탕부터 포스터 전체를 팔레트 <code>P</code>로 그린다. 그래서 반전은 "같은 함수, 다른 팔레트, 원 클립"으로 끝난다.</li>
+<li><code>stack</code>: 가운데 쌓기.</li>
+<li><code>split</code>: 좌우 클립 두 개에 서로 반전된 팔레트. 격자의 가운데 선이 곧 2박과 3박의 경계다.</li>
+<li><code>bigWord</code>: 큰 낱말. 도돌이표(‖:)를 도형으로 그렸다.</li>
+<li><code>column</code>: 회전 기둥. 낱말을 <code>rotate(π/2)</code>하고 격자도 행으로 돌렸다.</li>
+<li><code>scoreSheet</code>: 악보. 열 = 박, 행 = 마디이고 드럼 표시까지 그린다. <code>replayAt</code>(<code>main.js:177</code>)이 악보 시각을 한 박짜리 재생 시각으로 접는다.</li>
+<li><strong>한글 조판</strong>: <code>lay</code>(<code>main.js:68</code>)가 음절마다 폭을 재고 자간을 직접 더해 음절 단위로 찍는다. 그래서 기둥의 음절별 탐 반응도 같은 자료로 처리한다.
+  세로 중심은 <code>actualBoundingBoxAscent/Descent</code>로 잡는다.</li>
+<li><strong>소리</strong>(<code>synth.js</code>): <code>OfflineAudioContext(2ch, 44.1 kHz, 10 s)</code>. 화면과 같은 <code>events()</code>를 읽는다.</li>
+<li>킥: 165→46 Hz 사인 + 클릭.</li>
+<li>스네어: 대역 통과 노이즈 + 삼각파. <code>cut</code> 스네어에는 9 ms 간격 3연타 클랩을 더한다.</li>
+<li>하이햇: 7.6 kHz 고역 통과 노이즈. 탐은 사인 하강, 크래시는 고역 노이즈 1.9초.</li>
+<li>낱말마다 톱니+사각 베이스, 밀어치기와 마지막에 디튠 톱니 화음 스탭. 마스터 컴프레서.</li>
+<li>노이즈는 <code>rand(11407)</code>. setup에서 약 0.2초에 굽고, 재생은 <code>onTransport</code>가 맡는다(29·82번과 같은 방식, <code>main.js:522</code>). 첫 클릭은 소리만 켠다.</li>
+<li>헤드리스 검증(<code>?render</code>)에서는 합성하지 않는다. 일반 브라우저 모드에서 따로 확인했다: NaN 없음, 최대 0.82. 킥·스네어 22개 모두 타격 직후 30 ms 에너지가 직전보다 11배 이상 컸다. 소리가 악보 시각에 정확히 난다는 뜻이다.</li>
+</ul></div></details>
+        <details class="dev"><summary>프레임마다 같은 그림이 나오게 하는 법 (결정성)</summary><div class="notes"><ul>
+<li>그림은 t의 닫힌 식이다. 구성 = 지난 컷 수, 반전 반지름 = 반전 시각부터의 경과, 맥박 = 지난 킥들의 지수 감쇠 합, 재생 = 악보 시각의 선형 접기. 상태를 쌓지 않는다.
+  GSAP은 <code>gsap.parseEase</code>로 이징 함수만 쓴다(타임라인 없음).</li>
+<li>오프스크린 캔버스 없이 본 캔버스에 직접 그린다(반전도 원 클립으로 다시 그린다). 그래서 첫 합성 때 안티에일리어싱이 바뀌는 함정이 없다.
+  <code>shadowBlur</code>·점선은 쓰지 않는다. D.C. 화살표는 <code>setLineDash</code> 대신 폴리라인을 진행률만큼 잘라 그린다.</li>
+<li>프레임마다 <code>resetCtx</code>(<code>main.js:60</code>)로 변환·합성·선·글꼴 상태를 기본값으로 되돌린다. 헤드리스에서는 캔버스를 <code>willReadFrequently</code>로 만든다.</li>
+<li>그레인은 setup에서 <code>rand(11401)</code>로 한 번 만든 DOM 캔버스(overlay 13%)다. <code>floor(t·12)</code>로 위치만 옮긴다(103번 방식).</li>
+<li>setup 끝에서 다섯 구성과 반전을 한 번씩 그려 둔다(<code>main.js:614</code>).</li>
+<li>하네스 검사: 6개 시각을 앞→뒤, 뒤→앞(새 페이지) + 되돌아오기로 찍어 바이트까지 같다(maxPixelDiff 0).</li>
+</ul></div></details>
+        <details class="dev"><summary>한계와 조절할 점</summary><div class="notes"><ul>
+<li>낱말과 구성은 손으로 놓았다. 악보에서 구성 종류(쌓기·분할·큰 낱말·기둥)를 고르는 규칙(음절 수, 마디 안 낱말 수)을 만들면 다른 가사에도 바로 쓸 수 있다.</li>
+<li>반전은 "바탕↔글자"만 바꾼다. 주홍 바탕(3마디)의 반전은 먹 바탕 + 주홍 글자가 되어 순수 반전과 다르다.</li>
+<li>박 숫자 오도미터는 정확히 박 시각에 이전 숫자를 보여 준다(한 프레임 늦게 굴러 들어옴). 포스터(6.0초)에서 박 표시가 「3」인 이유다.</li>
+<li>소리는 헤드리스 검사 밖이다. 합성 결과는 따로 확인했지만, 실시간 재생의 지연 보정은 <code>baseLatency + outputLatency</code> 추정에 기댄다.</li>
+<li>회전 기둥은 위→아래로 읽힌다(+90°). 아래→위(쌓아 올리는 느낌)도 가능하지만 한글 책등 관습을 따랐다.</li>
+</ul></div></details>
+      </section>
+
+      <section class="sec"><h2>같은 분류의 다른 기법</h2><div class="rel"><a href="92-type-acting.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/92-type-acting.jpg" alt="" width="360" height="640">고백하던 날</a><a href="96-kinetic-camera.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/96-kinetic-camera.jpg" alt="" width="360" height="640">오늘은 그냥, 한 번</a><a href="97-karaoke-captions.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/97-karaoke-captions.jpg" alt="" width="360" height="640">양말 도둑</a><a href="98-split-flap.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/98-split-flap.jpg" alt="" width="360" height="640">집으로 가는 막차</a><a href="99-knockout-zoom.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/99-knockout-zoom.jpg" alt="" width="360" height="640">여름으로 난 창</a><a href="100-echo-type.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/100-echo-type.jpg" alt="" width="360" height="640">지금</a><a href="101-marker-annotate.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/101-marker-annotate.jpg" alt="" width="360" height="640">여백에 남긴 비법</a><a href="102-iso-blocks.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/102-iso-blocks.jpg" alt="" width="360" height="640">쌓으면, 꿈</a></div></section>
+      <nav class="pn" aria-label="이전 · 다음 기법"><a href="113-puffy-type.html">← 빵빵하게</a><a href="115-marquee-tape.html">취급주의, 오늘의 주인공 →</a></nav>
+      <p class="note2">데모 · 그림 · 원리 · 초 단위 설명 출처: <a href="https://github.com/kstost/cokacmotion/tree/main/skills/aimotion/demos/114-beat-type" target="_blank" rel="noopener">kstost/cokacmotion · 114-beat-type</a> (MIT License, Copyright (c) 2026 kstost). 활용 가이드와 만드는 법은 AI 영상 레퍼런스 보관함이 썼어요.</p>
+    </article>
+  </div>
+</main>
+<footer><a href="../../guide/">가이드</a> · <a href="../video/">영상 프롬프트</a> · <a href="./">코드 모션 기법</a> · <a href="../../privacy.html">소개 · 개인정보처리방침</a></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var toast=document.getElementById("toast"),tm;
+  function say(m){toast.textContent=m;toast.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove("on");},1600);}
+  window.cmCopy=function(t){ if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){say("복사했어요");},function(){say("복사가 막혀 있어요. 직접 선택해 복사해 주세요");});} else say("복사가 막혀 있어요. 직접 선택해 복사해 주세요"); };
+  document.addEventListener("click",function(e){ var b=e.target.closest("[data-copy]"); if(!b) return; var src=b.getAttribute("data-copy"); var el=src.charAt(0)==="#"?document.querySelector(src):null; cmCopy(el?(el.value||el.textContent):src); });
+})();
+</script><script>
+(function(){
+  var DEMO="https://kstost.github.io/cokacmotion/114-beat-type/", ID="114-beat-type", TITLE="\ud558\ub098 \ub458 \uc14b \ub137", TECH="\ubc15\uc790\uc5d0 \ub9de\ucd98 \uae00\uc790 \u00b7 \ub9c8\ub514\u00b7\ubc15\u00b7\uc5c7\ubc15\uc73c\ub85c \uc9dc\ub294 \ud0c0\uc774\ud3ec \ub808\uc774\uc544\uc6c3";
+  var st=document.getElementById("stage"), go=document.getElementById("go"), rp=document.getElementById("rp");
+  function load(){ st.innerHTML='<iframe src="'+DEMO+'" title="'+TITLE+' 데모" allow="autoplay" loading="eager"></iframe>'; rp.hidden=false; }
+  go.addEventListener("click",load); rp.addEventListener("click",load);
+  var f=function(id){return document.getElementById(id);};
+  function build(){
+    var scene=f("f-scene").value.trim()||"[내 영상의 장면]", text=f("f-text").value.trim(), col=f("f-color").value.trim(), ratio=f("f-ratio").value, len=f("f-len").value;
+    f("pout").textContent="aimotion 스킬(kstost/cokacmotion)의 "+ID+" 「"+TITLE+"」 기법만 참고해서 만들어 줘.\n"+
+      "- 기법: "+TECH+"\n- 내 장면: "+scene+"\n"+(text?"- 화면 문구: "+text+"\n":"")+(col?"- 색: "+col+" 중심으로, 나머지 색은 여기에 맞춰\n":"")+
+      "- 비율 "+ratio+", 길이 "+len+", 30fps\n"+
+      "- 데모의 소재 · 장면 · 문구 · 색 · 구도는 쓰지 말고, NOTES.md와 소스를 읽어 원리만 가져와.\n"+
+      "- 모든 움직임은 시각 t 하나로 계산해서 같은 t엔 같은 그림이 나오게 해. 먼저 HTML로 미리보기를 만들고, 내가 확인하면 프레임마다 캡처해 MP4로 렌더링해 줘.\n"+
+      "(스킬이 설치돼 있지 않으면 https://github.com/kstost/cokacmotion 저장소를 받아 skills/aimotion/SKILL.md부터 읽어 줘.)";
+  }
+  ["f-scene","f-text","f-color","f-ratio","f-len"].forEach(function(id){f(id).addEventListener("input",build);f(id).addEventListener("change",build);});
+  build();
+})();
+</script>
+<script data-goatcounter="https://aivideoref.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

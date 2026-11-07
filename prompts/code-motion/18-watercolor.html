@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>번지는 수채화 · 코드 모션 기법 #018 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="번지는 수채화 — 수채화로 번지는 타이틀 · 일러스트 (육아 · 꽃 · 카페). WebGL2 GPGPU · 물과 안료 시뮬레이션 (Curtis 1997 방식). 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/prompts/code-motion/18-watercolor.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="번지는 수채화 · 코드 모션 기법 #018 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="번지는 수채화 — 수채화로 번지는 타이틀 · 일러스트 (육아 · 꽃 · 카페). WebGL2 GPGPU · 물과 안료 시뮬레이션 (Curtis 1997 방식). 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/prompts/code-motion/18-watercolor.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "코드 모션 기법", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/"}, {"@type": "ListItem", "position": 2, "name": "번지는 수채화", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/18-watercolor.html"}]}</script></head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+.faq h3{font-size:16px;margin:22px 0 6px}.faq p{margin:0 0 10px}
+</style><style>
+.page h1,.vc h3{word-break:keep-all}
+main.wide{max-width:1100px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:18px 0 26px;padding:0;list-style:none}
+.howto li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.6;max-width:none}
+.howto b{display:block;font-family:var(--f-display);font-weight:400;font-size:18px;margin-bottom:4px}
+.howto code{font-family:var(--f-mono);font-size:12.5px;background:var(--bg);padding:1px 5px;border-radius:5px}
+.flt{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.flt input{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips button{font:inherit;font-size:13px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt{font-size:13px;color:var(--muted)}
+ol.grid{list-style:none;padding:0;margin:16px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.vc{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;max-width:none;min-width:0}
+.vc[hidden]{display:none}
+.vv{display:block;width:100%;aspect-ratio:9/16;max-height:560px;object-fit:contain;background:#0b0b0f}
+.vb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.hd{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px}
+.no{font-family:var(--f-mono);color:var(--muted)}
+.cat{font-weight:600;color:var(--rec)}
+.tg{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-radius:6px;padding:0 6px;color:var(--muted)}
+.vc h3{font-size:17px;line-height:1.4;margin:2px 0 0}
+.ds{margin:0;font-size:14px;line-height:1.6}
+.hw{margin:0;font-size:13px;line-height:1.6;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 10px}
+.hw b{display:block;color:var(--ink);font-size:12px;margin-bottom:2px}
+details summary{cursor:pointer;font-size:13px;color:var(--muted);padding:4px 0}
+.pp{font-family:var(--f-mono);font-size:12px;line-height:1.6;background:var(--bg);border-radius:8px;padding:10px 12px;margin:4px 0;white-space:pre-wrap;overflow-wrap:anywhere;max-height:360px;overflow:auto}
+.act{margin-top:auto;padding-top:4px}
+.act .cp{font:inherit;font-size:14px;padding:8px 14px;border-radius:9px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;width:100%}
+.note{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:30px;line-height:1.7}
+</style><style>
+.cm-stats{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.cm-stats span{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--surface)}
+.cm-stats b{font-family:var(--f-mono);margin-right:4px}
+.inst{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin:16px 0 22px}
+.inst h2{font-size:17px;margin:0 0 10px}
+.code{position:relative;max-width:100%;box-sizing:border-box;font-family:var(--f-mono);font-size:12.5px;line-height:1.7;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 72px 10px 12px;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.code .cbtn{position:absolute;top:8px;right:8px}
+.cbtn{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:3px 10px;cursor:pointer}
+.picks{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(132px,1fr);gap:10px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x mandatory}
+.picks a{scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
+.picks img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block;background:#111}
+.picks b{display:block;font-size:13px;margin-top:6px;line-height:1.35}
+.picks small{display:block;font-size:11.5px;color:var(--muted);line-height:1.4}
+.flt2{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.flt2 input[type=search]{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.flt2 .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+.flt2 select{font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt2{font-size:13px;color:var(--muted);margin-left:auto}
+.cmgrid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.cmc{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.cmc .ph{display:block;position:relative;aspect-ratio:4/5;background:#111}
+.cmc .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+.cmc .no{position:absolute;left:8px;top:8px;font-family:var(--f-mono);font-size:11px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;padding:2px 6px}
+.cmc .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cmc h3{font-size:16px;margin:0;line-height:1.35}
+.cmc h3 a{color:inherit;text-decoration:none}
+.cmc .ln{margin:0;font-size:13.5px;line-height:1.55}
+.cmc .tc{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tg2{font-size:11px;border-radius:6px;padding:1px 7px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.tg2.u{color:var(--ink)}
+.w-light{color:#2f8f5b}.w-mid{color:#b7791f}.w-heavy{color:var(--rec)}
+.cmc .ft{display:flex;gap:6px;margin-top:auto;padding-top:6px}
+.cmc .ft a,.cmc .ft button{flex:1;text-align:center;font:inherit;font-size:13px;border-radius:9px;padding:8px 6px;cursor:pointer;text-decoration:none}
+.cmc .ft a{background:var(--ink);color:var(--bg);border:1px solid var(--ink)}
+.cmc .ft button{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.note2{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:28px;line-height:1.7}
+/* detail */
+.crumb{font-size:13px;color:var(--muted);margin:0 0 10px}.crumb a{color:inherit}
+.cmd{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:28px;align-items:start}
+.cmd>*{min-width:0}
+.player{position:sticky;top:12px}
+.stage{position:relative;aspect-ratio:9/16;background:#000;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.stage img,.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.stage .go{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:inherit;font-size:15px;font-weight:600;background:rgba(0,0,0,.72);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:12px 20px;cursor:pointer;white-space:nowrap}
+.pl-act{display:flex;gap:8px;margin-top:8px;font-size:13px;flex-wrap:wrap}
+.pl-act a,.pl-act button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;text-decoration:none}
+.pl-note{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.5}
+.cmd h1{font-size:clamp(24px,4vw,34px);margin:4px 0 6px;line-height:1.25}
+.cmd .tech{margin:0 0 10px;color:var(--muted);font-size:14.5px}
+.oneline{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--rec);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:15px;line-height:1.6}
+.oneline b{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:2px}
+.sec{margin:26px 0 0}
+.sec>h2{font-size:20px;margin:0 0 10px;padding-top:6px;border-top:1px solid var(--line)}
+.ug{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.ug h3{font-size:15px;margin:0 0 4px}.ug p{margin:0 0 6px;font-size:14px;line-height:1.6}.ug ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.7}
+.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+.steps>li{counter-increment:s;position:relative;padding:0 0 18px 40px}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);font-family:var(--f-mono);font-size:13px;display:grid;place-items:center}
+.steps h3{font-size:15.5px;margin:3px 0 6px}.steps p{margin:0 0 6px;font-size:14px;line-height:1.6}
+.pb{display:grid;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.pb label{display:grid;gap:3px;font-size:13px;font-weight:600}
+.pb input,.pb select{font:inherit;font-weight:400;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.pb .two{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.fix{display:flex;flex-wrap:wrap;gap:6px}
+.fix button{font:inherit;font-size:13px;border:1px dashed var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer}
+.notes{font-size:14px;line-height:1.7}
+.notes h4{font-size:14.5px;margin:14px 0 4px}
+.notes code{font-family:var(--f-mono);font-size:12px;background:var(--bg);border-radius:4px;padding:0 4px}
+.notes ul{padding-left:18px}
+.tw{overflow-x:auto;margin:8px 0}.tw table{border-collapse:collapse;font-size:13px;min-width:420px}
+.tw th,.tw td{border:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left}
+.tw th{background:var(--surface)}
+.sheet{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);margin-top:8px}
+details.dev{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+details.dev summary{cursor:pointer;font-weight:600;font-size:14.5px}
+.rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.rel a{text-decoration:none;color:inherit;font-size:12.5px;line-height:1.35}
+.rel img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block;margin-bottom:4px;background:#111}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:22px;font-size:14px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:13px;border-radius:999px;padding:8px 16px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20}
+.toast.on{opacity:1}
+@media (max-width:820px){.cmd{grid-template-columns:minmax(0,1fr)}.player{position:static;max-width:340px;margin:0 auto}.pb .two{grid-template-columns:1fr}}
+</style><header class="top"><nav><a class="brand" href="../../">AI 영상 레퍼런스 보관함</a><a href="../../#dict">레퍼런스 사전</a><a href="../../radar/">터진 쇼츠</a><a href="../../guide/">가이드</a><a href="../../prompts/video/">영상 프롬프트</a><a href="../../privacy.html">소개</a></nav></header>
+<main class="wide">
+  <p class="crumb"><a href="./">코드 모션 기법</a> › <a href="./#g=g02">아날로그 표현</a> › #018</p>
+  <div class="cmd">
+    <aside class="player">
+      <div class="stage" id="stage"><img src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/18-watercolor.jpg" alt="번지는 수채화 데모의 절정 장면" width="360" height="640"><button type="button" class="go" id="go">▶ 여기서 데모 재생</button></div>
+      <div class="pl-act"><a href="https://kstost.github.io/cokacmotion/18-watercolor/" target="_blank" rel="noopener">새 창에서 크게 ↗</a><button type="button" id="rp" hidden>처음부터 다시</button><a href="https://github.com/kstost/cokacmotion/blob/main/skills/aimotion/demos/18-watercolor/NOTES.md" target="_blank" rel="noopener">원문 노트 ↗</a></div>
+      <p class="pl-note">데모는 영상 파일이 아니라 코드가 지금 그리는 화면이에요. 그래픽 카드를 많이 쓰는 기법이라 미리보기가 버벅일 수 있어요. 해상도를 낮춰 확인하고, MP4 렌더링은 시간이 더 걸려요. 재생 중 스페이스 · 클릭은 멈춤, ← →는 0.5초 이동이에요.</p>
+    </aside>
+    <article>
+      <span class="eyebrow">#018 · 아날로그 표현</span>
+      <h1>번지는 수채화</h1>
+      <p class="tech">WebGL2 GPGPU · 물과 안료 시뮬레이션 (Curtis 1997 방식)</p>
+      <div class="tags"><a class="tg2 u" href="./#u=texture">질감·필터</a><a class="tg2 u" href="./#u=title">제목·로고</a><span class="tg2 w-heavy">무거움 · 그래픽 카드 사용</span></div>
+      <div class="oneline"><b>광고 · 쇼츠에서는</b>수채화로 번지는 타이틀 · 일러스트 (육아 · 꽃 · 카페)</div>
+
+      <section class="sec" id="guide"><h2>활용 가이드</h2><div class="ug"><h3>질감·필터로 쓸 때</h3><p>화면 전체의 질감·색감을 바꿔 브랜드 무드를 만들 때 써요(필름, 판화, 수채화 등).</p><ul><li>질감은 영상 전체에 일관되게. 한 컷만 바꾸면 실수처럼 보여요.</li><li>실사 영상 위에 필터로 얹고 싶다면 &#x27;이 영상 파일 위에 효과를 입혀&#x27;라고 요청해요.</li><li>강도를 숫자로 조절할 수 있게 해 달라고 하면 수정이 쉬워요.</li></ul></div><div class="ug"><h3>제목·로고로 쓸 때</h3><p>영상 첫 1–2초, 브랜드명이나 핵심 제목이 처음 나오는 순간에 써요.</p><ul><li>제목은 한 줄, 6–10자 안쪽이 가장 잘 보여요.</li><li>기법이 끝난 뒤 0.5–1초는 글자를 멈춰 읽을 시간을 주세요.</li><li>로고라면 브랜드 색 2–3개만 지정하면 나머지 톤은 AI가 맞춰요.</li></ul></div>
+        <div class="ug"><h3>영상에 옮길 때 주의</h3><ul><li>손으로 쓴 WebGL2 셰이더 — 영상 스킬의 WebGL 층(three.js 등) 위에서 다시 쓴다</li></ul></div>
+      </section>
+
+      <section class="sec" id="make"><h2>만드는 법</h2>
+        <ol class="steps">
+          <li><h3>준비하기</h3><p>Claude Code를 열고 빈 폴더에서 시작해요. aimotion 스킬을 처음 한 번 설치해요.</p>
+            <div class="code" id="i1">claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion<button type="button" class="cbtn" data-copy="#i1t">복사</button></div><textarea id="i1t" hidden>claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion</textarea></li>
+          <li><h3>프롬프트 만들기</h3><p>칸을 채우면 아래 프롬프트가 바로 바뀌어요. 데모의 장면이 아니라 <b>내 장면</b>을 적는 게 핵심이에요.</p>
+            <div class="pb" id="pb">
+              <label>내 장면 (무엇을 보여 줄지)<input id="f-scene" placeholder="예: 동네 빵집 신메뉴 '소금빵' 출시 소식"></label>
+              <label>화면에 들어갈 문구<input id="f-text" placeholder="예: 오늘 아침 7시, 소금빵 첫 판"></label>
+              <div class="two">
+                <label>브랜드 색<input id="f-color" placeholder="예: #F2C14E, 크림색"></label>
+                <label>비율<select id="f-ratio"><option>9:16 세로 (1080×1920)</option><option>16:9 가로 (1920×1080)</option><option>1:1 정사각 (1080×1080)</option><option>4:5 피드 (1080×1350)</option></select></label>
+                <label>길이<select id="f-len"><option>5초</option><option selected>6초</option><option>8초</option><option>10초</option><option>15초</option></select></label>
+              </div>
+            </div>
+            <div class="code" id="pout"></div>
+            <div class="pl-act"><button type="button" data-copy="#pout">프롬프트 복사</button></div></li>
+          <li><h3>미리보기 보고 고치기</h3><p>Claude Code가 만든 HTML을 브라우저로 열어 확인하고, 고칠 점을 말로 알려 줘요. 자주 쓰는 수정 문장을 눌러 복사하세요.</p>
+            <div class="fix"><button type="button" data-copy="전체 속도를 1.5배 느리게 해 줘">전체 속도를 1.5배 느리게 해 줘</button><button type="button" data-copy="효과 강도를 절반으로 줄여 줘">효과 강도를 절반으로 줄여 줘</button><button type="button" data-copy="글자를 화면 위쪽 1/3 위치로 옮겨 줘">글자를 화면 위쪽 1/3 위치로 옮겨 줘</button><button type="button" data-copy="마지막 1초는 움직임을 멈추고 유지해 줘">마지막 1초는 움직임을 멈추고 유지해 줘</button><button type="button" data-copy="배경색을 브랜드 색으로 바꿔 줘">배경색을 브랜드 색으로 바꿔 줘</button><button type="button" data-copy="화면 아래 15%는 자막 자리로 비워 줘">화면 아래 15%는 자막 자리로 비워 줘</button><button type="button" data-copy="처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘">처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘</button><button type="button" data-copy="같은 영상을 16:9 가로로도 만들어 줘">같은 영상을 16:9 가로로도 만들어 줘</button></div></li>
+          <li><h3>MP4로 뽑기</h3><p>실시간 화면 녹화보다 프레임 단위 렌더링이 끊김 없고 선명해요.</p>
+            <div class="code" id="r1">이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.<button type="button" class="cbtn" data-copy="#r1t">복사</button></div><textarea id="r1t" hidden>이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.</textarea></li>
+          <li><h3>내 영상에 합치기</h3><p>제목 · 자막 · 전환처럼 실사 위에 얹을 효과라면 배경을 투명하게 뽑아 편집 프로그램(캡컷 · 프리미어)의 위 트랙에 올려요. 이미 찍은 영상이 있으면 파일을 주고 "이 영상 위에 효과를 입혀 줘"라고 해도 돼요.</p>
+            <div class="code" id="r2">배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.<button type="button" class="cbtn" data-copy="#r2t">복사</button></div><textarea id="r2t" hidden>배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.</textarea></li>
+        </ol>
+      </section>
+
+      <section class="sec" id="timeline"><h2>초 단위로 보기</h2>
+        <p class="pl-note">데모가 몇 초에 무엇을 보여 주는지예요. 장면을 따라 하려는 게 아니라, 기법이 어떤 순서와 리듬으로 쓰였는지 보는 용도예요.</p>
+        
+        <div class="notes"><p>어두운 화판 위에 황목(cold-press) 수채화지가 마스킹 테이프로 붙어 있다. 종이는 둥근 돌기와 섬유가 보이는 높이장이다.</p>
+<ul>
+<li><strong>0.3–1.5초, 맑은 물</strong>: 넓은 평붓이 하늘 자리를 지그재그로 적신다. 젖은 종이는 어두워지고, 왼쪽 위 창문이 젖은 면에 비친다.
+  물 가장자리(메니스커스)에는 반짝임이 맺힌다.</li>
+<li><strong>1.4–2.6초, 젖은 면에 물감</strong>: 울트라마린을 세 번 얹으면 젖은 면을 타고 아래와 옆으로 번진다(wet-on-wet).
+  장밋빛 띠와 금빛 띠가 이어진다.</li>
+<li><strong>2.45–2.85초, 짧게 마르는 사이</strong>: 광택이 죽는다.</li>
+<li><strong>2.85–3.6초, 물방울</strong>: 장밋빛·맑은 물·금빛 물방울 다섯 개가 튀는 위성 방울과 함께 떨어진다.
+  물방울은 꽃처럼 퍼지며 파랑을 밀어내고, 가장자리는 콜리플라워처럼 진해진다(블룸·백런).</li>
+<li><strong>4–5초, 먼 능선</strong>: 축축한 하늘에 보랏빛 먼 능선을 그린다. 위쪽 경계가 깃털처럼 번진다.</li>
+<li><strong>5–6초, 가까운 능선</strong>: 인디고로 그린다. 젖은 보라와 만나는 위쪽은 부드럽고, 마른 종이에 닿은 아랫단은 단단하다.</li>
+<li><strong>6–6.9초, 호숫가와 호수</strong>: 호숫가 선을 긋고, 호수에 마른 붓(drybrush)으로 수평 붓질을 한다. 붓이 종이 돌기 꼭대기에만 닿아 흰 반짝임이 남는다.</li>
+<li><strong>6–8.5초, 마르는 시간</strong>: 광택이 가장자리부터 걷힌다. 물이 고정된 테두리로 계속 흘러가며 안료를 날라서 진하고 단단한 경계선(edge darkening)이 생긴다.
+  울트라마린은 종이 골에 가라앉아 입자감(granulation)을 남긴다. 젖은 종이가 마르면서 그림 전체가 한 톤 밝아진다.</li>
+<li><strong>8.7–9.2초, 새</strong>: 마른 하늘에 작은 새 세 마리를 그린다. 마른 종이라 가장자리가 선명하다.</li>
+<li><strong>8.1–10초, 여운</strong>: 램프가 낮게 깔리며 옆으로 돈다(레이킹 라이트). 종이 결과 안료 입자가 드러나고, 화면은 천천히 다가간다.</li>
+</ul></div>
+      </section>
+
+      <section class="sec" id="how"><h2>원리</h2>
+        <p class="pl-note">개발자용 구현 설명이에요(원작자 노트, MIT). 몰라도 만들 수 있지만, Claude에게 "이 원리 중 ○○만 써 줘"처럼 지시할 때 도움이 돼요.</p>
+        <details class="dev" open><summary>기법과 원리</summary><div class="notes"><p>시뮬레이션 격자는 그림 영역(912×1456 px) 위의 456×728 셀이다(1셀 = 2×2 px). 비디오 1프레임에 고정 서브스텝 8회를 돈다.
+상태는 float 텍스처 네 장이다. 모두 RGBA32F이고, 필요한 확장이 없으면 RGBA16F를 쓴다(<code>main.js:536</code>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>텍스처</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S</td>
+<td>표면 물 깊이 w, 종이 섬유 포화도 s</td>
+</tr>
+<tr>
+<td>F</td>
+<td>네 방향 유출 플럭스</td>
+</tr>
+<tr>
+<td>G</td>
+<td>물에 떠 있는 안료 4종</td>
+</tr>
+<tr>
+<td>D</td>
+<td>종이에 앉은 안료 4종</td>
+</tr>
+</tbody>
+</table></div>
+<p>UPDATE 패스는 S·G·D를 MRT로 한 번에 쓴다(<code>main.js:577</code>).</p>
+<ul>
+<li><strong>종이</strong>(<code>main.js:170</code>, 셋업에서 한 번 굽기)</li>
+<li>두 스케일의 Worley F1/F2로 만든 둥근 돌기와 그 사이의 골(도메인 워핑 포함).</li>
+<li>3×3 칸에서 찾는 휘어진 셀룰로오스 섬유, 미세 노이즈.</li>
+<li>Sobel 기울기를 담은 화면 해상도 맵(<code>main.js:212</code>)과, 셀 평균 높이 h와 섬유 수용량 c를 담은 시뮬레이션 해상도 맵(<code>main.js:223</code>)을 만든다.</li>
+<li><strong>얕은 물 층</strong>(FLUX, <code>main.js:255</code>): 감쇠가 있는 virtual-pipe 얕은 물 모델이다.</li>
+<li>수두(head) = w + β·h(종이 높이) + 화판 기울기 − η·rim. 마지막 항은 Curtis의 "flow outward"로, 젖은 영역 테두리의 압력을 낮춘다.</li>
+<li>얇은 막일수록 느리다(mob = w/(w+0.06)). 셀에서 나가는 물은 그 셀에 있는 물을 넘지 않는다.</li>
+<li><strong>접촉선 고정</strong>(<code>main.js:270</code>): 이웃이 젖었거나 섬유가 반 넘게 찼을(축축할) 때만 물이 들어간다. 그래서 마른 종이 위 붓질은 경계가 단단하고, 축축한 종이 위에서는 번진다.
+    웅덩이가 넘칠 만큼 차면(w &gt; pin) 마른 종이로도 흘러간다.</li>
+<li><strong>물 갱신 + 안료 + 모세관 + 붓</strong>(UPDATE, <code>main.js:288</code>)</li>
+<li>안료는 <strong>움직인 물과 정확히 같은 비율</strong>로 옮긴다(보존형 upwind, <code>main.js:307</code>). 이어진 물 안에서는 약하게 확산한다.</li>
+<li>섬유 포화도는 표면 물을 빨아들이고(안료는 물에 남는다, <code>main.js:355</code>), 섬유를 따라 아주 천천히 번진다.</li>
+<li>증발은 젖은 영역 테두리에서 4배 빠르다(<code>main.js:358</code>). 테두리 물이 줄면 안쪽 물이 계속 흘러와 안료를 실어 나르므로 커피 링 같은 진한 경계가 생긴다.
+    테두리 판정은 매 프레임 4×4 다운샘플한 젖음 마스크를 블러해 쓴다(<code>main.js:233</code>, <code>main.js:649</code>).</li>
+<li>흡착과 탈착은 Curtis 식을 따른다(<code>main.js:364</code>). 가라앉음 ∝ G·(1−γh), 얇은 물일수록 빠르다. 들림 ∝ D·(1+(h−1)γ)/ω, 젖어 있을 때만 일어난다.
+    γ(입자감)이 크면 골에 쌓이고 봉우리에서는 들린다. ω(착색력)가 크면 거의 들리지 않는다. 물이 다 마르면 남은 안료가 모두 내려앉는다.</li>
+<li>붓(<code>main.js:329</code>)은 캡슐 모양 접촉 하나다. 지나간 셀의 물을 붓의 수위까지 채우고, 붓의 안료 농도만큼 안료를 싣는다.
+    가장자리는 노이즈로 들쭉날쭉하고, 털 결 줄무늬가 있다. 마른 붓은 종이 높이가 문턱보다 높은 셀(돌기 꼭대기)에만 닿는다.</li>
+<li><strong>블룸·백런</strong>: 물방울(물 1.3)이 축축한 워시(물 ~0.15)에 떨어진다. 수두 차로 바깥 물을 밀어내고, 그 물에 떠 있던 울트라마린이 앞쪽으로 몰린다.
+  앞쪽이 얇아지고 종이 결 때문에 불규칙하게 멈추면, 모인 안료가 가라앉아 프릴 같은 진한 테두리가 된다.
+  물방울이 떨어지기 직전의 마르는 구간(증발 트랙, <code>main.js:147</code>)은 워시를 "광택이 막 죽은" 상태로 만들려는 것이다.</li>
+<li><strong>그림</strong>(FINAL, <code>main.js:377</code>)</li>
+<li><strong>Kubelka–Munk</strong>(<code>main.js:384</code>): 하늘 안료 셋(울트라마린·퀴나크리돈 로즈·퀴나크리돈 골드)은 한 층 안에서 K·S를 더해 섞는다.
+    인디고는 그 위에 <strong>글레이즈 층</strong>으로 올리고, 둘 다 종이 반사율 위에 R = R₁ + T₁²R₂/(1−R₁R₂)로 합성한다(<code>main.js:465</code>).
+    안료 계수는 Curtis 논문 그림 5와 같은 형식의 K·S 값이다.</li>
+<li><strong>화면 해상도 입자감</strong>(<code>main.js:461</code>): 앉은 안료를 셀 평균 높이와 화면 해상도 종이 높이의 차이만큼 골 쪽으로 옮긴다. 울트라마린에는 응집(flocculation) 노이즈를 곱한다.</li>
+<li><strong>젖은 모습</strong>(<code>main.js:472</code>, <code>main.js:477</code>): 젖은 물감은 더 짙다(공기와 안료의 경계가 사라진다). 축축한 종이는 회색빛이 돈다.
+    수면 높이(w+βh)의 기울기에, 얇은 막일 때는 종이 결을 더해 법선을 만든다. 그 법선으로 창문이 있는 작업실 환경을 Fresnel 반사하고(<code>main.js:392</code>), 램프 글린트를 더한다.</li>
+<li>종이 결 확산광, 테이프(크레이프 결, 찢어진 끝, 겹침, 얇은 그림자, <code>main.js:403</code>), 화판과 시트 그림자로 마무리한다.</li>
+</ul>
+<h4>붓의 필압 (굵기가 일정하지 않은 붓질)</h4>
+<p>붓이 닿는 캡슐의 반지름은 <code>r × pressure(e, f)</code>다(<code>main.js:57</code>). 필압 곡선은 획마다 시드로 다르다.
+- <strong>곡선의 구성:</strong> 좁게 닿아 퍼지는 시작, 배가 부른 중간, 손의 흔들림, 들리며 가늘어지거나 끝을 튕겨 뾰족해지는 마무리.
+- <strong>변화 폭(<code>vary</code>):</strong> 붓 크기에 따라 다르다. 하늘을 칠하는 넓은 평붓(r ≥ 30)은 0.45로 비교적 고르게 해서 줄 사이가 갈라지지 않게 했고, 중간 붓은 0.75, 능선의 가는 붓은 1.0으로 서예처럼 크게 굵어지고 가늘어진다.
+- <strong>물의 양:</strong> 세게 누를수록 붓에서 물이 조금 더 나온다(release × 0.75~1.08).</p></div></details>
+        <details class="dev"><summary>프레임마다 같은 그림이 나오게 하는 법 (결정성)</summary><div class="notes"><ul>
+<li>붓질과 물방울은 모두 <code>EVENTS</code> 목록에 시작·끝 시각, Catmull–Rom 경로(호 길이 표), 반지름, 물 수위, 안료 농도로 적혀 있다.
+  서브스텝 [ta, tb]의 붓 접촉은 <code>contacts(ta, tb)</code>(<code>main.js:127</code>)가 계산하는 순수 함수다. 위성 방울 위치는 <code>rand(1807)</code>로 모듈을 불러올 때 정해진다.</li>
+<li><code>replay({ dt: 1/30, every: 45 })</code>(<code>main.js:643</code>): step(n)은 서브스텝 8회이고, 증발률은 서브스텝 시각의 트랙 값이다.
+  테두리 마스크는 매 step 시작에 현재 상태로 다시 만들어서, 체크포인트를 불러온 뒤 낡은 값이 남지 않는다.</li>
+<li><code>save()</code>는 S·G·D·F 네 장을 새 텍스처로 <code>blitFramebuffer</code> 복사하고, <code>load()</code>는 거꾸로 복사한다(<code>main.js:674–679</code>).
+  init은 네 장을 0으로 지운다(MRT 대신 텍스처별로 지운다). 체크포인트 하나는 약 21 MB, 10초 동안 7개다.</li>
+<li>헤드리스(<code>?render</code>)에서만 step마다 1픽셀 <code>readPixels</code>로 GPU를 기다린다. 11·12번과 같은 방식이다.
+  그래서 smoke에 "GPU stall due to ReadPixels" 성능 경고가 찍히지만 11번도 똑같이 찍히고, 실제 브라우저 재생에서는 실행되지 않는다.</li>
+</ul></div></details>
+        <details class="dev"><summary>한계와 조절할 점</summary><div class="notes"><ul>
+<li><strong>화면은 직접 보지 않고 만들었다.</strong> 아래 값은 물리 추론으로 정했으니 실제 화면을 보고 다듬을 곳이다.</li>
+<li>증발 트랙(<code>main.js:147</code>): 마르는 속도, 블룸 시점의 젖은 정도</li>
+<li>pin·η·edgeBoost(<code>main.js:654–661</code>): 번짐 정도, 테두리가 진한 정도</li>
+<li>안료 밀도 <code>dens</code>(<code>main.js:35</code>): 색의 진하기</li>
+<li>실제 수채화가 마르는 데는 수 분에서 수십 분이 걸린다. 여기서는 증발을 크게 키워 수 초로 압축했다.</li>
+<li>해상도는 2×2 px 셀이다. 진한 경계선의 굵기가 2–6 px로 정해지고, 더 가는 실금은 표현하지 못한다.</li>
+<li>붓 자체(털, 손)는 화면에 보이지 않는다. 붓 자국만 생긴다.</li>
+<li>Curtis의 엇갈린 격자(staggered grid)와 속도 이류 대신, 같은 위치 격자의 파이프 플럭스 모델을 썼다. 물이 정확히 보존되고, 마른 곳과 젖은 곳의 경계에서 안정적이기 때문이다.
+  대신 소용돌이 같은 관성 유동은 거의 없다.</li>
+<li>다음 단계</li>
+<li>안료별 입자 크기에 따른 침강 속도 차이</li>
+<li>붓이 물감을 다시 집어 올리는 들어내기(lifting)</li>
+<li>종이가 젖어 우는 현상(cockling)을 높이장에 반영하기</li>
+<li>비싼 시뮬레이션 결과를 키프레임으로 구워 seek를 즉시 하기</li>
+</ul></div></details>
+      </section>
+
+      <section class="sec"><h2>같은 분류의 다른 기법</h2><div class="rel"><a href="19-impasto.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/19-impasto.jpg" alt="" width="360" height="640">두껍게 바른 유화</a><a href="20-woodcut.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/20-woodcut.jpg" alt="" width="360" height="640">목판화 한 장</a><a href="21-risograph.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/21-risograph.jpg" alt="" width="360" height="640">리소그래프 두 도</a><a href="22-super8.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/22-super8.jpg" alt="" width="360" height="640">여름날의 8mm 필름</a><a href="23-vhs.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/23-vhs.jpg" alt="" width="360" height="640">1997년 비디오테이프</a><a href="24-paper-stopmotion.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/24-paper-stopmotion.jpg" alt="" width="360" height="640">종이 인형 극장</a><a href="25-charcoal.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/25-charcoal.jpg" alt="" width="360" height="640">목탄 스케치</a><a href="26-engraving.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/26-engraving.jpg" alt="" width="360" height="640">동판에 새긴 달</a></div></section>
+      <nav class="pn" aria-label="이전 · 다음 기법"><a href="17-hangul-particles.html">← 글자가 된 별</a><a href="19-impasto.html">두껍게 바른 유화 →</a></nav>
+      <p class="note2">데모 · 그림 · 원리 · 초 단위 설명 출처: <a href="https://github.com/kstost/cokacmotion/tree/main/skills/aimotion/demos/18-watercolor" target="_blank" rel="noopener">kstost/cokacmotion · 18-watercolor</a> (MIT License, Copyright (c) 2026 kstost). 활용 가이드와 만드는 법은 AI 영상 레퍼런스 보관함이 썼어요.</p>
+    </article>
+  </div>
+</main>
+<footer><a href="../../guide/">가이드</a> · <a href="../video/">영상 프롬프트</a> · <a href="./">코드 모션 기법</a> · <a href="../../privacy.html">소개 · 개인정보처리방침</a></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var toast=document.getElementById("toast"),tm;
+  function say(m){toast.textContent=m;toast.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove("on");},1600);}
+  window.cmCopy=function(t){ if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){say("복사했어요");},function(){say("복사가 막혀 있어요. 직접 선택해 복사해 주세요");});} else say("복사가 막혀 있어요. 직접 선택해 복사해 주세요"); };
+  document.addEventListener("click",function(e){ var b=e.target.closest("[data-copy]"); if(!b) return; var src=b.getAttribute("data-copy"); var el=src.charAt(0)==="#"?document.querySelector(src):null; cmCopy(el?(el.value||el.textContent):src); });
+})();
+</script><script>
+(function(){
+  var DEMO="https://kstost.github.io/cokacmotion/18-watercolor/", ID="18-watercolor", TITLE="\ubc88\uc9c0\ub294 \uc218\ucc44\ud654", TECH="WebGL2 GPGPU \u00b7 \ubb3c\uacfc \uc548\ub8cc \uc2dc\ubbac\ub808\uc774\uc158 (Curtis 1997 \ubc29\uc2dd)";
+  var st=document.getElementById("stage"), go=document.getElementById("go"), rp=document.getElementById("rp");
+  function load(){ st.innerHTML='<iframe src="'+DEMO+'" title="'+TITLE+' 데모" allow="autoplay" loading="eager"></iframe>'; rp.hidden=false; }
+  go.addEventListener("click",load); rp.addEventListener("click",load);
+  var f=function(id){return document.getElementById(id);};
+  function build(){
+    var scene=f("f-scene").value.trim()||"[내 영상의 장면]", text=f("f-text").value.trim(), col=f("f-color").value.trim(), ratio=f("f-ratio").value, len=f("f-len").value;
+    f("pout").textContent="aimotion 스킬(kstost/cokacmotion)의 "+ID+" 「"+TITLE+"」 기법만 참고해서 만들어 줘.\n"+
+      "- 기법: "+TECH+"\n- 내 장면: "+scene+"\n"+(text?"- 화면 문구: "+text+"\n":"")+(col?"- 색: "+col+" 중심으로, 나머지 색은 여기에 맞춰\n":"")+
+      "- 비율 "+ratio+", 길이 "+len+", 30fps\n"+
+      "- 데모의 소재 · 장면 · 문구 · 색 · 구도는 쓰지 말고, NOTES.md와 소스를 읽어 원리만 가져와.\n"+
+      "- 모든 움직임은 시각 t 하나로 계산해서 같은 t엔 같은 그림이 나오게 해. 먼저 HTML로 미리보기를 만들고, 내가 확인하면 프레임마다 캡처해 MP4로 렌더링해 줘.\n"+
+      "(스킬이 설치돼 있지 않으면 https://github.com/kstost/cokacmotion 저장소를 받아 skills/aimotion/SKILL.md부터 읽어 줘.)";
+  }
+  ["f-scene","f-text","f-color","f-ratio","f-len"].forEach(function(id){f(id).addEventListener("input",build);f(id).addEventListener("change",build);});
+  build();
+})();
+</script>
+<script data-goatcounter="https://aivideoref.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

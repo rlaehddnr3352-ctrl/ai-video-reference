@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>정렬된 소란 · 코드 모션 기법 #058 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="정렬된 소란 — 픽셀이 흘러내리는 글리치 전환. GPU 픽셀 정렬(비토닉 정렬망) · 밝기 구간 분할 정렬 · 색수차. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/prompts/code-motion/58-pixel-sort.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="정렬된 소란 · 코드 모션 기법 #058 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="정렬된 소란 — 픽셀이 흘러내리는 글리치 전환. GPU 픽셀 정렬(비토닉 정렬망) · 밝기 구간 분할 정렬 · 색수차. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/prompts/code-motion/58-pixel-sort.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "코드 모션 기법", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/"}, {"@type": "ListItem", "position": 2, "name": "정렬된 소란", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/58-pixel-sort.html"}]}</script></head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+.faq h3{font-size:16px;margin:22px 0 6px}.faq p{margin:0 0 10px}
+</style><style>
+.page h1,.vc h3{word-break:keep-all}
+main.wide{max-width:1100px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:18px 0 26px;padding:0;list-style:none}
+.howto li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.6;max-width:none}
+.howto b{display:block;font-family:var(--f-display);font-weight:400;font-size:18px;margin-bottom:4px}
+.howto code{font-family:var(--f-mono);font-size:12.5px;background:var(--bg);padding:1px 5px;border-radius:5px}
+.flt{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.flt input{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips button{font:inherit;font-size:13px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt{font-size:13px;color:var(--muted)}
+ol.grid{list-style:none;padding:0;margin:16px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.vc{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;max-width:none;min-width:0}
+.vc[hidden]{display:none}
+.vv{display:block;width:100%;aspect-ratio:9/16;max-height:560px;object-fit:contain;background:#0b0b0f}
+.vb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.hd{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px}
+.no{font-family:var(--f-mono);color:var(--muted)}
+.cat{font-weight:600;color:var(--rec)}
+.tg{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-radius:6px;padding:0 6px;color:var(--muted)}
+.vc h3{font-size:17px;line-height:1.4;margin:2px 0 0}
+.ds{margin:0;font-size:14px;line-height:1.6}
+.hw{margin:0;font-size:13px;line-height:1.6;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 10px}
+.hw b{display:block;color:var(--ink);font-size:12px;margin-bottom:2px}
+details summary{cursor:pointer;font-size:13px;color:var(--muted);padding:4px 0}
+.pp{font-family:var(--f-mono);font-size:12px;line-height:1.6;background:var(--bg);border-radius:8px;padding:10px 12px;margin:4px 0;white-space:pre-wrap;overflow-wrap:anywhere;max-height:360px;overflow:auto}
+.act{margin-top:auto;padding-top:4px}
+.act .cp{font:inherit;font-size:14px;padding:8px 14px;border-radius:9px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;width:100%}
+.note{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:30px;line-height:1.7}
+</style><style>
+.cm-stats{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.cm-stats span{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--surface)}
+.cm-stats b{font-family:var(--f-mono);margin-right:4px}
+.inst{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin:16px 0 22px}
+.inst h2{font-size:17px;margin:0 0 10px}
+.code{position:relative;max-width:100%;box-sizing:border-box;font-family:var(--f-mono);font-size:12.5px;line-height:1.7;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 72px 10px 12px;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.code .cbtn{position:absolute;top:8px;right:8px}
+.cbtn{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:3px 10px;cursor:pointer}
+.picks{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(132px,1fr);gap:10px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x mandatory}
+.picks a{scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
+.picks img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block;background:#111}
+.picks b{display:block;font-size:13px;margin-top:6px;line-height:1.35}
+.picks small{display:block;font-size:11.5px;color:var(--muted);line-height:1.4}
+.flt2{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.flt2 input[type=search]{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.flt2 .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+.flt2 select{font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt2{font-size:13px;color:var(--muted);margin-left:auto}
+.cmgrid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.cmc{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.cmc .ph{display:block;position:relative;aspect-ratio:4/5;background:#111}
+.cmc .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+.cmc .no{position:absolute;left:8px;top:8px;font-family:var(--f-mono);font-size:11px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;padding:2px 6px}
+.cmc .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cmc h3{font-size:16px;margin:0;line-height:1.35}
+.cmc h3 a{color:inherit;text-decoration:none}
+.cmc .ln{margin:0;font-size:13.5px;line-height:1.55}
+.cmc .tc{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tg2{font-size:11px;border-radius:6px;padding:1px 7px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.tg2.u{color:var(--ink)}
+.w-light{color:#2f8f5b}.w-mid{color:#b7791f}.w-heavy{color:var(--rec)}
+.cmc .ft{display:flex;gap:6px;margin-top:auto;padding-top:6px}
+.cmc .ft a,.cmc .ft button{flex:1;text-align:center;font:inherit;font-size:13px;border-radius:9px;padding:8px 6px;cursor:pointer;text-decoration:none}
+.cmc .ft a{background:var(--ink);color:var(--bg);border:1px solid var(--ink)}
+.cmc .ft button{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.note2{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:28px;line-height:1.7}
+/* detail */
+.crumb{font-size:13px;color:var(--muted);margin:0 0 10px}.crumb a{color:inherit}
+.cmd{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:28px;align-items:start}
+.cmd>*{min-width:0}
+.player{position:sticky;top:12px}
+.stage{position:relative;aspect-ratio:9/16;background:#000;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.stage img,.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.stage .go{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:inherit;font-size:15px;font-weight:600;background:rgba(0,0,0,.72);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:12px 20px;cursor:pointer;white-space:nowrap}
+.pl-act{display:flex;gap:8px;margin-top:8px;font-size:13px;flex-wrap:wrap}
+.pl-act a,.pl-act button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;text-decoration:none}
+.pl-note{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.5}
+.cmd h1{font-size:clamp(24px,4vw,34px);margin:4px 0 6px;line-height:1.25}
+.cmd .tech{margin:0 0 10px;color:var(--muted);font-size:14.5px}
+.oneline{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--rec);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:15px;line-height:1.6}
+.oneline b{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:2px}
+.sec{margin:26px 0 0}
+.sec>h2{font-size:20px;margin:0 0 10px;padding-top:6px;border-top:1px solid var(--line)}
+.ug{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.ug h3{font-size:15px;margin:0 0 4px}.ug p{margin:0 0 6px;font-size:14px;line-height:1.6}.ug ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.7}
+.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+.steps>li{counter-increment:s;position:relative;padding:0 0 18px 40px}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);font-family:var(--f-mono);font-size:13px;display:grid;place-items:center}
+.steps h3{font-size:15.5px;margin:3px 0 6px}.steps p{margin:0 0 6px;font-size:14px;line-height:1.6}
+.pb{display:grid;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.pb label{display:grid;gap:3px;font-size:13px;font-weight:600}
+.pb input,.pb select{font:inherit;font-weight:400;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.pb .two{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.fix{display:flex;flex-wrap:wrap;gap:6px}
+.fix button{font:inherit;font-size:13px;border:1px dashed var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer}
+.notes{font-size:14px;line-height:1.7}
+.notes h4{font-size:14.5px;margin:14px 0 4px}
+.notes code{font-family:var(--f-mono);font-size:12px;background:var(--bg);border-radius:4px;padding:0 4px}
+.notes ul{padding-left:18px}
+.tw{overflow-x:auto;margin:8px 0}.tw table{border-collapse:collapse;font-size:13px;min-width:420px}
+.tw th,.tw td{border:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left}
+.tw th{background:var(--surface)}
+.sheet{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);margin-top:8px}
+details.dev{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+details.dev summary{cursor:pointer;font-weight:600;font-size:14.5px}
+.rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.rel a{text-decoration:none;color:inherit;font-size:12.5px;line-height:1.35}
+.rel img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block;margin-bottom:4px;background:#111}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:22px;font-size:14px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:13px;border-radius:999px;padding:8px 16px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20}
+.toast.on{opacity:1}
+@media (max-width:820px){.cmd{grid-template-columns:minmax(0,1fr)}.player{position:static;max-width:340px;margin:0 auto}.pb .two{grid-template-columns:1fr}}
+</style><header class="top"><nav><a class="brand" href="../../">AI 영상 레퍼런스 보관함</a><a href="../../#dict">레퍼런스 사전</a><a href="../../radar/">터진 쇼츠</a><a href="../../guide/">가이드</a><a href="../../prompts/video/">영상 프롬프트</a><a href="../../privacy.html">소개</a></nav></header>
+<main class="wide">
+  <p class="crumb"><a href="./">코드 모션 기법</a> › <a href="./#g=g05">실험 타이포그래피</a> › #058</p>
+  <div class="cmd">
+    <aside class="player">
+      <div class="stage" id="stage"><img src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/58-pixel-sort.jpg" alt="정렬된 소란 데모의 절정 장면" width="360" height="640"><button type="button" class="go" id="go">▶ 여기서 데모 재생</button></div>
+      <div class="pl-act"><a href="https://kstost.github.io/cokacmotion/58-pixel-sort/" target="_blank" rel="noopener">새 창에서 크게 ↗</a><button type="button" id="rp" hidden>처음부터 다시</button><a href="https://github.com/kstost/cokacmotion/blob/main/skills/aimotion/demos/58-pixel-sort/NOTES.md" target="_blank" rel="noopener">원문 노트 ↗</a></div>
+      <p class="pl-note">데모는 영상 파일이 아니라 코드가 지금 그리는 화면이에요. 그래픽 카드를 많이 쓰는 기법이라 미리보기가 버벅일 수 있어요. 해상도를 낮춰 확인하고, MP4 렌더링은 시간이 더 걸려요. 재생 중 스페이스 · 클릭은 멈춤, ← →는 0.5초 이동이에요.</p>
+    </aside>
+    <article>
+      <span class="eyebrow">#058 · 실험 타이포그래피</span>
+      <h1>정렬된 소란</h1>
+      <p class="tech">GPU 픽셀 정렬(비토닉 정렬망) · 밝기 구간 분할 정렬 · 색수차</p>
+      <div class="tags"><a class="tg2 u" href="./#u=transition">장면 전환</a><a class="tg2 u" href="./#u=texture">질감·필터</a><span class="tg2 w-heavy">무거움 · 그래픽 카드 사용</span></div>
+      <div class="oneline"><b>광고 · 쇼츠에서는</b>픽셀이 흘러내리는 글리치 전환</div>
+
+      <section class="sec" id="guide"><h2>활용 가이드</h2><div class="ug"><h3>장면 전환로 쓸 때</h3><p>장면 A에서 B로 넘어가는 0.3–1초 구간에 써요. 컷 사이 이탈을 줄여요.</p><ul><li>전환 하나를 영상 전체에 반복해 쓰면 통일감이 생겨요. 매번 다른 전환은 산만해요.</li><li>앞 장면의 마지막 프레임과 다음 장면의 첫 프레임을 같이 알려 주세요.</li><li>실사 영상 사이에 넣을 땐 투명 배경(알파) 영상이나 두 영상을 직접 합치는 방식으로 요청해요.</li></ul></div><div class="ug"><h3>질감·필터로 쓸 때</h3><p>화면 전체의 질감·색감을 바꿔 브랜드 무드를 만들 때 써요(필름, 판화, 수채화 등).</p><ul><li>질감은 영상 전체에 일관되게. 한 컷만 바꾸면 실수처럼 보여요.</li><li>실사 영상 위에 필터로 얹고 싶다면 &#x27;이 영상 파일 위에 효과를 입혀&#x27;라고 요청해요.</li><li>강도를 숫자로 조절할 수 있게 해 달라고 하면 수정이 쉬워요.</li></ul></div>
+        <div class="ug"><h3>영상에 옮길 때 주의</h3><ul><li>손으로 쓴 WebGL2 셰이더 — 영상 스킬의 WebGL 층(three.js 등) 위에서 다시 쓴다</li></ul></div>
+      </section>
+
+      <section class="sec" id="make"><h2>만드는 법</h2>
+        <ol class="steps">
+          <li><h3>준비하기</h3><p>Claude Code를 열고 빈 폴더에서 시작해요. aimotion 스킬을 처음 한 번 설치해요.</p>
+            <div class="code" id="i1">claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion<button type="button" class="cbtn" data-copy="#i1t">복사</button></div><textarea id="i1t" hidden>claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion</textarea></li>
+          <li><h3>프롬프트 만들기</h3><p>칸을 채우면 아래 프롬프트가 바로 바뀌어요. 데모의 장면이 아니라 <b>내 장면</b>을 적는 게 핵심이에요.</p>
+            <div class="pb" id="pb">
+              <label>내 장면 (무엇을 보여 줄지)<input id="f-scene" placeholder="예: 동네 빵집 신메뉴 '소금빵' 출시 소식"></label>
+              <label>화면에 들어갈 문구<input id="f-text" placeholder="예: 오늘 아침 7시, 소금빵 첫 판"></label>
+              <div class="two">
+                <label>브랜드 색<input id="f-color" placeholder="예: #F2C14E, 크림색"></label>
+                <label>비율<select id="f-ratio"><option>9:16 세로 (1080×1920)</option><option>16:9 가로 (1920×1080)</option><option>1:1 정사각 (1080×1080)</option><option>4:5 피드 (1080×1350)</option></select></label>
+                <label>길이<select id="f-len"><option>5초</option><option selected>6초</option><option>8초</option><option>10초</option><option>15초</option></select></label>
+              </div>
+            </div>
+            <div class="code" id="pout"></div>
+            <div class="pl-act"><button type="button" data-copy="#pout">프롬프트 복사</button></div></li>
+          <li><h3>미리보기 보고 고치기</h3><p>Claude Code가 만든 HTML을 브라우저로 열어 확인하고, 고칠 점을 말로 알려 줘요. 자주 쓰는 수정 문장을 눌러 복사하세요.</p>
+            <div class="fix"><button type="button" data-copy="전체 속도를 1.5배 느리게 해 줘">전체 속도를 1.5배 느리게 해 줘</button><button type="button" data-copy="효과 강도를 절반으로 줄여 줘">효과 강도를 절반으로 줄여 줘</button><button type="button" data-copy="글자를 화면 위쪽 1/3 위치로 옮겨 줘">글자를 화면 위쪽 1/3 위치로 옮겨 줘</button><button type="button" data-copy="마지막 1초는 움직임을 멈추고 유지해 줘">마지막 1초는 움직임을 멈추고 유지해 줘</button><button type="button" data-copy="배경색을 브랜드 색으로 바꿔 줘">배경색을 브랜드 색으로 바꿔 줘</button><button type="button" data-copy="화면 아래 15%는 자막 자리로 비워 줘">화면 아래 15%는 자막 자리로 비워 줘</button><button type="button" data-copy="처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘">처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘</button><button type="button" data-copy="같은 영상을 16:9 가로로도 만들어 줘">같은 영상을 16:9 가로로도 만들어 줘</button></div></li>
+          <li><h3>MP4로 뽑기</h3><p>실시간 화면 녹화보다 프레임 단위 렌더링이 끊김 없고 선명해요.</p>
+            <div class="code" id="r1">이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.<button type="button" class="cbtn" data-copy="#r1t">복사</button></div><textarea id="r1t" hidden>이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.</textarea></li>
+          <li><h3>내 영상에 합치기</h3><p>제목 · 자막 · 전환처럼 실사 위에 얹을 효과라면 배경을 투명하게 뽑아 편집 프로그램(캡컷 · 프리미어)의 위 트랙에 올려요. 이미 찍은 영상이 있으면 파일을 주고 "이 영상 위에 효과를 입혀 줘"라고 해도 돼요.</p>
+            <div class="code" id="r2">배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.<button type="button" class="cbtn" data-copy="#r2t">복사</button></div><textarea id="r2t" hidden>배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.</textarea></li>
+        </ol>
+      </section>
+
+      <section class="sec" id="timeline"><h2>초 단위로 보기</h2>
+        <p class="pl-note">데모가 몇 초에 무엇을 보여 주는지예요. 장면을 따라 하려는 게 아니라, 기법이 어떤 순서와 리듬으로 쓰였는지 보는 용도예요.</p>
+        
+        <div class="notes"><p>해 질 녘 포스터 한 장이 9.6초 동안 녹았다가 되돌아온다. 배경은 남색에서 보라·자홍·산호·호박색으로 내려가는 하늘이고, 수평선에 반쯤 걸린 해와 부서진 반사광이 깔린 바다가 있다.
+그 위로 크림색 <strong>소란</strong>(Black Han Sans, 폭 944px)과 먹색 <strong>NOISE</strong>(Anybody Variable 900, wdth 150)가 놓인다. 두 줄 시구 「흩어진 것은 밝기 순으로 눕고 / 소란은 끝내 제자리로 돌아온다」(Pretendard)와 위아래 작은 라틴 표기, 산호색 괘선이 포스터의 위계를 잡는다.</p>
+<ul>
+<li><strong>0–1.85초 (등장·정지)</strong>: 노출이 열리고 깨끗한 포스터가 머문다. 구름띠와 반사광만 천천히 흐르고, 1.22초에 아주 작은 찢김이 한 번 지나간다(예고).</li>
+<li><strong>1.85–4.2초 (문턱이 열림, 아래로 녹음)</strong>: 열 정렬이다. 밝기 창의 하한이 0.5에서 0.085로 내려가고, 열마다 들쭉날쭉한 "녹는 선"이 아래로 내려간다.
+  소란의 크림색 획이 그 선에 실려 세로 줄기로 흘러내린다. 하늘의 구름띠도 세로 그라데이션으로 빗겨지고, 녹은 글자는 NOISE 위와 수평선에 고인다.</li>
+<li><strong>4.2초 (방향이 뒤집힘)</strong>: 찢김·번쩍임과 함께 행 정렬로 바뀐다. 줄무늬가 가로로 눕고 색수차와 주사선이 들어온다. 16행 띠마다 정렬 방향이 반반으로 갈린다.</li>
+<li><strong>5.35–6.25초 (절정, 완전히 녹음)</strong>: 모든 행이 끝에서 끝까지 정렬된다. 글자는 밝기 순서의 가로 막대로만 남고, 줄무늬는 블룸으로 빛난다.</li>
+<li><strong>6.45–7.85초 (복원)</strong>: 크림색 빔이 위에서 아래로 내려가며, 지나간 행부터 원래 포스터로 또렷하게 되돌린다.</li>
+<li><strong>8.5–8.8초 (여운)</strong>: 소란 가운데의 띠 하나가 잠깐 다시 정렬되고 찢긴다. 깨끗한 포스터가 머문 뒤 9.15초부터 어두워진다.</li>
+</ul></div>
+      </section>
+
+      <section class="sec" id="how"><h2>원리</h2>
+        <p class="pl-note">개발자용 구현 설명이에요(원작자 노트, MIT). 몰라도 만들 수 있지만, Claude에게 "이 원리 중 ○○만 써 줘"처럼 지시할 때 도움이 돼요.</p>
+        <details class="dev" open><summary>기법과 원리</summary><div class="notes"><p>매 프레임 상태 없이 처음부터 다시 계산한다(<code>main.js:240</code> <code>sortAt</code>, <code>main.js:259</code> <code>render</code>). 정렬 공간은 "정렬 축 길이 1024 × 줄 수"다.
+행 모드는 1024×960(가로 1080px를 1024칸에, 줄 하나가 2px), 열 모드는 1024×540(세로 1920px를 1024칸에, 열 하나가 2px)이다.
+두 모드는 같은 텍스처를 쓰고 뷰포트만 다르다(<code>main.js:220–223</code>). 좌표 변환은 <code>shaders.js:142</code> <code>toScreen</code>와 <code>shaders.js:145</code> <code>toWork</code>다.</p>
+<ol>
+<li><strong>포스터 (BASE, <code>shaders.js:151</code>)</strong>: <code>poster(q)</code>(<code>shaders.js:61</code>)는 픽셀과 t의 순수 함수다.
+   - 하늘 그라데이션(<code>shaders.js:43</code>)은 밝기가 아래로 갈수록 단조 증가하도록 짰다. 그래서 열을 오름차순으로 정렬하면 하늘은 거의 그대로이고, 단조성을 깨는 것(글자, 구름, 해)만 움직인다.
+   - 글자는 setup에서 한 번 래스터화해 RGBA8 한 장의 네 채널에 넣는다(r 소란, g NOISE, b 작은 크림 글자, a 산호 괘선; <code>main.js:90</code>).
+   - 알파에 "구간 안" 표시를 넣는다. 조건은 밝기가 창 [lo, hi] 안에 있고 연출 게이트(<code>shaders.js:115</code>)를 통과하는 것이다.<ul>
+<li>열 모드: 열마다 노이즈로 다른 위치에 녹는 선이 있고(<code>shaders.js:121</code>), 구간은 그 선에서 끝난다. 오름차순이라 가장 밝은 크림색이 구간 맨 아래, 즉 선 바로 위에 모인다. 선이 내려가면 획이 따라 내려가므로 "흘러내림"이 연속적이다.</li>
+<li>행 모드: 3행 또는 10행 띠마다 떠다니는 구간이 있고(<code>shaders.js:128–135</code>), 이 구간이 넓어지다가 완전 정렬(<code>uRow.z</code>)로 간다. 복원 스윕은 <code>shaders.js:126</code>, 여운 띠는 <code>shaders.js:125</code>다.</li>
+</ul>
+</li>
+<li><strong>구간 시작점 (분할 정렬 트릭)</strong>: <code>m[x] = (!in(x) || !in(x−1)) ? x : −1</code>로 둔다. 구간 시작이거나 제자리에 남는 픽셀이면 x, 아니면 −1이다(<code>shaders.js:161</code>).
+   기수 4 누적 최댓값을 다섯 번 돌리면 x까지의 최댓값이 spanStart가 된다. 첫 단계는 MASK에, 마지막 단계(d=256)는 KEY에 합쳤다(<code>shaders.js:176</code>, <code>main.js:242–245</code>). 값이 −1..1023 정수라 R16F에 정확히 들어간다.</li>
+<li><strong>키 (<code>shaders.js:192</code>)</strong>: 구간 안이면 <code>key = spanStart·1024 + luma10</code>, 밖이면 <code>key = x·1024 + 1023</code>이다. 내림차순 줄은 <code>luma10 → 1023 − luma10</code>(<code>shaders.js:200</code>).
+   - 최댓값이 1023·1024+1023 = 2²⁰−1 &lt; 2²⁴라 float32에서 정확하다. 키는 RGBA32F의 r에, 색은 gba에 실려 함께 이동한다.
+   - <strong>부등식 점검</strong>: [s, e] 구간 하나(또는 밖의 픽셀 하나, s = e = x)를 조각이라 부른다. 조각의 키는 [s·1024, s·1024 + 1023]에 들어간다. 다음 조각의 시작 s′ ≥ e + 1 &gt; s이므로 그 키는 ≥ s′·1024 ≥ (s+1)·1024 &gt; s·1024 + 1023이다.
+     조각들은 0..1023을 순서대로 빈틈없이 덮으므로 s·1024보다 작은 키는 정확히 s개다. 따라서 줄 전체를 정렬하면 각 조각이 [s, e]로 돌아가 그 안에서만 밝기순으로 놓이고, 밖의 픽셀은 제자리 x로 돌아온다.</li>
+<li><strong>비토닉 정렬망 (<code>main.js:247–255</code>)</strong>: 줄마다 1024개를 완전 정렬한다.
+   - 단계 k의 마지막 세 걸음(j = 4, 2, 1)은 정렬된 8개 묶음 안에서만 오간다. 그래서 조각 하나가 묶음 8개를 읽어 레지스터에서 망을 돌리고 자기 칸만 쓴다(<code>shaders.js:221</code>). k = 2, 4, 8은 한 패스로 합쳤다(PRE8, <code>shaders.js:242</code>).
+   - 그 결과 log·(log+1)/2 = 55패스가 <strong>36패스</strong>(PRE8 1 + 단일 걸음 28 + 묶음 병합 7)가 된다.
+   - 단일 걸음(<code>shaders.js:207</code>)은 키가 같으면 자기 원소를 지킨다(<code>shaders.js:216</code>). 그래서 짝을 이루는 두 조각의 교환 판단이 항상 같고, 패스가 언제나 순열이다.</li>
+<li><strong>합성 (COMP, <code>shaders.js:249</code>)</strong>:
+   - 움직이지 않은 칸은 자기 키 <code>x·1024+1023</code>을 그대로 가진다(<code>shaders.js:267</code>). 그 칸은 전해상도 포스터를 그대로 쓰고, 정렬된 칸만 작업 텍스처를 쓴다. 정렬 축 방향으로는 두 칸을 직접 선형 보간한다(RGBA32F는 texelFetch만 씀).
+   - 그래서 문턱이 닫히면 글자가 1:1 해상도로 또렷하게 돌아온다.
+   - 알파에 "줄무늬" 표시를 넣어, 블룸(<code>shaders.js:281</code>)과 색수차(<code>shaders.js:307</code>)를 줄무늬에서 더 세게 건다.</li>
+<li><strong>화면 출력 (OUT, <code>shaders.js:296</code>)</strong>: 찢김(22px 띠의 가로 밀림, <code>shaders.js:303</code>), 색수차, 블룸, 복원 빔(<code>shaders.js:311</code>), 6px 주기 주사선(<code>shaders.js:312</code>), 프레임 번호로 씨앗을 준 입자, 비네트, 노출 순서로 처리한다.
+   연출 곡선은 모두 <code>track</code>이다(<code>main.js:34–50</code>).</li>
+</ol>
+<p>예산(GPU): 정렬 중인 프레임은 약 1M 텍셀 × 36패스 + 누적 5패스 + 전해상도 합성 1패스 + 블룸 5패스다. 문턱이 닫힌 구간(<code>plan().use = 0</code>, <code>main.js:53</code>)에서는 정렬 패스를 아예 건너뛰고, 합성은 같은 결과(포스터)를 낸다.
+헤드리스(SwiftShader) 점검에서는 정렬 프레임이 약 0.2–0.5초였다.</p></div></details>
+        <details class="dev"><summary>프레임마다 같은 그림이 나오게 하는 법 (결정성)</summary><div class="notes"><ul>
+<li>상태가 없다. 매 프레임 t만으로 포스터 → 마스크 → 누적 → 키 → 정렬 → 합성을 처음부터 다시 계산한다. 이전 프레임의 텍스처를 읽지 않는다.</li>
+<li>모든 난수는 셰이더 안의 정수 해시(pcg)다. 입력은 픽셀 좌표, 줄 번호, <code>floor(t·30)</code>이다. 포스터 입자는 포스터 공간에 고정했다(시간에 따라 바뀌면 정렬 결과가 매 프레임 떨림).</li>
+<li>비토닉 망은 고정된 비교 순서이고, 키가 같으면 자기 원소를 지키는 규칙이라 GPU와 무관하게 같은 순열을 낸다. 키는 모두 2²⁴ 미만의 정수라 float 비교가 정확하다.</li>
+<li>헤드리스 점검에서만 프레임마다 <code>gl.getError()</code>를 확인한다(<code>main.js:287</code>). 실제 재생에서는 호출하지 않는다.</li>
+</ul></div></details>
+        <details class="dev"><summary>한계와 조절할 점</summary><div class="notes"><ul>
+<li><strong>해상도/예산</strong>: <code>main.js:22–23</code> <code>N</code>, <code>MR</code>, <code>MC</code>. 열 2px·행 2px이 기본이다. <code>MR = 1920</code>이면 행이 1px이 되지만 정렬 비용이 2배다. N은 2의 거듭제곱이어야 하고, 1024보다 크면 키가 2²⁰을 넘으므로 K와 밝기 양자화도 함께 바꿔야 한다.</li>
+<li><strong>이야기 시각</strong>: <code>main.js:28–32</code> (<code>T_MELT</code>, <code>FLIP</code>, <code>SW0/SW1</code>, <code>AG0/AG1</code>, 여운 띠 위치 <code>AGB</code>).</li>
+<li><strong>녹는 정도</strong>: 열 모드 창 하한 <code>main.js:34</code>(0.085보다 낮추면 헤더 괘선 주변 하늘도 구간에 들어와 괘선이 흘러내림), 녹는 선의 진행 <code>main.js:35</code>, 선의 들쭉날쭉함 <code>shaders.js:121</code>(cn 가중치와 per-column 항).</li>
+<li><strong>행 모드</strong>: 창 <code>main.js:36</code>, 활성 띠 비율 <code>main.js:37</code>, 구간 길이 <code>main.js:38</code>, 완전 정렬 <code>main.js:39</code>, 내림차순 띠 비율 <code>main.js:40</code>, 띠 높이(3/10행) <code>shaders.js:128</code>, 구간 표류 속도 <code>shaders.js:133</code>.</li>
+<li><strong>후처리</strong>: 색수차 <code>main.js:42</code>, 주사선 <code>main.js:43</code>·<code>shaders.js:312</code>, 블룸 <code>main.js:44</code>·<code>shaders.js:281</code>, 입자 <code>main.js:45</code>, 찢김 시각과 세기 <code>main.js:49</code>·<code>shaders.js:303</code>.</li>
+<li><strong>포스터</strong>: 하늘 색 정지점 <code>shaders.js:43–59</code>, 해 <code>shaders.js:71–78</code>, 반사광 <code>shaders.js:81–92</code>, 글자 배치 <code>main.js:97–126</code>.</li>
+<li><strong>한계</strong>:</li>
+<li>열 모드에서 정렬 축 1024칸이 1920px에 걸치므로 세로 1.875px 간격이다. 보간으로 메우지만, 녹은 덩어리의 위아래 끝이 조금 계단져 보일 수 있다.</li>
+<li>축이 바뀌는 4.2초는 의도한 컷이다(찢김·번쩍임으로 가림). 두 축을 동시에 정렬하려면 비용이 두 배다.</li>
+<li>Anybody의 wdth는 <code>ctx.fontStretch</code>(Chrome 99+)로 준다. 지원하지 않는 브라우저에서는 보통 너비로 그려지고, 너비 맞춤 때문에 글자가 더 커진다.</li>
+<li><code>EXT_color_buffer_float</code>가 없으면 setup에서 오류로 멈춘다.</li>
+</ul></div></details>
+      </section>
+
+      <section class="sec"><h2>같은 분류의 다른 기법</h2><div class="rel"><a href="51-topo-type.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/51-topo-type.jpg" alt="" width="360" height="640">등고선 글자</a><a href="52-parametric-hangul.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/52-parametric-hangul.jpg" alt="" width="360" height="640">코드로 짠 한글</a><a href="53-swiss-grid.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/53-swiss-grid.jpg" alt="" width="360" height="640">격자 위의 리듬</a><a href="54-title-sequence.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/54-title-sequence.jpg" alt="" width="360" height="640">오려 낸 제목</a><a href="55-truchet-type.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/55-truchet-type.jpg" alt="" width="360" height="640">타일로 짠 글자</a><a href="56-ribbon-text.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/56-ribbon-text.jpg" alt="" width="360" height="640">글자의 강</a><a href="57-quilling-type.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/57-quilling-type.jpg" alt="" width="360" height="640">종이 띠로 세운 글자</a><a href="59-glyph-mosaic.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/59-glyph-mosaic.jpg" alt="" width="360" height="640">글자로 빚은 등대</a></div></section>
+      <nav class="pn" aria-label="이전 · 다음 기법"><a href="57-quilling-type.html">← 종이 띠로 세운 글자</a><a href="59-glyph-mosaic.html">글자로 빚은 등대 →</a></nav>
+      <p class="note2">데모 · 그림 · 원리 · 초 단위 설명 출처: <a href="https://github.com/kstost/cokacmotion/tree/main/skills/aimotion/demos/58-pixel-sort" target="_blank" rel="noopener">kstost/cokacmotion · 58-pixel-sort</a> (MIT License, Copyright (c) 2026 kstost). 활용 가이드와 만드는 법은 AI 영상 레퍼런스 보관함이 썼어요.</p>
+    </article>
+  </div>
+</main>
+<footer><a href="../../guide/">가이드</a> · <a href="../video/">영상 프롬프트</a> · <a href="./">코드 모션 기법</a> · <a href="../../privacy.html">소개 · 개인정보처리방침</a></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var toast=document.getElementById("toast"),tm;
+  function say(m){toast.textContent=m;toast.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove("on");},1600);}
+  window.cmCopy=function(t){ if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){say("복사했어요");},function(){say("복사가 막혀 있어요. 직접 선택해 복사해 주세요");});} else say("복사가 막혀 있어요. 직접 선택해 복사해 주세요"); };
+  document.addEventListener("click",function(e){ var b=e.target.closest("[data-copy]"); if(!b) return; var src=b.getAttribute("data-copy"); var el=src.charAt(0)==="#"?document.querySelector(src):null; cmCopy(el?(el.value||el.textContent):src); });
+})();
+</script><script>
+(function(){
+  var DEMO="https://kstost.github.io/cokacmotion/58-pixel-sort/", ID="58-pixel-sort", TITLE="\uc815\ub82c\ub41c \uc18c\ub780", TECH="GPU \ud53d\uc140 \uc815\ub82c(\ube44\ud1a0\ub2c9 \uc815\ub82c\ub9dd) \u00b7 \ubc1d\uae30 \uad6c\uac04 \ubd84\ud560 \uc815\ub82c \u00b7 \uc0c9\uc218\ucc28";
+  var st=document.getElementById("stage"), go=document.getElementById("go"), rp=document.getElementById("rp");
+  function load(){ st.innerHTML='<iframe src="'+DEMO+'" title="'+TITLE+' 데모" allow="autoplay" loading="eager"></iframe>'; rp.hidden=false; }
+  go.addEventListener("click",load); rp.addEventListener("click",load);
+  var f=function(id){return document.getElementById(id);};
+  function build(){
+    var scene=f("f-scene").value.trim()||"[내 영상의 장면]", text=f("f-text").value.trim(), col=f("f-color").value.trim(), ratio=f("f-ratio").value, len=f("f-len").value;
+    f("pout").textContent="aimotion 스킬(kstost/cokacmotion)의 "+ID+" 「"+TITLE+"」 기법만 참고해서 만들어 줘.\n"+
+      "- 기법: "+TECH+"\n- 내 장면: "+scene+"\n"+(text?"- 화면 문구: "+text+"\n":"")+(col?"- 색: "+col+" 중심으로, 나머지 색은 여기에 맞춰\n":"")+
+      "- 비율 "+ratio+", 길이 "+len+", 30fps\n"+
+      "- 데모의 소재 · 장면 · 문구 · 색 · 구도는 쓰지 말고, NOTES.md와 소스를 읽어 원리만 가져와.\n"+
+      "- 모든 움직임은 시각 t 하나로 계산해서 같은 t엔 같은 그림이 나오게 해. 먼저 HTML로 미리보기를 만들고, 내가 확인하면 프레임마다 캡처해 MP4로 렌더링해 줘.\n"+
+      "(스킬이 설치돼 있지 않으면 https://github.com/kstost/cokacmotion 저장소를 받아 skills/aimotion/SKILL.md부터 읽어 줘.)";
+  }
+  ["f-scene","f-text","f-color","f-ratio","f-len"].forEach(function(id){f(id).addEventListener("input",build);f(id).addEventListener("change",build);});
+  build();
+})();
+</script>
+<script data-goatcounter="https://aivideoref.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
