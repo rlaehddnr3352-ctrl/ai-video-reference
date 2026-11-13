@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>아침의 온실 · 코드 모션 기법 #081 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="아침의 온실 — 유리 온실 3D 공간 (식물 · 인테리어). Babylon.js · PBR 유리 · 그림자 생성기(PCF) · GlowLayer · 부피광 산란. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/prompts/code-motion/81-babylon-greenhouse.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="아침의 온실 · 코드 모션 기법 #081 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="아침의 온실 — 유리 온실 3D 공간 (식물 · 인테리어). Babylon.js · PBR 유리 · 그림자 생성기(PCF) · GlowLayer · 부피광 산란. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/prompts/code-motion/81-babylon-greenhouse.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "코드 모션 기법", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/"}, {"@type": "ListItem", "position": 2, "name": "아침의 온실", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/81-babylon-greenhouse.html"}]}</script></head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+.faq h3{font-size:16px;margin:22px 0 6px}.faq p{margin:0 0 10px}
+</style><style>
+.page h1,.vc h3{word-break:keep-all}
+main.wide{max-width:1100px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:18px 0 26px;padding:0;list-style:none}
+.howto li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.6;max-width:none}
+.howto b{display:block;font-family:var(--f-display);font-weight:400;font-size:18px;margin-bottom:4px}
+.howto code{font-family:var(--f-mono);font-size:12.5px;background:var(--bg);padding:1px 5px;border-radius:5px}
+.flt{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.flt input{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips button{font:inherit;font-size:13px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt{font-size:13px;color:var(--muted)}
+ol.grid{list-style:none;padding:0;margin:16px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.vc{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;max-width:none;min-width:0}
+.vc[hidden]{display:none}
+.vv{display:block;width:100%;aspect-ratio:9/16;max-height:560px;object-fit:contain;background:#0b0b0f}
+.vb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.hd{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px}
+.no{font-family:var(--f-mono);color:var(--muted)}
+.cat{font-weight:600;color:var(--rec)}
+.tg{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-radius:6px;padding:0 6px;color:var(--muted)}
+.vc h3{font-size:17px;line-height:1.4;margin:2px 0 0}
+.ds{margin:0;font-size:14px;line-height:1.6}
+.hw{margin:0;font-size:13px;line-height:1.6;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 10px}
+.hw b{display:block;color:var(--ink);font-size:12px;margin-bottom:2px}
+details summary{cursor:pointer;font-size:13px;color:var(--muted);padding:4px 0}
+.pp{font-family:var(--f-mono);font-size:12px;line-height:1.6;background:var(--bg);border-radius:8px;padding:10px 12px;margin:4px 0;white-space:pre-wrap;overflow-wrap:anywhere;max-height:360px;overflow:auto}
+.act{margin-top:auto;padding-top:4px}
+.act .cp{font:inherit;font-size:14px;padding:8px 14px;border-radius:9px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;width:100%}
+.note{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:30px;line-height:1.7}
+</style><style>
+.cm-stats{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.cm-stats span{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--surface)}
+.cm-stats b{font-family:var(--f-mono);margin-right:4px}
+.inst{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin:16px 0 22px}
+.inst h2{font-size:17px;margin:0 0 10px}
+.code{position:relative;max-width:100%;box-sizing:border-box;font-family:var(--f-mono);font-size:12.5px;line-height:1.7;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 72px 10px 12px;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.code .cbtn{position:absolute;top:8px;right:8px}
+.cbtn{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:3px 10px;cursor:pointer}
+.picks{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(132px,1fr);gap:10px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x mandatory}
+.picks a{scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
+.picks img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block;background:#111}
+.picks b{display:block;font-size:13px;margin-top:6px;line-height:1.35}
+.picks small{display:block;font-size:11.5px;color:var(--muted);line-height:1.4}
+.flt2{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.flt2 input[type=search]{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.flt2 .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+.flt2 select{font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt2{font-size:13px;color:var(--muted);margin-left:auto}
+.cmgrid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.cmc{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.cmc .ph{display:block;position:relative;aspect-ratio:4/5;background:#111}
+.cmc .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+.cmc .no{position:absolute;left:8px;top:8px;font-family:var(--f-mono);font-size:11px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;padding:2px 6px}
+.cmc .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cmc h3{font-size:16px;margin:0;line-height:1.35}
+.cmc h3 a{color:inherit;text-decoration:none}
+.cmc .ln{margin:0;font-size:13.5px;line-height:1.55}
+.cmc .tc{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tg2{font-size:11px;border-radius:6px;padding:1px 7px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.tg2.u{color:var(--ink)}
+.w-light{color:#2f8f5b}.w-mid{color:#b7791f}.w-heavy{color:var(--rec)}
+.cmc .ft{display:flex;gap:6px;margin-top:auto;padding-top:6px}
+.cmc .ft a,.cmc .ft button{flex:1;text-align:center;font:inherit;font-size:13px;border-radius:9px;padding:8px 6px;cursor:pointer;text-decoration:none}
+.cmc .ft a{background:var(--ink);color:var(--bg);border:1px solid var(--ink)}
+.cmc .ft button{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.note2{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:28px;line-height:1.7}
+/* detail */
+.crumb{font-size:13px;color:var(--muted);margin:0 0 10px}.crumb a{color:inherit}
+.cmd{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:28px;align-items:start}
+.cmd>*{min-width:0}
+.player{position:sticky;top:12px}
+.stage{position:relative;aspect-ratio:9/16;background:#000;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.stage img,.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.stage .go{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:inherit;font-size:15px;font-weight:600;background:rgba(0,0,0,.72);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:12px 20px;cursor:pointer;white-space:nowrap}
+.pl-act{display:flex;gap:8px;margin-top:8px;font-size:13px;flex-wrap:wrap}
+.pl-act a,.pl-act button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;text-decoration:none}
+.pl-note{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.5}
+.cmd h1{font-size:clamp(24px,4vw,34px);margin:4px 0 6px;line-height:1.25}
+.cmd .tech{margin:0 0 10px;color:var(--muted);font-size:14.5px}
+.oneline{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--rec);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:15px;line-height:1.6}
+.oneline b{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:2px}
+.sec{margin:26px 0 0}
+.sec>h2{font-size:20px;margin:0 0 10px;padding-top:6px;border-top:1px solid var(--line)}
+.ug{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.ug h3{font-size:15px;margin:0 0 4px}.ug p{margin:0 0 6px;font-size:14px;line-height:1.6}.ug ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.7}
+.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+.steps>li{counter-increment:s;position:relative;padding:0 0 18px 40px}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);font-family:var(--f-mono);font-size:13px;display:grid;place-items:center}
+.steps h3{font-size:15.5px;margin:3px 0 6px}.steps p{margin:0 0 6px;font-size:14px;line-height:1.6}
+.pb{display:grid;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.pb label{display:grid;gap:3px;font-size:13px;font-weight:600}
+.pb input,.pb select{font:inherit;font-weight:400;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.pb .two{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.fix{display:flex;flex-wrap:wrap;gap:6px}
+.fix button{font:inherit;font-size:13px;border:1px dashed var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer}
+.notes{font-size:14px;line-height:1.7}
+.notes h4{font-size:14.5px;margin:14px 0 4px}
+.notes code{font-family:var(--f-mono);font-size:12px;background:var(--bg);border-radius:4px;padding:0 4px}
+.notes ul{padding-left:18px}
+.tw{overflow-x:auto;margin:8px 0}.tw table{border-collapse:collapse;font-size:13px;min-width:420px}
+.tw th,.tw td{border:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left}
+.tw th{background:var(--surface)}
+.sheet{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);margin-top:8px}
+details.dev{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+details.dev summary{cursor:pointer;font-weight:600;font-size:14.5px}
+.rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.rel a{text-decoration:none;color:inherit;font-size:12.5px;line-height:1.35}
+.rel img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block;margin-bottom:4px;background:#111}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:22px;font-size:14px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:13px;border-radius:999px;padding:8px 16px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20}
+.toast.on{opacity:1}
+@media (max-width:820px){.cmd{grid-template-columns:minmax(0,1fr)}.player{position:static;max-width:340px;margin:0 auto}.pb .two{grid-template-columns:1fr}}
+</style><header class="top"><nav><a class="brand" href="../../">AI 영상 레퍼런스 보관함</a><a href="../../#dict">레퍼런스 사전</a><a href="../../radar/">터진 쇼츠</a><a href="../../guide/">가이드</a><a href="../../prompts/video/">영상 프롬프트</a><a href="../../privacy.html">소개</a></nav></header>
+<main class="wide">
+  <p class="crumb"><a href="./">코드 모션 기법</a> › <a href="./#g=g07">유명 라이브러리</a> › #081</p>
+  <div class="cmd">
+    <aside class="player">
+      <div class="stage" id="stage"><img src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/81-babylon-greenhouse.jpg" alt="아침의 온실 데모의 절정 장면" width="360" height="640"><button type="button" class="go" id="go">▶ 여기서 데모 재생</button></div>
+      <div class="pl-act"><a href="https://kstost.github.io/cokacmotion/81-babylon-greenhouse/" target="_blank" rel="noopener">새 창에서 크게 ↗</a><button type="button" id="rp" hidden>처음부터 다시</button><a href="https://github.com/kstost/cokacmotion/blob/main/skills/aimotion/demos/81-babylon-greenhouse/NOTES.md" target="_blank" rel="noopener">원문 노트 ↗</a></div>
+      <p class="pl-note">데모는 영상 파일이 아니라 코드가 지금 그리는 화면이에요. 그래픽 카드를 많이 쓰는 기법이라 미리보기가 버벅일 수 있어요. 해상도를 낮춰 확인하고, MP4 렌더링은 시간이 더 걸려요. 재생 중 스페이스 · 클릭은 멈춤, ← →는 0.5초 이동이에요.</p>
+    </aside>
+    <article>
+      <span class="eyebrow">#081 · 유명 라이브러리</span>
+      <h1>아침의 온실</h1>
+      <p class="tech">Babylon.js · PBR 유리 · 그림자 생성기(PCF) · GlowLayer · 부피광 산란</p>
+      <div class="tags"><a class="tg2 u" href="./#u=3d">3D·공간</a><a class="tg2 u" href="./#u=bg">배경·분위기</a><span class="tg2 w-heavy">무거움 · 그래픽 카드 사용</span><span class="tg2">Babylon.js</span></div>
+      <div class="oneline"><b>광고 · 쇼츠에서는</b>유리 온실 3D 공간 (식물 · 인테리어)</div>
+
+      <section class="sec" id="guide"><h2>활용 가이드</h2><div class="ug"><h3>3D·공간로 쓸 때</h3><p>제품이나 공간을 입체로 돌려 보거나 카메라가 공간을 지나가는 장면에 써요.</p><ul><li>제품 3D 모델(GLB)이 있으면 그대로 쓰고, 없으면 단순한 도형으로 만들어 달라고 해요.</li><li>카메라 움직임은 한 방향으로 하나만. 사전의 카메라 무빙 카드 이름을 같이 쓰면 정확해요.</li><li>GPU를 많이 쓰니 렌더링은 시간이 걸려요. 해상도를 낮춰 미리 보고 마지막에 올리세요.</li></ul></div><div class="ug"><h3>배경·분위기로 쓸 때</h3><p>글자나 제품 뒤에 깔리는 배경, 분위기를 잡는 오프닝·엔딩에 써요.</p><ul><li>배경은 주인공보다 어둡거나 덜 선명하게. 대비가 강하면 글자가 안 읽혀요.</li><li>루프로 만들어 두면 여러 영상에 재사용할 수 있어요.</li><li>무거운 셰이더 배경은 미리 렌더링해 영상 파일로 깔면 편해요.</li></ul></div>
+        <div class="ug"><h3>영상에 옮길 때 주의</h3><ul><li>Babylon.js: 영상 스킬에 없는 라이브러리라면 원리만 가져와 Canvas 2D·SVG·WebGL로 직접 쓴다</li></ul></div>
+      </section>
+
+      <section class="sec" id="make"><h2>만드는 법</h2>
+        <ol class="steps">
+          <li><h3>준비하기</h3><p>Claude Code를 열고 빈 폴더에서 시작해요. aimotion 스킬을 처음 한 번 설치해요.</p>
+            <div class="code" id="i1">claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion<button type="button" class="cbtn" data-copy="#i1t">복사</button></div><textarea id="i1t" hidden>claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion</textarea></li>
+          <li><h3>프롬프트 만들기</h3><p>칸을 채우면 아래 프롬프트가 바로 바뀌어요. 데모의 장면이 아니라 <b>내 장면</b>을 적는 게 핵심이에요.</p>
+            <div class="pb" id="pb">
+              <label>내 장면 (무엇을 보여 줄지)<input id="f-scene" placeholder="예: 동네 빵집 신메뉴 '소금빵' 출시 소식"></label>
+              <label>화면에 들어갈 문구<input id="f-text" placeholder="예: 오늘 아침 7시, 소금빵 첫 판"></label>
+              <div class="two">
+                <label>브랜드 색<input id="f-color" placeholder="예: #F2C14E, 크림색"></label>
+                <label>비율<select id="f-ratio"><option>9:16 세로 (1080×1920)</option><option>16:9 가로 (1920×1080)</option><option>1:1 정사각 (1080×1080)</option><option>4:5 피드 (1080×1350)</option></select></label>
+                <label>길이<select id="f-len"><option>5초</option><option selected>6초</option><option>8초</option><option>10초</option><option>15초</option></select></label>
+              </div>
+            </div>
+            <div class="code" id="pout"></div>
+            <div class="pl-act"><button type="button" data-copy="#pout">프롬프트 복사</button></div></li>
+          <li><h3>미리보기 보고 고치기</h3><p>Claude Code가 만든 HTML을 브라우저로 열어 확인하고, 고칠 점을 말로 알려 줘요. 자주 쓰는 수정 문장을 눌러 복사하세요.</p>
+            <div class="fix"><button type="button" data-copy="전체 속도를 1.5배 느리게 해 줘">전체 속도를 1.5배 느리게 해 줘</button><button type="button" data-copy="효과 강도를 절반으로 줄여 줘">효과 강도를 절반으로 줄여 줘</button><button type="button" data-copy="글자를 화면 위쪽 1/3 위치로 옮겨 줘">글자를 화면 위쪽 1/3 위치로 옮겨 줘</button><button type="button" data-copy="마지막 1초는 움직임을 멈추고 유지해 줘">마지막 1초는 움직임을 멈추고 유지해 줘</button><button type="button" data-copy="배경색을 브랜드 색으로 바꿔 줘">배경색을 브랜드 색으로 바꿔 줘</button><button type="button" data-copy="화면 아래 15%는 자막 자리로 비워 줘">화면 아래 15%는 자막 자리로 비워 줘</button><button type="button" data-copy="처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘">처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘</button><button type="button" data-copy="같은 영상을 16:9 가로로도 만들어 줘">같은 영상을 16:9 가로로도 만들어 줘</button></div></li>
+          <li><h3>MP4로 뽑기</h3><p>실시간 화면 녹화보다 프레임 단위 렌더링이 끊김 없고 선명해요.</p>
+            <div class="code" id="r1">이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.<button type="button" class="cbtn" data-copy="#r1t">복사</button></div><textarea id="r1t" hidden>이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.</textarea></li>
+          <li><h3>내 영상에 합치기</h3><p>제목 · 자막 · 전환처럼 실사 위에 얹을 효과라면 배경을 투명하게 뽑아 편집 프로그램(캡컷 · 프리미어)의 위 트랙에 올려요. 이미 찍은 영상이 있으면 파일을 주고 "이 영상 위에 효과를 입혀 줘"라고 해도 돼요.</p>
+            <div class="code" id="r2">배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.<button type="button" class="cbtn" data-copy="#r2t">복사</button></div><textarea id="r2t" hidden>배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.</textarea></li>
+        </ol>
+      </section>
+
+      <section class="sec" id="timeline"><h2>초 단위로 보기</h2>
+        <p class="pl-note">데모가 몇 초에 무엇을 보여 주는지예요. 장면을 따라 하려는 게 아니라, 기법이 어떤 순서와 리듬으로 쓰였는지 보는 용도예요.</p>
+        
+        <div class="notes"><p>9.5초, 1080×1920. 해 뜰 무렵 정원의 나무 탁자 위에 빅토리아풍 작은 유리 온실(워디언 케이스)이 놓여 있다.
+크림색 주물 틀에 박공지붕, 용마루 장식(크레스팅)과 양 끝 피니얼이 있다. 세이지그린 받침대에는 몰딩, 놋쇠 띠, 판넬, 놋쇠 발이 있다.
+안에는 고사리 화분과 접란 화분, 이끼 언덕이 있다. 밖 탁자에는 필레아(동전잎) 화분과 새싹 화분이 있다.
+뒤로는 산울타리와 안개에 잠긴 나무 줄이 보이고, 그 위로 하늘이 있다.</p>
+<ul>
+<li><strong>0–2.4초, 새벽</strong>: 카메라가 앞 유리 가까이, 낮게 있다. 유리에는 김이 서려 있고 이슬방울이 맺혀 있다.
+  그 너머로 말린 고사리 순(피들헤드)이 보인다. 해는 아직 나무 뒤에 있고, 하늘은 장밋빛 지평선과 푸른 회색 천정이다.</li>
+<li><strong>1.5–4.8초, 해가 나무를 넘는다</strong>: 카메라가 뒤로 물러나며 오르고, 온실 전체가 드러난다.</li>
+<li>나비(오렌지팁)가 왼쪽에서 날아든다.</li>
+<li>고사리 순들이 차례로 풀린다. 필레아의 어린 잎이 펴지고, 새싹의 본잎 두 장이 일어서며 벌어진다.</li>
+<li>나무 사이 틈으로 빛줄기가 새기 시작한다.</li>
+<li><strong>4.5–7초, 절정</strong>: 해가 온실 지붕 유리 뒤를 지난다.</li>
+<li>틀이 막은 자리만 어두운, 유리를 통과한 빛살이 화면 위쪽으로 부채처럼 퍼진다.</li>
+<li>탁자에는 창살 그림자의 줄무늬가 카메라 쪽으로 길게 드리운다. 해가 오르면서 그 줄무늬가 온실 쪽으로 짧아진다.</li>
+<li>유리의 김이 걷히고 이슬이 반짝인다. 지붕 앞쪽 환기창 한 장이 용마루 경첩을 축으로 열린다(5.2–7초).</li>
+<li><strong>7–9.5초, 여운</strong>: 나비가 열린 환기창 아래 틀에 내려앉는다(7.6초). 날개를 천천히 폈다 접으며 햇볕을 쬔다.
+  해는 화면 위쪽으로 올라 빛이 따뜻한 흰빛으로 안정되고, 카메라는 환기창 쪽으로 조금 다가가며 멈춘다.</li>
+</ul></div>
+      </section>
+
+      <section class="sec" id="how"><h2>원리</h2>
+        <p class="pl-note">개발자용 구현 설명이에요(원작자 노트, MIT). 몰라도 만들 수 있지만, Claude에게 "이 원리 중 ○○만 써 줘"처럼 지시할 때 도움이 돼요.</p>
+        <details class="dev" open><summary>기법과 원리</summary><div class="notes"><p><strong>1. 렌더 루프 없이 t로 그리기 (<code>main.js:214</code>, <code>main.js:294</code>)</strong>
+- <code>runRenderLoop</code>를 쓰지 않는다. frame(t)는 모든 상태를 t에서 정한 뒤 <code>engine.beginFrame(); scene.render(true, true); engine.endFrame()</code>을 한 번 부른다.
+  begin/endFrame은 runRenderLoop가 매 프레임 감싸는 것과 같은 호출이다.
+- <code>scene.animationsEnabled = false</code>(<code>main.js:117</code>)와 <code>render(…, ignoreAnimations=true)</code>로 Animatable이 엔진 델타 시간으로 움직이지 않게 한다.
+  물리·파티클 시스템·ProceduralTexture는 쓰지 않는다.</p>
+<p><strong>2. 빛</strong>
+- <strong>태양</strong>: <code>DirectionalLight</code>. 방향은 고도·방위 함수로 정한다(<code>main.js:23</code>, <code>main.js:218</code>).
+  세기와 색은 나무를 넘는 정도(<code>sunVis</code>, <code>main.js:25</code>)와 시간에 따라 주황 → 따뜻한 흰색으로 바뀐다(<code>main.js:227</code>).
+- <strong>채움광</strong>: <code>HemisphericLight</code>. 하늘색과 탁자 반사색을 쓴다(<code>main.js:231</code>).
+- <strong>IBL</strong>: JS로 64² 하늘 큐브를 만든다(<code>world.js:141</code>). <code>RawCubeTexture</code>에 올리고(<code>world.js:177</code>),
+  구면 다항식(조도 SH)은 <code>CubeMapToSphericalPolynomialTools.ConvertCubeMapToSphericalPolynomial</code>로 setup에서 동기 계산해 넣는다(<code>world.js:180</code>).
+  비동기 readPixels 경로를 피해 첫 프레임부터 같은 조도가 나온다. HDR 파일은 쓰지 않는다(node_modules에 없음).
+- <strong>하늘</strong>: 정점 색 돔(<code>world.js:190</code>)이다. 매 프레임 지평선/천정 그라데이션과 태양 주변 3단 글로(<code>world.js:226</code>)를 다시 계산한다.
+  해는 따로 있다: 빌보드 원반과 가산 혼합 헤일로(<code>world.js:254</code>).
+- <strong>안개</strong>: EXP2(<code>main.js:123</code>). 나무 줄이 아침 안개에 묻히고, 안개색은 지평선색을 따라간다.</p>
+<p><strong>3. 재질 (모두 내장 PBRMaterial, <code>world.js:27</code>)</strong>
+- <strong>유리</strong>(<code>world.js:39</code>):
+  - 알파 블렌드에 <code>useRadianceOverAlpha</code>/<code>useSpecularOverAlpha</code>를 켜서, 투명해도 반사는 그대로 남는다. IOR 1.5.
+  - 김 서림은 거칠기·알파·흰 기운을 t로 줄여 표현한다(<code>main.js:254</code>).
+  - 판은 양면 메시(<code>world.js:104</code>)이고, 벽·지붕 단위로 나눠 Babylon이 메시별로 정렬한다.
+- <strong>틀</strong>: 금속도 0.35 크림 도장에 클리어코트(<code>world.js:31</code>). 받침의 놋쇠는 금속도 1이다.
+- <strong>잎</strong>: 서브서피스 반투과(<code>world.js:55</code>). 역광에서 잎이 연두빛으로 비친다. 색은 정점 색과 thin instance 색으로 준다.
+- <strong>이끼</strong>: sheen으로 벨벳 결을 낸다. 나비 날개도 반투과와 알파 테스트를 쓴다.
+- <strong>탁자</strong>: 캔버스에 시드 난수로 그린 판자 텍스처(<code>world.js:320</code>) — 나뭇결, 옹이, 판 사이 틈, 풍화 반점.</p>
+<p><strong>4. 그림자: ShadowGenerator + PCF (<code>main.js:170</code>)</strong>
+- 2048² 맵, <code>usePercentageCloserFiltering</code>, <code>QUALITY_HIGH</code>.
+- 직교 상자 크기를 고정했다(<code>shadowFrustumSize</code>, <code>main.js:146</code>). 광원 위치는 온실 중심에서 태양 반대쪽 30에 둔다(<code>main.js:226</code>).
+  나비가 움직여도 그림자 맵의 텍셀 격자가 흔들리지 않는다.
+- 유리·이슬·하늘·나무는 그림자를 드리우지 않는다. 그래서 빛은 유리를 통과하고, 창살·식물·받침만 탁자에 그림자를 남긴다.
+- 해가 낮아 그림자가 길다. 받침 그림자 너머로 창살 줄무늬가 카메라 앞 탁자에 깔리고, 고도가 오르면 온실 쪽으로 당겨진다.</p>
+<p><strong>5. 빛살: VolumetricLightScatteringPostProcess (<code>main.js:187</code>)</strong>
+- 태양 원반을 광원 메시로 쓴다. 패스 텍스처(0.5배)에서 원반은 제 재질로, 나머지는 검은 가림막으로 그려진 뒤, 화면의 태양 위치로 방사형 누적된다.
+- 유리·하늘·헤일로는 <code>excludedMeshes</code>(<code>main.js:189</code>)라 가리지 않는다. 그래서 빛살이 유리를 통과하고 틀·식물·나무만 어두운 줄을 만든다.
+- 해가 나무 뒤에 있을 때는 수관 사이 틈으로만 빛이 샌다. 세기는 <code>vlsExposure</code>(<code>main.js:29</code>)로 조절한다.</p>
+<p><strong>6. 이슬: SolidParticleSystem 두 개 + GlowLayer (<code>world.js:824</code>)</strong>
+- 228개 위치를 시드 난수로 정한다: 앞·옆 유리 바깥(아래쪽에 더 많이), 앞 지붕(환기창 칸 제외), 탁자, 화분 테.
+- <strong>물방울 몸체</strong>: 어두운 물빛 PBR 구. 거울 같은 거칠기라 해와 하늘이 맺힌다.
+- <strong>반짝임 핵</strong>: 방출 재질 구(<code>world.js:886</code>). 위치는 방울 표면에서 해와 카메라의 반벡터 쪽이다 — 방울이 해를 카메라로 비추는 자리.
+  - 크기 = 해가 보이는 정도 × 그 면이 반벡터를 향하는 정도 × 방울마다 다른 진동수의 날카로운 깜빡임(<code>world.js:889</code>).
+  - GlowLayer(<code>main.js:182</code>)가 이 핵만 번지게 한다. 하늘·태양·유리는 <code>addExcludedMesh</code>(<code>main.js:184</code>)라 글로 맵에 들어가지 않는다.
+- 해가 오르면 지붕·탁자의 방울은 말라 작아진다(<code>evap</code>).</p>
+<p><strong>7. 움직이는 형태</strong>
+- <strong>고사리</strong>(<code>world.js:617</code>): 엽축 중심선을 곡률 적분으로 매 프레임 다시 만든다(<code>world.js:653</code>).
+  - 풀린 길이 s₀ = u(t)·L 앞쪽은 휴지 곡률(완만한 아치)만 받는다.
+  - 그 뒤쪽은 끝으로 갈수록 세지는 큰 곡률(<code>world.js:666</code>)을 받아 나선으로 말린다. u가 1로 가면 나선이 펴진다.
+  - 작은 잎(우편) 쌍은 블레이드 평면에서 엽축에 수직으로 붙는다. 길이는 가운데가 길고(<code>world.js:682</code>), 아직 말린 부분에서는 접혀 작다(<code>world.js:683</code>).
+  - 정점 버퍼를 <code>updateVerticesData</code>로 갱신하고 법선을 다시 계산한다.
+- <strong>필레아·새싹</strong>(<code>world.js:730</code>): 오목한 원반 잎 하나를 thin instance 17장으로 쓴다(<code>world.js:760</code>). 잎자루는 원기둥 thin instance다.
+  각 잎의 기저(X, 법선, 긴축)·크기·위치 행렬을 t로 직접 쓴다. 어린 잎은 back-out 이징으로 커지며(<code>world.js:785</code>) 세운 각도에서 내려와 펴진다.
+- <strong>환기창</strong>: 용마루 위 피벗 TransformNode의 rotation.x = −각도(<code>main.js:258</code>). 틀·유리판이 함께 돈다.
+- <strong>나비</strong>(<code>world.js:955</code>):
+  - 캔버스로 그린 오렌지팁 날개 텍스처 한 장을 평면 두 개(하나는 x 거울)에 붙였다. 경첩은 몸 축에 있다.
+  - 비행 경로는 시간 매듭 Hermite 스플라인(<code>main.js:67</code>)에 팔랑임 흔들림을 더한다.
+  - 진행 방향에서 요·피치를, 요 변화율에서 기울임을 구한다.
+  - 날개는 비행 중 5.5Hz 날갯짓과 활공 변조(<code>main.js:281</code>), 앉은 뒤 0.4Hz 일광욕(<code>main.js:282</code>)이다.
+  - 착지 지점은 열린 환기창의 아래 틀 위를 같은 회전식으로 계산한다(<code>main.js:60</code>).
+- <strong>카메라</strong>: 네 키를 지나는 Hermite 스플라인(<code>main.js:33</code>, <code>main.js:39</code>). 처음과 끝은 정지, 중간은 속도가 이어진다.</p>
+<p><strong>8. 후처리와 톤</strong>
+- <strong>톤 매핑</strong>: 머티리얼 안 이미지 처리 — KHR PBR Neutral, 노출, 대비, 따뜻한 비네트(<code>main.js:133</code>).
+- <strong>파이프라인</strong>: DefaultRenderingPipeline(LDR)은 블룸과 FXAA만 맡는다(<code>main.js:200</code>). HDR을 끄면 파이프라인이 <code>applyByPostProcess</code>를 false로 두므로, 톤 매핑은 계속 머티리얼에서 일어난다.
+- <strong>순서</strong>: 빛살 패스가 카메라 후처리 체인의 처음이다. 그래서 장면 타깃에 MSAA 4를 준다.
+- <strong>자막 띠</strong>: 밝은 그림 위 흰 자막을 위해 아래 420px에 따뜻한 어두운 그라데이션 띠를 깐다(<code>main.js:206</code>).</p>
+<p>참고:
+- Babylon.js 문서: PBR(투명·서브서피스·클리어코트), Shadows(PCF), Glow Layer, Volumetric Light Scattering, Solid Particle System, Thin Instances
+- Ward, N. B. <em>On the Growth of Plants in Closely Glazed Cases</em> (1842) — 워디언 케이스
+- Mitchell, "Volumetric Light Scattering as a Post-Process", GPU Gems 3, ch. 13
+- 이미지 기반 조명의 SH 조도: Ramamoorthi &amp; Hanrahan, "An Efficient Representation for Irradiance Environment Maps" (2001)</p></div></details>
+        <details class="dev"><summary>프레임마다 같은 그림이 나오게 하는 법 (결정성)</summary><div class="notes"><ul>
+<li>frame(t)는 이전 호출과 무관하게 모든 것을 t에서 다시 정한다: 카메라, 빛, 하늘 정점 색, 유리 재질 값, 환기창 각도, 고사리 정점, thin instance 행렬, 두 SPS, 후처리 세기.
+  누적되는 상태가 없다.</li>
+<li>시간을 스스로 진행시키는 것은 모두 끄거나 쓰지 않는다: <code>animationsEnabled = false</code>, <code>ignoreAnimations</code>, <code>runRenderLoop</code> 없음,
+  ParticleSystem(난수·상태)·ProceduralTexture·물리 없음, SPS의 <code>start()</code> 자동 갱신 없음(<code>setParticles()</code>를 frame에서만 부름).</li>
+<li>모든 난수는 <code>rand(seed)</code>(이슬 위치, 나무, 판자 결, 고사리·접란·필레아 배치, 날개 반점). 셰이더 노이즈나 Math.random은 없다.</li>
+<li>그림자 직교 상자를 고정해, 그림자 맵 래스터가 움직이는 물체의 경계 상자에 따라 바뀌지 않는다.</li>
+<li>IBL 구면 다항식을 동기 계산해서, 비동기 readPixels 결과가 도착하기 전후로 첫 프레임이 달라지지 않는다.</li>
+<li>setup 끝에서 여러 시각을 미리 그리고 <code>scene.whenReadyAsync(true)</code>와 <code>engine.areAllEffectsReady()</code>로 셰이더 컴파일을 기다린다(<code>main.js:304</code>).
+  병렬 셰이더 컴파일 때문에 첫 프레임에 일부 메시가 빠지는 일이 없다.</li>
+</ul></div></details>
+        <details class="dev"><summary>한계와 조절할 점</summary><div class="notes"><p><strong>한계</strong>
+- 빛살은 화면 공간 효과다. 해가 화면 밖으로 나가면 사라지고, 카메라를 크게 돌리면 방향이 어색해진다(이 구도에서는 해가 늘 화면 위쪽에 있다).
+- 유리는 굴절 없이 투명+반사만이다(PBR 서브서피스 굴절은 장면이 아니라 환경 큐브를 굴절시켜 이 장면에 맞지 않는다).
+- 직접광 그림자는 온실 주변 6.4 단위 상자에만 있다. 먼 산울타리·나무는 그림자를 드리우지 않는다. 해가 나무 뒤에 있는 동안의 어두움은 세기 함수로 흉내 낸다.
+- GlowLayer는 반 해상도라 아주 작은 반짝임은 프레임마다 미세하게 깜빡일 수 있다.
+- 해가 아주 낮을 때(0–2초) 그림자 맵이 탁자에 길게 늘어나 해상도가 낮다. 이때 직접광이 약해 거의 보이지 않는다.</p>
+<p><strong>조정 손잡이</strong>
+- 해: 고도 <code>main.js:23</code>, 방위 <code>main.js:24</code>, 나무를 넘는 시점 <code>main.js:25</code>, 빛 세기·색 <code>main.js:227</code>.
+- 밝기: 채움광 <code>main.js:231</code>, IBL <code>main.js:234</code>, 노출 <code>main.js:235</code>, 톤 매핑·비네트 <code>main.js:133</code>, 블룸 <code>main.js:200</code>.
+- 빛살 세기 곡선 <code>main.js:29</code>, 감쇠·밀도 <code>main.js:190</code>. 이슬 글로 곡선 <code>main.js:30</code>.
+- 카메라 키 <code>main.js:33</code>, 화각 <code>main.js:126</code>. 안개 <code>main.js:123</code>.
+- 환기창 열림 시각·각도 <code>main.js:27</code>. 김 서림이 걷히는 구간 <code>main.js:28</code>.
+- 나비 경로 <code>main.js:67</code>, 착지 시각 <code>main.js:58</code>, 날갯짓 <code>main.js:281</code>.
+- 그림자: 상자 크기 <code>main.js:146</code>, bias <code>main.js:173</code>.
+- 하늘 팔레트 <code>main.js:91</code>, 태양 글로 모양 <code>world.js:226</code>.
+- 고사리: 어린 순의 시작 시각·길이 <code>world.js:628</code>, 말림 세기 K <code>world.js:658</code>.
+- 이슬: 개수·분포 <code>world.js:830</code>, 반짝임 <code>world.js:889</code>.
+- 재질: 유리 <code>world.js:39</code>, 틀 <code>world.js:31</code>, 잎 반투과 <code>world.js:55</code>.</p></div></details>
+      </section>
+
+      <section class="sec"><h2>같은 분류의 다른 기법</h2><div class="rel"><a href="04-sketch-diagram.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/04-sketch-diagram.jpg" alt="" width="360" height="640">손으로 그린 설명</a><a href="15-geo-globe.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/15-geo-globe.jpg" alt="" width="360" height="640">지구 위를 나는 길</a><a href="16-rapier-marbles.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/16-rapier-marbles.jpg" alt="" width="360" height="640">쏟아지는 구슬</a><a href="32-dataviz-motion.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/32-dataviz-motion.jpg" alt="" width="360" height="640">숫자가 움직일 때</a><a href="73-anime-stagger.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/73-anime-stagger.jpg" alt="" width="360" height="640">점들의 합창</a><a href="74-motion-spring.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/74-motion-spring.jpg" alt="" width="360" height="640">알림이 내려앉을 때</a><a href="75-lottie-code.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/75-lottie-code.jpg" alt="" width="360" height="640">코드로 쓴 로티</a><a href="76-p5-tree.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/76-p5-tree.jpg" alt="" width="360" height="640">바람 부는 나무</a></div></section>
+      <nav class="pn" aria-label="이전 · 다음 기법"><a href="80-mojs-burst.html">← 축하의 순간</a><a href="82-tone-shapes.html">소리가 그린 도형 →</a></nav>
+      <p class="note2">데모 · 그림 · 원리 · 초 단위 설명 출처: <a href="https://github.com/kstost/cokacmotion/tree/main/skills/aimotion/demos/81-babylon-greenhouse" target="_blank" rel="noopener">kstost/cokacmotion · 81-babylon-greenhouse</a> (MIT License, Copyright (c) 2026 kstost). 활용 가이드와 만드는 법은 AI 영상 레퍼런스 보관함이 썼어요.</p>
+    </article>
+  </div>
+</main>
+<footer><a href="../../guide/">가이드</a> · <a href="../video/">영상 프롬프트</a> · <a href="./">코드 모션 기법</a> · <a href="../../privacy.html">소개 · 개인정보처리방침</a></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var toast=document.getElementById("toast"),tm;
+  function say(m){toast.textContent=m;toast.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove("on");},1600);}
+  window.cmCopy=function(t){ if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){say("복사했어요");},function(){say("복사가 막혀 있어요. 직접 선택해 복사해 주세요");});} else say("복사가 막혀 있어요. 직접 선택해 복사해 주세요"); };
+  document.addEventListener("click",function(e){ var b=e.target.closest("[data-copy]"); if(!b) return; var src=b.getAttribute("data-copy"); var el=src.charAt(0)==="#"?document.querySelector(src):null; cmCopy(el?(el.value||el.textContent):src); });
+})();
+</script><script>
+(function(){
+  var DEMO="https://kstost.github.io/cokacmotion/81-babylon-greenhouse/", ID="81-babylon-greenhouse", TITLE="\uc544\uce68\uc758 \uc628\uc2e4", TECH="Babylon.js \u00b7 PBR \uc720\ub9ac \u00b7 \uadf8\ub9bc\uc790 \uc0dd\uc131\uae30(PCF) \u00b7 GlowLayer \u00b7 \ubd80\ud53c\uad11 \uc0b0\ub780";
+  var st=document.getElementById("stage"), go=document.getElementById("go"), rp=document.getElementById("rp");
+  function load(){ st.innerHTML='<iframe src="'+DEMO+'" title="'+TITLE+' 데모" allow="autoplay" loading="eager"></iframe>'; rp.hidden=false; }
+  go.addEventListener("click",load); rp.addEventListener("click",load);
+  var f=function(id){return document.getElementById(id);};
+  function build(){
+    var scene=f("f-scene").value.trim()||"[내 영상의 장면]", text=f("f-text").value.trim(), col=f("f-color").value.trim(), ratio=f("f-ratio").value, len=f("f-len").value;
+    f("pout").textContent="aimotion 스킬(kstost/cokacmotion)의 "+ID+" 「"+TITLE+"」 기법만 참고해서 만들어 줘.\n"+
+      "- 기법: "+TECH+"\n- 내 장면: "+scene+"\n"+(text?"- 화면 문구: "+text+"\n":"")+(col?"- 색: "+col+" 중심으로, 나머지 색은 여기에 맞춰\n":"")+
+      "- 비율 "+ratio+", 길이 "+len+", 30fps\n"+
+      "- 데모의 소재 · 장면 · 문구 · 색 · 구도는 쓰지 말고, NOTES.md와 소스를 읽어 원리만 가져와.\n"+
+      "- 모든 움직임은 시각 t 하나로 계산해서 같은 t엔 같은 그림이 나오게 해. 먼저 HTML로 미리보기를 만들고, 내가 확인하면 프레임마다 캡처해 MP4로 렌더링해 줘.\n"+
+      "(스킬이 설치돼 있지 않으면 https://github.com/kstost/cokacmotion 저장소를 받아 skills/aimotion/SKILL.md부터 읽어 줘.)";
+  }
+  ["f-scene","f-text","f-color","f-ratio","f-len"].forEach(function(id){f(id).addEventListener("input",build);f(id).addEventListener("change",build);});
+  build();
+})();
+</script>
+<script data-goatcounter="https://aivideoref.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

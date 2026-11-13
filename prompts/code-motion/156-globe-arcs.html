@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>철새의 길 · 코드 모션 기법 #156 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="철새의 길 — 지구본 위 경로 호 (글로벌 · 물류). 3D 지구본 · 대기 빛 번짐 + 낮밤 경계 + 대권 호. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/prompts/code-motion/156-globe-arcs.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="철새의 길 · 코드 모션 기법 #156 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="철새의 길 — 지구본 위 경로 호 (글로벌 · 물류). 3D 지구본 · 대기 빛 번짐 + 낮밤 경계 + 대권 호. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/prompts/code-motion/156-globe-arcs.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "코드 모션 기법", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/"}, {"@type": "ListItem", "position": 2, "name": "철새의 길", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/156-globe-arcs.html"}]}</script></head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+.faq h3{font-size:16px;margin:22px 0 6px}.faq p{margin:0 0 10px}
+</style><style>
+.page h1,.vc h3{word-break:keep-all}
+main.wide{max-width:1100px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:18px 0 26px;padding:0;list-style:none}
+.howto li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.6;max-width:none}
+.howto b{display:block;font-family:var(--f-display);font-weight:400;font-size:18px;margin-bottom:4px}
+.howto code{font-family:var(--f-mono);font-size:12.5px;background:var(--bg);padding:1px 5px;border-radius:5px}
+.flt{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.flt input{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips button{font:inherit;font-size:13px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt{font-size:13px;color:var(--muted)}
+ol.grid{list-style:none;padding:0;margin:16px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.vc{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;max-width:none;min-width:0}
+.vc[hidden]{display:none}
+.vv{display:block;width:100%;aspect-ratio:9/16;max-height:560px;object-fit:contain;background:#0b0b0f}
+.vb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.hd{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px}
+.no{font-family:var(--f-mono);color:var(--muted)}
+.cat{font-weight:600;color:var(--rec)}
+.tg{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-radius:6px;padding:0 6px;color:var(--muted)}
+.vc h3{font-size:17px;line-height:1.4;margin:2px 0 0}
+.ds{margin:0;font-size:14px;line-height:1.6}
+.hw{margin:0;font-size:13px;line-height:1.6;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 10px}
+.hw b{display:block;color:var(--ink);font-size:12px;margin-bottom:2px}
+details summary{cursor:pointer;font-size:13px;color:var(--muted);padding:4px 0}
+.pp{font-family:var(--f-mono);font-size:12px;line-height:1.6;background:var(--bg);border-radius:8px;padding:10px 12px;margin:4px 0;white-space:pre-wrap;overflow-wrap:anywhere;max-height:360px;overflow:auto}
+.act{margin-top:auto;padding-top:4px}
+.act .cp{font:inherit;font-size:14px;padding:8px 14px;border-radius:9px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;width:100%}
+.note{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:30px;line-height:1.7}
+</style><style>
+.cm-stats{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.cm-stats span{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--surface)}
+.cm-stats b{font-family:var(--f-mono);margin-right:4px}
+.inst{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin:16px 0 22px}
+.inst h2{font-size:17px;margin:0 0 10px}
+.code{position:relative;max-width:100%;box-sizing:border-box;font-family:var(--f-mono);font-size:12.5px;line-height:1.7;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 72px 10px 12px;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.code .cbtn{position:absolute;top:8px;right:8px}
+.cbtn{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:3px 10px;cursor:pointer}
+.picks{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(132px,1fr);gap:10px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x mandatory}
+.picks a{scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
+.picks img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block;background:#111}
+.picks b{display:block;font-size:13px;margin-top:6px;line-height:1.35}
+.picks small{display:block;font-size:11.5px;color:var(--muted);line-height:1.4}
+.flt2{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.flt2 input[type=search]{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.flt2 .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+.flt2 select{font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt2{font-size:13px;color:var(--muted);margin-left:auto}
+.cmgrid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.cmc{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.cmc .ph{display:block;position:relative;aspect-ratio:4/5;background:#111}
+.cmc .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+.cmc .no{position:absolute;left:8px;top:8px;font-family:var(--f-mono);font-size:11px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;padding:2px 6px}
+.cmc .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cmc h3{font-size:16px;margin:0;line-height:1.35}
+.cmc h3 a{color:inherit;text-decoration:none}
+.cmc .ln{margin:0;font-size:13.5px;line-height:1.55}
+.cmc .tc{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tg2{font-size:11px;border-radius:6px;padding:1px 7px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.tg2.u{color:var(--ink)}
+.w-light{color:#2f8f5b}.w-mid{color:#b7791f}.w-heavy{color:var(--rec)}
+.cmc .ft{display:flex;gap:6px;margin-top:auto;padding-top:6px}
+.cmc .ft a,.cmc .ft button{flex:1;text-align:center;font:inherit;font-size:13px;border-radius:9px;padding:8px 6px;cursor:pointer;text-decoration:none}
+.cmc .ft a{background:var(--ink);color:var(--bg);border:1px solid var(--ink)}
+.cmc .ft button{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.note2{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:28px;line-height:1.7}
+/* detail */
+.crumb{font-size:13px;color:var(--muted);margin:0 0 10px}.crumb a{color:inherit}
+.cmd{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:28px;align-items:start}
+.cmd>*{min-width:0}
+.player{position:sticky;top:12px}
+.stage{position:relative;aspect-ratio:9/16;background:#000;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.stage img,.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.stage .go{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:inherit;font-size:15px;font-weight:600;background:rgba(0,0,0,.72);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:12px 20px;cursor:pointer;white-space:nowrap}
+.pl-act{display:flex;gap:8px;margin-top:8px;font-size:13px;flex-wrap:wrap}
+.pl-act a,.pl-act button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;text-decoration:none}
+.pl-note{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.5}
+.cmd h1{font-size:clamp(24px,4vw,34px);margin:4px 0 6px;line-height:1.25}
+.cmd .tech{margin:0 0 10px;color:var(--muted);font-size:14.5px}
+.oneline{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--rec);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:15px;line-height:1.6}
+.oneline b{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:2px}
+.sec{margin:26px 0 0}
+.sec>h2{font-size:20px;margin:0 0 10px;padding-top:6px;border-top:1px solid var(--line)}
+.ug{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.ug h3{font-size:15px;margin:0 0 4px}.ug p{margin:0 0 6px;font-size:14px;line-height:1.6}.ug ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.7}
+.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+.steps>li{counter-increment:s;position:relative;padding:0 0 18px 40px}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);font-family:var(--f-mono);font-size:13px;display:grid;place-items:center}
+.steps h3{font-size:15.5px;margin:3px 0 6px}.steps p{margin:0 0 6px;font-size:14px;line-height:1.6}
+.pb{display:grid;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.pb label{display:grid;gap:3px;font-size:13px;font-weight:600}
+.pb input,.pb select{font:inherit;font-weight:400;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.pb .two{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.fix{display:flex;flex-wrap:wrap;gap:6px}
+.fix button{font:inherit;font-size:13px;border:1px dashed var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer}
+.notes{font-size:14px;line-height:1.7}
+.notes h4{font-size:14.5px;margin:14px 0 4px}
+.notes code{font-family:var(--f-mono);font-size:12px;background:var(--bg);border-radius:4px;padding:0 4px}
+.notes ul{padding-left:18px}
+.tw{overflow-x:auto;margin:8px 0}.tw table{border-collapse:collapse;font-size:13px;min-width:420px}
+.tw th,.tw td{border:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left}
+.tw th{background:var(--surface)}
+.sheet{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);margin-top:8px}
+details.dev{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+details.dev summary{cursor:pointer;font-weight:600;font-size:14.5px}
+.rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.rel a{text-decoration:none;color:inherit;font-size:12.5px;line-height:1.35}
+.rel img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block;margin-bottom:4px;background:#111}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:22px;font-size:14px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:13px;border-radius:999px;padding:8px 16px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20}
+.toast.on{opacity:1}
+@media (max-width:820px){.cmd{grid-template-columns:minmax(0,1fr)}.player{position:static;max-width:340px;margin:0 auto}.pb .two{grid-template-columns:1fr}}
+</style><header class="top"><nav><a class="brand" href="../../">AI 영상 레퍼런스 보관함</a><a href="../../#dict">레퍼런스 사전</a><a href="../../radar/">터진 쇼츠</a><a href="../../guide/">가이드</a><a href="../../prompts/video/">영상 프롬프트</a><a href="../../privacy.html">소개</a></nav></header>
+<main class="wide">
+  <p class="crumb"><a href="./">코드 모션 기법</a> › <a href="./#g=g12">3D 장면</a> › #156</p>
+  <div class="cmd">
+    <aside class="player">
+      <div class="stage" id="stage"><img src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/156-globe-arcs.jpg" alt="철새의 길 데모의 절정 장면" width="360" height="640"><button type="button" class="go" id="go">▶ 여기서 데모 재생</button></div>
+      <div class="pl-act"><a href="https://kstost.github.io/cokacmotion/156-globe-arcs/" target="_blank" rel="noopener">새 창에서 크게 ↗</a><button type="button" id="rp" hidden>처음부터 다시</button><a href="https://github.com/kstost/cokacmotion/blob/main/skills/aimotion/demos/156-globe-arcs/NOTES.md" target="_blank" rel="noopener">원문 노트 ↗</a></div>
+      <p class="pl-note">데모는 영상 파일이 아니라 코드가 지금 그리는 화면이에요. 그래픽 카드를 많이 쓰는 기법이라 미리보기가 버벅일 수 있어요. 해상도를 낮춰 확인하고, MP4 렌더링은 시간이 더 걸려요. 재생 중 스페이스 · 클릭은 멈춤, ← →는 0.5초 이동이에요.</p>
+    </aside>
+    <article>
+      <span class="eyebrow">#156 · 3D 장면</span>
+      <h1>철새의 길</h1>
+      <p class="tech">3D 지구본 · 대기 빛 번짐 + 낮밤 경계 + 대권 호</p>
+      <div class="tags"><a class="tg2 u" href="./#u=data">정보·데이터</a><span class="tg2 w-heavy">무거움 · 그래픽 카드 사용</span><span class="tg2">three.js</span><span class="tg2">world-atlas</span></div>
+      <div class="oneline"><b>광고 · 쇼츠에서는</b>지구본 위 경로 호 (글로벌 · 물류)</div>
+
+      <section class="sec" id="guide"><h2>활용 가이드</h2><div class="ug"><h3>정보·데이터로 쓸 때</h3><p>숫자·과정·경로·비교처럼 말로 설명하기 어려운 정보를 보여 줄 때 써요.</p><ul><li>실제 숫자와 출처를 표로 주세요. AI가 숫자를 지어내지 않게 &#x27;주어진 값만 쓰라&#x27;고 적어요.</li><li>한 화면에 수치 하나, 결론 숫자는 크게.</li><li>그래프는 마지막 값에서 1초 멈춰야 기억에 남아요.</li></ul></div>
+        <div class="ug"><h3>영상에 옮길 때 주의</h3><ul><li>실제 지도 데이터(world-atlas) — 영상에서는 직접 그린 양식화된 지도로 바꾼다</li><li>three.js — 영상 스킬이 three.js를 넣는 방법을 따른다</li></ul></div>
+      </section>
+
+      <section class="sec" id="make"><h2>만드는 법</h2>
+        <ol class="steps">
+          <li><h3>준비하기</h3><p>Claude Code를 열고 빈 폴더에서 시작해요. aimotion 스킬을 처음 한 번 설치해요.</p>
+            <div class="code" id="i1">claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion<button type="button" class="cbtn" data-copy="#i1t">복사</button></div><textarea id="i1t" hidden>claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion</textarea></li>
+          <li><h3>프롬프트 만들기</h3><p>칸을 채우면 아래 프롬프트가 바로 바뀌어요. 데모의 장면이 아니라 <b>내 장면</b>을 적는 게 핵심이에요.</p>
+            <div class="pb" id="pb">
+              <label>내 장면 (무엇을 보여 줄지)<input id="f-scene" placeholder="예: 동네 빵집 신메뉴 '소금빵' 출시 소식"></label>
+              <label>화면에 들어갈 문구<input id="f-text" placeholder="예: 오늘 아침 7시, 소금빵 첫 판"></label>
+              <div class="two">
+                <label>브랜드 색<input id="f-color" placeholder="예: #F2C14E, 크림색"></label>
+                <label>비율<select id="f-ratio"><option>9:16 세로 (1080×1920)</option><option>16:9 가로 (1920×1080)</option><option>1:1 정사각 (1080×1080)</option><option>4:5 피드 (1080×1350)</option></select></label>
+                <label>길이<select id="f-len"><option>5초</option><option selected>6초</option><option>8초</option><option>10초</option><option>15초</option></select></label>
+              </div>
+            </div>
+            <div class="code" id="pout"></div>
+            <div class="pl-act"><button type="button" data-copy="#pout">프롬프트 복사</button></div></li>
+          <li><h3>미리보기 보고 고치기</h3><p>Claude Code가 만든 HTML을 브라우저로 열어 확인하고, 고칠 점을 말로 알려 줘요. 자주 쓰는 수정 문장을 눌러 복사하세요.</p>
+            <div class="fix"><button type="button" data-copy="전체 속도를 1.5배 느리게 해 줘">전체 속도를 1.5배 느리게 해 줘</button><button type="button" data-copy="효과 강도를 절반으로 줄여 줘">효과 강도를 절반으로 줄여 줘</button><button type="button" data-copy="글자를 화면 위쪽 1/3 위치로 옮겨 줘">글자를 화면 위쪽 1/3 위치로 옮겨 줘</button><button type="button" data-copy="마지막 1초는 움직임을 멈추고 유지해 줘">마지막 1초는 움직임을 멈추고 유지해 줘</button><button type="button" data-copy="배경색을 브랜드 색으로 바꿔 줘">배경색을 브랜드 색으로 바꿔 줘</button><button type="button" data-copy="화면 아래 15%는 자막 자리로 비워 줘">화면 아래 15%는 자막 자리로 비워 줘</button><button type="button" data-copy="처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘">처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘</button><button type="button" data-copy="같은 영상을 16:9 가로로도 만들어 줘">같은 영상을 16:9 가로로도 만들어 줘</button></div></li>
+          <li><h3>MP4로 뽑기</h3><p>실시간 화면 녹화보다 프레임 단위 렌더링이 끊김 없고 선명해요.</p>
+            <div class="code" id="r1">이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.<button type="button" class="cbtn" data-copy="#r1t">복사</button></div><textarea id="r1t" hidden>이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.</textarea></li>
+          <li><h3>내 영상에 합치기</h3><p>제목 · 자막 · 전환처럼 실사 위에 얹을 효과라면 배경을 투명하게 뽑아 편집 프로그램(캡컷 · 프리미어)의 위 트랙에 올려요. 이미 찍은 영상이 있으면 파일을 주고 "이 영상 위에 효과를 입혀 줘"라고 해도 돼요.</p>
+            <div class="code" id="r2">배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.<button type="button" class="cbtn" data-copy="#r2t">복사</button></div><textarea id="r2t" hidden>배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.</textarea></li>
+        </ol>
+      </section>
+
+      <section class="sec" id="timeline"><h2>초 단위로 보기</h2>
+        <p class="pl-note">데모가 몇 초에 무엇을 보여 주는지예요. 장면을 따라 하려는 게 아니라, 기법이 어떤 순서와 리듬으로 쓰였는지 보는 용도예요.</p>
+        <img class="sheet" loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/156-globe-arcs-sheet.jpg" alt="철새의 길 1초 간격 장면" width="822" height="579">
+        <div class="notes"><p>우주에서 지구본이 돌며 들어오고, 알래스카 번식지에서 대권 호가 차례로 날아오른다. 카메라는 가장 긴 호를 탄 새 떼를 뒤따라 낮밤 경계를 넘어 불빛이 켜진 밤 쪽 뉴질랜드에 내린다.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>시간 (s)</th>
+<th>무엇이 보이나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–2.6</td>
+<td>검은 화면에서 지구본이 밝아지며 다가온다. 지구는 62° 돌다가 감속해 멈추고, 그동안 북아메리카가 오른쪽 낮에서 지나간다. 왼쪽 밤의 아시아·호주에는 도시 불빛이 켜져 있다. 대기 테두리가 푸르게 빛나고, 위에 「도요새의 가을 이동 · 예시 데이터」와 「번식지를 떠나 남쪽 바다로」가 올라온다. 1.25초에 번식지 표시가 튀어나온다.</td>
+</tr>
+<tr>
+<td>1.9–4.2</td>
+<td>호 다섯 개가 차례로 뜬다. 알래스카에서 서해 갯벌(중간 기착), 하와이, 호주 동부로 가고, 서해 갯벌에서 호주 북서부로 다시 떠나는 호가 이어진다. 호마다 밝은 머리와 사라지는 꼬리가 있고, 지나간 자리에는 가는 선이 남는다. 내려앉은 자리에는 고리가 두 번 퍼지고 이름표가 붙는다. 번식지 표시는 출발할 때마다 다시 고동친다.</td>
+</tr>
+<tr>
+<td>4.0–5.5</td>
+<td>가장 긴 호(뉴질랜드)가 출발한다. 카메라가 지구본에서 그 호의 머리로 내리꽂힌다. 내려가는 동안 가까운 구름은 걷히고 이름표는 빠르게 사라지며, 위에 거리 계기가 들어온다.</td>
+</tr>
+<tr>
+<td>5.5–7.4</td>
+<td><strong>절정.</strong> 카메라가 다섯 마리 V자 대형의 뒤 위에서 따라간다. 꼬리 빛이 아래에서 새 떼까지 대각선으로 이어진다. 해가 낮아 새와 구름이 금빛을 띠고, 6.45초 무렵 낮밤 경계를 넘어 밤으로 들어간다. 지평선 너머에서 뉴질랜드 불빛이 다가온다. 거리 숫자가 0에서 11,090 km까지 돈다.</td>
+</tr>
+<tr>
+<td>7.4–8.4</td>
+<td>도착이다. 새 떼가 내려앉아 사라지고 뉴질랜드에 큰 고리가 퍼진다. 카메라는 위로 물러난다. 「뉴질랜드 도착」 카드와 「약 9일 동안 한 번도 내려앉지 않았다 · 예시」가 붙는다.</td>
+</tr>
+<tr>
+<td>8.2–10</td>
+<td>여운. 지구본 전체로 물러나 경로망 전체가 보인다. 빛 한 줄기가 호마다 한 번씩 출발지에서 도착지까지 훑고 지나가며, 블룸이 잠깐 짙어졌다가 가라앉는다.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>포스터 시각은 6.0초</strong>(절정, 새 떼와 꼬리 빛, 지평선의 대기)를 권한다. 렌더 도구가 찍는 0.6·D와 같다.</p></div>
+      </section>
+
+      <section class="sec" id="how"><h2>원리</h2>
+        <p class="pl-note">개발자용 구현 설명이에요(원작자 노트, MIT). 몰라도 만들 수 있지만, Claude에게 "이 원리 중 ○○만 써 줘"처럼 지시할 때 도움이 돼요.</p>
+        <details class="dev" open><summary>기법과 원리</summary><div class="notes"><ul>
+<li><strong>TopoJSON을 직접 푼다</strong> (<code>main.js:120</code> <code>decodeTopo</code>)</li>
+<li>호(arc)는 정수 쌍 목록이고 델타 부호화되어 있다. 누적합 <code>x += dx</code>, <code>y += dy</code> 뒤에 <code>lon = x·scale₀ + translate₀</code>, <code>lat = y·scale₁ + translate₁</code>로 도 단위가 된다(<code>main.js:124</code>).</li>
+<li>고리(ring)는 호 번호 목록이다. 음수 <code>i</code>는 <code>~i</code>번 호를 뒤집은 것이다(<code>main.js:129</code>). 이웃한 호는 이음점을 공유하므로 두 번째 호부터 첫 점을 버린다(<code>main.js:130</code>).</li>
+<li><code>GeometryCollection</code>·<code>Polygon</code>·<code>MultiPolygon</code>을 걸어 내려가 고리 목록의 다각형 목록을 만든다.</li>
+<li><strong>날짜변경선을 넘는 고리 펴기</strong> (<code>main.js:178–193</code>)</li>
+<li>world-atlas 고리는 ±180°에서 이어 붙어 있다. 구면에서는 179.9°에서 −179.9°로 가는 짧은 변이지만, 평면 지도에 그대로 그리면 지도를 가로지르는 가는 띠가 생긴다.</li>
+<li>그래서 이웃 점의 경도 차가 180°를 넘으면 ±360°를 더해 고리를 편다(<code>main.js:185</code>).</li>
+<li>편 고리가 경도로 한 바퀴를 돌면(남극처럼 극을 감싸면) 끝점에서 극을 지나 시작점으로 닫는다(<code>main.js:192</code>).</li>
+<li>지도는 −TW, 0, +TW 세 번 찍어 ±180° 밖으로 넘친 부분을 반대편에 채운다(<code>main.js:200</code>).</li>
+<li><strong>육지를 거리장 텍스처로 굽는다</strong> (<code>main.js:172</code> <code>bakeLand</code>)</li>
+<li>등장방형 2048×1024 캔버스에 <code>evenodd</code>로 채운다. 행 j는 위도 −90 + (j+½)·180/1024이다.</li>
+<li>해안을 둥글게 다듬는다. 반경 2 상자 흐림을 두 번 하고(σ≈1.8 px), <code>(a − ½)·2.5 + ½</code>로 다시 1픽셀 경사로 세운다(<code>main.js:206–207</code>).</li>
+<li><code>signedDistance</code>(type.js)로 부호 거리(px, 바다 +)를 얻는다. 좌우에 64 px씩 감아 붙여 계산하므로 거리가 ±180°를 넘어 이어진다.</li>
+<li>R 채널에는 ±12 px(해안선), G 채널에는 ±64 px(얕은 물 띠)를 넣는다.</li>
+<li>밉맵은 끈다. 셰이더의 <code>atan</code> 경도가 ±180°에서 뛰어 밉 선택이 틀어지면 이음선이 생기기 때문이다. 대신 <code>RepeatWrapping</code>으로 이음을 메운다.</li>
+<li><strong>셰이더에서 문턱을 넘긴다: 어떤 배율에서도 또렷한 해안</strong> (<code>main.js:421</code> <code>GLOBE_FS</code>)</li>
+<li>각 픽셀에서 <code>N = normalize(vW)</code>, <code>uv = (atan(N.x, N.z)/2π + ½, asin(N.y)/π + ½)</code>를 구한다.</li>
+<li>육지는 <code>land = 1 − smoothstep(−aa, aa, d)</code>이고 <code>aa = 0.7·fwidth(d)</code>이다(<code>main.js:439</code>). 텍셀 하나가 수십 픽셀을 덮는 근접 장면에서도 해안이 1픽셀 폭으로 선다.</li>
+<li><strong>같은 거리장으로 해안 턱, 그림자, 얕은 물을 만든다</strong> (<code>main.js:443–471</code>)</li>
+<li>해의 지면 방향 <code>Ts = S − N(N·S)</code>를 동·북 기저에 투영해 uv 변화율로 바꾼다. 동쪽 성분은 <code>1/(2π·cos φ)</code>, 북쪽 성분은 <code>1/π</code>를 곱한다(<code>main.js:448</code>).</li>
+<li>육지는 높이 <code>h = smoothstep(0, −5 px, d)</code>인 판이다. 해 쪽과 반대쪽 두 점의 높이 차가 턱의 밝기다. 해를 향한 해안은 밝고 반대쪽은 어둡다(<code>main.js:453</code>).</li>
+<li>바다 위 그림자는 해 쪽으로 <code>sl = 0.0035·tan(천정각) + 0.0018</code> rad 떨어진 점이 육지인지로 정한다. 해가 낮을수록 길어진다(<code>main.js:457</code>).</li>
+<li>얕은 물은 G 채널 거리로 <code>smoothstep(6, 0.5, d)</code>이다. 극지방(|φ| 64–76°)은 얼음색으로 섞는다(<code>main.js:466</code>).</li>
+<li><strong>낮밤 경계와 도는 지구</strong> (<code>main.js:69</code>, <code>main.js:478</code>, <code>main.js:1002</code>)</li>
+<li>해의 고도는 <code>k = N·S</code>이다. 낮의 비율은 <code>day = smoothstep(−0.05, 0.06, k)</code>, 낮의 밝기는 <code>0.6 + 0.4·smoothstep(0, 0.6, k)</code>이다. 경계 바로 안쪽(k ≈ 0.04)에는 금빛을 조금 곱한다(<code>main.js:470</code>).</li>
+<li>카메라와 해와 별은 공간에 고정되어 있고 지구만 돈다고 본다. 지구 좌표에서는 해와 별이 <code>−rot(t)</code>만큼 돌고, 개관 카메라도 <code>−rot(t)</code>만큼 돈다(<code>main.js:959</code>, <code>main.js:1003</code>).</li>
+<li>회전은 <code>rot(t) = −62°·(1 − outCubic(t/2.6)) + 2°·(t − 6.2)</code>이다. 처음에는 빠르게 돌다가 감속하고, 그 뒤로 초당 2°로 이어진다.</li>
+<li>6.2초의 태양 직하점은 (20°N, 95°W)이다. 이렇게 고르면 긴 호가 s ≈ 0.755에서 경계를 넘고(약 6.45초) 뉴질랜드는 밤이 된다. 경계를 넘는 지점은 호의 점마다 <code>S·p(s)</code>의 부호가 바뀌는 곳을 setup 전에 따로 계산해 정했다.</li>
+<li><strong>밤 불빛은 밤 쪽에서만 켜진다</strong> (<code>main.js:297</code> <code>bakeLights</code>, <code>main.js:651</code>)</li>
+<li>구면에 균등하게 뽑은 후보 점 가운데 거리장이 육지인 것만 받는다. 받을 확률은 세 항의 곱이다(<code>main.js:306–308</code>).<ul>
+<li>위도 항: 남위 55° 남쪽과 북위 70° 북쪽은 0이다.</li>
+<li>해안 항: <code>0.1 + 0.9·e^(d/14)</code>, 해안에 가까울수록 크다.</li>
+<li>덩어리 항: 시드를 준 3D simplex 잡음으로 마을이 뭉치게 한다.</li>
+</ul>
+</li>
+<li>받은 점마다 1–3개를 흩뿌려 약 2만 개를 만든다.</li>
+<li>꼭짓점 셰이더에서 <code>night = smoothstep(0.03, −0.14, N·S)</code>와 시선 쪽을 향하는 정도를 곱한다(<code>main.js:658</code>). 크기는 그 깊이에서 월드 단위당 픽셀 수로 정하고 1.6–9 px로 묶는다. 합성은 가산이고, 블룸이 빛 번짐을 만든다.</li>
+<li><strong>구름: 메타볼 → 거리장 → 바이큐빅</strong> (<code>main.js:238</code> <code>bakeClouds</code>, <code>main.js:489–553</code>)</li>
+<li>구름 사슬 175개를 거의 동서로 흐르게 놓는다. 열대 수렴대와 중위도 폭풍대에 몰리게 한다. 사슬마다 원판 3–7개다.</li>
+<li>각 원판은 구면 각거리 d로 <code>Σ max(0, 1 − (d/r)²)²</code>를 더한다(<code>main.js:266</code>). 원판의 위경도 상자 안의 텍셀만 돌므로 가볍다.</li>
+<li>문턱 0.3의 윤곽을 <code>(v − 0.3)/|∇v| + ½</code>로 1텍셀 폭의 정확한 커버리지로 바꾼다(<code>main.js:278</code>). 이것을 <code>signedDistance</code>로 부호 거리로 만들어 R에 안쪽 + 방향으로 넣는다(<code>main.js:284</code>). G에는 원래 장을 넣는다.</li>
+<li>셰이더는 R을 3차 B-스플라인으로 읽는다(<code>main.js:496</code> <code>bicubic</code>). 선형 보간 탭 네 번이면 되고, 텍셀이 50 px로 확대돼도 윤곽이 매끄럽다.</li>
+<li>구름 하나는 <code>h = smoothstep(0, 7, d)</code>인 둥근 돔이다. 해 쪽으로 조금 옮긴 두 번째 표본과 높이 차를 재어, 해를 향한 가장자리는 밝게, 반대쪽은 푸른 그늘로 칠한다(<code>main.js:536–537</code>). 해가 낮으면 복숭앗빛을 곱한다(<code>main.js:543</code>).</li>
+<li>지구 셰이더는 해 쪽으로 옮긴 점의 구름 거리로 바다에 구름 그림자를 떨군다(<code>main.js:460</code>).</li>
+<li><strong>카메라가 낮을 때는 가까운 구름을 걷는다.</strong> 텍셀 하나가 수십 픽셀로 커지는 높이에서는 바로 아래 구름이 화면을 덮는 커다란 판이 되기 때문이다. 추적 구간(4.45–7.6초, <code>main.js:1014</code>)에만 <code>smoothstep(1.5, 2.3, 거리 / 카메라 고도)</code>를 알파와 그림자에 곱한다(<code>main.js:461</code>, <code>main.js:551</code>). 고도로 나눈 거리라서 높이와 상관없이 "화면 아래쪽 절반"이 비고, 지평선 쪽에는 작고 흐린 구름만 남는다.</li>
+<li><strong>대기: 뒷면 가산 프레넬 껍질</strong> (<code>main.js:558–572</code>)</li>
+<li>반지름 RA = 1.075의 구를 <code>BackSide</code>, 가산 합성으로 그린다.</li>
+<li>껍질 위에서는 <code>|N·V| = √(1 − (b/RA)²)</code>이다(b는 시선의 중심 거리). 그래서 <code>x = |N·V| / √(1 − 1/RA²)</code>는 행성 가장자리에서 1, 껍질 바깥 윤곽에서 0이다. 바깥으로 갈수록 0까지 사라지는 프레넬 항이다(<code>main.js:567</code>).</li>
+<li>세기는 <code>x³·(0.3 + 0.7x²)</code>이고, 해 쪽 <code>smoothstep(−0.45, 0.5, N·S)</code>로 낮 쪽을 밝힌다.</li>
+<li>지구 표면에도 <code>(1 − N·V)³</code>로 같은 색의 안개를 섞어(<code>main.js:481–484</code>) 껍질과 끊김 없이 잇는다. 근접 장면에서는 이 항이 지평선의 대기층이 된다.</li>
+<li><strong>대권 호: 단위벡터 slerp + sin(πs)·h</strong> (<code>main.js:106</code> <code>slerpDir</code>, <code>main.js:325</code> <code>Arc</code>)</li>
+<li><code>p(s) = [sin((1−s)θ)·a + sin(sθ)·b] / sin θ</code>이고 θ = acos(a·b)이다.</li>
+<li>반지름은 <code>1.004 + h·sin(πs)</code>, h = 0.075·θ(라디안)이다(<code>main.js:338</code>). 먼 길일수록 높이 뜬다. 뉴질랜드 호는 θ = 99.7°, h = 0.13이다.</li>
+<li>480점의 누적 길이로 호 길이 비율 u를 만든다. <code>at(u)</code>는 이분 탐색과 선형 보간으로 점을 돌려준다(<code>main.js:353</code>). <code>sAt(u)</code>는 지면 비율 s를 돌려주므로 거리 계기는 <code>θ·6371 km·s</code>다(<code>main.js:1165</code>).</li>
+<li><strong>화면 공간 리본과 progress uniform</strong> (<code>main.js:362</code>, <code>main.js:574–622</code>)</li>
+<li>표본마다 꼭짓점 둘(side ±1)을 둔다. 각 꼭짓점은 앞뒤 이웃 위치를 속성으로 가진다.</li>
+<li>꼭짓점 셰이더는 이웃을 화면 좌표로 투영해 수직 방향을 구한다. 폭은 <code>clamp(uW·pxu, 3, 13) px</code>이다(<code>main.js:594</code>). 가까운 곳은 원근대로 굵고, 먼 곳은 3 px 아래로 가늘어지지 않는다. <code>pxu = P[1][1]·H/2 / w</code>는 그 깊이의 월드 단위당 픽셀 수다(<code>main.js:591</code>).</li>
+<li>조각 셰이더는 <code>seg = uProg − u</code>가 음수면 버린다(<code>main.js:607</code>). 이 uniform 하나가 그리기 진행도다.<ul>
+<li>밝기: <code>uBody + (1 − uBody)·e^(−seg/uTail)</code>. 머리에서 밝고 꼬리로 사라지며, 지나간 자리에는 가는 선이 남는다.</li>
+<li>머리: 흰 열 <code>e^(−seg/0.012)</code>, 폭은 <code>(1 + 0.9·e^(−seg/0.02))</code>배.</li>
+<li>가장자리: 1 px 안티에일리어싱.</li>
+</ul>
+</li>
+<li>여운의 빛줄기는 <code>uPulse</code>를 따라가는 가우스 띠다(<code>main.js:615</code>).</li>
+<li>추적 구간에는 꼬리가 화면 아래 자막 띠에 닿기 전에 사라진다. <code>gl_FragCoord.y</code> 300–560 px에서 0으로 줄인다(<code>main.js:620</code>). 밝은 선이 자막 뒤를 지나지 않고, 어두운 앞쪽으로 녹아든다.</li>
+<li>진행은 사다리꼴 속도(가속·순항·감속, <code>main.js:96</code>)로 정한다. 긴 호는 가속 16%, 감속 20%다.</li>
+<li><strong>도착 표시</strong> (<code>main.js:628</code> <code>MARK_FS</code>)</li>
+<li>표면에 접한 사각형 하나를 셰이더로 그린다. 점은 <code>outBack</code>으로 튀어나온다.</li>
+<li>고리 둘이 0.22초 간격으로 퍼진다. 반경 <code>0.18 + 0.8·(1 − (1 − x)³)</code>, 굵기·알파는 <code>(1 − x)²</code>로 줄어든다.</li>
+<li>사전곱 출력이다. 점은 덮고(알파), 고리와 빛무리는 더한다(알파 0).</li>
+<li><strong>카메라 리그 셋과 섞기</strong> (<code>main.js:948–996</code>)</li>
+<li>리그는 <code>{눈, 바라볼 점, 위, fov, 렌즈 시프트, 롤}</code>이다.<ul>
+<li>개관: 공간에 고정된 눈을 지구 좌표로 돌린 것(<code>main.js:956</code>).</li>
+<li>추적: 머리 기준으로 뒤 0.12, 위 0.1, 옆 0.028에서, 호를 따라 0.085 앞의 지면 점을 바라본다(<strong>미리 보기</strong>, <code>main.js:977–978</code>). 롤은 −14° → 3° → −2.5° → 0으로 감속하며 잦아든다(<code>main.js:979</code>).</li>
+<li>도착: 뉴질랜드 북쪽에서 떠올라 전체로 물러난다(<code>main.js:983</code>).</li>
+</ul>
+</li>
+<li>섞을 때 눈은 방향 slerp와 로그 반지름 보간, 바라볼 점은 직선 보간, 위 벡터는 slerp를 쓴다(<code>main.js:949</code>). 쿼터니언을 따로 slerp하면 중간에 빈 우주를 보지만, 바라볼 점을 섞으면 화면에 늘 주제가 있다.</li>
+<li>추적 리그의 위 벡터는 카메라 자리의 지면 법선이라 지평선이 수평으로 선다. 새 떼를 내려다보는 각(atan(0.1/0.12) ≈ 40°)이 지평선 내림각(약 34°)보다 커서, 새 떼는 늘 바다를 배경으로 보인다.</li>
+<li>렌즈 시프트는 <code>setViewOffset</code>이다(<code>main.js:995</code>). 개관에서는 지구본을 40 px 올리고, 마지막에는 40 px 내려 계기 아래에 둔다.</li>
+<li><strong>새 떼</strong> (<code>main.js:387</code>, <code>main.js:1061–1093</code>)</li>
+<li>선반 몸통, 머리 구, 위로 휜 부리, 두 마디 날개(안쪽과 바깥쪽)로 만든다. 날개는 3.1 Hz로 친다. 바깥 마디는 0.9 rad 늦게 따라와 휘는 날갯짓이 된다.</li>
+<li>다섯 마리가 V자로 머리 위치에 붙는다. 방향은 호 접선 F와 지면 법선으로 만든 기저다.</li>
+<li>내려앉을 때는 날개를 접고 작아진다(<code>main.js:1073</code>).</li>
+<li>햇빛 세기는 새 떼 자리의 <code>N·S</code>로 줄이고, 해가 낮으면 금빛으로 바꾼다(<code>main.js:1093</code>). 꼬리 머리에 짧은 거리의 강조색 점광원을 두어 밤에는 꼬리 빛이 새 아래를 비춘다(<code>main.js:1089</code>).</li>
+<li><strong>글자 층</strong> (<code>main.js:1105</code> 이후)</li>
+<li>2D 캔버스 한 장을 매 프레임 다시 그린다.</li>
+<li>이름표는 표시 위치를 <code>Vector3.project</code>로 투영해 붙인다. 앞면이 아니면 숨긴다(<code>main.js:1149</code>).</li>
+<li>거리 숫자는 고정 폭 칸에 그려 돌 때 흔들리지 않는다(<code>main.js:1204</code>, 캔버스에는 tabular figures가 없다).</li>
+<li>추적 구간에는 위쪽에 어두운 그라데이션 덮개를 깔아 밝은 지구 위에서도 숫자가 읽힌다.</li>
+<li><strong>후처리</strong> (<code>main.js:907–922</code>, <code>main.js:695</code>)</li>
+<li>반정밀도 HDR 타깃(2× MSAA)에 그린다.</li>
+<li>반해상도 <code>UnrealBloomPass</code>의 문턱은 0.92다. 1을 넘는 빛(호 머리, 표시, 불빛)만 번진다.</li>
+<li>마지막 패스 하나에서 비네트, 우주의 남색 그라데이션, ACES 톤 매핑, sRGB를 처리한다.</li>
+<li>지우기 색은 검정이다. 지우기 색은 선형 HDR 타깃에 sRGB 값 그대로 들어가서, 짙은 남색을 주었더니 화면 전체가 밝은 남색이 되었다(<code>main.js:733</code>). 우주의 색은 마지막 패스에서 칠한다.</li>
+<li><strong>아무 경로·데이터나 지구본에 올리는 법</strong>
+  1. 위경도를 단위벡터로 바꾼다. <code>sph(φ, λ) = (cos φ·sin λ, sin φ, cos φ·cos λ)</code>(<code>main.js:93</code>). 텍스처 uv와 같은 규약이라 표시, 호, 불빛, 구름이 한 좌표계에 맞는다.
+  2. 경로는 두 벡터 사이 slerp에 <code>1 + ε + h·sin(πs)</code>를 곱한다. 경유지가 있으면 구간마다 호를 하나씩 만들고, 앞 구간이 내려앉는 시각에 다음 구간을 출발시킨다(이 데모의 서해 갯벌 → 호주 북서부).
+  3. 그리기는 리본 메시의 <code>uProg</code>(또는 <code>drawRange</code>) 하나로 한다. 출발 시각과 비행 시간은 표 하나(<code>main.js:57</code> <code>ROUTES</code>)에서 읽는다.
+  4. 점 데이터는 표면에 접한 사각형 셰이더(도착 표시) 또는 <code>THREE.Points</code>로 그린다. 값의 크기는 반지름이나 밝기로 쓴다. 막대그래프라면 <code>sph</code>를 법선으로 삼아 원기둥을 세운다.
+  5. 면 데이터(나라별 값, 구역)는 등장방형 캔버스에 칠해 텍스처 채널 하나로 넣는다. 셰이더에서 같은 uv로 읽는다. 경계를 또렷하게 하려면 거리장으로 굽는다.
+  6. 이름표는 3D 점을 <code>project</code>해 2D 층에 붙인다. 뒷면 판정은 <code>N·(카메라 − p) &gt; 0</code>이다.
+  7. 카메라는 개관 리그와 "머리 + 미리 보기" 리그를 섞는다. 바라볼 점을 섞어야 전환 중에도 주제가 화면에 있다.</li>
+</ul></div></details>
+        <details class="dev"><summary>프레임마다 같은 그림이 나오게 하는 법 (결정성)</summary><div class="notes"><ul>
+<li>모든 움직임은 t의 닫힌 식이다. 회전, 해, 호 진행, 카메라 리그, 날갯짓, 고리, 숫자, 글자가 모두 그렇다. <code>track</code>·<code>ramp</code>·<code>ease</code>와 사다리꼴 속도식을 쓴다.</li>
+<li>무작위는 모두 setup에서 정한다. 구름 사슬은 <code>rand(1561)</code>, 불빛은 <code>rand(1571)</code>과 시드를 준 <code>SimplexNoise</code>(<code>{ random: rand(…) }</code>), 별은 <code>rand(1581)</code>이다. 쓴 애드온(EffectComposer, RenderPass, UnrealBloomPass, ShaderPass, SimplexNoise, BufferGeometryUtils)은 <code>Math.random</code>을 부르지 않는다.</li>
+<li>프레임은 카메라를 가장 먼저 정한다. 머리 빛의 가림 판정(<code>hidden</code>, 광선–구 교차)이 이 프레임의 카메라를 읽기 때문이다. 뒤에서 정하면 직전 프레임의 카메라를 읽어 탐색 순서에 따라 그림이 달라진다.</li>
+<li>2D 캔버스는 매 프레임 변환, 알파, 합성, 그림자, 자간을 기본값으로 되돌린 뒤 지운다.</li>
+<li>setup 끝에서 모든 셰이더를 미리 컴파일한다. HDR 타깃을 묶은 채로 컴파일하는데, 프로그램 키가 렌더 타깃에 따라 달라지기 때문이다. 이어서 가장 바쁜 순간(5.6초)을 한 번 그리고 1픽셀 <code>readPixels</code>로 GPU를 기다린다. 컴파일과 텍스처 업로드(소프트웨어 GPU에서 수 초)가 첫 프레임에 넘어가지 않는다.</li>
+<li>렌더러 검사(정순, 새 페이지 역순, 되돌아가기)는 <strong>pass, byte-identical</strong>이다.</li>
+</ul></div></details>
+        <details class="dev"><summary>한계와 조절할 점</summary><div class="notes"><ul>
+<li>육지는 110m(1:1억 1천만) 데이터라 근접 장면의 뉴질랜드가 둥근 덩어리로만 보인다. 도착 장면만 50m 데이터를 같은 방식으로 구워 섞으면 해안이 살아난다.</li>
+<li>등장방형 텍스처의 거리장은 픽셀 단위라 고위도에서 동서로 늘어난다(위도 φ에서 cos φ배). 얕은 물 띠와 해안 턱이 알래스카 근처에서 동서로 조금 좁다. 정확히 하려면 거리 계산의 가로 간격에 cos φ를 넣는다.</li>
+<li>태양 직하점(20°N)은 장면을 위해 고른 값이다. 가을 이동이라면 실제 직하점은 적도 근처다.</li>
+<li>거리 계기는 대권 거리(11,088 km)를 그대로 쓴다. 실제 새가 바람을 타고 휘어 가는 길은 아니다. 모든 숫자는 예시다.</li>
+<li>새는 단순한 선반·판 모형이고 그림자를 드리우지 않는다. 구름에 새 그림자를 떨구거나 날개 끝에 깃 결을 넣으면 근접 장면이 더 살아난다.</li>
+<li>더 해 볼 것</li>
+<li>경로마다 실제 위치 기록(시각, 위경도)을 받아 리본 표본을 그 점들로 바꾸기. 대권 대신 기록 경로를 따라 그린다.</li>
+<li>밤 불빛을 인구 격자 데이터로 바꾸기.</li>
+<li>해가 지는 순간 구름 가장자리에 붉은 띠(지는 해의 산란)를 넣기.</li>
+</ul></div></details>
+      </section>
+
+      <section class="sec"><h2>같은 분류의 다른 기법</h2><div class="rel"><a href="147-product-turntable.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/147-product-turntable.jpg" alt="" width="360" height="640">실리콘 패킹</a><a href="148-exploded-view.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/148-exploded-view.jpg" alt="" width="360" height="640">손전등 속을 들여다보면</a><a href="149-toon-shading.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/149-toon-shading.jpg" alt="" width="360" height="640">비 오는 정류장</a><a href="150-character-rig.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/150-character-rig.jpg" alt="" width="360" height="640">안녕, 하고 손 흔들기</a><a href="151-tilt-shift.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/151-tilt-shift.jpg" alt="" width="360" height="640">장난감 마을의 아침</a><a href="152-point-cloud-scan.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/152-point-cloud-scan.jpg" alt="" width="360" height="640">돌 정자를 읽는 빛</a><a href="153-particle-dissolve.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/153-particle-dissolve.jpg" alt="" width="360" height="640">흩어졌다 다시 피어나는</a><a href="154-domino-chain.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/154-domino-chain.jpg" alt="" width="360" height="640">넘어지며 쓰는 말</a></div></section>
+      <nav class="pn" aria-label="이전 · 다음 기법"><a href="155-volumetric-light.html">← 창으로 지나가는 하루</a><a href="157-webtoon-panels.html">칸 너머로 점프 →</a></nav>
+      <p class="note2">데모 · 그림 · 원리 · 초 단위 설명 출처: <a href="https://github.com/kstost/cokacmotion/tree/main/skills/aimotion/demos/156-globe-arcs" target="_blank" rel="noopener">kstost/cokacmotion · 156-globe-arcs</a> (MIT License, Copyright (c) 2026 kstost). 활용 가이드와 만드는 법은 AI 영상 레퍼런스 보관함이 썼어요.</p>
+    </article>
+  </div>
+</main>
+<footer><a href="../../guide/">가이드</a> · <a href="../video/">영상 프롬프트</a> · <a href="./">코드 모션 기법</a> · <a href="../../privacy.html">소개 · 개인정보처리방침</a></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var toast=document.getElementById("toast"),tm;
+  function say(m){toast.textContent=m;toast.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove("on");},1600);}
+  window.cmCopy=function(t){ if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){say("복사했어요");},function(){say("복사가 막혀 있어요. 직접 선택해 복사해 주세요");});} else say("복사가 막혀 있어요. 직접 선택해 복사해 주세요"); };
+  document.addEventListener("click",function(e){ var b=e.target.closest("[data-copy]"); if(!b) return; var src=b.getAttribute("data-copy"); var el=src.charAt(0)==="#"?document.querySelector(src):null; cmCopy(el?(el.value||el.textContent):src); });
+})();
+</script><script>
+(function(){
+  var DEMO="https://kstost.github.io/cokacmotion/156-globe-arcs/", ID="156-globe-arcs", TITLE="\ucca0\uc0c8\uc758 \uae38", TECH="3D \uc9c0\uad6c\ubcf8 \u00b7 \ub300\uae30 \ube5b \ubc88\uc9d0 + \ub0ae\ubc24 \uacbd\uacc4 + \ub300\uad8c \ud638";
+  var st=document.getElementById("stage"), go=document.getElementById("go"), rp=document.getElementById("rp");
+  function load(){ st.innerHTML='<iframe src="'+DEMO+'" title="'+TITLE+' 데모" allow="autoplay" loading="eager"></iframe>'; rp.hidden=false; }
+  go.addEventListener("click",load); rp.addEventListener("click",load);
+  var f=function(id){return document.getElementById(id);};
+  function build(){
+    var scene=f("f-scene").value.trim()||"[내 영상의 장면]", text=f("f-text").value.trim(), col=f("f-color").value.trim(), ratio=f("f-ratio").value, len=f("f-len").value;
+    f("pout").textContent="aimotion 스킬(kstost/cokacmotion)의 "+ID+" 「"+TITLE+"」 기법만 참고해서 만들어 줘.\n"+
+      "- 기법: "+TECH+"\n- 내 장면: "+scene+"\n"+(text?"- 화면 문구: "+text+"\n":"")+(col?"- 색: "+col+" 중심으로, 나머지 색은 여기에 맞춰\n":"")+
+      "- 비율 "+ratio+", 길이 "+len+", 30fps\n"+
+      "- 데모의 소재 · 장면 · 문구 · 색 · 구도는 쓰지 말고, NOTES.md와 소스를 읽어 원리만 가져와.\n"+
+      "- 모든 움직임은 시각 t 하나로 계산해서 같은 t엔 같은 그림이 나오게 해. 먼저 HTML로 미리보기를 만들고, 내가 확인하면 프레임마다 캡처해 MP4로 렌더링해 줘.\n"+
+      "(스킬이 설치돼 있지 않으면 https://github.com/kstost/cokacmotion 저장소를 받아 skills/aimotion/SKILL.md부터 읽어 줘.)";
+  }
+  ["f-scene","f-text","f-color","f-ratio","f-len"].forEach(function(id){f(id).addEventListener("input",build);f(id).addEventListener("change",build);});
+  build();
+})();
+</script>
+<script data-goatcounter="https://aivideoref.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

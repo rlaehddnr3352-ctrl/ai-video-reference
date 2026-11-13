@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>도토리 낚아채기 · 코드 모션 기법 #165 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="도토리 낚아채기 — 빠른 동작에 스미어 작화 (휙!). 작화 연출 · 스미어 · 다중상 · 2프레임 찍기 + 타이밍 차트. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/prompts/code-motion/165-smear-frames.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="도토리 낚아채기 · 코드 모션 기법 #165 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="도토리 낚아채기 — 빠른 동작에 스미어 작화 (휙!). 작화 연출 · 스미어 · 다중상 · 2프레임 찍기 + 타이밍 차트. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/prompts/code-motion/165-smear-frames.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "코드 모션 기법", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/"}, {"@type": "ListItem", "position": 2, "name": "도토리 낚아채기", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/165-smear-frames.html"}]}</script></head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+.faq h3{font-size:16px;margin:22px 0 6px}.faq p{margin:0 0 10px}
+</style><style>
+.page h1,.vc h3{word-break:keep-all}
+main.wide{max-width:1100px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:18px 0 26px;padding:0;list-style:none}
+.howto li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.6;max-width:none}
+.howto b{display:block;font-family:var(--f-display);font-weight:400;font-size:18px;margin-bottom:4px}
+.howto code{font-family:var(--f-mono);font-size:12.5px;background:var(--bg);padding:1px 5px;border-radius:5px}
+.flt{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.flt input{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips button{font:inherit;font-size:13px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt{font-size:13px;color:var(--muted)}
+ol.grid{list-style:none;padding:0;margin:16px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.vc{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;max-width:none;min-width:0}
+.vc[hidden]{display:none}
+.vv{display:block;width:100%;aspect-ratio:9/16;max-height:560px;object-fit:contain;background:#0b0b0f}
+.vb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.hd{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px}
+.no{font-family:var(--f-mono);color:var(--muted)}
+.cat{font-weight:600;color:var(--rec)}
+.tg{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-radius:6px;padding:0 6px;color:var(--muted)}
+.vc h3{font-size:17px;line-height:1.4;margin:2px 0 0}
+.ds{margin:0;font-size:14px;line-height:1.6}
+.hw{margin:0;font-size:13px;line-height:1.6;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 10px}
+.hw b{display:block;color:var(--ink);font-size:12px;margin-bottom:2px}
+details summary{cursor:pointer;font-size:13px;color:var(--muted);padding:4px 0}
+.pp{font-family:var(--f-mono);font-size:12px;line-height:1.6;background:var(--bg);border-radius:8px;padding:10px 12px;margin:4px 0;white-space:pre-wrap;overflow-wrap:anywhere;max-height:360px;overflow:auto}
+.act{margin-top:auto;padding-top:4px}
+.act .cp{font:inherit;font-size:14px;padding:8px 14px;border-radius:9px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;width:100%}
+.note{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:30px;line-height:1.7}
+</style><style>
+.cm-stats{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.cm-stats span{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--surface)}
+.cm-stats b{font-family:var(--f-mono);margin-right:4px}
+.inst{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin:16px 0 22px}
+.inst h2{font-size:17px;margin:0 0 10px}
+.code{position:relative;max-width:100%;box-sizing:border-box;font-family:var(--f-mono);font-size:12.5px;line-height:1.7;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 72px 10px 12px;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.code .cbtn{position:absolute;top:8px;right:8px}
+.cbtn{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:3px 10px;cursor:pointer}
+.picks{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(132px,1fr);gap:10px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x mandatory}
+.picks a{scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
+.picks img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block;background:#111}
+.picks b{display:block;font-size:13px;margin-top:6px;line-height:1.35}
+.picks small{display:block;font-size:11.5px;color:var(--muted);line-height:1.4}
+.flt2{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.flt2 input[type=search]{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.flt2 .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+.flt2 select{font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt2{font-size:13px;color:var(--muted);margin-left:auto}
+.cmgrid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.cmc{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.cmc .ph{display:block;position:relative;aspect-ratio:4/5;background:#111}
+.cmc .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+.cmc .no{position:absolute;left:8px;top:8px;font-family:var(--f-mono);font-size:11px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;padding:2px 6px}
+.cmc .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cmc h3{font-size:16px;margin:0;line-height:1.35}
+.cmc h3 a{color:inherit;text-decoration:none}
+.cmc .ln{margin:0;font-size:13.5px;line-height:1.55}
+.cmc .tc{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tg2{font-size:11px;border-radius:6px;padding:1px 7px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.tg2.u{color:var(--ink)}
+.w-light{color:#2f8f5b}.w-mid{color:#b7791f}.w-heavy{color:var(--rec)}
+.cmc .ft{display:flex;gap:6px;margin-top:auto;padding-top:6px}
+.cmc .ft a,.cmc .ft button{flex:1;text-align:center;font:inherit;font-size:13px;border-radius:9px;padding:8px 6px;cursor:pointer;text-decoration:none}
+.cmc .ft a{background:var(--ink);color:var(--bg);border:1px solid var(--ink)}
+.cmc .ft button{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.note2{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:28px;line-height:1.7}
+/* detail */
+.crumb{font-size:13px;color:var(--muted);margin:0 0 10px}.crumb a{color:inherit}
+.cmd{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:28px;align-items:start}
+.cmd>*{min-width:0}
+.player{position:sticky;top:12px}
+.stage{position:relative;aspect-ratio:9/16;background:#000;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.stage img,.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.stage .go{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:inherit;font-size:15px;font-weight:600;background:rgba(0,0,0,.72);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:12px 20px;cursor:pointer;white-space:nowrap}
+.pl-act{display:flex;gap:8px;margin-top:8px;font-size:13px;flex-wrap:wrap}
+.pl-act a,.pl-act button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;text-decoration:none}
+.pl-note{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.5}
+.cmd h1{font-size:clamp(24px,4vw,34px);margin:4px 0 6px;line-height:1.25}
+.cmd .tech{margin:0 0 10px;color:var(--muted);font-size:14.5px}
+.oneline{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--rec);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:15px;line-height:1.6}
+.oneline b{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:2px}
+.sec{margin:26px 0 0}
+.sec>h2{font-size:20px;margin:0 0 10px;padding-top:6px;border-top:1px solid var(--line)}
+.ug{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.ug h3{font-size:15px;margin:0 0 4px}.ug p{margin:0 0 6px;font-size:14px;line-height:1.6}.ug ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.7}
+.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+.steps>li{counter-increment:s;position:relative;padding:0 0 18px 40px}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);font-family:var(--f-mono);font-size:13px;display:grid;place-items:center}
+.steps h3{font-size:15.5px;margin:3px 0 6px}.steps p{margin:0 0 6px;font-size:14px;line-height:1.6}
+.pb{display:grid;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.pb label{display:grid;gap:3px;font-size:13px;font-weight:600}
+.pb input,.pb select{font:inherit;font-weight:400;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.pb .two{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.fix{display:flex;flex-wrap:wrap;gap:6px}
+.fix button{font:inherit;font-size:13px;border:1px dashed var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer}
+.notes{font-size:14px;line-height:1.7}
+.notes h4{font-size:14.5px;margin:14px 0 4px}
+.notes code{font-family:var(--f-mono);font-size:12px;background:var(--bg);border-radius:4px;padding:0 4px}
+.notes ul{padding-left:18px}
+.tw{overflow-x:auto;margin:8px 0}.tw table{border-collapse:collapse;font-size:13px;min-width:420px}
+.tw th,.tw td{border:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left}
+.tw th{background:var(--surface)}
+.sheet{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);margin-top:8px}
+details.dev{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+details.dev summary{cursor:pointer;font-weight:600;font-size:14.5px}
+.rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.rel a{text-decoration:none;color:inherit;font-size:12.5px;line-height:1.35}
+.rel img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block;margin-bottom:4px;background:#111}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:22px;font-size:14px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:13px;border-radius:999px;padding:8px 16px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20}
+.toast.on{opacity:1}
+@media (max-width:820px){.cmd{grid-template-columns:minmax(0,1fr)}.player{position:static;max-width:340px;margin:0 auto}.pb .two{grid-template-columns:1fr}}
+</style><header class="top"><nav><a class="brand" href="../../">AI 영상 레퍼런스 보관함</a><a href="../../#dict">레퍼런스 사전</a><a href="../../radar/">터진 쇼츠</a><a href="../../guide/">가이드</a><a href="../../prompts/video/">영상 프롬프트</a><a href="../../privacy.html">소개</a></nav></header>
+<main class="wide">
+  <p class="crumb"><a href="./">코드 모션 기법</a> › <a href="./#g=g09">영상 표현력</a> › #165</p>
+  <div class="cmd">
+    <aside class="player">
+      <div class="stage" id="stage"><img src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/165-smear-frames.jpg" alt="도토리 낚아채기 데모의 절정 장면" width="360" height="640"><button type="button" class="go" id="go">▶ 여기서 데모 재생</button></div>
+      <div class="pl-act"><a href="https://kstost.github.io/cokacmotion/165-smear-frames/" target="_blank" rel="noopener">새 창에서 크게 ↗</a><button type="button" id="rp" hidden>처음부터 다시</button><a href="https://github.com/kstost/cokacmotion/blob/main/skills/aimotion/demos/165-smear-frames/NOTES.md" target="_blank" rel="noopener">원문 노트 ↗</a></div>
+      <p class="pl-note">데모는 영상 파일이 아니라 코드가 지금 그리는 화면이에요. 브라우저에서 가볍게 돌아가는 기법이라 미리보기와 렌더링이 빨라요. 재생 중 스페이스 · 클릭은 멈춤, ← →는 0.5초 이동이에요.</p>
+    </aside>
+    <article>
+      <span class="eyebrow">#165 · 영상 표현력</span>
+      <h1>도토리 낚아채기</h1>
+      <p class="tech">작화 연출 · 스미어 · 다중상 · 2프레임 찍기 + 타이밍 차트</p>
+      <div class="tags"><a class="tg2 u" href="./#u=character">캐릭터·연기</a><span class="tg2 w-light">가벼움 · 브라우저 기능만</span></div>
+      <div class="oneline"><b>광고 · 쇼츠에서는</b>빠른 동작에 스미어 작화 (휙!)</div>
+
+      <section class="sec" id="guide"><h2>활용 가이드</h2><div class="ug"><h3>캐릭터·연기로 쓸 때</h3><p>마스코트·캐릭터가 움직이거나 표정 연기를 하는 장면에 써요.</p><ul><li>캐릭터 디자인(정면·옆면 그림)을 먼저 정하고 기법은 움직임에만 쓰세요.</li><li>동작은 &#x27;준비 → 동작 → 여운&#x27; 3박자로 적으면 자연스러워요.</li><li>말하는 캐릭터는 대사 음성 파일을 주고 입 모양을 맞춰 달라고 해요.</li></ul></div>
+        
+      </section>
+
+      <section class="sec" id="make"><h2>만드는 법</h2>
+        <ol class="steps">
+          <li><h3>준비하기</h3><p>Claude Code를 열고 빈 폴더에서 시작해요. aimotion 스킬을 처음 한 번 설치해요.</p>
+            <div class="code" id="i1">claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion<button type="button" class="cbtn" data-copy="#i1t">복사</button></div><textarea id="i1t" hidden>claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion</textarea></li>
+          <li><h3>프롬프트 만들기</h3><p>칸을 채우면 아래 프롬프트가 바로 바뀌어요. 데모의 장면이 아니라 <b>내 장면</b>을 적는 게 핵심이에요.</p>
+            <div class="pb" id="pb">
+              <label>내 장면 (무엇을 보여 줄지)<input id="f-scene" placeholder="예: 동네 빵집 신메뉴 '소금빵' 출시 소식"></label>
+              <label>화면에 들어갈 문구<input id="f-text" placeholder="예: 오늘 아침 7시, 소금빵 첫 판"></label>
+              <div class="two">
+                <label>브랜드 색<input id="f-color" placeholder="예: #F2C14E, 크림색"></label>
+                <label>비율<select id="f-ratio"><option>9:16 세로 (1080×1920)</option><option>16:9 가로 (1920×1080)</option><option>1:1 정사각 (1080×1080)</option><option>4:5 피드 (1080×1350)</option></select></label>
+                <label>길이<select id="f-len"><option>5초</option><option selected>6초</option><option>8초</option><option>10초</option><option>15초</option></select></label>
+              </div>
+            </div>
+            <div class="code" id="pout"></div>
+            <div class="pl-act"><button type="button" data-copy="#pout">프롬프트 복사</button></div></li>
+          <li><h3>미리보기 보고 고치기</h3><p>Claude Code가 만든 HTML을 브라우저로 열어 확인하고, 고칠 점을 말로 알려 줘요. 자주 쓰는 수정 문장을 눌러 복사하세요.</p>
+            <div class="fix"><button type="button" data-copy="전체 속도를 1.5배 느리게 해 줘">전체 속도를 1.5배 느리게 해 줘</button><button type="button" data-copy="효과 강도를 절반으로 줄여 줘">효과 강도를 절반으로 줄여 줘</button><button type="button" data-copy="글자를 화면 위쪽 1/3 위치로 옮겨 줘">글자를 화면 위쪽 1/3 위치로 옮겨 줘</button><button type="button" data-copy="마지막 1초는 움직임을 멈추고 유지해 줘">마지막 1초는 움직임을 멈추고 유지해 줘</button><button type="button" data-copy="배경색을 브랜드 색으로 바꿔 줘">배경색을 브랜드 색으로 바꿔 줘</button><button type="button" data-copy="화면 아래 15%는 자막 자리로 비워 줘">화면 아래 15%는 자막 자리로 비워 줘</button><button type="button" data-copy="처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘">처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘</button><button type="button" data-copy="같은 영상을 16:9 가로로도 만들어 줘">같은 영상을 16:9 가로로도 만들어 줘</button></div></li>
+          <li><h3>MP4로 뽑기</h3><p>실시간 화면 녹화보다 프레임 단위 렌더링이 끊김 없고 선명해요.</p>
+            <div class="code" id="r1">이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.<button type="button" class="cbtn" data-copy="#r1t">복사</button></div><textarea id="r1t" hidden>이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.</textarea></li>
+          <li><h3>내 영상에 합치기</h3><p>제목 · 자막 · 전환처럼 실사 위에 얹을 효과라면 배경을 투명하게 뽑아 편집 프로그램(캡컷 · 프리미어)의 위 트랙에 올려요. 이미 찍은 영상이 있으면 파일을 주고 "이 영상 위에 효과를 입혀 줘"라고 해도 돼요.</p>
+            <div class="code" id="r2">배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.<button type="button" class="cbtn" data-copy="#r2t">복사</button></div><textarea id="r2t" hidden>배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.</textarea></li>
+        </ol>
+      </section>
+
+      <section class="sec" id="timeline"><h2>초 단위로 보기</h2>
+        <p class="pl-note">데모가 몇 초에 무엇을 보여 주는지예요. 장면을 따라 하려는 게 아니라, 기법이 어떤 순서와 리듬으로 쓰였는지 보는 용도예요.</p>
+        <img class="sheet" loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/165-smear-frames-sheet.jpg" alt="도토리 낚아채기 1초 간격 장면" width="822" height="579">
+        <div class="notes"><p>가을 숲 나뭇가지의 다람쥐가 건너편에 매달린 도토리를 노려보다 웅크리고 숨을 참은 뒤, 그림 몇 장 만에 틈을 건너 도토리를 낚아챈다. 늘어진 스미어 한 장, 꼬리와 발의 다중상, 두 프레임의 색 반전을 지나 착지하고, 대시의 여섯 장이 어니언 스킨으로 동작선 위에 다시 펼쳐진다.</p>
+<p>팔레트는 숲의 어두운 초록과 안개 낀 세이지, 나무껍질 갈색, 녹슨 주황 다람쥐(#c95f2c)와 크림, 먹선(#2a1a10)이다. 강조색은 전기 같은 노랑 하나(#ffc21a)다. 속도선, 스미어 가장자리, 차트의 재생 표시와 스미어 눈금에만 쓴다. 다람쥐의 주황과는 색상과 명도가 떨어져 있다.
+이야기 내내 돌아오는 장치는 위쪽의 타이밍 차트다.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>시간 t (프레임)</th>
+<th>다람쥐</th>
+<th>무엇이 보이나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–0.8 (f0–23)</td>
+<td>3프레임</td>
+<td>숲이 밝아지고 차트가 왼쪽부터 그려진다. 다람쥐는 가지 위에서 앞발로 얼굴을 다듬는다(8장). 낙엽은 매 프레임 떨어진다.</td>
+</tr>
+<tr>
+<td>0.8–1.2 (f24–35)</td>
+<td>2프레임</td>
+<td>도토리를 알아채고 고개를 든다. 간격 0, .1, .38, .74, 1.07, 1이라 살짝 넘쳤다 돌아온다. 꼬리는 한 장 늦게 따라온다.</td>
+</tr>
+<tr>
+<td>1.2–1.8 (f36–53)</td>
+<td>3프레임</td>
+<td>노려보기. 한 번 깜빡인다.</td>
+</tr>
+<tr>
+<td>1.8–2.8 (f54–83)</td>
+<td>2프레임</td>
+<td>천천히 출발해 천천히 멈추는 웅크리기(9장), 엉덩이 흔들기(6장).</td>
+</tr>
+<tr>
+<td>2.8–3.5 (f84–104)</td>
+<td>3프레임</td>
+<td>숨 참기. 넓이를 지키며 납작해짐이 깊어지고, 1px씩 떨린다. 긴 정지 동안 낙엽이 다람쥐 앞을 부드럽게 지나간다.</td>
+</tr>
+<tr>
+<td>3.5–3.87 (f105–116)</td>
+<td>2프레임</td>
+<td>대시. f105 출발 원화(늘어남), f107 스미어, f109 다중상, f111–112 임팩트(두 프레임, 색 반전), f113 도토리를 안고 떨어지는 동화(꼬리 다중상), f115 착지 원화(납작).</td>
+</tr>
+<tr>
+<td>3.9–4.6 (f117–137)</td>
+<td>2프레임</td>
+<td>튀어 오르고, 다시 눌리고, 자리 잡은 뒤 도토리를 들어 올린다. 가지는 착지 무게로 휘었다 감쇠 진동한다. 대시가 일으킨 바람에 근처 낙엽이 밀려난다(1프레임).</td>
+</tr>
+<tr>
+<td>4.6–4.85</td>
+<td>3프레임</td>
+<td>도토리를 든 채 숨 쉰다.</td>
+</tr>
+<tr>
+<td>4.85–5.55</td>
+<td>3프레임</td>
+<td>장면이 어두워지고 차트가 대시 구간(f101–119)으로 확대된다. 눈금에 그림 번호와 이름이 붙는다.</td>
+</tr>
+<tr>
+<td>5.15–5.75</td>
+<td></td>
+<td>동작선이 그려지고, 그림이 놓인 자리마다 간격 눈금이 찍힌다. 여섯 장이 크림색 어니언 스킨으로 나타나고 제목이 뜬다: "도토리까지 0.2초, 그림 네 장으로 건넜다".</td>
+</tr>
+<tr>
+<td>5.55–7.95</td>
+<td></td>
+<td>한 장씩 다시 보기. 0.4초마다 한 장이 제 그림으로 켜지고 차트의 표시도 그 눈금으로 건너뛴다. <strong>6.0초</strong>(포스터)는 스미어가 켜진 순간이다.</td>
+</tr>
+<tr>
+<td>7.95–8.55</td>
+<td></td>
+<td>여섯 장이 함께 보인다.</td>
+</tr>
+<tr>
+<td>8.55–9.2</td>
+<td></td>
+<td>어니언 스킨과 어둠이 걷히고 차트가 영상 전체(f0–300)로 물러난다.</td>
+</tr>
+<tr>
+<td>9.07–10 (f272–299)</td>
+<td>2프레임</td>
+<td>다람쥐가 도토리를 깨문다. 차트 오른쪽 끝에서 표시가 2프레임마다 건너뛴다.</td>
+</tr>
+</tbody>
+</table></div></div>
+      </section>
+
+      <section class="sec" id="how"><h2>원리</h2>
+        <p class="pl-note">개발자용 구현 설명이에요(원작자 노트, MIT). 몰라도 만들 수 있지만, Claude에게 "이 원리 중 ○○만 써 줘"처럼 지시할 때 도움이 돼요.</p>
+        <details class="dev" open><summary>기법과 원리</summary><div class="notes"><ul>
+<li><strong>층마다 다른 찍기: t_k = floor(t·fps)/fps</strong>(<code>main.js:29</code>, <code>main.js:30</code>, <code>main.js:142</code>)</li>
+<li>프레임 번호 n = floor(t·30)이 모든 것의 시계다. 낙엽, 빛, 먼지, 카메라는 n/30, 곧 1프레임(30장/초)으로 움직인다.</li>
+<li>다람쥐는 노출표(XS)의 그림이 바뀔 때만 바뀐다. 2프레임은 한 그림을 2프레임 동안 보여 주는 것(15장/초)이고, 3프레임은 10장/초다. 24fps 작업이라면 같은 표가 12장/8장이 된다.</li>
+<li>노출표의 한 줄은 그림 하나다: 시작 프레임 n, 종류(원화·브레이크다운·동화), 자세, 효과(스미어·다중상·임팩트)(<code>main.js:78</code>–<code>main.js:135</code>). drawingAt(n)은 n 이하인 마지막 그림을 이분 탐색으로 고른다. 전체 300프레임에 그림은 118장이다.</li>
+<li>그림 안의 작은 움직임(숨, 꼬리 흔들림)도 그 그림의 시작 시각 t_k로 계산한다(<code>main.js:80</code>). 그래서 움직이는 정지도 3프레임으로 끊긴다.</li>
+<li>캐릭터에 묶인 것은 캐릭터와 같이 찍는다. 가지의 휨은 지금 그림의 시작 프레임 n_k로 계산하고(<code>main.js:44</code>, <code>main.js:45</code>), 그만큼 발도 내려간다(<code>main.js:137</code>). 매달린 도토리의 흔들림과 잔가지 튕김은 배경이라 1프레임이다(<code>main.js:39</code>, <code>main.js:41</code>).</li>
+<li>카메라가 매 프레임 밀리는 동안 다람쥐 그림은 2·3프레임씩 머문다. 움직이는 배경 위의 셀처럼, 화면 위치는 매 프레임 따라가고 그림만 끊긴다.</li>
+<li><strong>간격 차트: 이징을 곡선이 아니라 그림의 자리로 적는다</strong>(<code>main.js:94</code>, <code>main.js:105</code>, <code>main.js:117</code>)</li>
+<li>동작마다 그림의 자리를 0..1 수열로 적는다. 고개 들기는 0, .1, .38, .74, 1.07, 1(넘쳤다 돌아옴)이다. 웅크리기는 0, .05, .16, .34, .56, .76, .9, .97, 1이라 양 끝이 촘촘하다(천천히 출발·천천히 멈춤).</li>
+<li>자세는 두 원화를 그 자리값으로 섞는다(<code>squirrel.js:42</code>). 숫자는 선형 보간, 점은 점끼리 보간한다. 기본 그림 다섯(앉기, 웅크리기, 도약, 착지, 들어 올리기)을 차례로 섞어 한 자세를 만든다(<code>squirrel.js:52</code>).</li>
+<li>대시는 호 위의 자리 u로 적는다: 0 → .6 → .9 → 1 → 1.45 → 2. 도토리 앞에서 간격이 줄어 잡는 순간에 머물고, 떨어질 때는 간격이 커진다. u ∈ [0, 1]은 출발 엉덩이 A₀에서 잡는 엉덩이 G까지의 2차 베지어, [1, 2]는 G에서 착지까지다(<code>main.js:60</code>, <code>main.js:62</code>).</li>
+<li>G는 거꾸로 푼다. 잡는 자세에서 앞발 + (4, −14)가 그 순간의 도토리 꼭지에 오도록 hip = acorn − M·(paw + (4, −14))이다(<code>main.js:55</code>).</li>
+<li><strong>스미어: 앞 그림에서 이번 그림까지 쓸고 간 모양</strong>(<code>main.js:159</code>, <code>squirrel.js:91</code>, <code>main.js:218</code>)</li>
+<li>다람쥐는 원, 캡슐, 관으로만 만든다. 그래서 몸의 원 여섯 개(엉덩이, 몸 가운데, 가슴, 머리, 주둥이, 앞발)를 그대로 쓸 수 있다(<code>squirrel.js:187</code>).</li>
+<li>앞 그림(u₀)과 이번 그림(u₁) 사이를 M = 16등분한 자세를 만들고, 원마다 이웃한 두 위치를 볼록 껍질로 잇는다. 두 원 (c₁, r₁), (c₂, r₂)의 바깥 접선은 법선 n이 n·u = (r₁ − r₂)/d를 만족하는 곳에서 닿는다. 접점의 각은 φ ± acos((r₁ − r₂)/d)다. 원 1의 뒤쪽 호, 접선, 원 2의 앞쪽 호가 다각형 하나다.</li>
+<li>뒤끝으로 갈수록 가늘다: 반지름 r·(0.06 + 0.94·s^1.25), s는 앞 그림 0에서 이번 그림 1까지다. 껍질들의 합집합이 호를 따라 휘는 긴 눈물방울이 된다.</li>
+<li>뒷발과 꼬리는 쓸지 않는다. 엉덩이를 축으로 돌면서 몸과 함께 이동하므로, 쓸면 부채꼴 혹이 생긴다. 스미어에서는 줄기 속으로 녹인다. 뒤끝 30%는 채우지 않고 마른 붓 결로 바꾼다. 꼬리색·털색의 끊긴 선 17가닥이 호를 따라가며 가로로 ±46·(0.3 + 0.7·s/0.45) 안에 퍼진다.</li>
+<li>그리는 순서(<code>main.js:218</code>): 강조색 테두리(외곽 8.5px) → 붓결의 먹 → 줄기의 먹(4.5px) → 붓결의 색 → 줄기의 색 → 앞끝에 이번 그림의 머리, 눈, 앞발. 강조색은 가장자리에만 남는다.</li>
+<li><strong>실루엣 하나 = 먹 스트로크 위에 채우기</strong>(<code>squirrel.js:205</code>)</li>
+<li>한 무리(몸통, 머리 등)의 다각형을 한 경로에 넣어 폭 2·O의 먹으로 긋고, 같은 경로를 채운다. 안쪽 선은 채우기에 덮이고 바깥 윤곽만 O = 4.5px 남는다. 겹친 원들이 한 몸으로 보이는 이유다.</li>
+<li>늘이기와 누르기는 다각형 꼭짓점에 행렬을 먼저 걸고 나서 긋는다. 그래서 늘어난 그림에서도 먹선 두께가 같다.</li>
+<li><strong>늘이기와 누르기는 넓이를 지킨다: sx·sy = 1</strong>(<code>squirrel.js:69</code>)</li>
+<li>M = T · R(sa)·diag(st, 1/st)·R(−sa) · R(rot)다. 늘이는 축 sa가 세계 각도라 몸의 회전과 따로 고른다.</li>
+<li>출발은 진행 방향으로 1.32배, 스미어 그림은 1.52배, 착지는 가로 1.36배(세로 1/1.36), 튀어 오름은 가로 0.84배라 세로로 늘어난다. 숨 참기는 일곱 장에 걸쳐 가로 1.17배까지 납작해진다.</li>
+<li>det = 1이라 스미어의 원 반지름은 늘이기와 상관없이 r 그대로다.</li>
+<li>가지에 선 자세는 발 접점을 주고 엉덩이를 역산한다: root = foot − M·contact. 눌릴 때도 발이 가지에서 뜨지 않는다.</li>
+<li><strong>다중상: 사이 시각의 윤곽 사본</strong>(<code>main.js:189</code>, <code>main.js:241</code>)</li>
+<li>앞 그림과 이번 그림 사이 s = j/(N + 1) 자리의 자세를 N개 만든다(잡기 직전 3개, 떨어질 때 2개). 꼬리와 네 발만 먹선 3.6px로 긋고 안은 거의 비운다. 불투명도 0.45 + 0.5·s라 최근 사본일수록 진하다.</li>
+<li>꼬리는 반지름이 변하는 관의 포락선 p ± r·(−r′T ± √(1 − r′²)N)에 둥근 끝을 붙인 다각형 하나다(<code>squirrel.js:105</code>). 그래서 합집합 없이 바로 그을 수 있다.</li>
+<li><strong>속도선: 속도 방향으로, 그림마다 새로</strong>(<code>main.js:195</code>)</li>
+<li>그림의 속도 방향(호의 접선)에 평행한 쐐기 13–18개를 몸 중심선에서 70–300px 떨어진 곳에 둔다. 몸이 지나는 줄은 비운다. 30%는 크림, 나머지는 강조색이고, 먹 그림자를 (2, 3) 밀어 깐다.</li>
+<li>난수 씨앗이 그림의 시작 프레임이라 속도선도 2프레임마다 바뀐다.</li>
+<li><strong>임팩트 프레임: 두 프레임 팔레트 교체</strong>(<code>main.js:434</code>)</li>
+<li>잡는 그림(f111)은 2프레임 노출된다. 첫 프레임은 먹 바탕에 크림 실루엣과 강조색 집중선이고, 둘째 프레임은 강조색 바탕에 먹 실루엣과 먹 집중선이다.</li>
+<li>숲, 빛, 낙엽은 지우고 가지, 다람쥐, 도토리만 같은 다각형으로 한 색 채운다. 눈은 바탕색 구멍이다. 집중선은 잡는 점에서 반지름 240–460에서 시작하는 가는 쐐기 64개다. 차트도 둘째 프레임에서 색이 뒤집힌다.</li>
+<li>카메라는 잡을 때와 착지할 때 감쇠 흔들림 A·e^(−s/0.11)·(sin 2π·17s, cos 2π·13s)를 받는다(<code>main.js:295</code>).</li>
+<li><strong>어니언 스킨 다시 보기</strong>(<code>main.js:460</code>, <code>main.js:528</code>)</li>
+<li>대시의 여섯 장은 setup에서 만든 그림을 그대로 다시 쓴다. 보조 캔버스에 실루엣을 크림으로 긋고 채운 뒤, 같은 모양을 destination-out(0.93)으로 파낸다. 2.2px 윤곽과 7% 채움만 남는다. 각 장의 합집합 윤곽이라 원끼리 겹친 선이 보이지 않는다.</li>
+<li>동작선은 두 베지어를 따라 점선으로 그려진다. 그림이 놓인 자리마다 호에 수직인 간격 눈금이 있다(원화는 길게, 스미어는 강조색). 화면 위의 간격 차트다.</li>
+<li>0.4초마다 한 장이 제 그림(스미어, 다중상, 임팩트 실루엣까지)으로 켜진다. 서서히 나타나지 않고 바로 바뀐다. 다시 보기도 찍는 방식으로 보여 준다. 번호표는 호의 양쪽에 번갈아 붙는다.</li>
+<li>그동안 진짜 다람쥐는 보조 캔버스를 거쳐 한 장으로 10%까지 흐려진다(<code>main.js:411</code>). 겹친 도형을 그냥 알파로 그리면 안쪽 먹선이 비친다.</li>
+<li><strong>타이밍 차트</strong>(<code>chart.js:29</code>)</li>
+<li>x(n) = x₀ + (n − A)/(B − A)·폭이고, 그림 하나가 눈금 하나다. 원화는 동그라미, 브레이크다운은 세모, 동화는 짧은 막대다. 스미어는 강조색 막대와 꼬리, 다중상은 흐린 눈금 두 개를 거느리고, 임팩트 원화는 채운 동그라미다.</li>
+<li>선 아래에는 프레임마다 점(1프레임 격자)이 있고, 구간 괄호가 "2프레임"·"3프레임"을 적는다. 글자는 괄호 안에 들어갈 때만 쓴다.</li>
+<li>재생 표시는 둘이다(<code>chart.js:134</code>). 가는 세로선은 지금 프레임 n에 있고, 강조색 막대와 세모는 지금 노출된 그림의 눈금에 있다. 3프레임 구간에서는 세로선이 세 칸 가는 동안 강조색 표시가 한 번 건너뛴다. 낙엽과 다람쥐의 차이가 차트에 그대로 보인다.</li>
+<li>창 [A, B]는 실시간에는 f0–160, 다시 보기에서는 f101–119(대시 여섯 장과 번호, 이름), 끝에서는 영상 전체 f0–300이다. 창만 바꾸면 눈금 간격이 저절로 벌어진다.</li>
+<li>프레임 번호는 숫자마다 고정 폭(16px)으로 놓는다(<code>chart.js:13</code>). 캔버스 글자에는 tnum이 없어 숫자가 바뀔 때 글자가 흔들리기 때문이다.</li>
+<li><strong>깊이와 바람</strong>(<code>forest.js</code>, <code>main.js:280</code>, <code>main.js:306</code>)</li>
+<li>층과 시차: 먼 안개와 나무 0.22, 빛줄기 0.4(screen), 중간 나무와 덤불 0.55, 먼지 0.7(screen), 두 줄기와 윗가지와 바닥 1, 흐린 앞 잎 1.4. 층마다 zoom_f = 1 + f(z − 1), focus_f = C + f(F − C)인 카메라 행렬을 쓴다.</li>
+<li>가지는 관 다각형이고 끝으로 갈수록 bend·u²만큼 처진다(<code>forest.js:39</code>). 윗면 높이(<code>forest.js:35</code>)가 다람쥐 발의 높이다.</li>
+<li>낙엽의 위치는 닫힌 식이다. y는 y₀ + v·t를 화면 높이로 감아 돌리고, x = x₀ + drift·t + A·sin(ωt + φ), 뒤집힘은 cos(spin·t + φ)를 가로 배율로 쓴다. 대시가 지나간 뒤에는 잡는 순간 동작선과의 거리 d로 정한 세기 170·e^(−d²/(2·190²))만큼, 1 − e^(−(t − t_g)/0.35)로 밀려난다.</li>
+</ul></div></details>
+        <details class="dev"><summary>프레임마다 같은 그림이 나오게 하는 법 (결정성)</summary><div class="notes"><ul>
+<li>모든 것이 프레임 번호 n = floor(t·30 + 10⁻⁶)의 함수다. 다람쥐는 노출표에서 그림을 고르고, 나머지는 n/30의 닫힌 식이다. 쌓이는 상태가 없다.</li>
+<li>노출표의 그림 118장, 스미어의 껍질 다각형과 붓결, 다중상, 속도선은 setup에서 한 번 만든다(<code>main.js:340</code>). frame은 고르고 그리기만 한다.</li>
+<li>난수는 rand(seed)뿐이다. 숲 굽기 165, 낙엽 1652, 붓결 1650 + 100·u, 속도선 4000 + 그림의 시작 프레임, 집중선 7000 + k.</li>
+<li>매 프레임 <code>ctx.reset()</code>으로 컨텍스트 상태를 지운다. 그림자 블러는 쓰지 않는다. 흐린 앞 잎은 setup에서 blur 필터로 구운 이미지다.</li>
+<li>헤드리스(<code>api.headless</code>)에서는 모든 캔버스를 CPU 래스터(willReadFrequently)로 만들고, 보조 캔버스는 setup에서 한 번 합성해 둔다.</li>
+<li>렌더러 검사 결과는 <strong>byte-identical</strong>(최대 픽셀 차 0)이다. 절정의 이웃 두 프레임(f107, f108: 같은 스미어 그림)은 카메라와 낙엽만 한 프레임만큼 움직이고 깜빡임이 없다. f111–112의 색 반전은 의도한 두 프레임이다.</li>
+</ul></div></details>
+        <details class="dev"><summary>한계와 조절할 점</summary><div class="notes"><ul>
+<li>스미어는 몸의 원만 쓴다. 뒷발과 꼬리까지 지나온 호 위로 되짚어 늘이는 방식(원마다 경로를 따라 다시 놓기)은 하지 않았다.</li>
+<li>다람쥐는 오른쪽을 보는 옆모습 하나다. 돌아보는 정면 그림과 좌우 반전은 없다.</li>
+<li>동화는 원화 자세를 수치로 섞은 것이다. 손으로 그린 동화처럼 그림마다 모양을 조금씩 고치지는 않았다.</li>
+<li>출력이 30fps라 2·3프레임은 15·10장/초다. 24fps 작업의 2프레임을 30fps로 내보낼 때 생기는 2·3 교대 노출은 다루지 않았다.</li>
+<li>실제 GPU 브라우저의 프레임 비용은 재지 않았다(헤드리스 CPU 수치만 있다).</li>
+<li>더 해 볼 것: 임팩트를 3–4프레임 교대로 늘린 판, 스미어를 출발 쪽·도착 쪽 두 장으로 나눈 판과 비교하기, 차트에서 눈금을 끌어 간격을 바꾸는 편집기.</li>
+</ul></div></details>
+      </section>
+
+      <section class="sec"><h2>같은 분류의 다른 기법</h2><div class="rel"><a href="31-ik-character.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/31-ik-character.jpg" alt="" width="360" height="640">손을 뻗는 아이</a><a href="86-face-rig.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/86-face-rig.jpg" alt="" width="360" height="640">에… 에… 에취!</a><a href="87-sensor-vision.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/87-sensor-vision.jpg" alt="" width="360" height="640">밤 숲의 한 사람</a><a href="88-loupe-lens.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/88-loupe-lens.jpg" alt="" width="360" height="640">날개의 파랑</a><a href="89-impact-kit.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/89-impact-kit.jpg" alt="" width="360" height="640">세 번 찍는 도장</a><a href="90-measure-hud.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/90-measure-hud.jpg" alt="" width="360" height="640">구름 위의 아침</a><a href="91-gait-cycle.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/91-gait-cycle.jpg" alt="" width="360" height="640">눈 위의 박자</a><a href="93-transition-kit.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/93-transition-kit.jpg" alt="" width="360" height="640">종이배의 하루</a></div></section>
+      <nav class="pn" aria-label="이전 · 다음 기법"><a href="164-shot-coverage.html">← 마지막 한 조각</a><a href="166-bullet-time.html">물풍선이 멈춘 순간 →</a></nav>
+      <p class="note2">데모 · 그림 · 원리 · 초 단위 설명 출처: <a href="https://github.com/kstost/cokacmotion/tree/main/skills/aimotion/demos/165-smear-frames" target="_blank" rel="noopener">kstost/cokacmotion · 165-smear-frames</a> (MIT License, Copyright (c) 2026 kstost). 활용 가이드와 만드는 법은 AI 영상 레퍼런스 보관함이 썼어요.</p>
+    </article>
+  </div>
+</main>
+<footer><a href="../../guide/">가이드</a> · <a href="../video/">영상 프롬프트</a> · <a href="./">코드 모션 기법</a> · <a href="../../privacy.html">소개 · 개인정보처리방침</a></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var toast=document.getElementById("toast"),tm;
+  function say(m){toast.textContent=m;toast.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove("on");},1600);}
+  window.cmCopy=function(t){ if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){say("복사했어요");},function(){say("복사가 막혀 있어요. 직접 선택해 복사해 주세요");});} else say("복사가 막혀 있어요. 직접 선택해 복사해 주세요"); };
+  document.addEventListener("click",function(e){ var b=e.target.closest("[data-copy]"); if(!b) return; var src=b.getAttribute("data-copy"); var el=src.charAt(0)==="#"?document.querySelector(src):null; cmCopy(el?(el.value||el.textContent):src); });
+})();
+</script><script>
+(function(){
+  var DEMO="https://kstost.github.io/cokacmotion/165-smear-frames/", ID="165-smear-frames", TITLE="\ub3c4\ud1a0\ub9ac \ub09a\uc544\ucc44\uae30", TECH="\uc791\ud654 \uc5f0\ucd9c \u00b7 \uc2a4\ubbf8\uc5b4 \u00b7 \ub2e4\uc911\uc0c1 \u00b7 2\ud504\ub808\uc784 \ucc0d\uae30 + \ud0c0\uc774\ubc0d \ucc28\ud2b8";
+  var st=document.getElementById("stage"), go=document.getElementById("go"), rp=document.getElementById("rp");
+  function load(){ st.innerHTML='<iframe src="'+DEMO+'" title="'+TITLE+' 데모" allow="autoplay" loading="eager"></iframe>'; rp.hidden=false; }
+  go.addEventListener("click",load); rp.addEventListener("click",load);
+  var f=function(id){return document.getElementById(id);};
+  function build(){
+    var scene=f("f-scene").value.trim()||"[내 영상의 장면]", text=f("f-text").value.trim(), col=f("f-color").value.trim(), ratio=f("f-ratio").value, len=f("f-len").value;
+    f("pout").textContent="aimotion 스킬(kstost/cokacmotion)의 "+ID+" 「"+TITLE+"」 기법만 참고해서 만들어 줘.\n"+
+      "- 기법: "+TECH+"\n- 내 장면: "+scene+"\n"+(text?"- 화면 문구: "+text+"\n":"")+(col?"- 색: "+col+" 중심으로, 나머지 색은 여기에 맞춰\n":"")+
+      "- 비율 "+ratio+", 길이 "+len+", 30fps\n"+
+      "- 데모의 소재 · 장면 · 문구 · 색 · 구도는 쓰지 말고, NOTES.md와 소스를 읽어 원리만 가져와.\n"+
+      "- 모든 움직임은 시각 t 하나로 계산해서 같은 t엔 같은 그림이 나오게 해. 먼저 HTML로 미리보기를 만들고, 내가 확인하면 프레임마다 캡처해 MP4로 렌더링해 줘.\n"+
+      "(스킬이 설치돼 있지 않으면 https://github.com/kstost/cokacmotion 저장소를 받아 skills/aimotion/SKILL.md부터 읽어 줘.)";
+  }
+  ["f-scene","f-text","f-color","f-ratio","f-len"].forEach(function(id){f(id).addEventListener("input",build);f(id).addEventListener("change",build);});
+  build();
+})();
+</script>
+<script data-goatcounter="https://aivideoref.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

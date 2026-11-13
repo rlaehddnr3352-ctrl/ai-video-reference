@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>쌓으면, 꿈 · 코드 모션 기법 #102 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="쌓으면, 꿈 — 블록이 쌓여 글자가 되는 아이소메트릭. 아이소메트릭 복셀 글자 · 블록 조립과 재조립. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/prompts/code-motion/102-iso-blocks.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="쌓으면, 꿈 · 코드 모션 기법 #102 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="쌓으면, 꿈 — 블록이 쌓여 글자가 되는 아이소메트릭. 아이소메트릭 복셀 글자 · 블록 조립과 재조립. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/prompts/code-motion/102-iso-blocks.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "코드 모션 기법", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/"}, {"@type": "ListItem", "position": 2, "name": "쌓으면, 꿈", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/102-iso-blocks.html"}]}</script></head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+.faq h3{font-size:16px;margin:22px 0 6px}.faq p{margin:0 0 10px}
+</style><style>
+.page h1,.vc h3{word-break:keep-all}
+main.wide{max-width:1100px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:18px 0 26px;padding:0;list-style:none}
+.howto li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.6;max-width:none}
+.howto b{display:block;font-family:var(--f-display);font-weight:400;font-size:18px;margin-bottom:4px}
+.howto code{font-family:var(--f-mono);font-size:12.5px;background:var(--bg);padding:1px 5px;border-radius:5px}
+.flt{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.flt input{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips button{font:inherit;font-size:13px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt{font-size:13px;color:var(--muted)}
+ol.grid{list-style:none;padding:0;margin:16px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.vc{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;max-width:none;min-width:0}
+.vc[hidden]{display:none}
+.vv{display:block;width:100%;aspect-ratio:9/16;max-height:560px;object-fit:contain;background:#0b0b0f}
+.vb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.hd{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px}
+.no{font-family:var(--f-mono);color:var(--muted)}
+.cat{font-weight:600;color:var(--rec)}
+.tg{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-radius:6px;padding:0 6px;color:var(--muted)}
+.vc h3{font-size:17px;line-height:1.4;margin:2px 0 0}
+.ds{margin:0;font-size:14px;line-height:1.6}
+.hw{margin:0;font-size:13px;line-height:1.6;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 10px}
+.hw b{display:block;color:var(--ink);font-size:12px;margin-bottom:2px}
+details summary{cursor:pointer;font-size:13px;color:var(--muted);padding:4px 0}
+.pp{font-family:var(--f-mono);font-size:12px;line-height:1.6;background:var(--bg);border-radius:8px;padding:10px 12px;margin:4px 0;white-space:pre-wrap;overflow-wrap:anywhere;max-height:360px;overflow:auto}
+.act{margin-top:auto;padding-top:4px}
+.act .cp{font:inherit;font-size:14px;padding:8px 14px;border-radius:9px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;width:100%}
+.note{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:30px;line-height:1.7}
+</style><style>
+.cm-stats{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.cm-stats span{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--surface)}
+.cm-stats b{font-family:var(--f-mono);margin-right:4px}
+.inst{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin:16px 0 22px}
+.inst h2{font-size:17px;margin:0 0 10px}
+.code{position:relative;max-width:100%;box-sizing:border-box;font-family:var(--f-mono);font-size:12.5px;line-height:1.7;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 72px 10px 12px;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.code .cbtn{position:absolute;top:8px;right:8px}
+.cbtn{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:3px 10px;cursor:pointer}
+.picks{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(132px,1fr);gap:10px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x mandatory}
+.picks a{scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
+.picks img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block;background:#111}
+.picks b{display:block;font-size:13px;margin-top:6px;line-height:1.35}
+.picks small{display:block;font-size:11.5px;color:var(--muted);line-height:1.4}
+.flt2{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.flt2 input[type=search]{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.flt2 .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+.flt2 select{font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt2{font-size:13px;color:var(--muted);margin-left:auto}
+.cmgrid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.cmc{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.cmc .ph{display:block;position:relative;aspect-ratio:4/5;background:#111}
+.cmc .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+.cmc .no{position:absolute;left:8px;top:8px;font-family:var(--f-mono);font-size:11px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;padding:2px 6px}
+.cmc .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cmc h3{font-size:16px;margin:0;line-height:1.35}
+.cmc h3 a{color:inherit;text-decoration:none}
+.cmc .ln{margin:0;font-size:13.5px;line-height:1.55}
+.cmc .tc{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tg2{font-size:11px;border-radius:6px;padding:1px 7px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.tg2.u{color:var(--ink)}
+.w-light{color:#2f8f5b}.w-mid{color:#b7791f}.w-heavy{color:var(--rec)}
+.cmc .ft{display:flex;gap:6px;margin-top:auto;padding-top:6px}
+.cmc .ft a,.cmc .ft button{flex:1;text-align:center;font:inherit;font-size:13px;border-radius:9px;padding:8px 6px;cursor:pointer;text-decoration:none}
+.cmc .ft a{background:var(--ink);color:var(--bg);border:1px solid var(--ink)}
+.cmc .ft button{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.note2{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:28px;line-height:1.7}
+/* detail */
+.crumb{font-size:13px;color:var(--muted);margin:0 0 10px}.crumb a{color:inherit}
+.cmd{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:28px;align-items:start}
+.cmd>*{min-width:0}
+.player{position:sticky;top:12px}
+.stage{position:relative;aspect-ratio:9/16;background:#000;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.stage img,.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.stage .go{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:inherit;font-size:15px;font-weight:600;background:rgba(0,0,0,.72);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:12px 20px;cursor:pointer;white-space:nowrap}
+.pl-act{display:flex;gap:8px;margin-top:8px;font-size:13px;flex-wrap:wrap}
+.pl-act a,.pl-act button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;text-decoration:none}
+.pl-note{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.5}
+.cmd h1{font-size:clamp(24px,4vw,34px);margin:4px 0 6px;line-height:1.25}
+.cmd .tech{margin:0 0 10px;color:var(--muted);font-size:14.5px}
+.oneline{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--rec);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:15px;line-height:1.6}
+.oneline b{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:2px}
+.sec{margin:26px 0 0}
+.sec>h2{font-size:20px;margin:0 0 10px;padding-top:6px;border-top:1px solid var(--line)}
+.ug{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.ug h3{font-size:15px;margin:0 0 4px}.ug p{margin:0 0 6px;font-size:14px;line-height:1.6}.ug ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.7}
+.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+.steps>li{counter-increment:s;position:relative;padding:0 0 18px 40px}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);font-family:var(--f-mono);font-size:13px;display:grid;place-items:center}
+.steps h3{font-size:15.5px;margin:3px 0 6px}.steps p{margin:0 0 6px;font-size:14px;line-height:1.6}
+.pb{display:grid;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.pb label{display:grid;gap:3px;font-size:13px;font-weight:600}
+.pb input,.pb select{font:inherit;font-weight:400;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.pb .two{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.fix{display:flex;flex-wrap:wrap;gap:6px}
+.fix button{font:inherit;font-size:13px;border:1px dashed var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer}
+.notes{font-size:14px;line-height:1.7}
+.notes h4{font-size:14.5px;margin:14px 0 4px}
+.notes code{font-family:var(--f-mono);font-size:12px;background:var(--bg);border-radius:4px;padding:0 4px}
+.notes ul{padding-left:18px}
+.tw{overflow-x:auto;margin:8px 0}.tw table{border-collapse:collapse;font-size:13px;min-width:420px}
+.tw th,.tw td{border:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left}
+.tw th{background:var(--surface)}
+.sheet{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);margin-top:8px}
+details.dev{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+details.dev summary{cursor:pointer;font-weight:600;font-size:14.5px}
+.rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.rel a{text-decoration:none;color:inherit;font-size:12.5px;line-height:1.35}
+.rel img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block;margin-bottom:4px;background:#111}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:22px;font-size:14px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:13px;border-radius:999px;padding:8px 16px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20}
+.toast.on{opacity:1}
+@media (max-width:820px){.cmd{grid-template-columns:minmax(0,1fr)}.player{position:static;max-width:340px;margin:0 auto}.pb .two{grid-template-columns:1fr}}
+</style><header class="top"><nav><a class="brand" href="../../">AI 영상 레퍼런스 보관함</a><a href="../../#dict">레퍼런스 사전</a><a href="../../radar/">터진 쇼츠</a><a href="../../guide/">가이드</a><a href="../../prompts/video/">영상 프롬프트</a><a href="../../privacy.html">소개</a></nav></header>
+<main class="wide">
+  <p class="crumb"><a href="./">코드 모션 기법</a> › <a href="./#g=g10">타이포그래피 모션그래픽</a> › #102</p>
+  <div class="cmd">
+    <aside class="player">
+      <div class="stage" id="stage"><img src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/102-iso-blocks.jpg" alt="쌓으면, 꿈 데모의 절정 장면" width="360" height="640"><button type="button" class="go" id="go">▶ 여기서 데모 재생</button></div>
+      <div class="pl-act"><a href="https://kstost.github.io/cokacmotion/102-iso-blocks/" target="_blank" rel="noopener">새 창에서 크게 ↗</a><button type="button" id="rp" hidden>처음부터 다시</button><a href="https://github.com/kstost/cokacmotion/blob/main/skills/aimotion/demos/102-iso-blocks/NOTES.md" target="_blank" rel="noopener">원문 노트 ↗</a></div>
+      <p class="pl-note">데모는 영상 파일이 아니라 코드가 지금 그리는 화면이에요. 브라우저에서 가볍게 돌아가는 기법이라 미리보기와 렌더링이 빨라요. 재생 중 스페이스 · 클릭은 멈춤, ← →는 0.5초 이동이에요.</p>
+    </aside>
+    <article>
+      <span class="eyebrow">#102 · 타이포그래피 모션그래픽</span>
+      <h1>쌓으면, 꿈</h1>
+      <p class="tech">아이소메트릭 복셀 글자 · 블록 조립과 재조립</p>
+      <div class="tags"><a class="tg2 u" href="./#u=title">제목·로고</a><a class="tg2 u" href="./#u=data">정보·데이터</a><span class="tg2 w-light">가벼움 · 브라우저 기능만</span></div>
+      <div class="oneline"><b>광고 · 쇼츠에서는</b>블록이 쌓여 글자가 되는 아이소메트릭</div>
+
+      <section class="sec" id="guide"><h2>활용 가이드</h2><div class="ug"><h3>제목·로고로 쓸 때</h3><p>영상 첫 1–2초, 브랜드명이나 핵심 제목이 처음 나오는 순간에 써요.</p><ul><li>제목은 한 줄, 6–10자 안쪽이 가장 잘 보여요.</li><li>기법이 끝난 뒤 0.5–1초는 글자를 멈춰 읽을 시간을 주세요.</li><li>로고라면 브랜드 색 2–3개만 지정하면 나머지 톤은 AI가 맞춰요.</li></ul></div><div class="ug"><h3>정보·데이터로 쓸 때</h3><p>숫자·과정·경로·비교처럼 말로 설명하기 어려운 정보를 보여 줄 때 써요.</p><ul><li>실제 숫자와 출처를 표로 주세요. AI가 숫자를 지어내지 않게 &#x27;주어진 값만 쓰라&#x27;고 적어요.</li><li>한 화면에 수치 하나, 결론 숫자는 크게.</li><li>그래프는 마지막 값에서 1초 멈춰야 기억에 남아요.</li></ul></div>
+        
+      </section>
+
+      <section class="sec" id="make"><h2>만드는 법</h2>
+        <ol class="steps">
+          <li><h3>준비하기</h3><p>Claude Code를 열고 빈 폴더에서 시작해요. aimotion 스킬을 처음 한 번 설치해요.</p>
+            <div class="code" id="i1">claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion<button type="button" class="cbtn" data-copy="#i1t">복사</button></div><textarea id="i1t" hidden>claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion</textarea></li>
+          <li><h3>프롬프트 만들기</h3><p>칸을 채우면 아래 프롬프트가 바로 바뀌어요. 데모의 장면이 아니라 <b>내 장면</b>을 적는 게 핵심이에요.</p>
+            <div class="pb" id="pb">
+              <label>내 장면 (무엇을 보여 줄지)<input id="f-scene" placeholder="예: 동네 빵집 신메뉴 '소금빵' 출시 소식"></label>
+              <label>화면에 들어갈 문구<input id="f-text" placeholder="예: 오늘 아침 7시, 소금빵 첫 판"></label>
+              <div class="two">
+                <label>브랜드 색<input id="f-color" placeholder="예: #F2C14E, 크림색"></label>
+                <label>비율<select id="f-ratio"><option>9:16 세로 (1080×1920)</option><option>16:9 가로 (1920×1080)</option><option>1:1 정사각 (1080×1080)</option><option>4:5 피드 (1080×1350)</option></select></label>
+                <label>길이<select id="f-len"><option>5초</option><option selected>6초</option><option>8초</option><option>10초</option><option>15초</option></select></label>
+              </div>
+            </div>
+            <div class="code" id="pout"></div>
+            <div class="pl-act"><button type="button" data-copy="#pout">프롬프트 복사</button></div></li>
+          <li><h3>미리보기 보고 고치기</h3><p>Claude Code가 만든 HTML을 브라우저로 열어 확인하고, 고칠 점을 말로 알려 줘요. 자주 쓰는 수정 문장을 눌러 복사하세요.</p>
+            <div class="fix"><button type="button" data-copy="전체 속도를 1.5배 느리게 해 줘">전체 속도를 1.5배 느리게 해 줘</button><button type="button" data-copy="효과 강도를 절반으로 줄여 줘">효과 강도를 절반으로 줄여 줘</button><button type="button" data-copy="글자를 화면 위쪽 1/3 위치로 옮겨 줘">글자를 화면 위쪽 1/3 위치로 옮겨 줘</button><button type="button" data-copy="마지막 1초는 움직임을 멈추고 유지해 줘">마지막 1초는 움직임을 멈추고 유지해 줘</button><button type="button" data-copy="배경색을 브랜드 색으로 바꿔 줘">배경색을 브랜드 색으로 바꿔 줘</button><button type="button" data-copy="화면 아래 15%는 자막 자리로 비워 줘">화면 아래 15%는 자막 자리로 비워 줘</button><button type="button" data-copy="처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘">처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘</button><button type="button" data-copy="같은 영상을 16:9 가로로도 만들어 줘">같은 영상을 16:9 가로로도 만들어 줘</button></div></li>
+          <li><h3>MP4로 뽑기</h3><p>실시간 화면 녹화보다 프레임 단위 렌더링이 끊김 없고 선명해요.</p>
+            <div class="code" id="r1">이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.<button type="button" class="cbtn" data-copy="#r1t">복사</button></div><textarea id="r1t" hidden>이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.</textarea></li>
+          <li><h3>내 영상에 합치기</h3><p>제목 · 자막 · 전환처럼 실사 위에 얹을 효과라면 배경을 투명하게 뽑아 편집 프로그램(캡컷 · 프리미어)의 위 트랙에 올려요. 이미 찍은 영상이 있으면 파일을 주고 "이 영상 위에 효과를 입혀 줘"라고 해도 돼요.</p>
+            <div class="code" id="r2">배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.<button type="button" class="cbtn" data-copy="#r2t">복사</button></div><textarea id="r2t" hidden>배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.</textarea></li>
+        </ol>
+      </section>
+
+      <section class="sec" id="timeline"><h2>초 단위로 보기</h2>
+        <p class="pl-note">데모가 몇 초에 무엇을 보여 주는지예요. 장면을 따라 하려는 게 아니라, 기법이 어떤 순서와 리듬으로 쓰였는지 보는 용도예요.</p>
+        <img class="sheet" loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/102-iso-blocks-sheet.jpg" alt="쌓으면, 꿈 1초 간격 장면" width="822" height="579">
+        <div class="notes"><p>미감은 파스텔 장난감 스튜디오다.
+- 배경: 위는 하늘색, 아래는 라일락 바닥으로 넘어가는 그라디언트. 왼쪽 위에 소프트박스 빛이 있고, 지평선 근처에 초점이 나간 장난감 실루엣과 필름 그레인을 깔았다.
+- 놀이판: 크림색 원판(돌기 판). 옆면에는 라일락·크림 사탕 줄무늬를 둘렀다.
+- 블록: 여섯 가지 파스텔(하늘, 버터, 분홍, 민트, 라일락, 복숭아).
+- 글자: 문구는 Pretendard 700/900, 먹 보라(#3B3460) 하나에 강조색 산호(#FF5A4A) 하나. 블록 글자의 원본 글꼴은 도현(Do Hyeon)이다.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>시간</th>
+<th>장면</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–0.5</td>
+<td>빈 놀이판. 키커 "한 칸, 또 한 칸"이 줄 마스크 안에서 올라오고, 칩 "블록 000개"가 튀어나온다.</td>
+</tr>
+<tr>
+<td>0.5–2.8</td>
+<td>「쌓다」가 지어진다. 블록이 위에서 늘어나며 떨어지고(속도만큼 세로로 늘어남), 닿으면 찌그러졌다가 두세 번 튄다. 떨어지는 동안 바로 아래의 접촉 그림자는 진해지면서 좁아지고, 빛 방향으로 밀린 그림자는 블록 쪽으로 미끄러져 들어온다. 닿는 순간 획의 바깥쪽으로만 흰 먼지가 퍼진다. 순서는 ㅆ → ㅏ → ㅎ → ㄷ → ㅏ, 각 자모 안에서는 펜이 지나가듯 이어진다. 칩의 숫자는 착지한 블록 수를 고정폭으로 센다.</td>
+</tr>
+<tr>
+<td>2.8–3.6</td>
+<td>다 지어진 「쌓다」를 읽을 시간. 카메라가 천천히 돈다(16° → 20°).</td>
+</tr>
+<tr>
+<td>3.6–4.4</td>
+<td>블록이 웅크렸다가(찌그러짐) 가운데부터 바깥으로 튀어 올라 공중에 뜬다. 가운데가 더 높아 떠오른 글자는 둥근 언덕 모양이 되고, 바닥에는 글자 모양 그림자가 떨어져 남는다. 키커가 "쌓은 블록 그대로"로, 칩이 "같은 블록 296개"로 바뀐다.</td>
+</tr>
+<tr>
+<td>4.1–5.5</td>
+<td><strong>카메라가 90° 돈다.</strong> 고도가 43°에서 31°로 내려갔다가 44°로 돌아온다. 사탕 줄무늬와 바닥 돌기가 함께 돌고, 빛이 절반만큼 따라 돌아 그림자 방향도 45° 바뀐다. 배경과 앞쪽 보케는 시차를 두고 미끄러진다.</td>
+</tr>
+<tr>
+<td>4.6–6.2</td>
+<td><strong>절정.</strong> 블록마다 포물선을 그리며 날아간다. 대부분 진행 방향에 수직인 축으로 한 바퀴 공중제비를 돌고, 짧게 뛰는 것은 90° 돈다. 새 자리에 「꿈」의 바닥 층이 가운데부터 바깥으로 내려앉으며 튀고 먼지를 일으킨다.</td>
+</tr>
+<tr>
+<td>6.3–6.9</td>
+<td>남은 44개가 획의 등줄기(가장 안쪽 칸들이 이어진 줄) 위로 한 층 더 내려앉는다. 밑의 블록은 맞을 때마다 움찔한다. 마지막 블록이 앉는 순간 놀이판에 흰 링이 퍼지고 카메라가 짧게 펀치한다. 헤드라인 "<strong>꿈</strong>이 된다"가 올라온다.</td>
+</tr>
+<tr>
+<td>6.9–10</td>
+<td>여운. 하늘이 노을빛으로 데워지고 빛 속 먼지가 떠다닌다. 7.7–8.7초에 빛띠가 블록 윗면을 비스듬히 훑고 지나가며, 카메라는 6° 더 돌면서 다가간다.</td>
+</tr>
+</tbody>
+</table></div></div>
+      </section>
+
+      <section class="sec" id="how"><h2>원리</h2>
+        <p class="pl-note">개발자용 구현 설명이에요(원작자 노트, MIT). 몰라도 만들 수 있지만, Claude에게 "이 원리 중 ○○만 써 줘"처럼 지시할 때 도움이 돼요.</p>
+        <details class="dev" open><summary>기법과 원리</summary><div class="notes"><p><strong>1. 글자 → 격자</strong> (<code>main.js:90</code> <code>rasterSyllables</code>)
+- 음절을 칸당 20px로 크게 그리고, 칸마다 알파를 평균해 커버리지 ≥ 0.5인 칸을 채운다.
+- 「쌓」「다」는 같은 크기로 그린다. 둘 중 큰 잉크 상자를 18칸에 맞춘다. 「꿈」은 21칸이다.
+- 굵은 격자에서는 획 굵기가 고른 기하형 글꼴이 잘 읽혀서 도현을 쓴다. Pretendard 900이나 검은고딕으로 해 보니 「쌓」의 ㅆ·ㅎ가 뭉개졌다.
+- 「쌓다」는 세로 화면에 맞춰 두 음절을 깊이 방향으로 세우고, 위에서 아래로 읽게 했다. 모든 칸 중심은 (i + ½, j + ½) 격자 위에 있어 바닥 돌기와 맞물린다.</p>
+<p><strong>2. 획을 따라가는 순서</strong> (<code>main.js:122</code> <code>components</code>, <code>main.js:145</code> <code>strokeDistance</code>, <code>main.js:353</code>)
+- 음절마다 4-이웃 연결 성분(굵은 격자에서는 대개 자모 하나)을 구하고, 무게중심의 <code>y + 0.6x</code>로 정렬한다. 한글의 읽기 순서(초성 → 중성 → 종성, 왼쪽/위 먼저)에 대한 근사다.
+- 성분 안에서는 가장 왼쪽 위 칸부터의 BFS 측지 거리로 순서를 매긴다. 그래서 ㄷ은 윗변과 왼쪽 기둥이 동시에 자라다가 아랫변으로 이어진다. 펜이 지나가는 것처럼 보인다.
+- 다음 성분은 앞 성분이 절반쯤 쓰였을 때 시작한다. 전체를 [0.5, 2.8]초에 선형으로 맞춘다.
+- 색은 성분마다 하나씩 준다. 같은 블록이 「꿈」으로 옮겨 가므로, 「꿈」은 「쌓다」의 자모 색이 조각조각 섞인 모자이크가 된다(블록이 보존된다는 것이 보인다).</p>
+<p><strong>3. 닫힌 식 착지</strong> (<code>main.js:54</code> <code>bounces</code>, <code>main.js:65</code>, <code>main.js:72</code>, <code>main.js:530</code> <code>state</code>)
+- 낙하: <code>z = g/2·(t_L − t)²</code> (높이 8.5, 0.4초). 바운드 열은 v_k = eᵏ·v₀(e = 0.33)이고 각 포물선 <code>z = v_k·s − g/2·s²</code>는 setup에서 시각만 정해 둔다.
+- 찌그러짐: 충격마다 임펄스 응답 <code>e^(−11s)·sin(27s)</code>에 세기 v_k/v₀를 곱해 더한다. 높이는 1 − 0.36q, 폭은 1 + 0.18q.
+- 떨어지는 동안에는 속도만큼 늘이고, 나타날 때는 <code>outBack</code>으로 크기가 튀어나온다.
+- 위층 블록이 앉으면 아래 블록에도 충격을 더한다(<code>hits</code>). 선형계라 더하기만 하면 된다.</p>
+<p><strong>4. 같은 블록으로 다시 짓기</strong> (<code>main.js:367</code>, <code>main.js:379</code>, <code>main.js:403</code>, <code>main.js:414</code>, <code>main.js:427</code>)
+- 「꿈」은 돌고 난 뒤의 시점에서 읽히도록 세계 좌표를 <code>(u, v) → (v, −u)</code>로 놓는다. 방위각이 θ에서 θ + 90°로 바뀔 때 화면에서 (u, v)를 θ에서 본 것과 똑같아진다.
+- 남는 블록(296 − 252 = 44)을 올릴 자리(<code>main.js:379</code>):
+  - 글자 안쪽 깊이(<code>insideDepth</code>, <code>main.js:162</code>)가 2 이상인 칸, 곧 획의 중심선만 고른다.
+  - 그 칸들을 연결된 줄 단위로 큰 줄부터 채운다. 흩어진 낱개 대신 획 하나가 통째로 솟는다.
+- 짝 맞추기: 출발 칸과 도착 칸의 거리 제곱 합이 최소가 되도록 헝가리안 알고리즘(<code>main.js:182</code>, n = 296, 약 25 ms)으로 정한다. 경로가 짧고 거의 엇갈리지 않아 정돈된 재조립이 된다.
+- 비행: 떠 있는 높이 z₀에서 목표 층까지 포물선으로 난다. <code>vz0 = (층 − z₀ + g/2·T²)/T</code>(<code>main.js:454</code>)이고, 수평은 등속이다. 내려앉는 속도로 다시 바운드 열을 만든다.
+- 회전(<code>main.js:457</code>): 로드리게스 행렬로 2π(공중제비) 또는 π/2(요)만 돈다. 정확히 똑바로 선 채 착지한다.
+- 착지 순서: 바닥 층은 「꿈」의 중심에서 바깥으로, 위층은 그다음이다. 위층은 아래 블록의 바운드가 끝난 뒤에만 앉도록 시각을 미룬다(<code>main.js:421</code>). 마지막 착지 시각이 링·펀치 시각 <code>tBeat</code>가 된다.</p>
+<p><strong>5. 정사영 카메라와 깊이 정렬</strong> (<code>main.js:284–304</code>, <code>main.js:693–712</code>)
+- 투영: <code>X = S(x cosθ − y sinθ)</code>, <code>Y = S((x sinθ + y cosθ) sinφ − z cosφ)</code>이고, 깊이는 <code>(x sinθ + y cosθ) cosφ + z sinφ</code>다.
+- 진짜 아이소메트릭(θ = 45°, φ = 35.26°)에서는 이 깊이가 x + y + z에 비례한다. 연속으로 도는 궤도에서도 같은 식이 맞는 정렬 키가 된다.
+- 정렬이 정확한 이유: 같은 크기 정육면체가 정수 격자 위에 겹치지 않고 놓이면, 화면에서 겹치는 두 블록은 떨어진 모든 축에서 앞뒤 순서가 같다. 그러면 중심 차이와 시선 방향의 내적 부호가 곧 가림 순서다.
+  - 날아가는 블록은 격자를 벗어나므로 근사다. 가까이 스칠 때 잠깐 어긋날 수 있다.
+- 먼지 입자도 같은 목록에 깊이 키로 끼워 넣는다.</p>
+<p><strong>6. 그리기</strong> (<code>main.js:772</code> <code>drawBrick</code>)
+- 면: 6면 중 시선 쪽 면만 그린다(최대 3면). 밝기는 <code>0.6 + 0.44·max(0, n·L)</code>인 평면 3톤이고, 어두운 면일수록 파랑을 조금 더 남겨 그림자가 라일락 쪽으로 식는다.
+- 이음매: 면마다 바탕색 74%로 1px 테두리를 그어 블록 사이 경계가 보이게 했다.
+- 돌기: 똑바로 선 블록은 축 정렬 타원 두 개와 사각형이다(땅 위의 원은 어느 방위에서나 축 정렬 타원).
+- 도는 블록의 돌기(<code>main.js:810</code>): 윗면의 두 축을 화면 아핀 변환으로 놓고 단위원을 그린다. 원기둥 옆면은 단위원 공간에서 오프셋 방향에 수직인 사각형이며, 감김 방향을 원과 맞춰 nonzero로 합친다.
+- 그림자(<code>main.js:651</code>): 두 겹을 놀이판 타원으로 클립한다.
+  - 접촉 그림자: 블록 바로 아래의 부드러운 원판이다. 높이 h에 따라 진하기 0.42·(1 − h/7)², 반지름 0.78 + 0.16h.
+  - 빛 방향 그림자: 블록 8꼭짓점을 빛을 따라 바닥에 투영한 볼록 껍질이다. 모든 블록의 껍질을 경로 하나에 같은 방향으로 넣고 한 번에 채운다(합집합이라 겹쳐도 진해지지 않는다).
+- 먼지(<code>main.js:434</code>): 착지한 칸의 4-이웃 중 <strong>비어 있는 쪽</strong>으로만 두 줄기씩 퍼진다. x = v/k·(1 − e^(−ks))이고 위로 떠오른다. 획 안쪽 블록은 먼지를 내지 않으므로 먼지가 늘 열린 바닥 위에 보인다. 흰 퍼프 아래쪽에 라일락 그늘을 넣어 크림색 판에서도 보이게 했다.
+- 빛과 시점: 빛은 카메라 방위의 절반만큼 따라 돈다(<code>main.js:295</code>). 세계에 완전히 고정하면 90° 뒤에 앞면이 그늘로 바뀌고, 카메라에 고정하면 그림자가 돌지 않아 회전이 덜 보인다.
+- 놀이판(<code>main.js:599</code>, <code>:627</code>): 옆면 줄무늬는 세계 각도로 칠하고, 시점 각도 (0, π) 구간만 보이게 그린다. 돌기 약 1,400개는 옆면과 윗면 경로 두 개로 한 번씩 채운다.</p>
+<p><strong>7. 문구</strong> (<code>main.js:838</code> <code>drawCopy</code>)
+- 낱말마다 0.08초씩 겹쳐 줄 마스크 안에서 <code>outExpo</code>로 올라오고, 퇴장은 <code>inCubic</code> 0.3초로 더 빠르다. 자간은 −0.03em이다.
+- 칩의 숫자는 칸 너비를 고정해 한 자씩 놓는다(캔버스에 tnum이 없다).</p></div></details>
+        <details class="dev"><summary>프레임마다 같은 그림이 나오게 하는 법 (결정성)</summary><div class="notes"><ul>
+<li>프레임은 t만 읽는다.</li>
+<li>블록의 모든 시각(착지, 이륙, 발사, 재착지, 위층 충격)과 바운드 열, 짝, 비행 속도는 setup에서 정한다.</li>
+<li>frame은 그 조각 함수들을 평가하고, 매번 0에서 정렬 목록을 새로 만든다.</li>
+<li>난수는 <code>rand(10201–10205)</code>(배경, 이륙 높이·위상, 회전 종류, 먼지 방향 흔들림, 떠다니는 먼지)뿐이다. 모두 setup에서 뽑는다.</li>
+<li>정렬은 깊이 → 종류 → 번호 순이라 같은 키에서도 순서가 고정된다. 헝가리안도 결정적이다.</li>
+<li><code>ctx.reset()</code>으로 매 프레임 컨텍스트 상태를 기본값으로 되돌린다(<code>main.js:575</code>). 자간·클립·변환·알파가 다음 프레임에 새지 않는다.</li>
+<li>오프스크린 캔버스(배경 둘, 그림자·먼지·빛·보케 스프라이트)는 헤드리스에서 CPU 래스터로 만든다. setup에서 한 번씩 본 캔버스에 그려 첫 합성을 끝내 둔다(<code>main.js:501</code>).</li>
+<li>렌더러 검사(정순, 새 페이지 역순, 되돌아가기 6회): <strong>byte-identical</strong>.</li>
+</ul></div></details>
+        <details class="dev"><summary>한계와 조절할 점</summary><div class="notes"><ul>
+<li><strong>정렬 근사</strong>: 날아가는 블록끼리, 또는 날아가는 블록과 앉은 블록이 아주 가까이 스칠 때는 중심 깊이 정렬이 틀릴 수 있다(격자를 벗어나면 정렬 정리가 성립하지 않는다). 지금 궤적에서는 눈에 띄지 않는다. 엄밀히 하려면 겹치는 쌍만 분리축 검사로 위상 정렬하면 된다.</li>
+<li><strong>그림자 근사</strong>: 날아가는 블록의 그림자는 바닥에만 떨어지고, 아래 블록 윗면에는 떨어지지 않는다. 위층 블록의 빛 그림자도 아래층에 가리지 않는다.</li>
+<li><strong>굵은 격자의 한계</strong>: 18칸 「쌓」의 ㅎ은 꼭지와 가로획이 붙는다. 맥락 속에서는 읽히지만, 더 복잡한 음절은 24칸 이상(블록 수 약 1.8배)이 필요하다.</li>
+<li>조정: 칸 수는 <code>main.js</code> setup의 <code>N1</code>, <code>N2</code>, 임계값은 <code>rasterSyllables</code>의 <code>thr</code>(0.5)에서 바꾼다.</li>
+<li><strong>획 순서는 근사다</strong>: 연결 성분 정렬과 BFS 측지 거리이고 실제 필순 데이터가 아니다. 한 성분에 자모 둘이 붙으면(예: ㅆ의 두 ㅅ) 함께 자란다.</li>
+<li><strong>조정 손잡이</strong>:</li>
+<li>이야기 시각: <code>main.js:34–40</code>(빌드 창, 이륙, 회전, 재착지, 위층, 빛띠).</li>
+<li>카메라: <code>main.js:284–287</code>(방위, 고도, 배율, 화면 중심).</li>
+<li>물리: <code>main.js:43–45</code>(낙하 높이·시간, 반발 계수, 비행 중력).</li>
+<li>남는 블록 수는 「꿈」의 칸 수(<code>N2</code>)로 정해진다. N2 = 20이면 약 67개가 위층으로 간다.</li>
+<li><strong>다음 단계</strong>:</li>
+<li>2×1·2×2 블록(칸 합치기)으로 더 장난감다운 조립을 만든다.</li>
+<li>정렬 키를 x + y + z 정수 버킷으로 나눠 블록이 수천 개로 늘어도 버티게 한다.</li>
+<li>three.js 인스턴싱으로 옮겨 진짜 그림자 맵을 쓴다.</li>
+</ul></div></details>
+      </section>
+
+      <section class="sec"><h2>같은 분류의 다른 기법</h2><div class="rel"><a href="92-type-acting.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/92-type-acting.jpg" alt="" width="360" height="640">고백하던 날</a><a href="96-kinetic-camera.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/96-kinetic-camera.jpg" alt="" width="360" height="640">오늘은 그냥, 한 번</a><a href="97-karaoke-captions.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/97-karaoke-captions.jpg" alt="" width="360" height="640">양말 도둑</a><a href="98-split-flap.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/98-split-flap.jpg" alt="" width="360" height="640">집으로 가는 막차</a><a href="99-knockout-zoom.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/99-knockout-zoom.jpg" alt="" width="360" height="640">여름으로 난 창</a><a href="100-echo-type.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/100-echo-type.jpg" alt="" width="360" height="640">지금</a><a href="101-marker-annotate.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/101-marker-annotate.jpg" alt="" width="360" height="640">여백에 남긴 비법</a><a href="103-word-swap.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/103-word-swap.jpg" alt="" width="360" height="640">오늘의 빈칸</a></div></section>
+      <nav class="pn" aria-label="이전 · 다음 기법"><a href="101-marker-annotate.html">← 여백에 남긴 비법</a><a href="103-word-swap.html">오늘의 빈칸 →</a></nav>
+      <p class="note2">데모 · 그림 · 원리 · 초 단위 설명 출처: <a href="https://github.com/kstost/cokacmotion/tree/main/skills/aimotion/demos/102-iso-blocks" target="_blank" rel="noopener">kstost/cokacmotion · 102-iso-blocks</a> (MIT License, Copyright (c) 2026 kstost). 활용 가이드와 만드는 법은 AI 영상 레퍼런스 보관함이 썼어요.</p>
+    </article>
+  </div>
+</main>
+<footer><a href="../../guide/">가이드</a> · <a href="../video/">영상 프롬프트</a> · <a href="./">코드 모션 기법</a> · <a href="../../privacy.html">소개 · 개인정보처리방침</a></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var toast=document.getElementById("toast"),tm;
+  function say(m){toast.textContent=m;toast.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove("on");},1600);}
+  window.cmCopy=function(t){ if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){say("복사했어요");},function(){say("복사가 막혀 있어요. 직접 선택해 복사해 주세요");});} else say("복사가 막혀 있어요. 직접 선택해 복사해 주세요"); };
+  document.addEventListener("click",function(e){ var b=e.target.closest("[data-copy]"); if(!b) return; var src=b.getAttribute("data-copy"); var el=src.charAt(0)==="#"?document.querySelector(src):null; cmCopy(el?(el.value||el.textContent):src); });
+})();
+</script><script>
+(function(){
+  var DEMO="https://kstost.github.io/cokacmotion/102-iso-blocks/", ID="102-iso-blocks", TITLE="\uc313\uc73c\uba74, \uafc8", TECH="\uc544\uc774\uc18c\uba54\ud2b8\ub9ad \ubcf5\uc140 \uae00\uc790 \u00b7 \ube14\ub85d \uc870\ub9bd\uacfc \uc7ac\uc870\ub9bd";
+  var st=document.getElementById("stage"), go=document.getElementById("go"), rp=document.getElementById("rp");
+  function load(){ st.innerHTML='<iframe src="'+DEMO+'" title="'+TITLE+' 데모" allow="autoplay" loading="eager"></iframe>'; rp.hidden=false; }
+  go.addEventListener("click",load); rp.addEventListener("click",load);
+  var f=function(id){return document.getElementById(id);};
+  function build(){
+    var scene=f("f-scene").value.trim()||"[내 영상의 장면]", text=f("f-text").value.trim(), col=f("f-color").value.trim(), ratio=f("f-ratio").value, len=f("f-len").value;
+    f("pout").textContent="aimotion 스킬(kstost/cokacmotion)의 "+ID+" 「"+TITLE+"」 기법만 참고해서 만들어 줘.\n"+
+      "- 기법: "+TECH+"\n- 내 장면: "+scene+"\n"+(text?"- 화면 문구: "+text+"\n":"")+(col?"- 색: "+col+" 중심으로, 나머지 색은 여기에 맞춰\n":"")+
+      "- 비율 "+ratio+", 길이 "+len+", 30fps\n"+
+      "- 데모의 소재 · 장면 · 문구 · 색 · 구도는 쓰지 말고, NOTES.md와 소스를 읽어 원리만 가져와.\n"+
+      "- 모든 움직임은 시각 t 하나로 계산해서 같은 t엔 같은 그림이 나오게 해. 먼저 HTML로 미리보기를 만들고, 내가 확인하면 프레임마다 캡처해 MP4로 렌더링해 줘.\n"+
+      "(스킬이 설치돼 있지 않으면 https://github.com/kstost/cokacmotion 저장소를 받아 skills/aimotion/SKILL.md부터 읽어 줘.)";
+  }
+  ["f-scene","f-text","f-color","f-ratio","f-len"].forEach(function(id){f(id).addEventListener("input",build);f(id).addEventListener("change",build);});
+  build();
+})();
+</script>
+<script data-goatcounter="https://aivideoref.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>쇼츠 리버스 엔지니어링 방법 — 떡상 영상 구조 분석 · Hypit 사용법 · 복제 프롬프트 도구 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="잘 된 쇼츠를 컷 타이밍 · 훅 · 자막 · 소리 · 카메라로 뜯어보고, 같은 틀로 내 제품 영상을 다시 만드는 방법. 무료로 직접 하는 법, AI 채팅으로 하는 법, Claude Code + Hypit 설치 · 사용법과 프롬프트 생성 도구.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/guide/reverse-engineering.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="쇼츠 리버스 엔지니어링 방법 — 떡상 영상 구조 분석 · Hypit 사용법 · 복제 프롬프트 도구 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="잘 된 쇼츠를 컷 타이밍 · 훅 · 자막 · 소리 · 카메라로 뜯어보고, 같은 틀로 내 제품 영상을 다시 만드는 방법. 무료로 직접 하는 법, AI 채팅으로 하는 법, Claude Code + Hypit 설치 · 사용법과 프롬프트 생성 도구.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/guide/reverse-engineering.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "떡상 쇼츠 리버스 엔지니어링, 구조만 뜯어서 내 영상으로", "description": "잘 된 쇼츠를 컷 타이밍 · 훅 · 자막 · 소리 · 카메라로 뜯어보고, 같은 틀로 내 제품 영상을 다시 만드는 방법. 무료로 직접 하는 법, AI 채팅으로 하는 법, Claude Code + Hypit 설치 · 사용법과 프롬프트 생성 도구.", "inLanguage": "ko", "mainEntityOfPage": "https://ai-video-reference-kr.netlify.app/guide/reverse-engineering.html", "datePublished": "2026-10-13", "dateModified": "2026-11-08", "image": "https://ai-video-reference-kr.netlify.app/og.png", "author": {"@type": "Person", "name": "김동욱", "url": "https://ai-video-reference-kr.netlify.app/privacy.html"}, "publisher": {"@type": "Organization", "name": "AI 영상 레퍼런스 보관함", "url": "https://ai-video-reference-kr.netlify.app/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "AI 영상 레퍼런스 보관함", "item": "https://ai-video-reference-kr.netlify.app/"}, {"@type": "ListItem", "position": 2, "name": "가이드", "item": "https://ai-video-reference-kr.netlify.app/guide/"}, {"@type": "ListItem", "position": 3, "name": "떡상 쇼츠 리버스 엔지니어링, 구조만 뜯어서 내 영상으로", "item": "https://ai-video-reference-kr.netlify.app/guide/reverse-engineering.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "리버스 엔지니어링으로 만든 영상, 올려도 괜찮나요?", "acceptedAnswer": {"@type": "Answer", "text": "컷 길이 · 훅 장치 · 자막 위치 같은 구조는 참고해도 되지만, 원본의 인물 · 화면 · 문구 · 음악 · 브랜드를 그대로 쓰면 도용이 돼요. 화면과 문장은 모두 내 것으로 새로 만들어야 해요."}}, {"@type": "Question", "name": "Hypit은 무료인가요?", "acceptedAnswer": {"@type": "Answer", "text": "Hypit 자체는 무료로 쓸 수 있고 상업적 사용도 가능해요. 다만 이미지 · 영상 · 음성 모델은 각 서비스의 요금이 따로 들고, Hypit 기능을 남에게 서비스로 제공하려면 별도 라이선스가 필요해요."}}, {"@type": "Question", "name": "코딩을 몰라도 할 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "네. 격자 이미지와 빈 분석표로 직접 하거나, AI 채팅에 영상(또는 격자 이미지)과 분석 프롬프트를 넣으면 돼요. Claude Code + Hypit은 분석에서 제작까지 한 번에 하고 싶을 때 쓰는 방법이에요."}}, {"@type": "Question", "name": "대사 받아쓰기는 꼭 필요한가요?", "acceptedAnswer": {"@type": "Answer", "text": "말이 있는 영상이라면 있는 게 훨씬 좋아요. 떡상 영상은 핵심 단어에 맞춰 컷 · 자막 · 효과음이 바뀌는 경우가 많아서, 단어별 시간이 있어야 그 리듬을 그대로 옮길 수 있어요."}}]}</script>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+.faq h3{font-size:16px;margin:22px 0 6px}.faq p{margin:0 0 10px}
+</style><header class="top"><nav><a class="brand" href="../">AI 영상 레퍼런스 보관함</a><a href="../#dict">레퍼런스 사전</a><a href="../radar/">터진 쇼츠</a><a href="../guide/">가이드</a><a href="../prompts/video/">영상 프롬프트</a><a href="../privacy.html">소개</a></nav></header>
+<main>
+  <article>
+    <span class="eyebrow">GUIDE · 읽는 시간 약 9분 · 업데이트 2026-11-08</span>
+    <h1>떡상 쇼츠 리버스 엔지니어링, 구조만 뜯어서 내 영상으로</h1>
+    <p class="lede">잘 된 쇼츠를 컷 타이밍 · 훅 · 자막 · 소리 · 카메라로 뜯어보고, 같은 틀로 내 제품 영상을 다시 만드는 방법. 무료로 직접 하는 법, AI 채팅으로 하는 법, Claude Code + Hypit 설치 · 사용법과 프롬프트 생성 도구.</p>
+    <p>요즘 AI 영상 쪽에서 말하는 <b>리버스 엔지니어링</b>은 잘 된 영상을 뜯어서 "왜 끝까지 보게 되는지"를 표로 만들고, 그 틀에 내 제품을 넣어 다시 만드는 작업이에요. 핵심은 <b>구조만 가져오고 화면은 전부 내 것으로 바꾸는 것</b>. 컷이 몇 초마다 넘어가는지, 첫 3초에 무엇을 보여 주는지, 자막이 어디에 어떻게 뜨는지는 가져와도 되지만, 남의 인물 · 화면 · 문구 · 음악 · 브랜드는 가져오면 안 돼요.</p>
+<p>이 글 아래에 있는 <a href="#tool">프롬프트 도구</a>에 참고 영상 링크와 내 제품만 넣으면, 분석 프롬프트와 다시 만드는 프롬프트가 바로 나와요.</p>
+
+<h2>무엇을 뜯어보나: 다섯 가지</h2>
+<div class="tw"><table>
+  <thead><tr><th>항목</th><th>적어 둘 것</th><th>사전 카드</th></tr></thead>
+  <tbody>
+    <tr><td>컷 타이밍</td><td>컷마다 시작–끝 초, 평균 컷 길이, 가장 빠른 구간</td><td>스크립트 구조 T</td></tr>
+    <tr><td>첫 3초 훅</td><td>화면에 처음 보이는 것, 첫 문장, 멈추게 만든 장치</td><td>훅 문장 H</td></tr>
+    <tr><td>자막</td><td>위치(위 · 아래 · 가운데), 크기, 강조 방식, 고정인지 바뀌는지</td><td>자막 디자인 C</td></tr>
+    <tr><td>소리</td><td>BGM 박자에 컷이 맞는지, 효과음 위치, 대사의 어느 단어에서 화면이 바뀌는지</td><td>—</td></tr>
+    <tr><td>화면</td><td>샷 크기, 카메라 움직임, 전환, 인물 표정 · 연기, 그래픽</td><td>M · X · E · G · F</td></tr>
+  </tbody>
+</table></div>
+<p>특히 <b>"어느 단어에서 화면이 바뀌는가"</b>가 중요해요. 떡상 영상은 대사의 핵심 단어에 맞춰 컷 · 자막 · 효과음이 동시에 바뀌는 경우가 많아요. 그래서 대사를 단어마다 몇 초에 말했는지까지 받아쓰면(단어 타임스탬프) 분석이 훨씬 정확해져요.</p>
+
+<h2>방법 1. 무료로 직접: 격자 이미지 + 분석표</h2>
+<p>도구 없이도 할 수 있어요. 영상을 0.5초 간격으로 잘라 한 장에 모은 <b>격자 이미지</b>를 만들고, 빈 분석표를 채우면 돼요. 컴퓨터에 ffmpeg가 있다면 이 명령 한 줄이면 됩니다(30초 영상 기준, 0.5초 간격 60칸).</p>
+<pre class="prompt">ffmpeg -i 참고영상.mp4 -vf "fps=2,scale=180:-1,tile=10x6" 격자.jpg</pre>
+<p>격자를 보면 화면이 크게 바뀌는 칸이 곧 컷 경계예요. 대사는 유튜브 자막(스크립트 보기)을 복사하거나, 받아쓰기 도구(WhisperX, 일레븐랩스 Scribe 등)로 단어별 시간까지 뽑으면 좋아요. 빈 분석표는 아래 도구에서 복사할 수 있어요.</p>
+
+<h2>방법 2. AI 채팅으로: 영상 또는 격자 + 분석 프롬프트</h2>
+<p>영상 파일이나 링크를 직접 읽는 AI라면 영상을 그대로 넣고, 이미지만 읽는 AI라면 <b>격자 이미지 + 받아쓴 대사</b>를 함께 넣으세요. 그다음 아래 도구가 만들어 주는 분석 프롬프트를 붙이면 컷 표가 나옵니다. 분석 프롬프트에는 이 사전의 카드 코드(M01, X05, C01…)를 컷마다 붙여 달라는 요청이 들어 있어서, 결과를 그대로 레퍼런스 사전에서 찾아 쓸 수 있어요.</p>
+
+<h2>방법 3. Claude Code + Hypit: 분석부터 다시 만들기까지</h2>
+<p><a href="https://github.com/hypit-ai/hypit" target="_blank" rel="noopener">Hypit</a>은 참고 영상을 넣으면 AI 에이전트(Claude Code, Codex 등)가 컷 · 자막 · B롤 · 효과음을 <b>초가 아니라 대사 단어에 맞춰</b> 구조화해 주는 오픈소스예요. 원래는 영상을 끝까지 만들어 주는 도구지만, 분석 기능만 써도 충분히 쓸모 있어요.</p>
+<ol>
+  <li><b>준비:</b> Claude Code(또는 Codex) 같은 스킬을 쓰는 코딩 에이전트, Node.js 22.15 이상.</li>
+  <li><b>설치(처음 한 번):</b> 터미널에서 아래 명령을 실행하면 Hypit 스킬이 설치돼요. 실행 파일은 처음 쓸 때 에이전트가 확인하고 준비를 도와줘요.</li>
+</ol>
+<pre class="prompt">npx skills add hypit-ai/hypit -g</pre>
+<ol start="3">
+  <li><b>분석만 먼저:</b> Claude Code에서 <code>/hypit</code>으로 시작해 참고 영상 파일(또는 지원되는 플랫폼 링크)을 주고, "아직 아무것도 생성하지 말고 분석만"이라고 적으세요. 대사 받아쓰기는 WhisperX를 쓰는데, 로컬 준비가 번거로우면 에이전트가 호스팅 옵션을 설명해 줘요.</li>
+  <li><b>비용 확인 후 생성:</b> 이미지 · 영상 모델을 부르는 단계부터는 유료예요. Hypit 자체는 무료지만 모델 서비스는 각자 계정 · 요금이 따로 있어요. 에이전트가 예상 비용을 먼저 보여 주니, 예산을 정한 뒤 진행하세요.</li>
+</ol>
+<p>라이선스: 내 회사 · 내 고객 작업처럼 <b>직접 쓰는 건 상업적으로도 가능</b>하고, 만든 영상의 권리는 만든 사람에게 있어요. 다만 Hypit 기능을 다른 사람들에게 서비스(SaaS)로 제공하거나 유료로 재배포하려면 별도 상업 라이선스가 필요해요.</p>
+
+<h2>예시: 우리 30초 광고를 직접 뜯어봤어요</h2>
+<p>남의 영상을 예시로 올릴 수는 없어서, 이 사이트를 알리려고 만든 30초 광고 "영화 속 카메라 기법, 어디서 왔을까?"를 방법 1로 뜯어봤어요. 1.5초 간격 격자예요.</p>
+<p><img src="assets/re-grid-map-ad.jpg" alt="30초 광고를 1.5초 간격으로 자른 20칸 격자 이미지" width="2196" height="772" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--line)"></p>
+<div class="tw"><table>
+  <thead><tr><th>시간</th><th>화면</th><th>자막</th><th>카드</th></tr></thead>
+  <tbody>
+    <tr><td>0–3초</td><td>어두운 지구본이 천천히 돈다</td><td>위쪽 고정 질문 "영화 속 카메라 기법, 어디서 왔을까?"</td><td>H01 질문형 훅 · C01 상단 고정 제목 띠</td></tr>
+    <tr><td>3–7초</td><td>샌프란시스코에 빨간 점 → 아래에 정보 카드 "돌리 줌"</td><td>도시 · 연도 · 기법 이름 · 한 줄 설명</td><td>T18 TOP N 리스트 · C05 단계 · 숫자 배지</td></tr>
+    <tr><td>7–21초</td><td>선이 이어지며 파리 → 필라델피아 → 시드니, 도시마다 같은 카드</td><td>카드 형식은 그대로, 내용만 바뀜</td><td>G11 라인 드로잉</td></tr>
+    <tr><td>21–25초</td><td>네 도시의 선이 서울로 모인다</td><td>"그 기법들, 이제 클릭으로 AI 영상에"</td><td>— (지구본 회전으로 이어 붙임)</td></tr>
+    <tr><td>25–30초</td><td>휴대폰 속 사이트 화면 + 주소 버튼</td><td>사이트 이름 · 주소</td><td>H12 링크 안내 · C08 행동 유도 버튼</td></tr>
+  </tbody>
+</table></div>
+<p><b>뽑아낸 구조:</b> 질문 하나로 시작 → 같은 형식의 항목 4개를 약 4초 간격으로 반복 → 모든 선이 한 점(우리 제품)으로 모이며 답 → 링크. 이 틀은 그대로 두고 내용만 바꾸면, 예를 들어 카페라면 "이 원두는 어디서 왔을까? → 산지 4곳 → 우리 매장 블렌드로 모임 → 매장 위치"가 됩니다.</p>
+
+<h2 id="tool">도구: 분석 · 복제 프롬프트 만들기</h2>
+<p>참고 영상과 내 제품을 넣고 방식을 고르면, 1단계(분석) · 2단계(다시 만들기) 프롬프트가 만들어져요. 1단계 결과(분석표)를 받은 같은 대화에 2단계를 이어서 붙이세요.</p>
+<div id="re-tool" class="re">
+  <label>참고 영상 링크 또는 파일 이름<input id="re-ref" placeholder="https://www.youtube.com/shorts/… 또는 reference.mp4"></label>
+  <label>내 제품 · 주제<input id="re-mine" placeholder="예: 비타민C 세럼, 동네 카페 시그니처 라떼"></label>
+  <fieldset><legend>어떻게 분석할까요</legend>
+    <label class="opt"><input type="radio" name="re-way" value="chat" checked> AI 채팅 (영상 또는 격자 이미지 첨부)</label>
+    <label class="opt"><input type="radio" name="re-way" value="hypit"> Claude Code + Hypit</label>
+    <label class="opt"><input type="radio" name="re-way" value="sheet"> 직접 (격자 명령 + 빈 분석표)</label>
+  </fieldset>
+  <fieldset><legend>그대로 가져올 것</legend>
+    <label class="opt"><input type="checkbox" name="re-keep" value="cut timing and pacing (keep each cut's length)" checked> 컷 타이밍 · 리듬</label>
+    <label class="opt"><input type="checkbox" name="re-keep" value="the hook mechanism of the first 3 seconds (rewrite the words)" checked> 첫 3초 훅 장치</label>
+    <label class="opt"><input type="checkbox" name="re-keep" value="caption position, size and emphasis style" checked> 자막 위치 · 스타일</label>
+    <label class="opt"><input type="checkbox" name="re-keep" value="where sound effects and beat drops land" checked> 효과음 · 박자 위치</label>
+    <label class="opt"><input type="checkbox" name="re-keep" value="shot sizes, camera moves and transitions"> 샷 · 카메라 · 전환</label>
+    <label class="opt"><input type="checkbox" name="re-keep" value="the performer's acting beats (facial expressions and gestures)"> 인물 연기 흐름</label>
+  </fieldset>
+  <label>바꾸고 싶은 점 (선택)<input id="re-change" placeholder="예: 모델은 20대 여성, 배경은 욕실, 마지막은 할인 안내"></label>
+  <label>다시 만들 도구<select id="re-model">
+    <option value="seedance">Seedance 2.5</option><option value="kling">Kling 4.0</option><option value="veo">Veo 3.1</option><option value="h3">MiniMax H3</option><option value="code">코드 모션그래픽 (Claude Code)</option>
+  </select></label>
+  <div class="re-out"><div class="re-head"><b>1단계 · 분석</b><button type="button" data-copy="re-p1">복사</button></div><pre class="prompt" id="re-p1"></pre></div>
+  <div class="re-out"><div class="re-head"><b>2단계 · 같은 틀로 다시 만들기</b><button type="button" data-copy="re-p2">복사</button></div><pre class="prompt" id="re-p2"></pre></div>
+  <div class="re-out"><div class="re-head"><b>빈 분석표</b><button type="button" data-copy="re-p3">복사</button></div><pre class="prompt" id="re-p3"></pre></div>
+  <p class="re-note" id="re-msg" aria-live="polite"></p>
+</div>
+<style>
+.re{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:12px;margin:14px 0}
+.re label{display:grid;gap:4px;font-size:14px;font-weight:500}
+.re input:not([type]),.re select{font:inherit;font-weight:400;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.re fieldset{border:1px solid var(--line);border-radius:8px;padding:8px 12px;display:flex;flex-wrap:wrap;gap:4px 16px;margin:0}
+.re legend{font-size:13px;color:var(--muted);padding:0 4px}
+.re .opt{display:flex;gap:6px;align-items:center;font-weight:400}
+.re-out pre{margin:6px 0 0;max-height:340px;overflow:auto}
+.re-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.re-head button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:4px 12px;cursor:pointer}
+.re-note{margin:0;font-size:13px;color:var(--muted);min-height:1em}
+</style>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  try{var q=new URLSearchParams(location.search); if(q.get("ref")) $("re-ref").value=q.get("ref");}catch(e){}
+  var CODES="https://ai-video-reference-kr.netlify.app/llms.txt";
+  var MODEL={
+    seedance:"Seedance 2.5: write each cut as a timeline line like [0s] [2.5s], one action and one camera instruction per timestamp; when a cut continues the previous one, say to continue from its last frame.",
+    kling:"Kling 4.0: make one first-frame image per cut, then a short image-to-video prompt per cut focused on motion only (camera + subject action).",
+    veo:"Veo 3.1: split into clips of up to 8 seconds, 75–125 words per clip in the order camera → subject → action → setting → style → audio, spoken lines in quotes.",
+    h3:"MiniMax H3: one reference image per character or product, then one prompt per shot; repeat the same identity description in every shot.",
+    code:"Code motion graphics: build it in HTML/CSS/JS (or HyperFrames/Hypit) and render to MP4; captions, shapes, charts and transitions are drawn in code, no photoreal footage."
+  };
+  var SHEET="| 컷 | 시작–끝(초) | 화면에 보이는 것 | 샷 · 카메라 (M/F) | 전환 (X) | 자막 위치 · 문구 (C) | 대사 · 내레이션 | 소리 (BGM · 효과음) | 연기 (E) |\n|---|---|---|---|---|---|---|---|---|\n| 1 | 0.0–  |  |  |  |  |  |  |  |\n| 2 |  |  |  |  |  |  |  |  |\n| 3 |  |  |  |  |  |  |  |  |\n| 4 |  |  |  |  |  |  |  |  |\n| 5 |  |  |  |  |  |  |  |  |\n\n첫 3초 훅 (H): \n평균 컷 길이: 초 · 가장 빠른 구간: \n화면이 바뀌는 신호 (단어 · 박자): \n끝까지 보게 만드는 이유 3가지: \n구조 한 줄 (T): ";
+  function build(){
+    var ref=$("re-ref").value.trim()||"[참고 영상]", mine=$("re-mine").value.trim()||"[내 제품]", change=$("re-change").value.trim();
+    var way=(document.querySelector('input[name="re-way"]:checked')||{}).value||"chat", model=$("re-model").value;
+    var keep=[].map.call(document.querySelectorAll('input[name="re-keep"]:checked'),function(i){return i.value});
+    var table="1) 컷 표: 컷 | 시작–끝(초) | 화면에 보이는 것 | 샷 · 카메라 | 전환 | 자막(위치 · 스타일 · 문구) | 대사 · 내레이션 | 소리(BGM 박자 · 효과음) | 인물 연기\n2) 첫 3초 훅: 멈추게 만든 장치 한 줄\n3) 리듬: 평균 컷 길이, 가장 빠른 구간, 화면이 바뀌는 신호(대사의 어떤 단어 · 박자)\n4) 끝까지 보게 만드는 이유 3가지\n5) 구조 한 줄 요약 (예: 질문 → 항목 4개 반복 → 한 점으로 모임 → 링크)\n6) 각 컷에 'AI 영상 레퍼런스 보관함' 카드 코드를 붙여 줘. 코드 목록: "+CODES+" (T 구조 · H 훅 · M 카메라 · F 샷 · X 전환 · C 자막 · E 연기 · G 모션그래픽). 맞는 카드가 없으면 비워 둬.";
+    var p1;
+    if(way==="hypit"){
+      p1="# 처음 한 번, 터미널에서 Hypit 스킬 설치\nnpx skills add hypit-ai/hypit -g\n\n# Claude Code에서\n/hypit 이 영상을 참고로 분석만 먼저 해 줘: "+ref+"\n아직 이미지 · 영상 · 음성 모델은 호출하지 마(유료 생성 금지). 대사는 단어마다 시간을 받아쓰고, 컷 · 자막 · B롤 · 효과음이 어느 단어에 붙는지 정리해 줘.\n결과는 아래 형식의 표로 보여 줘.\n"+table;
+    } else if(way==="sheet"){
+      p1="# 1) 격자 이미지 만들기 (0.5초 간격, 30초 영상이면 60칸)\nffmpeg -i 참고영상.mp4 -vf \"fps=2,scale=180:-1,tile=10x6\" 격자.jpg\n\n# 2) 대사 받아쓰기: 유튜브 '스크립트 보기' 복사, 또는 받아쓰기 도구로 단어별 시간까지\n\n# 3) 아래 빈 분석표를 채운 뒤, AI에게 이렇게 붙여 넣기\n내가 채운 분석표야 (참고 영상: "+ref+"). 빠진 칸을 격자 이미지와 대사를 보고 채워 주고, 아래 항목을 정리해 줘.\n"+table;
+    } else {
+      p1="첨부한 영상을 리버스 엔지니어링해 줘 (참고 영상: "+ref+").\n영상을 직접 볼 수 없으면 내가 붙인 0.5초 간격 격자 이미지와 대사 받아쓰기로 분석해 줘.\n화면 · 인물 · 문구 · 음악은 가져오지 않고 구조만 뽑을 거야. 확실하지 않은 칸은 추측이라고 표시해 줘.\n\n"+table;
+    }
+    var p2="위 분석표의 틀은 그대로 두고 내용만 바꿔서 새 기획안을 만들어 줘.\n- 새 주제: "+mine+"\n- 그대로 가져올 것: "+(keep.length?keep.join("; "):"cut timing and pacing")+"\n"+(change?"- 바꿀 점: "+change+"\n":"")+"- 원본의 인물 · 화면 · 문구 · 브랜드 · 음악은 쓰지 마. 훅 문장은 장치만 살리고 새로 써.\n- 컷마다 사전 카드 하나씩 골라 반영해 줘 (카메라 M, 전환 X, 자막 C, 연기 E). 코드 목록: "+CODES+"\n\n출력:\n1) 컷별 표: 시간 | 새 화면 설명 | 자막 | 대사 | 소리 | 쓴 카드 코드\n2) 컷별 영상 프롬프트 (영어)\n3) 이미지를 먼저 만들 경우 컷별 첫 프레임 이미지 프롬프트 (영어)\n\n도구 규칙 — "+MODEL[model]+"\nIDENTITY LOCK: 제품 · 인물의 생김새는 모든 컷에서 똑같이 유지. BGM은 한 곡만.";
+    $("re-p1").textContent=p1; $("re-p2").textContent=p2; $("re-p3").textContent=SHEET;
+  }
+  $("re-tool").addEventListener("input",build); $("re-tool").addEventListener("change",build);
+  $("re-tool").addEventListener("click",function(e){
+    var b=e.target.closest("[data-copy]"); if(!b) return; var t=$(b.getAttribute("data-copy")).textContent;
+    var ok=function(){$("re-msg").textContent="복사했어요";}, fail=function(){var r=document.createRange(); r.selectNodeContents($(b.getAttribute("data-copy"))); var s=getSelection(); s.removeAllRanges(); s.addRange(r); $("re-msg").textContent="텍스트를 선택해 두었어요. 직접 복사해 주세요";};
+    try{navigator.clipboard.writeText(t).then(ok,fail);}catch(err){fail();}
+  });
+  build();
+})();
+</script>
+
+<h2>그대로 따라 하면 안 되는 것</h2>
+<ul>
+  <li><b>남의 화면 · 인물 · 목소리:</b> 원본 장면을 잘라 쓰거나, 원본 인물과 닮게 만들거나, 목소리를 흉내 내면 안 돼요.</li>
+  <li><b>문구 · 브랜드 · 음악:</b> 훅 문장은 장치(질문형, 결과 먼저형…)만 가져오고 문장은 새로 쓰세요. 원본 음원은 쓰지 말고 저작권이 정리된 BGM을 쓰세요.</li>
+  <li><b>효능 · 후기 문구:</b> 화장품 · 식품 광고를 옮길 때 원본의 효능 표현을 그대로 쓰면 표시 · 광고 규정에 걸릴 수 있어요. 내 제품에 근거가 있는 표현만 쓰세요.</li>
+</ul>
+<p>구조를 가져올 영상이 필요하면 매일 갱신되는 <a href="../radar/">터진 쇼츠</a>에서 고르세요. 영상마다 '구조 뜯어보기' 버튼을 누르면 이 도구에 링크가 자동으로 채워져요.</p>
+
+<section class="faq">
+<h2 id="faq">자주 묻는 질문</h2>
+  <h3>리버스 엔지니어링으로 만든 영상, 올려도 괜찮나요?</h3>
+  <p>컷 길이 · 훅 장치 · 자막 위치 같은 구조는 참고해도 되지만, 원본의 인물 · 화면 · 문구 · 음악 · 브랜드를 그대로 쓰면 도용이 돼요. 화면과 문장은 모두 내 것으로 새로 만들어야 해요.</p>
+  <h3>Hypit은 무료인가요?</h3>
+  <p>Hypit 자체는 무료로 쓸 수 있고 상업적 사용도 가능해요. 다만 이미지 · 영상 · 음성 모델은 각 서비스의 요금이 따로 들고, Hypit 기능을 남에게 서비스로 제공하려면 별도 라이선스가 필요해요.</p>
+  <h3>코딩을 몰라도 할 수 있나요?</h3>
+  <p>네. 격자 이미지와 빈 분석표로 직접 하거나, AI 채팅에 영상(또는 격자 이미지)과 분석 프롬프트를 넣으면 돼요. Claude Code + Hypit은 분석에서 제작까지 한 번에 하고 싶을 때 쓰는 방법이에요.</p>
+  <h3>대사 받아쓰기는 꼭 필요한가요?</h3>
+  <p>말이 있는 영상이라면 있는 게 훨씬 좋아요. 떡상 영상은 핵심 단어에 맞춰 컷 · 자막 · 효과음이 바뀌는 경우가 많아서, 단어별 시간이 있어야 그 리듬을 그대로 옮길 수 있어요.</p>
+</section>
+
+  </article>
+  <h2>이 글에 나온 카드</h2><p>카드를 누르면 미리보기와 바로 복사할 수 있는 프롬프트가 나와요.</p><ul class="related cards"><li><a href="../card/t18.html"><b>T18 TOP N 리스트</b><small>꿀팁 5가지, 추천템 TOP3</small></a></li><li><a href="../card/h01.html"><b>H01 질문형 훅</b><small>내 얘기 같은 질문에 &#x27;나도?&#x27; 하고 멈춰요.</small></a></li><li><a href="../card/h12.html"><b>H12 마무리 · 링크 안내</b><small>할 일을 하나만 주면 따라 해요. 광고·협찬이면 &#x27;광고&#x27; 표기를 함께 넣으세요.</small></a></li><li><a href="../card/c01.html"><b>C01 상단 고정 제목 띠</b><small>영상 내내 위쪽에 고정된 질문 · 제목 한 줄</small></a></li><li><a href="../card/c05.html"><b>C05 단계 · 숫자 배지</b><small>1, 2, 3이나 TOP3 순위를 같은 자리에 고정</small></a></li><li><a href="../card/c08.html"><b>C08 가격 · 행동 유도 버튼</b><small>마지막 2–3초에 뜨는 버튼 모양 안내</small></a></li><li><a href="../card/g11.html"><b>G11 라인 드로잉</b><small>선이 그려지며 결과 등장</small></a></li></ul>
+  <aside class="cpbox" aria-label="광고"><span class="lab">광고 · 쿠팡</span>
+    <div class="cpwrap"><script src="https://ads-partners.coupang.com/g.js"></script> <script> new PartnersCoupang.G({"id":1038865,"template":"carousel","trackingCode":"AF0984527","width":"680","height":"140","tsource":""}); </script></div>
+    <p class="cpnote">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></aside>
+  <div class="cta"><b>사전에서 바로 해 보기</b><span>이 글에 나온 카메라 무빙, 구조, 조명 카드를 골라 담으면 7단계 프롬프트가 자동으로 만들어집니다.</span><a class="btn" href="../#dict">레퍼런스 사전 열기</a></div>
+  <h2>다른 가이드</h2>
+  <ul class="related"><li><a href="prompt-7-steps.html"><b>AI 영상 프롬프트, 7단계로 나눠 쓰면 결과가 안정된다</b><small>&quot;멋지게 만들어 줘&quot; 대신 무엇을 고정하고 무엇을 움직일지 나눠 쓰는 7단계 프롬프트 공식과 전후 비교 예시.</small></a></li><li><a href="prompt-examples.html"><b>AI 영상 프롬프트 예시 10개, 복사해서 바로 쓰기</b><small>제품 소개, 음식, 첫 3초 훅, 후기, 정보형, 스톱모션까지. Kling·Veo·Sora 같은 영상 AI에 바로 넣을 수 있는 영어 프롬프트 10개와 한글 설명.</small></a></li><li><a href="code-motion-video.html"><b>코드로 AI 모션 영상 만드는 원리와 방법</b><small>요즘 AI가 만드는 모션 영상은 영상 생성 모델이 아니라 코드로 그린 경우가 많아요. 브라우저가 코드를 그림으로 그리는 원리, 끊김 없이 MP4로 뽑는 방법, aimotion 스킬 설치와 기법 가져다 쓰는 법, 장점과 한계까지.</small></a></li><li><a href="ai-video-styles.html"><b>AI 영상 스타일 13가지, 언제 뭘 골라야 할까</b><small>콜라주 비디오 에세이, 지도 다큐, 플랫 벡터 애니, 키네틱 타이포, UGC 후기, 말하는 사물, 로파이 루프까지. 요즘 많이 쓰는 영상 스타일의 특징과 바로 쓰는 프롬프트.</small></a></li><li><a href="camera-moves.html"><b>카메라 무빙 53가지, 언제 어떤 움직임을 써야 할까</b><small>돌리인, 오비트, 스냅 줌부터 돌리 줌, 불릿 타임, 랙 포커스, 핸드헬드, 매치 컷까지. 카메라 움직임마다 주는 효과, 쓰기 좋은 순간, 바로 쓰는 프롬프트 문장.</small></a></li><li><a href="shorts-hook-patterns.html"><b>터진 쇼츠의 첫 3초, 5가지 공식으로 정리했어요</b><small>구독자 수백 명 채널이 수십만~수백만 회를 만든 쇼츠를 뜯어보고, AI 영상으로 따라 만들 수 있는 첫 3초 공식 5가지와 프롬프트를 정리했습니다.</small></a></li><li><a href="shortform-structures.html"><b>15–45초 숏폼, 8가지 구조로 짜는 법</b><small>쇼츠·릴스 기본형, 광고 심리, 숏드라마 훅, 고객 후기, 비포·애프터, TOP N 리스트, POV 상황극, 언박싱. 초 단위 시간 배분과 예시 대본까지.</small></a></li><li><a href="fix-ai-video-errors.html"><b>AI 영상이 망가지는 7가지 이유와 고치는 법</b><small>제품 모양이 바뀌고, 글자가 깨지고, 손이 뭉개지고, 조명이 튀는 문제. 원인별로 바로 써먹는 해결법.</small></a></li></ul>
+</main>
+<footer><a href="../privacy.html">소개 · 개인정보처리방침</a></footer>
+<script>
+(function(){document.querySelectorAll(".adslot").forEach(function(box){var ins=box.querySelector("ins");
+ if(!ins||/SLOT_|0000000000000000/.test(ins.getAttribute("data-ad-slot")+ins.getAttribute("data-ad-client")))return;
+ box.hidden=false;try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}});})();
+</script>
+<script data-goatcounter="https://aivideoref.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

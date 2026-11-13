@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>정리 전, 정리 후 · 코드 모션 기법 #127 | AI 영상 레퍼런스 보관함</title>
+<meta name="description" content="정리 전, 정리 후 — 사용 전후 비교 슬라이더 · 분할 화면. 비교 장면 · 한 장면의 두 상태 + 와이프 슬라이더 + 분할 화면. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<link rel="canonical" href="https://ai-video-reference-kr.netlify.app/prompts/code-motion/127-before-after.html">
+<meta name="naver-site-verification" content="e5333b5b9f211f59938cdfd08b3fdd56345a3b6b" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="정리 전, 정리 후 · 코드 모션 기법 #127 | AI 영상 레퍼런스 보관함">
+<meta property="og:description" content="정리 전, 정리 후 — 사용 전후 비교 슬라이더 · 분할 화면. 비교 장면 · 한 장면의 두 상태 + 와이프 슬라이더 + 분할 화면. 데모 재생, 활용 가이드, Claude Code로 만드는 법과 프롬프트.">
+<meta property="og:url" content="https://ai-video-reference-kr.netlify.app/prompts/code-motion/127-before-after.html">
+<meta property="og:image" content="https://ai-video-reference-kr.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315171C%22/%3E%3Cpath d=%22M24 18 L48 32 L24 46Z%22 fill=%22%23D2382A%22/%3E%3C/svg%3E">
+<!-- AdSense 승인 신청 시 아래 두 줄의 주석을 풀고 0000000000000000을 본인 게시자 ID로 바꾸세요
+<meta name="google-adsense-account" content="ca-pub-0000000000000000">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
+-->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "코드 모션 기법", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/"}, {"@type": "ListItem", "position": 2, "name": "정리 전, 정리 후", "item": "https://ai-video-reference-kr.netlify.app/prompts/code-motion/127-before-after.html"}]}</script></head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F3F5;--surface:#FFFFFF;--ink:#15171C;--muted:#5C6270;--line:#DCDFE5;--rec:#D2382A;--motion:#2D5BD0;
+--f-display:"Do Hyeon","IBM Plex Sans KR","Apple SD Gothic Neo",sans-serif;--f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111317;--surface:#1A1D23;--ink:#ECEEF2;--muted:#9BA1AE;--line:#2D313A;--rec:#FF6B5C;--motion:#86A4FF;color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top nav{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
+.top nav .brand{font-family:var(--f-display);font-size:19px;color:var(--ink);margin-right:auto}
+main{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+h2{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.3;margin:40px 0 10px}
+p,li{max-width:68ch}
+a{color:inherit;text-decoration-color:var(--rec);text-underline-offset:3px}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+pre.prompt{font-family:var(--f-mono);font-size:13px;line-height:1.65;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--rec);border-radius:8px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.cta{margin:40px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.cta b{font-family:var(--f-display);font-weight:400;font-size:21px}
+.btn{display:inline-block;justify-self:start;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:500}
+.related{display:grid;gap:8px;padding:0;list-style:none}
+.related a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none}
+.related a:hover{border-color:var(--rec)}
+.related small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.adslot{margin:30px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:100px}
+.adslot .lab{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.cpbox{margin:26px 0;border:1px dashed var(--line);border-radius:12px;padding:8px 10px;display:grid;gap:6px;justify-items:center}.cpbox .lab{justify-self:start;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}.cpwrap{max-width:100%;overflow:hidden}.cpwrap iframe{max-width:100%}.cpnote{margin:0;font-size:11.5px;color:var(--muted);text-align:center}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--motion);outline-offset:2px}
+.faq h3{font-size:16px;margin:22px 0 6px}.faq p{margin:0 0 10px}
+</style><style>
+.page h1,.vc h3{word-break:keep-all}
+main.wide{max-width:1100px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:18px 0 26px;padding:0;list-style:none}
+.howto li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.6;max-width:none}
+.howto b{display:block;font-family:var(--f-display);font-weight:400;font-size:18px;margin-bottom:4px}
+.howto code{font-family:var(--f-mono);font-size:12.5px;background:var(--bg);padding:1px 5px;border-radius:5px}
+.flt{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.flt input{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips button{font:inherit;font-size:13px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt{font-size:13px;color:var(--muted)}
+ol.grid{list-style:none;padding:0;margin:16px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.vc{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;max-width:none;min-width:0}
+.vc[hidden]{display:none}
+.vv{display:block;width:100%;aspect-ratio:9/16;max-height:560px;object-fit:contain;background:#0b0b0f}
+.vb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.hd{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px}
+.no{font-family:var(--f-mono);color:var(--muted)}
+.cat{font-weight:600;color:var(--rec)}
+.tg{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-radius:6px;padding:0 6px;color:var(--muted)}
+.vc h3{font-size:17px;line-height:1.4;margin:2px 0 0}
+.ds{margin:0;font-size:14px;line-height:1.6}
+.hw{margin:0;font-size:13px;line-height:1.6;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 10px}
+.hw b{display:block;color:var(--ink);font-size:12px;margin-bottom:2px}
+details summary{cursor:pointer;font-size:13px;color:var(--muted);padding:4px 0}
+.pp{font-family:var(--f-mono);font-size:12px;line-height:1.6;background:var(--bg);border-radius:8px;padding:10px 12px;margin:4px 0;white-space:pre-wrap;overflow-wrap:anywhere;max-height:360px;overflow:auto}
+.act{margin-top:auto;padding-top:4px}
+.act .cp{font:inherit;font-size:14px;padding:8px 14px;border-radius:9px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;width:100%}
+.note{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:30px;line-height:1.7}
+</style><style>
+.cm-stats{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.cm-stats span{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--surface)}
+.cm-stats b{font-family:var(--f-mono);margin-right:4px}
+.inst{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin:16px 0 22px}
+.inst h2{font-size:17px;margin:0 0 10px}
+.code{position:relative;max-width:100%;box-sizing:border-box;font-family:var(--f-mono);font-size:12.5px;line-height:1.7;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 72px 10px 12px;margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.code .cbtn{position:absolute;top:8px;right:8px}
+.cbtn{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:3px 10px;cursor:pointer}
+.picks{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(132px,1fr);gap:10px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x mandatory}
+.picks a{scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
+.picks img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block;background:#111}
+.picks b{display:block;font-size:13px;margin-top:6px;line-height:1.35}
+.picks small{display:block;font-size:11.5px;color:var(--muted);line-height:1.4}
+.flt2{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.flt2 input[type=search]{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.flt2 .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+.flt2 select{font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cnt2{font-size:13px;color:var(--muted);margin-left:auto}
+.cmgrid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.cmc{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.cmc .ph{display:block;position:relative;aspect-ratio:4/5;background:#111}
+.cmc .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+.cmc .no{position:absolute;left:8px;top:8px;font-family:var(--f-mono);font-size:11px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;padding:2px 6px}
+.cmc .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cmc h3{font-size:16px;margin:0;line-height:1.35}
+.cmc h3 a{color:inherit;text-decoration:none}
+.cmc .ln{margin:0;font-size:13.5px;line-height:1.55}
+.cmc .tc{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tg2{font-size:11px;border-radius:6px;padding:1px 7px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.tg2.u{color:var(--ink)}
+.w-light{color:#2f8f5b}.w-mid{color:#b7791f}.w-heavy{color:var(--rec)}
+.cmc .ft{display:flex;gap:6px;margin-top:auto;padding-top:6px}
+.cmc .ft a,.cmc .ft button{flex:1;text-align:center;font:inherit;font-size:13px;border-radius:9px;padding:8px 6px;cursor:pointer;text-decoration:none}
+.cmc .ft a{background:var(--ink);color:var(--bg);border:1px solid var(--ink)}
+.cmc .ft button{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.note2{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:28px;line-height:1.7}
+/* detail */
+.crumb{font-size:13px;color:var(--muted);margin:0 0 10px}.crumb a{color:inherit}
+.cmd{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:28px;align-items:start}
+.cmd>*{min-width:0}
+.player{position:sticky;top:12px}
+.stage{position:relative;aspect-ratio:9/16;background:#000;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.stage img,.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.stage .go{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:inherit;font-size:15px;font-weight:600;background:rgba(0,0,0,.72);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:12px 20px;cursor:pointer;white-space:nowrap}
+.pl-act{display:flex;gap:8px;margin-top:8px;font-size:13px;flex-wrap:wrap}
+.pl-act a,.pl-act button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;text-decoration:none}
+.pl-note{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.5}
+.cmd h1{font-size:clamp(24px,4vw,34px);margin:4px 0 6px;line-height:1.25}
+.cmd .tech{margin:0 0 10px;color:var(--muted);font-size:14.5px}
+.oneline{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--rec);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:15px;line-height:1.6}
+.oneline b{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:2px}
+.sec{margin:26px 0 0}
+.sec>h2{font-size:20px;margin:0 0 10px;padding-top:6px;border-top:1px solid var(--line)}
+.ug{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.ug h3{font-size:15px;margin:0 0 4px}.ug p{margin:0 0 6px;font-size:14px;line-height:1.6}.ug ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.7}
+.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+.steps>li{counter-increment:s;position:relative;padding:0 0 18px 40px}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);font-family:var(--f-mono);font-size:13px;display:grid;place-items:center}
+.steps h3{font-size:15.5px;margin:3px 0 6px}.steps p{margin:0 0 6px;font-size:14px;line-height:1.6}
+.pb{display:grid;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.pb label{display:grid;gap:3px;font-size:13px;font-weight:600}
+.pb input,.pb select{font:inherit;font-weight:400;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.pb .two{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.fix{display:flex;flex-wrap:wrap;gap:6px}
+.fix button{font:inherit;font-size:13px;border:1px dashed var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer}
+.notes{font-size:14px;line-height:1.7}
+.notes h4{font-size:14.5px;margin:14px 0 4px}
+.notes code{font-family:var(--f-mono);font-size:12px;background:var(--bg);border-radius:4px;padding:0 4px}
+.notes ul{padding-left:18px}
+.tw{overflow-x:auto;margin:8px 0}.tw table{border-collapse:collapse;font-size:13px;min-width:420px}
+.tw th,.tw td{border:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left}
+.tw th{background:var(--surface)}
+.sheet{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);margin-top:8px}
+details.dev{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}
+details.dev summary{cursor:pointer;font-weight:600;font-size:14.5px}
+.rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.rel a{text-decoration:none;color:inherit;font-size:12.5px;line-height:1.35}
+.rel img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block;margin-bottom:4px;background:#111}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:22px;font-size:14px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:13px;border-radius:999px;padding:8px 16px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20}
+.toast.on{opacity:1}
+@media (max-width:820px){.cmd{grid-template-columns:minmax(0,1fr)}.player{position:static;max-width:340px;margin:0 auto}.pb .two{grid-template-columns:1fr}}
+</style><header class="top"><nav><a class="brand" href="../../">AI 영상 레퍼런스 보관함</a><a href="../../#dict">레퍼런스 사전</a><a href="../../radar/">터진 쇼츠</a><a href="../../guide/">가이드</a><a href="../../prompts/video/">영상 프롬프트</a><a href="../../privacy.html">소개</a></nav></header>
+<main class="wide">
+  <p class="crumb"><a href="./">코드 모션 기법</a> › <a href="./#g=g09">영상 표현력</a> › #127</p>
+  <div class="cmd">
+    <aside class="player">
+      <div class="stage" id="stage"><img src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/127-before-after.jpg" alt="정리 전, 정리 후 데모의 절정 장면" width="360" height="640"><button type="button" class="go" id="go">▶ 여기서 데모 재생</button></div>
+      <div class="pl-act"><a href="https://kstost.github.io/cokacmotion/127-before-after/" target="_blank" rel="noopener">새 창에서 크게 ↗</a><button type="button" id="rp" hidden>처음부터 다시</button><a href="https://github.com/kstost/cokacmotion/blob/main/skills/aimotion/demos/127-before-after/NOTES.md" target="_blank" rel="noopener">원문 노트 ↗</a></div>
+      <p class="pl-note">데모는 영상 파일이 아니라 코드가 지금 그리는 화면이에요. 브라우저에서 가볍게 돌아가는 기법이라 미리보기와 렌더링이 빨라요. 재생 중 스페이스 · 클릭은 멈춤, ← →는 0.5초 이동이에요.</p>
+    </aside>
+    <article>
+      <span class="eyebrow">#127 · 영상 표현력</span>
+      <h1>정리 전, 정리 후</h1>
+      <p class="tech">비교 장면 · 한 장면의 두 상태 + 와이프 슬라이더 + 분할 화면</p>
+      <div class="tags"><a class="tg2 u" href="./#u=product">제품·앱 소개</a><a class="tg2 u" href="./#u=transition">장면 전환</a><span class="tg2 w-light">가벼움 · 브라우저 기능만</span></div>
+      <div class="oneline"><b>광고 · 쇼츠에서는</b>사용 전후 비교 슬라이더 · 분할 화면</div>
+
+      <section class="sec" id="guide"><h2>활용 가이드</h2><div class="ug"><h3>제품·앱 소개로 쓸 때</h3><p>제품·앱·서비스의 생김새나 기능을 보여 주는 장면에 써요.</p><ul><li>실제 제품 사진(배경 제거 PNG)이나 앱 화면 캡처를 함께 주면 그대로 넣어 움직여요.</li><li>기능 하나당 2–3초, 한 화면에 한 가지만 보여 주세요.</li><li>가격·혜택 같은 숫자는 코드로 넣어야 깨지지 않아요.</li></ul></div><div class="ug"><h3>장면 전환로 쓸 때</h3><p>장면 A에서 B로 넘어가는 0.3–1초 구간에 써요. 컷 사이 이탈을 줄여요.</p><ul><li>전환 하나를 영상 전체에 반복해 쓰면 통일감이 생겨요. 매번 다른 전환은 산만해요.</li><li>앞 장면의 마지막 프레임과 다음 장면의 첫 프레임을 같이 알려 주세요.</li><li>실사 영상 사이에 넣을 땐 투명 배경(알파) 영상이나 두 영상을 직접 합치는 방식으로 요청해요.</li></ul></div><div class="ug"><h3>사전 카드와 함께 쓰기</h3><p><a href="../../card/t17.html">T17 비포 · 애프터</a> 카드와 같은 기법이에요. 카드의 예시 영상과 주문서 기능을 같이 써 보세요.</p></div>
+        
+      </section>
+
+      <section class="sec" id="make"><h2>만드는 법</h2>
+        <ol class="steps">
+          <li><h3>준비하기</h3><p>Claude Code를 열고 빈 폴더에서 시작해요. aimotion 스킬을 처음 한 번 설치해요.</p>
+            <div class="code" id="i1">claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion<button type="button" class="cbtn" data-copy="#i1t">복사</button></div><textarea id="i1t" hidden>claude plugin marketplace add kstost/cokacmotion
+claude plugin install aimotion@aimotion</textarea></li>
+          <li><h3>프롬프트 만들기</h3><p>칸을 채우면 아래 프롬프트가 바로 바뀌어요. 데모의 장면이 아니라 <b>내 장면</b>을 적는 게 핵심이에요.</p>
+            <div class="pb" id="pb">
+              <label>내 장면 (무엇을 보여 줄지)<input id="f-scene" placeholder="예: 동네 빵집 신메뉴 '소금빵' 출시 소식"></label>
+              <label>화면에 들어갈 문구<input id="f-text" placeholder="예: 오늘 아침 7시, 소금빵 첫 판"></label>
+              <div class="two">
+                <label>브랜드 색<input id="f-color" placeholder="예: #F2C14E, 크림색"></label>
+                <label>비율<select id="f-ratio"><option>9:16 세로 (1080×1920)</option><option>16:9 가로 (1920×1080)</option><option>1:1 정사각 (1080×1080)</option><option>4:5 피드 (1080×1350)</option></select></label>
+                <label>길이<select id="f-len"><option>5초</option><option selected>6초</option><option>8초</option><option>10초</option><option>15초</option></select></label>
+              </div>
+            </div>
+            <div class="code" id="pout"></div>
+            <div class="pl-act"><button type="button" data-copy="#pout">프롬프트 복사</button></div></li>
+          <li><h3>미리보기 보고 고치기</h3><p>Claude Code가 만든 HTML을 브라우저로 열어 확인하고, 고칠 점을 말로 알려 줘요. 자주 쓰는 수정 문장을 눌러 복사하세요.</p>
+            <div class="fix"><button type="button" data-copy="전체 속도를 1.5배 느리게 해 줘">전체 속도를 1.5배 느리게 해 줘</button><button type="button" data-copy="효과 강도를 절반으로 줄여 줘">효과 강도를 절반으로 줄여 줘</button><button type="button" data-copy="글자를 화면 위쪽 1/3 위치로 옮겨 줘">글자를 화면 위쪽 1/3 위치로 옮겨 줘</button><button type="button" data-copy="마지막 1초는 움직임을 멈추고 유지해 줘">마지막 1초는 움직임을 멈추고 유지해 줘</button><button type="button" data-copy="배경색을 브랜드 색으로 바꿔 줘">배경색을 브랜드 색으로 바꿔 줘</button><button type="button" data-copy="화면 아래 15%는 자막 자리로 비워 줘">화면 아래 15%는 자막 자리로 비워 줘</button><button type="button" data-copy="처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘">처음 0.5초 안에 핵심이 보이게 시작을 당겨 줘</button><button type="button" data-copy="같은 영상을 16:9 가로로도 만들어 줘">같은 영상을 16:9 가로로도 만들어 줘</button></div></li>
+          <li><h3>MP4로 뽑기</h3><p>실시간 화면 녹화보다 프레임 단위 렌더링이 끊김 없고 선명해요.</p>
+            <div class="code" id="r1">이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.<button type="button" class="cbtn" data-copy="#r1t">복사</button></div><textarea id="r1t" hidden>이제 render(t)로 1/30초마다 프레임을 캡처해서 30fps MP4로 렌더링해 줘. 결과 파일 이름은 out.mp4로.</textarea></li>
+          <li><h3>내 영상에 합치기</h3><p>제목 · 자막 · 전환처럼 실사 위에 얹을 효과라면 배경을 투명하게 뽑아 편집 프로그램(캡컷 · 프리미어)의 위 트랙에 올려요. 이미 찍은 영상이 있으면 파일을 주고 "이 영상 위에 효과를 입혀 줘"라고 해도 돼요.</p>
+            <div class="code" id="r2">배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.<button type="button" class="cbtn" data-copy="#r2t">복사</button></div><textarea id="r2t" hidden>배경을 투명하게 해서 알파 채널이 있는 영상(ProRes 4444 .mov 또는 WebM)으로도 뽑아 줘.</textarea></li>
+        </ol>
+      </section>
+
+      <section class="sec" id="timeline"><h2>초 단위로 보기</h2>
+        <p class="pl-note">데모가 몇 초에 무엇을 보여 주는지예요. 장면을 따라 하려는 게 아니라, 기법이 어떤 순서와 리듬으로 쓰였는지 보는 용도예요.</p>
+        <img class="sheet" loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/127-before-after-sheet.jpg" alt="정리 전, 정리 후 1초 간격 장면" width="822" height="579">
+        <div class="notes"><p>어둡고 어질러진 원룸이 정리된 방으로 바뀌고, 와이프 슬라이더와 위아래 분할 화면이 달라진 곳 여덟 군데를 같은 번호의 손그림 고리로 짚는다.</p>
+<p>미감은 따뜻한 베이지·회색 평면 일러스트다. 색 토큰은 벽·바닥·나무·크라프트 같은 따뜻한 중간색과 먹색(#2C2A31)이고, 강조색은 민트(#34C49C) 하나다.
+민트는 "정리됨"의 표시로만 쓴다. 슬라이더 손잡이, 표시 고리, 도장이 민트이고, 방 안에서는 B 상태의 커튼 끈, 선 정리 밴드, 시계 초침만 민트다.
+A 상태는 커튼이 닫혀 차갑고 어둡다(곱하기 합성의 회색 막과 비네트). B 상태는 커튼이 열려 창 모양 그대로 햇빛이 바닥에 떨어진다.
+깊이는 세 겹이다. 원경은 벽·창밖 지붕·액자·시계, 중경은 침대·책상·의자·선반, 전경은 바닥의 상자·책 더미·종이 뭉치다.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>시간</th>
+<th>무엇이 보이나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–1.5</td>
+<td><strong>어질러진 방이 쌓인다.</strong> 카메라가 1.075배에서 1배로 물러나는 동안 바닥과 의자의 물건이 뒤쪽부터 차례로 떨어져 튀며 자리 잡는다(0.1–1.05초, 간격은 그리는 순서). 왼쪽 위에 「토요일 오전 10시 · 원룸」과 큰 제목 「정리 전」이 줄 마스크에서 올라오고, 1.42초부터 위로 빠지며 흐려진다.</td>
+</tr>
+<tr>
+<td>1.46–4.0</td>
+<td><strong>와이프 슬라이더.</strong> 둥근 손잡이가 오른쪽 가장자리에서 튀어 들어오고, 세로선이 손잡이에서 위아래로 자란다. 1.72초에 손잡이가 눌리고 손이 끌기 시작한다. 왼쪽 166 px까지 쓸며 정리 후를 드러내고, 튕겨 넘쳤다가 돌아온다. 가운데를 지나 780 px까지 갔다가 380 px로 한 번 더 문지르고 540 px에 선다. 「정리 전」(먹색)과 「정리 후」(민트) 칩이 선의 양쪽에 붙어 따라다니고, 자기 쪽 영역에서만 보인다.</td>
+</tr>
+<tr>
+<td>4.1–4.62</td>
+<td><strong>선이 90° 돈다.</strong> 손잡이를 축으로 세로선이 가로선이 된다. 왼쪽/오른쪽이 위(전)/아래(후)가 되고, 손잡이의 화살표도 함께 돌아 위아래를 가리킨다. 두 칩은 각 창의 왼쪽 위 모서리로 날아간다.</td>
+</tr>
+<tr>
+<td>4.62–5.12</td>
+<td><strong>분할 화면.</strong> 두 반쪽이 둥근 모서리 창 두 개로 줄어들고, 사이로 먹색 바탕이 드러난다. 두 창의 카메라는 같은 크롭(달라진 곳 전체)으로 물러난다. 손잡이는 가운데 틈에서 「달라진 곳 8」 알약으로 펴진다.</td>
+</tr>
+<tr>
+<td>4.98–6.0</td>
+<td><strong>차이 표시(절정).</strong> 위쪽에 카운터 세 장이 내려온다: 바닥의 물건 23 → 2, 흩어진 컵 5 → 1, 널린 옷 7 → 0. 오른쪽 숫자가 23에서 2로 굴러 내려간다. 5.1초부터 0.084초 간격으로 1번부터 8번까지 하나씩 표시가 나온다. 물건의 실루엣을 감싼 손그림 고리가 펜으로 그리듯 한 바퀴 돌고(끝이 시작점을 살짝 지나침) 안쪽이 옅은 민트로 물들며, 번호 배지가 튄다. 같은 번호는 위 창과 아래 창에서 같은 순간에 나온다. 6.0초에 여덟 개가 모두 자리 잡는다.</td>
+</tr>
+<tr>
+<td>6.0–7.2</td>
+<td>정지에 가까운 읽기 시간이다. 먼지, 화분 잎, 커튼 밑단, 의자에 걸린 후드 소매, 시계 초침, 천장 조명이 두 창에서 똑같이 움직인다.</td>
+</tr>
+<tr>
+<td>7.2–8.18</td>
+<td>표시와 카운터가 빠르게 빠진다(0.2초). 아래 창이 전체 화면으로 열리며 위 창을 화면 위로 밀어낸다(위 창의 아랫변이 아래 창의 윗변을 따라간다). 알약은 다시 손잡이가 되어 곡선을 그리며 오른쪽 위로 날아간다.</td>
+</tr>
+<tr>
+<td>8.02–10</td>
+<td><strong>정리 끝.</strong> 「토요일 오후 1시 · 같은 방」과 「정리 후」가 올라오고 민트 밑줄이 그어진다. 8.3초에 손잡이가 도장 「정리 끝」으로 커지며 찍힌다(1.45배에서 눌림, 충격 고리, 짧은 빛살 8개, 카메라 0.012 펀치). 햇빛이 짙어지고(빛 세기 1 → 1.6) 창가에 번짐과 빛줄기가 생기며, 카메라가 4% 천천히 다가간다.</td>
+</tr>
+</tbody>
+</table></div>
+<p>포스터(절정) 시각은 렌더러 기본값인 <strong>6.0초</strong>다. 카운터 세 장, 두 창, 위아래 여덟 쌍의 번호 고리가 모두 다 그려진 화면이다.</p></div>
+      </section>
+
+      <section class="sec" id="how"><h2>원리</h2>
+        <p class="pl-note">개발자용 구현 설명이에요(원작자 노트, MIT). 몰라도 만들 수 있지만, Claude에게 "이 원리 중 ○○만 써 줘"처럼 지시할 때 도움이 돼요.</p>
+        <details class="dev" open><summary>기법과 원리</summary><div class="notes"><ul>
+<li><strong>장면 설명 하나, 상태 둘</strong> (<code>main.js:677</code> <code>add</code>, <code>main.js:682</code> <code>buildScene</code>)</li>
+<li>물건 하나는 <code>{ id, kind, group, A, B, …고정 값 }</code>이다. 상태는 <code>{ x, y, s, r, vis, z, surface, shape }</code>이고, B를 생략하면 A와 같다(바뀌지 않은 가구).</li>
+<li>kind마다 <code>draw(g, st, t, E, it)</code>와 <code>box(st, it)</code>가 있다. draw는 상태의 모양 값만 보고 그린다. 위치·크기·회전은 렌더러가 <code>translate → rotate → scale</code>로 걸어 준다(<code>main.js:973–990</code>).</li>
+<li>같은 물건이 상태에 따라 자리만이 아니라 모양도 바꾼다.<ul>
+<li>책 일곱 권은 A에서 <code>r = π/2</code>로 누워 쌓인다(앞 책들의 두께를 누적한 높이, <code>main.js:697–708</code>). B에서는 선반에 0.85배로 선다.</li>
+<li>옷은 A에서 종류별 무더기 모양이다(<code>CRUMPLE</code>, <code>main.js:487</code>: 의자에 걸친 후드, 쌓인 스웨터, 의자 밑의 티셔츠·양말). B에서는 같은 물건이 개어진 사각형이 되어 바구니 위에 쌓인다.</li>
+</ul>
+</li>
+<li>그리는 순서는 상태별 <code>z</code>로 정하고, 같으면 목록 순서로 정한다(안정 정렬, <code>main.js:1556</code>). 옷 무더기는 의자 좌판(z 1404)과 등받이(z 1416) 사이에, 후드는 등받이 뒤(z 1417)에 들어간다.</li>
+<li><strong>2.5D: 소실점 하나로 윗면과 옆면</strong> (<code>main.js:124</code> <code>prism</code>)</li>
+<li>상자의 앞면은 그대로 그린다. 뒷면은 소실점 VP = (540, 560) 쪽으로 <code>k = 1/(1 + d)</code>만큼 줄인 사각형이다(<code>b = VP + (p − VP)·k</code>).</li>
+<li>앞면 윗변이 VP보다 아래에 있으면 윗면(앞 윗변과 뒷 윗변을 잇는 사다리꼴)이 보인다. 상자가 VP의 왼쪽에 있으면 오른쪽 옆면이, 오른쪽에 있으면 왼쪽 옆면이 보인다.</li>
+<li>움직이는 물건은 VP를 자기 좌표계로 옮겨 쓴다: <code>VPL = ((VPx − x)/s, (VPy − y)/s)</code>(<code>main.js:986</code>). 그래서 같은 상자가 어디로 옮겨져도 윗면이 맞는 방향으로 기운다.</li>
+<li>바닥 널은 더 높은 소실점(540, 300)으로 모이고, 이음매는 칸마다 원근 간격으로 엇갈린다(<code>main.js:137–145</code>).</li>
+<li><strong>같은 렌더러, 같은 카메라 = 픽셀 단위 정합</strong> (<code>main.js:878</code> <code>setCam</code>, <code>main.js:960</code> <code>paintRoom</code>)</li>
+<li>카메라는 <code>screen = (wx, wy) + s·(p − (cx, cy))</code> 하나다. 와이프에서는 두 상태를 같은 전체 화면 카메라로 그린다.</li>
+<li>분할 화면의 두 창은 s와 (cx, cy)가 같고 창 중심 wy만 정확히 755 px(정수) 다르다(위 창 중심 517.5, 아래 창 중심 1272.5). 그래서 바뀌지 않은 액자, 시계, 책상 모서리가 두 창에서 같은 서브픽셀 위치에 놓인다.</li>
+<li>상태 사이에서 달라지는 것은 물건과 빛뿐이다. 정합은 위치의 정합이다. 바뀌지 않은 물건도 A에서는 어둡고 B에서는 밝다.</li>
+<li><strong>와이프 = 미리 그린 두 상태 + 페더 클립</strong> (<code>main.js:1060</code> <code>composite</code>, <code>main.js:1074</code>)</li>
+<li>매 프레임 A를 오프스크린 A에, B를 오프스크린 B에 통째로 그린다. 둘 다 같은 t를 쓰므로 먼지 위치와 화분 흔들림까지 같다.</li>
+<li>B에 <code>destination-in</code>으로 선형 그라디언트 마스크를 씌운다. 마스크는 선 위의 점 P에서 법선 n 방향으로 <code>P − n·f</code>에서 알파 0, <code>P + n·f</code>에서 1이다(f = 20 px, 범위 밖은 끝 색으로 채워진다).</li>
+<li>합성 순서는 A → A 쪽 가장자리 그림자(선에서 90 px, 0.30 → 0) → 마스크된 B다. B가 종이처럼 A 위에 얹혀 보인다.</li>
+<li>선은 넓은 민트 빛 두 겹(26 px α0.10, 12 px α0.22) 위에 흰 선 두 겹이다. 선과 법선을 일반 각도로 받으므로 같은 함수가 회전 단계도 처리한다.</li>
+<li><strong>손이 끄는 손잡이: 최소 저크 획 + 감쇠 스프링</strong> (<code>main.js:1019–1051</code>)</li>
+<li>손은 쉼점 사이를 최소 저크 곡선으로 움직인다: <code>x = xa + (xb − xa)(10p³ − 15p⁴ + 6p⁵)</code>. 사람 팔의 뻗기 동작이 따르는 속도 모양이다(양 끝에서 속도·가속도 0). 쉼점은 <code>[1.72 s 1012] → [2.4 s 166] → [3.06 s 780] → [3.6 s 380] → [4.0 s 540]</code>이다(<code>main.js:1020</code>).</li>
+<li>손목이 돌아 생기는 호를 흉내 내려고, 획마다 세로로 <code>∓(16 또는 12)·sin(πp)</code>를 더한다.</li>
+<li>손잡이는 손에 스프링으로 묶인다: <code>x'' = ω²(x_손 − x) − 2ζω·x'</code>, ω = 19 rad/s, ζ = 0.52. setup에서 1/600초 고정 간격의 반암시적 오일러로 적분해 x, y, 속도를 표로 굽는다(<code>main.js:1036</code>).</li>
+<li>frame은 표를 선형 보간만 한다. 손이 멈추는 반환점마다 손잡이가 조금 넘쳤다가 돌아오는데, 이 넘침은 식에서 저절로 나온다.</li>
+<li>4.0–4.12초에 표의 값을 540으로 부드럽게 끌어와 회전 축과 맞춘다(<code>main.js:1048</code>).</li>
+<li>손잡이는 속도에 비례해 진행 방향으로 늘어나고(<code>1 + min(0.2, |v|/9000)</code>, <code>main.js:1100</code>) 수직 방향으로 줄어든다. 잡는 순간 0.92배로 눌리고, 놓으면 <code>outBack</code>으로 돌아온다.</li>
+<li><strong>칩이 선을 탄다</strong> (<code>main.js:1601</code> <code>paintChips</code>)</li>
+<li>「정리 전」은 오른쪽 끝을 <code>선 − 26</code>에, 「정리 후」는 왼쪽 끝을 <code>선 + 26</code>에 맞춘다. 화면 밖으로 나가지 않게 24 px에서 멈춘다.</li>
+<li>각 칩은 자기 상태 쪽 영역으로 클립된다. 선이 칩을 밀어붙이면 칩이 선 밑으로 잘려 들어간다.</li>
+<li>회전이 시작되면 클립을 풀고, 칩 위치를 "선에 붙은 자리"에서 "각 창의 왼쪽 위 + 24 px"로 보간한다. 창이 움직이는 동안에도 목적지는 매 프레임 창의 사각형에서 다시 읽는다.</li>
+<li><strong>좌우 → 위아래: 법선을 90° 돌린다</strong> (<code>main.js:1053</code> <code>wipeLine</code>)</li>
+<li>법선 <code>n = (cos φ, sin φ)</code>, φ = (π/2)·inOutCubic이다. φ = 0이면 B가 오른쪽, φ = π/2이면 B가 아래다. 축은 손잡이 (540, 895)이고, 이 높이가 그대로 분할 화면 틈의 중심이 된다.</li>
+<li>회전하는 동안 페더를 20 px에서 0.6 px로 줄인다. 회전이 끝난 프레임의 합성 결과가 다음 단계의 딱딱한 창 클립(위 0–895, 아래 895–1920)과 같아져서 이음매가 보이지 않는다.</li>
+<li><strong>달라진 곳을 자동으로 찾고, 실루엣을 잰다</strong> (<code>main.js:768</code> <code>changeOf</code>, <code>main.js:792</code> <code>maskPts</code>, <code>main.js:818</code> <code>clusters</code>, <code>main.js:830</code> <code>detect</code>)</li>
+<li>물건마다 A와 B를 비교한다. vis가 다르면 <code>removed/added</code>, 위치 차이 &gt; 0.5 px나 회전 차이 &gt; 0.01이나 크기 차이 &gt; 0.005면 <code>moved</code>, shape의 키 중 하나라도 다르면 <code>shape</code>이다. 바뀐 물건은 group으로 묶는다(책 일곱 권 = 하나, 상자·종이·과자 봉지·휴지통 = 하나).</li>
+<li>표시는 선언된 상자가 아니라 <strong>실제 실루엣</strong>을 따른다. 바뀐 물건을 상태마다 하나씩 작은 캔버스에 같은 변환으로 그린다. <code>kind.box</code>를 <code>sceneBox</code>로 옮긴 영역 + 24 px다. 그 뒤 알파 &gt; 0.35인 픽셀의 줄마다 왼쪽 끝과 오른쪽 끝(두 줄 간격)을 장면 좌표 점으로 남긴다. 알파 문턱 때문에 바닥 그림자(0.12–0.16)와 쏟은 커피(0.30)는 빠진다.</li>
+<li>한 그룹 안에서도 떨어진 물건은 따로 감싼다. 실루엣 상자 사이 거리가 60 px 안이면 이어 붙이는 단일 연결 군집이다(union–find). B의 커튼은 창 양쪽으로 갈라져 같은 번호의 고리 두 개가 된다. A의 닫힌 커튼은 하나다.</li>
+<li>번호는 읽는 순서로 매긴다. A 실루엣 상자의 중심을 260 px 높이의 줄로 나누고, 줄 안에서는 왼쪽부터다(<code>main.js:850</code>). 이 장면에서는 커튼, 화분, 컵, 침대, 옷, 선, 상자·쓰레기, 책 순서로 1–8이 된다.</li>
+<li>B에서 전부 사라진 그룹이 있으면 A의 실루엣을 B 창에 "빈자리"로 표시한다(<code>ghost</code>). 이 장면에는 없다.</li>
+<li><strong>두 창이 함께 쓰는 크롭도 실루엣에서 정한다</strong> (<code>main.js:864–872</code>)</li>
+<li>모든 군집의 A·B 실루엣 상자를 합치고 40 px 여유를 둔다. 그다음 창 비율(1032 : 735)에 맞게 짧은 쪽을 늘린다. 배율은 <code>s = 창 너비 / 크롭 너비</code>다(이 장면에서는 약 0.56배).</li>
+<li>세로 화면용 방을 가로 창에 담으면 옆이 남는다. 그래서 세로 화면 밖에도 방을 이어 그렸다(왼쪽 침대 머리와 협탁, 오른쪽 문). 분할 화면에서만 보이는 넓은 화면이 된다.</li>
+<li><strong>분할 화면 = 같은 장면의 크롭 창 두 개</strong> (<code>main.js:1155</code> <code>windowsAt</code>, <code>main.js:1177</code> <code>paintPane</code>)</li>
+<li>창 사각형은 회전이 끝난 두 반쪽(0–895, 895–1920)에서 최종 창으로 보간한다. 모서리 반지름은 0 → 30이다.</li>
+<li>카메라는 <code>camFor</code>로 만든다(<code>main.js:1149</code>). 출발점은 창 중심 = 장면 중심, s = 1(항등)이라 화면이 튀지 않는다. 도착점은 크롭 중심과 크롭 배율이다. s는 로그 공간에서 보간한다(<code>s0·(s1/s0)^k</code>).</li>
+<li>창은 둥근 사각형 클립 안에 <code>paintRoom</code>을 직접 그린다. 오프스크린을 거치지 않는다.</li>
+<li>합치기(<code>main.js:1161</code>)에서는 아래 창을 전체 화면·항등 카메라로 보간한다. 위 창은 <code>아래 창이 올라간 만큼 + 260·in²</code>만큼 위로 밀린다. 그래서 두 창 사이 틈이 벌어지지 않고 아래 창이 위 창을 밀어낸다.</li>
+<li><strong>표시 = 실루엣을 감싼 둥근 손그림 고리</strong> (<code>main.js:1226</code> <code>roundLoop</code>, <code>main.js:1263</code> <code>handPath</code>)</li>
+<li>군집의 점들을 창 픽셀로 옮겨 볼록 껍질(단조 사슬)을 만든다.</li>
+<li>그 껍질을 반지름 r만큼 바깥으로 민 곡선이 고리다. 꼭짓점마다 앞뒤 변의 바깥 법선 사이를 반지름 r의 호로 채우고(0.18 rad마다 한 점), 5 px 간격으로 다시 표본한다.</li>
+<li>손그림 느낌은 법선 방향의 낮은 주파수 흔들림에서 나온다: <code>w(u) = 2.0 sin(2π·2u + φ₁) + 1.2 sin(2π·5u + φ₂) − 1.5</code>, φ는 <code>rand(1300 + 7n)</code>이다.</li>
+<li>펜은 고리의 가장 왼쪽 위 점(x + y 최소)에서 출발해 110%를 돈다. 끝 18%에서는 <code>+6·smoothstep</code>만큼 바깥으로 벌어져, 시작점과 정확히 닫히지 않는 손그림 고리가 된다.</li>
+<li>그리기: 진행률 p만큼의 꺾은선을 그림자(7.5 px α0.16) 위에 민트 4.2 px, 둥근 끝으로 긋는다. 안쪽은 <code>0.1·p</code> 알파의 민트로 칠한다(<code>main.js:1358</code> <code>paintCallouts</code>).</li>
+<li><strong>표시끼리는 절대 겹치지 않는다: 레이아웃에서 푼다</strong> (<code>main.js:1284</code> <code>layoutCallouts</code>)</li>
+<li>두 볼록 껍질의 틈은 분리축 검사로 잰다(<code>main.js:1194</code> <code>hullGap</code>). 양쪽 다각형의 모든 변 법선에 투영해 가장 큰 틈을 고른다. 실제 거리 이하의 값이므로 안전한 쪽으로 판단한다.</li>
+<li>두 고리는 <code>틈 &lt; r₁ + r₂ + 6</code>이면 닿는 것으로 본다(<code>main.js:1297</code>). 처리는 세 단계다.<ol>
+<li>기본 반지름은 12 px이다.</li>
+<li>닿는 쌍은 둘 다 6 px로 줄인다.</li>
+<li>그래도 닿으면 넓이가 작은 쪽을 핀(물건 위의 점 + 짧은 지시선 + 배지)으로 바꾸고, 더 닿는 쌍이 없을 때까지 되풀이한다.</li>
+</ol>
+</li>
+<li>장면 배치도 이 규칙에 맞춰 다듬었다. 처음 배치에서는 옷 무더기, 선, 침대, 책이 차례로 이웃 고리와 닿아 핀이 되었다. 그래서 물건 자리를 옮겼다(선 뭉치는 책상 오른쪽 끝으로, 상자는 하나로 줄이고 과자 봉지는 그 안으로, 화분은 창턱 가운데로). 지금은 두 창 모두 여덟 그룹이 고리로 남는다. 핀은 장면이 더 빽빽해질 때를 위한 안전장치다.</li>
+<li>고리와 고리는 포개지지도 않는다. 한 고리가 다른 고리를 통째로 품는 것도 "닿음"으로 잡힌다.</li>
+<li><strong>배지 배치: 비용을 매겨 고른다</strong> (<code>main.js:1309–1340</code>)</li>
+<li>후보는 고리 둘레 32곳이다. 각 자리마다 세 가지를 둔다: 획 위에 반쯤 걸친 자리, 지시선 30 px 끝, 지시선 52 px 끝(지시선 비용 +14 + 0.2·길이). 핀은 지시선 후보만 쓴다.</li>
+<li>비용은 다음을 더한 값이다.<ul>
+<li>이미 놓인 배지와 겹치면 1000 + 겹친 깊이·10</li>
+<li>다른 표시의 영역(+ 반지름)에서 RB + 4 안이면 500 (<code>main.js:1212</code> <code>hullDist</code>, 볼록 다각형까지의 부호 거리)</li>
+<li>지시선이 다른 표시를 지나면 300, 지시선 끝 배지가 자기 물건을 덮으면 200</li>
+<li>창 밖·창 라벨 칩·가운데 알약과 겹치면 각각 600</li>
+<li>왼쪽 위를 좋아하는 <code>3(1 − cos(θ + 2.2))</code></li>
+<li>아래 창에서는 위 창의 같은 번호와 같은 방향을 좋아하는 <code>5(1 − cos(θ − θ_A))</code></li>
+</ul>
+</li>
+<li>번호 순서대로 욕심쟁이로 고른다. 결과로 같은 번호의 배지가 두 창에서 대부분 같은 쪽 모서리에 붙는다.</li>
+<li><strong>읽는 순서대로 하나씩 도착한다</strong> (<code>main.js:1363</code>)</li>
+<li>그룹 n의 표시는 <code>t₀ = 5.1 + 0.084·(n − 1)</code>에 시작한다.<ul>
+<li>고리 획은 0.3초(inOutCubic)에 그려진다.</li>
+<li>핀 점과 지시선은 0.24초에 나온다.</li>
+<li>배지는 <code>t₀ + 0.08</code>부터 0.24초 동안 <code>outBack(2.4)</code>로 튄다.</li>
+</ul>
+</li>
+<li>위 창과 아래 창의 같은 번호는 같은 t₀를 쓴다. 군집이 둘인 그룹(B의 커튼)은 두 고리가 함께 그려진다.</li>
+<li>8번 고리는 5.988초에 닫히고, 배지는 6.0초에 이미 제 크기다. 그래서 6.0초의 포스터에 모든 표시가 들어 있다. 퇴장은 7.2초부터 0.2초 동안 한꺼번에 한다.</li>
+<li><strong>카운터는 상태에서 센다</strong> (<code>main.js:858–863</code>)</li>
+<li><code>count(S, 조건)</code> = 그 상태에서 보이고 조건을 만족하는 물건 수다. 바닥의 물건은 <code>surface === 'floor'</code>, 흩어진 컵은 보이는 컵, 널린 옷은 <code>fold</code>가 아닌 옷이다.</li>
+<li>화면의 23 → 2, 5 → 1, 7 → 0은 이 계산의 결과이고, 손으로 적은 숫자가 아니다. 오른쪽 숫자는 <code>round(lerp(A, B, outCubic))</code>로 굴러 내려간다(<code>main.js:1409</code>).</li>
+<li><strong>두 상태가 같은 t를 읽는 미세 움직임</strong></li>
+<li>먼지 64개(<code>main.js:936–959</code>): <code>x = x0 + 26 sin(f t + a1) + 9 sin(2.3 f t + a2)</code>, <code>y = y0 + 20 sin(0.7 f t + a3) − 6t</code>. 위치는 두 상태에서 같다.</li>
+<li>다른 것은 받는 빛뿐이다. <code>beamAt</code>(<code>main.js:941</code>)이 햇빛 기둥 축까지의 거리로 0–1을 주고, 빛 안의 먼지는 밝게 반짝인다. A의 먼지는 어두운 방에서 회색으로 떠다닌다.</li>
+<li>화분 잎 <code>0.06 sin(1.7t + 0.9i)</code>(<code>main.js:650</code>), 커튼 밑단 <code>3.2 sin(1.15t ± 1.3) + 1.6 sin(2.3t ± 1)</code>(<code>main.js:337</code>), 의자에 걸친 소매, 시계 초침 6°/초, 천장 조명의 진자 흔들림, 컵의 김도 모두 t만 읽는다.</li>
+<li>화분은 A에서 선반 위에 시들어 있다(<code>droop = 1</code>: 잎이 벌어져 처지고 색이 회녹색으로 바랜다, 떨어진 잎 하나). B에서는 창턱 가운데에 서 있다. 장소와 모양이 달라도 흔들림 위상은 같다.</li>
+<li><strong>빛은 커튼이 열어 준 만큼만 들어온다</strong> (<code>main.js:881–933</code>)</li>
+<li><code>lightPanes(open)</code>: 창유리 네 장을 커튼 안쪽 가장자리 <code>[x_l, 720 − x_l]</code>, <code>x_l = lerp(346, 202, open)</code>과 겹치게 잘라 낸다. A(open 0.03)에서는 커튼 틈의 두 줄기만 남고, B에서는 거의 창 전체가 남는다.</li>
+<li><code>proj</code>(<code>main.js:889</code>)는 창의 점을 바닥으로 옮긴다: <code>fy = 1150 + 1.02(850 − wy)</code>, <code>fx = wx + 0.72(fy − 1120)</code>. 그 뒤 앞쪽일수록 <code>1 + (fy − 1120)/1500</code>배 넓힌다. 창살이 바닥 빛 속의 어두운 틈으로 그대로 옮겨진다.</li>
+<li>바닥의 빛은 물건보다 먼저 <code>screen</code>으로 칠한다. 공기 중의 빛 기둥(창과 바닥 빛 조각의 볼록 껍질, <code>main.js:894</code> <code>hull</code>)은 물건 다음에 칠한다. 기둥 안에는 축을 따라 느리게 흔들리는 빛줄기 띠 다섯 개를 클립해 넣었다(<code>main.js:919</code>).</li>
+<li>A는 마지막에 <code>multiply</code>로 #D9D6DB 막과 가장자리 비네트를 덮는다(<code>main.js:996</code>). 닫힌 커튼 천은 뒤에서 비치는 햇빛을 <code>screen</code>으로 받아 은은하게 빛난다(<code>main.js:357</code>).</li>
+<li><strong>돌아오는 장치 하나: 손잡이 → 알약 → 도장</strong> (<code>main.js:1421</code> <code>paintPill</code>, <code>main.js:1448</code> <code>paintStamp</code>)</li>
+<li>와이프 손잡이는 회전의 축이 되고, 분할 화면에서 「달라진 곳 8」 알약으로 펴진다(지름 → 330×72, 글자는 펴짐 55% 뒤에 나타남).</li>
+<li>합칠 때 다시 원이 되어 2차 베지에 곡선(조절점 980, 560)을 따라 날아간다. 날아가는 동안 <code>1 − 0.35 sin(πu)</code>로 줄었다 커진다.</li>
+<li>8.3초에 도장이 된다. 반지름이 0.36 → 1배로 커지고, 크기는 1.45배에서 <code>outBack(2.6)</code>으로 눌려 찍힌다. 체크 표시는 꺾은선의 누적 길이로 그려진다. 충격 고리와 빛살은 한 번만 나온다.</li>
+</ul></div></details>
+        <details class="dev"><summary>프레임마다 같은 그림이 나오게 하는 법 (결정성)</summary><div class="notes"><ul>
+<li>그림은 t의 닫힌 식이다. 상태가 쌓이는 시뮬레이션은 손잡이 스프링 하나뿐이고, setup에서 1/600초 간격으로 4.9초까지 구운 표를 frame이 보간만 한다.</li>
+<li>난수는 <code>rand(seed)</code>만 setup에서 쓴다: 바닥 널 이음매(1271), 책 더미 어긋남(1273), 먼지(1277), 이불 더미 외곽(1279), 그레인(1281), 옷 주름(300 + i), 옷 무더기 외곽(400 + …), 종이 뭉치(500 + …), 손그림 고리의 흔들림 위상(1300 + 7n, 아래 창은 + 3).</li>
+<li>차이 찾기, 실루엣 측정, 군집, 볼록 껍질, 고리와 손그림 경로, 겹침 해소, 배지 배치, 크롭, 그리는 순서, 떨어지는 순서는 모두 setup에서 한 번 정하는 순수 계산이다.</li>
+<li>실루엣은 t = 6.0의 자세로 잰다.</li>
+<li>측정용 캔버스는 화면에 붙이지 않고 <code>willReadFrequently</code>(CPU)로 만들어 한 번 읽고 버린다.</li>
+<li>frame은 저장된 꺾은선을 진행률만큼 그을 뿐이다.</li>
+<li>프레임마다 본 캔버스와 오프스크린 두 장의 2D 상태(변환, 알파, 합성, 필터, 선 끝·이음, 점선, 자간, 그림자, 글자 정렬)를 기본값으로 되돌린다(<code>main.js:73</code> <code>resetCtx</code>). <code>shadowBlur</code>와 <code>setLineDash</code>는 쓰지 않는다. 그림자는 그라디언트 타원과 반투명 도형이다.</li>
+<li><strong>불투명한 바탕을 먼저 깐다</strong>(<code>main.js:963</code>).</li>
+<li>처음에는 9.3초에서만 결정성 검사가 실패했다(최대 24/255, 227값). 카메라가 4% 다가가 있을 때였다.</li>
+<li>원인: 벽과 바닥처럼 맞닿은 두 도형의 경계가 픽셀 중간(1123.6 px)에 걸리면, 두 도형이 각자 부분 커버리지로 칠해진다. 그러면 그 줄에 직전 프레임의 픽셀이 <code>c(1 − c)</code>만큼 섞여 남는다.</li>
+<li><code>paintRoom</code>이 맨 먼저 화면 전체를 불투명한 벽색으로 칠하게 고쳐 해결했다.</li>
+<li>오프스크린 두 장은 헤드리스에서 <code>willReadFrequently</code>(CPU 래스터)로 만들고, 본 캔버스도 같다. 실제 브라우저에서는 GPU 가속 캔버스를 쓴다.</li>
+<li>검사 결과: 렌더러 검사(정순, 새 페이지 역순, 되돌아가기)에서 바이트 단위로 같았다(maxPixelDiff 0). 표시 방식을 바꾸기 전에는 따로 13개 시각(0.4–9.0초, 모든 단계)을 정순과 역순으로 찍어 비교했고, 결과는 모두 같았다.</li>
+</ul></div></details>
+        <details class="dev"><summary>한계와 조절할 점</summary><div class="notes"><ul>
+<li>고리는 볼록 껍질에서 나온다. 오목한 무리(책 더미 + 옆에 쓰러진 책 두 권)는 빈 바닥까지 함께 감싼다. 알파 셰이프나 오목 껍질로 바꾸면 더 바짝 붙지만, 고리가 울퉁불퉁해져 손그림 느낌이 줄어든다.</li>
+<li>겹침 판정의 <code>hullGap</code>은 실제 거리보다 작게 잴 수 있다(꼭짓점끼리 가장 가까운 경우). 그래서 겹치지 않는데도 반지름을 줄이는 일이 생길 수 있다. 안전한 쪽의 오차다.</li>
+<li>군집이 둘인 그룹은 한 창에 같은 번호가 두 번 나온다(B의 커튼). 숨은 차이 찾기 그림의 관례에는 맞지만, 번호 하나에 고리 둘을 짧은 선으로 잇는 방식도 있다.</li>
+<li>실루엣은 t = 6.0의 자세로 한 번 잰다. 크게 흔들리는 물건이면 매 프레임 다시 재거나, 흔들림 범위만큼 여유를 더해야 한다.</li>
+<li>차이는 상태 값의 비교다. 화면에 보이지 않는 변화(가려진 물건의 이동)도 차이로 잡힌다. 두 상태를 픽셀로 비교하면 빛 차이까지 잡힌다. 둘을 함께 쓰는 열지도 보기가 다음 단계다.</li>
+<li>크롭은 모든 차이를 한 화면에 담는다. 차이가 멀리 흩어지면 크롭이 넓어진다(여기서는 약 0.56배). 차이 두세 개씩 묶어 크롭 사이를 이동하는 "차례로 짚기" 모드가 다음 단계다.</li>
+<li>손잡이는 미리 정한 획을 따라간다. 사용자가 직접 끄는 대화형 버전은 이 데모의 범위 밖이다(t의 순수 함수여야 하므로). 같은 스프링 식에 포인터 위치를 넣으면 된다.</li>
+<li>손잡이:</li>
+<li>획의 쉼점 <code>main.js:1020</code>, 스프링 <code>main.js:1036</code></li>
+<li>이야기 시각 <code>main.js:48</code>, 창 배치 <code>main.js:64</code></li>
+<li>물건의 두 상태 <code>main.js:682–763</code></li>
+<li>고리 반지름·겹침 여유 <code>main.js:1297</code></li>
+</ul></div></details>
+      </section>
+
+      <section class="sec"><h2>같은 분류의 다른 기법</h2><div class="rel"><a href="31-ik-character.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/31-ik-character.jpg" alt="" width="360" height="640">손을 뻗는 아이</a><a href="86-face-rig.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/86-face-rig.jpg" alt="" width="360" height="640">에… 에… 에취!</a><a href="87-sensor-vision.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/87-sensor-vision.jpg" alt="" width="360" height="640">밤 숲의 한 사람</a><a href="88-loupe-lens.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/88-loupe-lens.jpg" alt="" width="360" height="640">날개의 파랑</a><a href="89-impact-kit.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/89-impact-kit.jpg" alt="" width="360" height="640">세 번 찍는 도장</a><a href="90-measure-hud.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/90-measure-hud.jpg" alt="" width="360" height="640">구름 위의 아침</a><a href="91-gait-cycle.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/91-gait-cycle.jpg" alt="" width="360" height="640">눈 위의 박자</a><a href="93-transition-kit.html"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/rlaehddnr3352-ctrl/ai-video-reference@168bb71c3128afc473109721704b5380b388c27f/v/am/93-transition-kit.jpg" alt="" width="360" height="640">종이배의 하루</a></div></section>
+      <nav class="pn" aria-label="이전 · 다음 기법"><a href="126-isotype.html">← 출근길 100명</a><a href="128-scale-zoom.html">한 방울에서 지구까지 →</a></nav>
+      <p class="note2">데모 · 그림 · 원리 · 초 단위 설명 출처: <a href="https://github.com/kstost/cokacmotion/tree/main/skills/aimotion/demos/127-before-after" target="_blank" rel="noopener">kstost/cokacmotion · 127-before-after</a> (MIT License, Copyright (c) 2026 kstost). 활용 가이드와 만드는 법은 AI 영상 레퍼런스 보관함이 썼어요.</p>
+    </article>
+  </div>
+</main>
+<footer><a href="../../guide/">가이드</a> · <a href="../video/">영상 프롬프트</a> · <a href="./">코드 모션 기법</a> · <a href="../../privacy.html">소개 · 개인정보처리방침</a></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var toast=document.getElementById("toast"),tm;
+  function say(m){toast.textContent=m;toast.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove("on");},1600);}
+  window.cmCopy=function(t){ if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){say("복사했어요");},function(){say("복사가 막혀 있어요. 직접 선택해 복사해 주세요");});} else say("복사가 막혀 있어요. 직접 선택해 복사해 주세요"); };
+  document.addEventListener("click",function(e){ var b=e.target.closest("[data-copy]"); if(!b) return; var src=b.getAttribute("data-copy"); var el=src.charAt(0)==="#"?document.querySelector(src):null; cmCopy(el?(el.value||el.textContent):src); });
+})();
+</script><script>
+(function(){
+  var DEMO="https://kstost.github.io/cokacmotion/127-before-after/", ID="127-before-after", TITLE="\uc815\ub9ac \uc804, \uc815\ub9ac \ud6c4", TECH="\ube44\uad50 \uc7a5\uba74 \u00b7 \ud55c \uc7a5\uba74\uc758 \ub450 \uc0c1\ud0dc + \uc640\uc774\ud504 \uc2ac\ub77c\uc774\ub354 + \ubd84\ud560 \ud654\uba74";
+  var st=document.getElementById("stage"), go=document.getElementById("go"), rp=document.getElementById("rp");
+  function load(){ st.innerHTML='<iframe src="'+DEMO+'" title="'+TITLE+' 데모" allow="autoplay" loading="eager"></iframe>'; rp.hidden=false; }
+  go.addEventListener("click",load); rp.addEventListener("click",load);
+  var f=function(id){return document.getElementById(id);};
+  function build(){
+    var scene=f("f-scene").value.trim()||"[내 영상의 장면]", text=f("f-text").value.trim(), col=f("f-color").value.trim(), ratio=f("f-ratio").value, len=f("f-len").value;
+    f("pout").textContent="aimotion 스킬(kstost/cokacmotion)의 "+ID+" 「"+TITLE+"」 기법만 참고해서 만들어 줘.\n"+
+      "- 기법: "+TECH+"\n- 내 장면: "+scene+"\n"+(text?"- 화면 문구: "+text+"\n":"")+(col?"- 색: "+col+" 중심으로, 나머지 색은 여기에 맞춰\n":"")+
+      "- 비율 "+ratio+", 길이 "+len+", 30fps\n"+
+      "- 데모의 소재 · 장면 · 문구 · 색 · 구도는 쓰지 말고, NOTES.md와 소스를 읽어 원리만 가져와.\n"+
+      "- 모든 움직임은 시각 t 하나로 계산해서 같은 t엔 같은 그림이 나오게 해. 먼저 HTML로 미리보기를 만들고, 내가 확인하면 프레임마다 캡처해 MP4로 렌더링해 줘.\n"+
+      "(스킬이 설치돼 있지 않으면 https://github.com/kstost/cokacmotion 저장소를 받아 skills/aimotion/SKILL.md부터 읽어 줘.)";
+  }
+  ["f-scene","f-text","f-color","f-ratio","f-len"].forEach(function(id){f(id).addEventListener("input",build);f(id).addEventListener("change",build);});
+  build();
+})();
+</script>
+<script data-goatcounter="https://aivideoref.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

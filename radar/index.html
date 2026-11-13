@@ -131,10 +131,10 @@ dialog.rd-dlg::backdrop{background:rgba(10,12,16,.6)}
 <div class="rd">
   <header class="rd-top">
     <a class="brand" href="../">AI 영상 레퍼런스 보관함</a>
-    <nav><a href="../#wiz">간편 만들기</a><a href="../#dict">레퍼런스 사전</a><a href="./" aria-current="page">터진 쇼츠</a><a href="../guide/">가이드</a></nav>
+    <nav><a href="../#wiz">간편 만들기</a><a href="../#dict">레퍼런스 사전</a><a href="./" aria-current="page">터진 쇼츠</a><a href="../guide/">가이드</a><a href="../prompts/video/">영상 프롬프트</a></nav>
   </header>
   <h1>오늘의 <em>터진 쇼츠</em> 뜯어보기</h1>
-  <p class="rd-sub">뭘 만들지 막막할 때, 요즘 실제로 터진 영상부터 보세요. 첫 3초만 바로 재생해 보고, 왜 터졌는지 확인한 다음, 같은 공식으로 프롬프트까지 만들 수 있어요.</p>
+  <p class="rd-sub">뭘 만들지 막막할 때, 요즘 실제로 터진 영상부터 보세요. 첫 3초만 바로 재생해 보고, 왜 터졌는지 확인한 다음, 같은 공식으로 프롬프트까지 만들 수 있어요. <a href="week/">지난주 TOP 10 모아보기 →</a></p>
   <span class="rd-note" id="rdNote">불러오는 중…</span>
 
   <div class="rd-tabs" role="tablist">
@@ -235,7 +235,7 @@ dialog.rd-dlg::backdrop{background:rgba(10,12,16,.6)}
         <div class="dl-sec"><h3>왜 터졌나</h3><p>${esc(x.why)}</p></div>
         ${x.caution?`<div class="dl-caution">주의 · ${esc(x.caution)}</div>`:""}
         <div class="dl-sec"><h3>이 공식에 맞는 카드</h3><div class="dl-cards">${cards.map(([c,n])=>`<a href="../card/${c.toLowerCase()}.html"><span class="code">${esc(c)}</span>${esc(n)}</a>`).join("")}</div></div>
-        <div class="dl-cta"><a class="btn primary" href="${make}">이 공식으로 프롬프트 만들기 →</a><a class="btn" href="${ytUrl(x)}" target="_blank" rel="noopener">유튜브에서 보기 ↗</a></div>
+        <div class="dl-cta"><a class="btn primary" href="${make}">이 공식으로 프롬프트 만들기 →</a><a class="btn" href="../guide/reverse-engineering.html?ref=${encodeURIComponent(ytUrl(x))}#tool">구조 뜯어보기</a><a class="btn" href="${ytUrl(x)}" target="_blank" rel="noopener">유튜브에서 보기 ↗</a></div>
         <p class="dl-basis">분석 기준 · ${esc(x.basis||"")} · 업로드 ${esc((x.date||"").replace(/(\d{4})(\d\d)(\d\d)/,"$1.$2.$3"))}</p>
       </div></div>`;
     const d = $("#rdDlg"); if(!d.open) d.showModal();
@@ -271,5 +271,6 @@ dialog.rd-dlg::backdrop{background:rgba(10,12,16,.6)}
 })();
 </script>
 
+<script data-goatcounter="https://aivideoref.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
