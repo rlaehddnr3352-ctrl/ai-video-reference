@@ -1,0 +1,10 @@
+{
+  "mode": "example",
+  "post": "2026-11-18",
+  "video": "https://raw.githubusercontent.com/rlaehddnr3352-ctrl/ai-video-reference/promo-tools/examples/code_ex_14/video.mp4",
+  "title": "영상 AI 없이 만든 상세페이지용 영상 2편 — 프롬프트 공개 #shorts",
+  "description": "▶ 이 카드들로 프롬프트 바로 만들기: https://ai-video-reference-kr.netlify.app/\n\n영상 AI 없이 만든 상세페이지용 영상 2편 🎬\nClaude에게 프롬프트 한 장을 주고, 코드(HTML·Canvas)로 그리게 한 영상이에요. 글자·숫자가 안 깨지는 게 장점이에요.\n\n① 요금제·옵션 비교표가 펼쳐지는 영상\n세 가지 옵션 카드가 올라오고 혜택 항목에 체크가 한 줄씩 찍혀요. 추천 옵션이 앞으로 튀어나오며 리본이 붙어요.\n\n② 질문 카드가 뒤집혀 답이 나오는 FAQ\n질문이 적힌 카드가 하나씩 나와 뒤집히며 답이 보여요. 자주 받는 문의 3개를 영상으로 정리해 상세페이지나 채널 공지에 쓰기 좋아요.\n\n📋 프롬프트 핵심 (① / ②)\nCreate an 11-second vertical (1080x1920) plan/option comparison animation as one HTML file with Canvas 2D.\nOptions (name, price, color): [BASIC 9,900원], [STANDARD 19,900원], [PREMIUM 29,900원]. Recommended: [STANDARD].\nFeature rows: [FEATURE 1], [FEATURE 2], [FEATURE 3], [FEATURE 4] with which option includes which.\n\nCreate a 12-second vertical (1080x1920) FAQ video as one HTML file with Canvas 2D.\nBrand: [BRAND]. Three Q&A pairs: [Q1 / A1], [Q2 / A2], [Q3 / A3].\n\n[대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.\n🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)\n\n어떤 제품으로 만들어 보고 싶어요?\n\n#AI영상 #AI광고 #프롬프트 #클로드 #모션그래픽 #쇼츠",
+  "tags": "AI영상,AI광고,프롬프트,카메라무빙,AI 영상 만들기,숏폼,",
+  "ai": true,
+  "pin_comment": "📌 영상에 나온 카드로 프롬프트를 바로 만들 수 있어요 👉 https://ai-video-reference-kr.netlify.app/ (무료 · 회원가입 없음) 어떤 제품으로 만들어 보고 싶어요?"
+}
