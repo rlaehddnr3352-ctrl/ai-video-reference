@@ -1,0 +1,64 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#0f1115}canvas{display:block}</style>
+</head><body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="data.js"></script>
+<script>
+const W=1080,H=1920,cv=document.getElementById("c"),g=cv.getContext("2d");
+const F="'Noto Sans CJK KR', sans-serif", M="'DejaVu Sans Mono', monospace";
+const D=window.DATA, R=D.rows;
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x)), seg=(t,a,b)=>clamp((t-a)/(b-a),0,1), out=x=>1-Math.pow(1-x,3);
+const imgs={}; let n=0;
+function load(src){return new Promise(res=>{const i=new Image();i.onload=()=>{imgs[src]=i;res()};i.onerror=res;i.src=src;});}
+function rr(x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath();}
+function txt(s,x,y,size,col,weight=700,font=F,align="left"){g.font=`${weight} ${size}px ${font}`;g.fillStyle=col;g.textAlign=align;g.textBaseline="alphabetic";g.fillText(s,x,y);}
+function wrap(s,x,y,maxw,size,lh,col,weight=400,font=F,maxLines=3){g.font=`${weight} ${size}px ${font}`;const words=s.split(" ");let line="",ln=0;
+  for(const w of words){const test=line?line+" "+w:w; if(g.measureText(test).width>maxw&&line){txt(line,x,y+ln*lh,size,col,weight,font);ln++;line=w;if(ln>=maxLines)return;} else line=test;}
+  if(line&&ln<maxLines) txt(line,x,y+ln*lh,size,col,weight,font);}
+function cover(img,x,y,w,h){ if(!img){g.fillStyle="#222";g.fillRect(x,y,w,h);return;} const s=Math.max(w/img.width,h/img.height),iw=img.width*s,ih=img.height*s; g.drawImage(img,x+(w-iw)/2,y+(h-ih)/2,iw,ih);}
+function bg(){ g.fillStyle="#0f1115"; g.fillRect(0,0,W,H); const gr=g.createRadialGradient(W/2,300,50,W/2,300,900); gr.addColorStop(0,"rgba(210,56,42,.16)"); gr.addColorStop(1,"rgba(0,0,0,0)"); g.fillStyle=gr; g.fillRect(0,0,W,H);}
+
+function scene1(t){ // how it was made
+  bg();
+  const k=out(seg(t,0,.5)); g.globalAlpha=k;
+  txt("이 광고, 이렇게 만들었어요",80,170,64,"#fff",900);
+  txt("AI 영상 레퍼런스 보관함에서 카드를 골라 담았어요",80,230,32,"#9ba1ae",500);
+  // steps
+  const steps=["① 카드 고르기","② 프롬프트 복사","③ 영상 AI에 붙여넣기"]; let sx=80;
+  steps.forEach((s,i)=>{ const on=t>=[0.4,8.0,9.2][i]; g.font=`800 30px ${F}`; const w=g.measureText(s).width+44;
+    rr(sx,280,w,62,31); g.fillStyle=on?"#ffcc33":"#22262e"; g.fill(); txt(s,sx+22,322,30,on?"#15171c":"#9ba1ae",800); sx+=w+14; });
+  g.globalAlpha=1;
+  R.forEach((r,i)=>{ const a=out(seg(t,.7+i*1.7,1.2+i*1.7)); if(a<=0) return; const y=400+i*300; g.save(); g.globalAlpha=a; g.translate((1-a)*60,0);
+    rr(60,y,960,272,24); g.fillStyle="#1a1d23"; g.fill(); g.strokeStyle="#2d313a"; g.lineWidth=2; g.stroke();
+    g.save(); rr(84,y+20,132,232,14); g.clip(); cover(imgs[r.still],84,y+20,132,232); g.restore();
+    txt(`컷 ${i+1}`,244,y+58,26,"#9ba1ae",700);
+    g.font=`900 30px ${M}`; const cw=g.measureText(r.code).width+28; rr(330,y+24,cw,46,10); g.fillStyle="#d2382a"; g.fill(); txt(r.code,344,y+58,30,"#fff",900,M);
+    txt(r.name,330+cw+16,y+60,40,"#fff",900);
+    wrap(r.when,244,y+112,740,28,38,"#cfd3da",500,F,1);
+    g.fillStyle="#0f1115"; rr(244,y+140,750,104,12); g.fill();
+    wrap(r.prompt,264,y+182,712,24,34,"#ffcc33",400,M,2);
+    g.restore(); });
+  const b=out(seg(t,7.8,8.4)); if(b>0){ g.save(); g.globalAlpha=b; const y=1610;
+    rr(60,y,960,170,24); g.fillStyle="#22262e"; g.fill();
+    txt("+ 공통 카드",96,y+56,30,"#9ba1ae",800);
+    txt(D.common,96,y+104,32,"#fff",800);
+    txt(D.tool,96,y+148,28,"#ffcc33",700);
+    g.restore(); }
+}
+function scene2(t){ // CTA
+  bg(); const k=out(seg(t,0,.6)); g.globalAlpha=k;
+  txt("카드만 고르면",W/2,520,96,"#fff",900,F,"center");
+  txt("프롬프트 완성",W/2,640,96,"#ffcc33",900,F,"center");
+  txt("카메라 무빙 · 조명 · 스타일 · 광고 구조 카드",W/2,730,36,"#cfd3da",600,F,"center");
+  const tw=200,th=356,gap=24,x0=(W-(tw*4+gap*3))/2;
+  R.forEach((r,i)=>{ const a=out(seg(t,.3+i*.15,.8+i*.15)); g.save(); g.globalAlpha=k*a; rr(x0+i*(tw+gap),820+(1-a)*40,tw,th,18); g.clip(); cover(imgs[r.still],x0+i*(tw+gap),820+(1-a)*40,tw,th); g.restore();
+    g.save(); g.globalAlpha=k*a; g.font=`900 26px ${M}`; txt(r.code,x0+i*(tw+gap)+tw/2,820+th+48,26,"#ffcc33",900,M,"center"); g.restore(); });
+  const p=out(seg(t,1.2,1.8)); g.globalAlpha=k*p;
+  rr(110,1330,860,120,60); g.fillStyle="#d2382a"; g.fill();
+  txt("ai-video-reference-kr.netlify.app",W/2,1408,40,"#fff",900,M,"center");
+  txt("무료 · 회원가입 없음",W/2,1520,40,"#fff",800,F,"center");
+  txt("매일 아침 '터진 쇼츠'와 따라 만드는 프롬프트도 올라와요",W/2,1590,30,"#9ba1ae",500,F,"center");
+  g.globalAlpha=1;
+}
+window.render=t=>{ g.globalAlpha=1; if(t<D.split) scene1(t); else scene2(t-D.split); const f=seg(t,D.dur-.5,D.dur); if(f>0){g.globalAlpha=f;g.fillStyle="#000";g.fillRect(0,0,W,H);g.globalAlpha=1;} };
+Promise.all([document.fonts.load(`900 40px 'Noto Sans CJK KR'`)].concat(R.map(r=>load(r.still)))).then(()=>{render(0);window.READY=true;});
+</script></body></html>

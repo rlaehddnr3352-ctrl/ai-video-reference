@@ -1,0 +1,657 @@
+<title>광고 공식 공방</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@500;700;900&display=swap">
+<style>
+/* Layout: price-sticker workshop — form on the left, a phone-sized 9:16 proof on the right, script sheet below. */
+:root {
+  --paper: #f3f4f1;
+  --sheet: #ffffff;
+  --ink: #16181d;
+  --ink-2: #4a4e58;
+  --ink-3: #7c818c;
+  --line: #d9dbd6;
+  --sticker: #ffd60a;
+  --sticker-ink: #1a1500;
+  --cobalt: #2a46e8;
+  --cobalt-soft: #e7ebff;
+  --ok: #1d8a4e;
+  --warn: #b5561a;
+  --display: "Black Han Sans", "Noto Sans KR", system-ui, sans-serif;
+  --body: "IBM Plex Sans KR", "Noto Sans KR", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121318; --sheet: #1b1d24; --ink: #eceef2; --ink-2: #b8bcc6; --ink-3: #8a8f9b; --line: #2e313a;
+    --sticker: #ffd60a; --sticker-ink: #1a1500; --cobalt: #8d9cff; --cobalt-soft: #232a52; --ok: #4cc386; --warn: #f0a46a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121318; --sheet: #1b1d24; --ink: #eceef2; --ink-2: #b8bcc6; --ink-3: #8a8f9b; --line: #2e313a;
+  --sticker: #ffd60a; --sticker-ink: #1a1500; --cobalt: #8d9cff; --cobalt-soft: #232a52; --ok: #4cc386; --warn: #f0a46a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 28px; }
+header.top { display: grid; gap: 10px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--ink-3); text-transform: uppercase; }
+h1 { font-family: var(--display); font-weight: 400; font-size: clamp(34px, 6vw, 58px); line-height: 1.05; margin: 0; text-wrap: balance; }
+h1 .tag { background: var(--sticker); color: var(--sticker-ink); padding: 0 .18em; border-radius: 6px; display: inline-block; transform: rotate(-2deg); }
+.lede { max-width: 62ch; color: var(--ink-2); margin: 0; }
+h2 { font-family: var(--display); font-weight: 400; font-size: 24px; margin: 0; }
+h3 { font-size: 15px; margin: 0; font-weight: 700; }
+.step { display: flex; align-items: baseline; gap: 10px; }
+.step b { font-family: var(--mono); font-size: 12px; color: var(--ink-3); font-weight: 600; }
+
+.grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 28px; align-items: start; }
+@media (max-width: 920px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* formula picker */
+.formulas { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+.fx { text-align: left; border: 1.5px solid var(--line); background: var(--sheet); color: var(--ink); border-radius: 12px; padding: 12px 14px; cursor: pointer; display: grid; gap: 4px; font: inherit; min-width: 0; }
+.fx:hover { border-color: var(--ink-3); }
+.fx[aria-pressed="true"] { border-color: var(--ink); box-shadow: 4px 4px 0 var(--sticker); }
+.fx .nm { font-weight: 700; font-size: 15px; }
+.fx .why { font-size: 12.5px; color: var(--ink-2); line-height: 1.45; }
+.fx .src { font-family: var(--mono); font-size: 11px; color: var(--cobalt); }
+.fx .src.own { color: var(--ok); }
+
+/* form */
+form.prod { background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; }
+@media (max-width: 560px) { form.prod { grid-template-columns: minmax(0, 1fr); } }
+.f { display: grid; gap: 4px; min-width: 0; }
+.f.wide { grid-column: 1 / -1; }
+.f label { font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+.f .hint { font-size: 11.5px; color: var(--ink-3); }
+input[type=text], input[type=number], textarea, select { width: 100%; font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+textarea { resize: vertical; min-height: 64px; }
+input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+input[type=color] { width: 44px; height: 36px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); padding: 2px; }
+.check { display: flex; gap: 8px; align-items: center; font-size: 13px; }
+.only[hidden] { display: none !important; }
+
+/* preview column */
+.stage { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); display: grid; gap: 12px; }
+@media (max-width: 920px) { .stage { position: static; } }
+.phone { background: #0b0c10; border-radius: 34px; padding: 10px; box-shadow: 0 24px 50px -24px rgba(0,0,0,.45); width: min(100%, 360px); justify-self: center; }
+.phone canvas { width: 100%; aspect-ratio: 9 / 16; display: block; border-radius: 26px; background: #000; }
+.ctrl { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: center; }
+.btn { font: inherit; font-weight: 600; border-radius: 999px; padding: 9px 16px; border: 1.5px solid var(--ink); background: var(--sheet); color: var(--ink); cursor: pointer; }
+.btn.primary { background: var(--ink); color: var(--paper); }
+.btn.sticker { background: var(--sticker); color: var(--sticker-ink); border-color: var(--sticker); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+input[type=range] { width: 100%; accent-color: var(--cobalt); }
+.time { font-family: var(--mono); font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.status { font-size: 13px; color: var(--ink-2); text-align: center; min-height: 1.4em; }
+.status.err { color: var(--warn); }
+video.out { width: min(100%, 240px); justify-self: center; border-radius: 16px; background: #000; }
+.note { font-size: 12px; color: var(--ink-3); text-align: center; }
+
+/* script sheet */
+.sheet { background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 16px; min-width: 0; }
+.sheet-head { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
+.tablewrap { overflow-x: auto; }
+table.cuts { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 13.5px; }
+table.cuts th { text-align: left; font-size: 11.5px; font-family: var(--mono); color: var(--ink-3); font-weight: 600; letter-spacing: .04em; padding: 6px 8px; border-bottom: 1.5px solid var(--ink); }
+table.cuts td { vertical-align: top; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+table.cuts td.tc { font-family: var(--mono); white-space: nowrap; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+table.cuts td.pr { font-family: var(--mono); font-size: 12px; color: var(--ink-2); max-width: 300px; }
+.cap { background: var(--sticker); color: var(--sticker-ink); padding: 1px 6px; border-radius: 4px; font-weight: 700; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 720px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+.box { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 8px; min-width: 0; }
+.box pre { margin: 0; white-space: pre-wrap; word-break: break-word; font-family: var(--body); font-size: 13.5px; }
+.box ol, .box ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 13.5px; }
+.copy { font: inherit; font-size: 12px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-2); border-radius: 999px; padding: 3px 10px; cursor: pointer; justify-self: start; }
+.ai { border: 1.5px dashed var(--cobalt); border-radius: 14px; padding: 16px 18px; display: grid; gap: 10px; background: var(--cobalt-soft); }
+.ai[hidden] { display: none !important; }
+.pill { display: inline-block; font-family: var(--mono); font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-2); }
+footer { font-size: 12px; color: var(--ink-3); max-width: 80ch; }
+@media (prefers-reduced-motion: reduce) { .fx, .btn { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">세로 광고 · 9:16 · 브라우저에서 바로</div>
+    <h1>검증된 광고 공식에 <span class="tag">내 제품</span>만 넣으세요</h1>
+    <p class="lede">공식을 고르고 제품 정보를 넣으면, 세로 광고 영상 한 편과 촬영·AI 영상용 컷별 대본이 함께 나옵니다. 영상은 이 페이지에서 바로 그려지고, 서버로 아무것도 보내지 않습니다.</p>
+  </header>
+
+  <section style="display:grid;gap:12px">
+    <div class="step"><b>01</b><h2>공식 고르기</h2></div>
+    <div class="formulas" id="formulas" role="group" aria-label="광고 공식"></div>
+  </section>
+
+  <div class="grid">
+    <section style="display:grid;gap:12px;min-width:0">
+      <div class="step"><b>02</b><h2>제품 정보</h2><span class="pill">예시 값이 들어 있어요</span></div>
+      <form class="prod" id="prod" autocomplete="off">
+        <div class="f"><label for="name">제품명</label><input type="text" id="name" value="말랑 실리콘 수세미 3개입"></div>
+        <div class="f"><label for="benefit">한 줄 장점</label><input type="text" id="benefit" value="기름때가 물로만 쓱 지워져요"></div>
+        <div class="f wide"><label for="pain">고객이 겪는 불편 (질문으로)</label><input type="text" id="pain" value="설거지할 때 수세미 냄새 나시죠?"><span class="hint">'~할 때 ~하시죠?' 꼴이 첫 1초에 가장 잘 붙잡아요.</span></div>
+        <div class="f"><label for="price">정가 (원)</label><input type="number" id="price" value="12900" min="0" step="10"></div>
+        <div class="f"><label for="sale">판매가 (원)</label><input type="number" id="sale" value="6900" min="0" step="10"></div>
+        <div class="f"><label for="reviews">상품평 수</label><input type="number" id="reviews" value="3412" min="0"><span class="hint">실제 숫자만 넣으세요. 0이면 표시하지 않아요.</span></div>
+        <div class="f"><label for="rating">별점 (0~5)</label><input type="number" id="rating" value="4.8" min="0" max="5" step="0.1"></div>
+        <div class="f wide"><label for="cta">구매 안내 문구</label><input type="text" id="cta" value="스마트스토어 '말랑살림'에서 검색"></div>
+        <div class="f"><label for="color">브랜드 색</label><div class="row"><input type="color" id="color" value="#ff5a36"><span class="hint">영상의 강조색이 돼요.</span></div></div>
+        <div class="f"><label for="photo">제품 사진 (선택)</label><input type="file" id="photo" accept="image/*"><span class="hint">누끼 사진이면 더 좋아요. 없으면 도형으로 그려요.</span></div>
+
+        <div class="f only" data-for="countdown"><label for="deadline">마감 문구</label><input type="text" id="deadline" value="오늘 밤 12시 마감"></div>
+        <div class="f only" data-for="countdown"><label for="badge">할인 배지</label><input type="text" id="badge" value="" placeholder="비워 두면 할인율 자동 계산"></div>
+        <div class="f only" data-for="perday"><label for="compare">비교할 일상 지출</label><input type="text" id="compare" value="편의점 커피 1잔"></div>
+        <div class="f only" data-for="perday"><label for="compareprice">그 지출 가격 (원)</label><input type="number" id="compareprice" value="1500" min="0"></div>
+        <div class="f only" data-for="perday"><label for="days">나눌 일수</label><input type="number" id="days" value="30" min="1" max="365"><span class="hint">한 달 구독이면 30, 1년 쓰는 물건이면 365.</span></div>
+        <div class="f only" data-for="beforeafter"><label for="before">비포 한 줄</label><input type="text" id="before" value="누렇게 찌든 수세미"></div>
+        <div class="f only" data-for="beforeafter"><label for="after">애프터 한 줄</label><input type="text" id="after" value="삶지 않아도 뽀득"></div>
+        <div class="f only wide" data-for="steps"><label for="s1">쓰는 법 3단계</label><input type="text" id="s1" value="물에 적셔서"><input type="text" id="s2" value="세제 없이 문지르고"><input type="text" id="s3" value="헹궈서 걸어 두면 끝"></div>
+        <div class="f only wide" data-for="proof"><label for="q1">실제 리뷰 한 줄 (2개까지)</label><input type="text" id="q1" value="기름 묻은 팬이 진짜 물로만 닦여요"><input type="text" id="q2" value="냄새가 안 나서 계속 재구매해요"><span class="hint">받은 리뷰를 그대로 옮기세요. 지어낸 후기는 표시광고법 위반이에요.</span></div>
+
+        <div class="f wide"><label class="check"><input type="checkbox" id="adtag" checked> 영상 위에 '광고' 표시 넣기</label><span class="hint">협찬·제휴 수수료를 받는 영상이면 영상 안에도 광고 표시가 있어야 해요.</span></div>
+        <div class="f wide"><label for="bgm">배경음악 (선택, 1곡)</label><input type="file" id="bgm" accept="audio/*"><span class="hint">저작권 문제없는 곡만 쓰세요. 넣으면 저장할 때 함께 담겨요.</span></div>
+      </form>
+    </section>
+
+    <aside class="stage" aria-label="영상 미리보기">
+      <div class="step"><b>03</b><h2>영상</h2></div>
+      <div class="phone"><canvas id="cv" width="1080" height="1920" aria-label="광고 영상 미리보기"></canvas></div>
+      <div class="ctrl">
+        <button class="btn" id="play" type="button">재생</button>
+        <button class="btn sticker" id="rec" type="button">영상 저장</button>
+      </div>
+      <input type="range" id="scrub" min="0" max="1000" value="350" aria-label="미리보기 시간">
+      <div class="time" id="time" style="text-align:center">0.0초 / 10.0초</div>
+      <div class="status" id="status" role="status"></div>
+      <video class="out" id="out" controls playsinline hidden></video>
+      <p class="note" id="vidnote">저장은 실제 길이만큼 녹화해요. 녹화 중에는 이 탭을 열어 두세요.</p>
+    </aside>
+  </div>
+
+  <section class="sheet" aria-label="컷별 대본">
+    <div class="sheet-head">
+      <div class="step"><b>04</b><h2>컷별 대본 · 프롬프트</h2></div>
+      <div class="row"><button class="copy" id="copyall" type="button">전체 복사</button><button class="copy" id="savetxt" type="button">대본 파일로 저장</button></div>
+    </div>
+    <p style="margin:0;color:var(--ink-2);font-size:13.5px" id="fxnote"></p>
+    <div class="tablewrap"><table class="cuts" id="cuts"><thead><tr><th>시간</th><th>화면</th><th>자막</th><th>나레이션</th><th>AI 영상 프롬프트 (영문)</th></tr></thead><tbody></tbody></table></div>
+    <div class="cols">
+      <div class="box"><h3>제목 후보</h3><ol id="titles"></ol><button class="copy" data-copy="titles" type="button">복사</button></div>
+      <div class="box"><h3>업로드 캡션</h3><pre id="caption"></pre><button class="copy" data-copy="caption" type="button">복사</button></div>
+    </div>
+    <div class="box"><h3>올리기 전 확인</h3><ul id="checks"></ul></div>
+
+    <div class="ai" id="aibox" hidden>
+      <h3>터진 광고 하나를 통째로 내 제품에 옮기기</h3>
+      <p style="margin:0;font-size:13.5px;color:var(--ink-2)">잘 된 경쟁 광고의 대사·자막·장면을 적어 붙여 넣으면, Claude가 구조와 말투는 그대로 두고 내 제품으로 바꾼 컷별 대본을 만들어요. 지어낸 후기·효능은 넣지 않아요.</p>
+      <textarea id="ref" rows="4" placeholder="예) 0초: '이거 모르면 겨울 내내 고생합니다' 자막 + 성에 긁는 손 / 2초: …"></textarea>
+      <div class="row"><button class="btn primary" id="aigo" type="button">내 제품으로 바꾸기</button><span class="status" id="aistatus" style="text-align:left"></span></div>
+    </div>
+  </section>
+
+  <footer>공식 설명의 '내 채널 데이터'는 이 툴을 만든 운영자의 쇼츠 채널(2026년 10월, 쇼츠 40편) 분석에서 나온 수치예요. 광고 업계 공식은 널리 쓰이는 구조이며 효과를 보장하지 않아요. 가격·상품평은 제작일 기준 실제 값을 넣고, 바뀔 수 있다고 함께 적어 주세요.</footer>
+</div>
+
+<script>
+/* ---------- formulas ---------- */
+const FORMULAS = [
+  { id: "pain", nm: "불편 질문 → 해결", why: "첫 1초에 생활 속 불편을 묻고, 바로 해결 장면과 가격으로 넘어가요.", src: "내 채널 데이터 · 상위 2편 구조", own: true, dur: 10 },
+  { id: "countdown", nm: "마감 할인 카운트다운", why: "남은 시간과 정가→할인가 낙차를 보여 줘서 지금 사야 할 이유를 만들어요.", src: "긴급성 · 가격 앵커링", dur: 10 },
+  { id: "perday", nm: "하루 가격 쪼개기", why: "큰 금액을 하루 단위로 나눠 익숙한 지출과 나란히 놓아요. 구독·정기배송에 잘 맞아요.", src: "가격 프레이밍", dur: 11 },
+  { id: "beforeafter", nm: "비포 · 애프터", why: "바뀌기 전과 후를 한 화면에서 밀어 보여 줘요. 청소·뷰티·정리 제품의 기본형이에요.", src: "변화 증명", dur: 10 },
+  { id: "steps", nm: "쓰는 법 3단계", why: "‘어렵지 않을까’ 하는 망설임을 세 줄로 지워요. 처음 보는 제품일수록 강해요.", src: "쉬움 증명", dur: 10 },
+  { id: "proof", nm: "숫자로 믿게 하기", why: "상품평 수, 별점, 실제 리뷰 문장을 큼직하게 보여 줘요. 비싼 제품의 마지막 한 걸음에 좋아요.", src: "사회적 증거", dur: 10 },
+  { id: "ugc", nm: "터진 UGC 그대로 따라 찍기", why: "경쟁사가 이미 터뜨린 영상의 훅·컷 길이·음원을 그대로 두고 제품만 바꿔 찍어요.", src: "공개 사례 · 월 1만 달러 앱 창업자 방식", dur: 10 }
+];
+let FX = "pain";
+
+/* ---------- drawing toolkit (deterministic: every frame is a function of t) ---------- */
+const W = 1080, H = 1920;
+const KR = "'Noto Sans KR', sans-serif", DISP = "'Black Han Sans', 'Noto Sans KR', sans-serif", MONO = "'IBM Plex Mono', monospace";
+const cv = document.getElementById("cv"), g = cv.getContext("2d");
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const E = { out: x => 1 - Math.pow(1 - x, 3), in: x => x * x * x, io: x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2,
+  back: x => { if (x <= 0) return 0; const c = 1.70158, c3 = c + 1; return 1 + c3 * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); } };
+const ease = (t, a, b, f = E.out) => f(seg(t, a, b));
+function hex(c) { const n = parseInt(c.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+function alpha(c, a) { return `rgba(${hex(c).join(",")},${a})`; }
+function shade(c, k) { const A = hex(c); return `rgb(${A.map(v => Math.round(k < 0 ? v * (1 + k) : v + (255 - v) * k)).join(",")})`; }
+function lum(c) { const [r, gg, b] = hex(c); return (0.299 * r + 0.587 * gg + 0.114 * b) / 255; }
+function rr(x, y, w, h, r) { if (w < 0) { x += w; w = -w; } if (h < 0) { y += h; h = -h; } r = Math.max(0, Math.min(r, w / 2, h / 2)); g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+function box(x, y, w, h, r, c, stroke, lw = 3) { rr(x, y, w, h, r); if (c) { g.fillStyle = c; g.fill(); } if (stroke) { g.strokeStyle = stroke; g.lineWidth = lw; g.stroke(); } }
+function circ(x, y, r, c) { g.beginPath(); g.arc(x, y, Math.max(0, r), 0, Math.PI * 2); g.fillStyle = c; g.fill(); }
+function font(size, w = 900, f = KR) { g.font = `${w} ${size}px ${f}`; }
+function tw(s, size, w = 900, f = KR) { font(size, w, f); return g.measureText(s).width; }
+function txt(s, x, y, size, c, w = 900, align = "center", f = KR) { font(size, w, f); g.fillStyle = c; g.textAlign = align; g.textBaseline = "alphabetic"; g.fillText(s, x, y); }
+function fit(s, x, y, size, maxw, c, w = 900, align = "center", f = KR) { let sz = size; while (sz > 16 && tw(s, sz, w, f) > maxw) sz -= 2; txt(s, x, y, sz, c, w, align, f); return sz; }
+function lines(s, size, maxw, w = 900, f = KR) {
+  font(size, w, f); const words = String(s).split(/\s+/).filter(Boolean); const out = []; let ln = "";
+  for (const wd of words) { const test = ln ? ln + " " + wd : wd; if (g.measureText(test).width > maxw && ln) { out.push(ln); ln = wd; } else ln = test; }
+  if (ln) out.push(ln); return out;
+}
+function block(s, x, y, size, maxw, lh, c, w = 900, f = KR, max = 3) { let sz = size, L = lines(s, sz, maxw, w, f); while (L.length > max && sz > 30) { sz -= 4; L = lines(s, sz, maxw, w, f); } L.forEach((l, i) => txt(l, x, y + i * sz * lh, sz, c, w, "center", f)); return L.length * sz * lh; }
+function at(x, y, s, rot, a, fn) { g.save(); g.translate(x, y); if (rot) g.rotate(rot); if (s !== 1) g.scale(s, s); if (a !== 1) g.globalAlpha *= a; fn(); g.restore(); }
+function won(n) { return Math.round(+n || 0).toLocaleString("ko-KR"); }
+function rng(seed) { let s = seed >>> 0; return () => { s += 0x6D2B79F5; let r = Math.imul(s ^ s >>> 15, 1 | s); r ^= r + Math.imul(r ^ r >>> 7, 61 | r); return ((r ^ r >>> 14) >>> 0) / 4294967296; }; }
+function confetti(t, t0, cols, ox = W / 2, oy = H * .45, n = 80) {
+  if (t < t0) return; const r = rng(5), dt = t - t0;
+  for (let i = 0; i < n; i++) { const a = r() * Math.PI * 2, v = 600 + r() * 1200, vx = Math.cos(a) * v * .8, vy = Math.sin(a) * v - 900, s = 12 + r() * 16;
+    const x = ox + vx * dt, y = oy + vy * dt + 1400 * dt * dt; if (y > H + 40) continue;
+    g.save(); g.translate(x, y); g.rotate(dt * 6 + i); g.scale(1, Math.cos(dt * 8 + i)); g.globalAlpha *= clamp(2.2 - dt); g.fillStyle = cols[i % cols.length]; g.fillRect(-s / 2, -s / 4, s, s / 2); g.restore(); }
+}
+function star(x, y, r, fillK, on, off) {
+  const path = () => { g.beginPath(); for (let i = 0; i < 10; i++) { const rad = i % 2 ? r * .45 : r, a = -Math.PI / 2 + i * Math.PI / 5; g.lineTo(x + Math.cos(a) * rad, y + Math.sin(a) * rad); } g.closePath(); };
+  path(); g.fillStyle = off; g.fill();
+  if (fillK > 0) { g.save(); g.beginPath(); g.rect(x - r, y - r, 2 * r * fillK, 2 * r); g.clip(); path(); g.fillStyle = on; g.fill(); g.restore(); }
+}
+
+/* ---------- inputs ---------- */
+const $ = id => document.getElementById(id);
+let photo = null;
+function P() {
+  const num = id => Math.max(0, +$(id).value || 0);
+  const price = num("price"), sale = num("sale");
+  const pct = price > sale && price > 0 ? Math.round((1 - sale / price) * 100) : 0;
+  return {
+    name: $("name").value.trim() || "내 제품", benefit: $("benefit").value.trim(), pain: $("pain").value.trim() || "이런 불편 있으시죠?",
+    price, sale: sale || price, pct, reviews: Math.round(num("reviews")), rating: Math.min(5, num("rating")), cta: $("cta").value.trim() || "프로필 링크에서 확인",
+    color: $("color").value || "#ff5a36", deadline: $("deadline").value.trim() || "오늘 마감", badge: $("badge").value.trim() || (pct ? `-${pct}%` : "특가"),
+    compare: $("compare").value.trim() || "커피 1잔", compareprice: num("compareprice"), days: Math.max(1, Math.round(num("days")) || 30),
+    before: $("before").value.trim() || "전", after: $("after").value.trim() || "후",
+    steps: ["s1", "s2", "s3"].map(id => $(id).value.trim()).filter(Boolean), quotes: ["q1", "q2"].map(id => $(id).value.trim()).filter(Boolean),
+    adtag: $("adtag").checked
+  };
+}
+
+/* ---------- shared scene pieces ---------- */
+function bg(c1, c2) { const gr = g.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, c1); gr.addColorStop(1, c2); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
+function adBadge(p) {
+  if (!p.adtag) return;
+  box(48, 64, 118, 66, 14, "#ffd60a"); txt("광고", 107, 112, 40, "#1a1500", 900);
+  font(30, 700); g.lineWidth = 6; g.strokeStyle = "rgba(0,0,0,.55)"; g.textAlign = "left"; g.strokeText("제휴·협찬 콘텐츠", 186, 108); g.fillStyle = "#fff"; g.fillText("제휴·협찬 콘텐츠", 186, 108);
+}
+function product(p, cx, cy, w, h, t) {
+  g.save(); g.shadowColor = "rgba(0,0,0,.35)"; g.shadowBlur = 50; g.shadowOffsetY = 24; box(cx - w / 2, cy - h / 2, w, h, 44, "#fff"); g.restore();
+  if (photo) {
+    g.save(); rr(cx - w / 2, cy - h / 2, w, h, 44); g.clip();
+    const s = Math.max(w / photo.width, h / photo.height) * (1 + .03 * Math.sin(t * 1.3)); const iw = photo.width * s, ih = photo.height * s;
+    g.fillStyle = "#fff"; g.fillRect(cx - w / 2, cy - h / 2, w, h); g.drawImage(photo, cx - iw / 2, cy - ih / 2, iw, ih); g.restore();
+  } else {
+    const c = p.color; box(cx - w / 2, cy - h / 2, w, h, 44, shade(c, .86));
+    const pw = w * .48, ph = h * .62, px = cx - pw / 2, py = cy - ph / 2 + h * .04;
+    g.save(); g.shadowColor = alpha(c, .45); g.shadowBlur = 40; g.shadowOffsetY = 20; box(px, py, pw, ph, pw * .14, c); g.restore();
+    const gr = g.createLinearGradient(px, 0, px + pw, 0); gr.addColorStop(0, "rgba(255,255,255,0)"); gr.addColorStop(.25, "rgba(255,255,255,.35)"); gr.addColorStop(.4, "rgba(255,255,255,0)"); rr(px, py, pw, ph, pw * .14); g.fillStyle = gr; g.fill();
+    box(px + pw * .1, py + ph * .36, pw * .8, ph * .3, 16, "rgba(255,255,255,.94)");
+    const words = p.name.split(/\s+/); fit(words.slice(0, 2).join(" "), cx, py + ph * .5, pw * .17, pw * .72, shade(c, -.45), 900);
+    if (words.length > 2) fit(words.slice(2).join(" "), cx, py + ph * .6, pw * .09, pw * .72, shade(c, -.3), 700);
+  }
+}
+function priceTag(p, cx, cy, t, t0) {
+  const k = ease(t, t0, t0 + .5, E.back); if (k <= 0) return;
+  at(cx, cy, k, -0.05, 1, () => {
+    box(-300, -120, 600, 240, 30, "#ffd60a");
+    if (p.price > p.sale) { txt(won(p.price) + "원", 0, -42, 50, "rgba(26,21,0,.55)", 700); const w = tw(won(p.price) + "원", 50, 700); const sk = ease(t, t0 + .4, t0 + .8); g.strokeStyle = "#e0242b"; g.lineWidth = 8; g.beginPath(); g.moveTo(-w / 2 - 8, -58); g.lineTo(-w / 2 - 8 + (w + 16) * sk, -58); g.stroke(); }
+    fit(won(p.sale) + "원", 0, p.price > p.sale ? 70 : 30, 118, 540, "#1a1500", 900, "center", DISP);
+  });
+}
+function ctaBar(p, t, t0) {
+  const k = ease(t, t0, t0 + .5, E.back); if (k <= 0) return;
+  const pulse = 1 + .03 * Math.sin((t - t0) * 7);
+  at(W / 2, H - 250, k * pulse, 0, 1, () => { box(-430, -78, 860, 156, 78, "#16181d"); fit(p.cta, 0, 18, 50, 760, "#fff", 900); });
+}
+function questionHead(s, y, size, color, t, t0) {
+  // characters rise in, whole line shakes slightly — a moving first frame
+  const L = lines(s, size, 900, 900); const sh = Math.sin(t * 30) * 4 * (1 - seg(t, t0, t0 + 1.2));
+  L.forEach((ln, li) => { const chars = [...ln]; font(size, 900); const total = g.measureText(ln).width; let x = W / 2 - total / 2;
+    chars.forEach((ch, i) => { const k = ease(t, t0 + (li * 6 + i) * .025, t0 + (li * 6 + i) * .025 + .35, E.back); const wch = g.measureText(ch).width;
+      g.save(); g.globalAlpha *= clamp(k * 1.5); txt(ch, x + wch / 2 + sh, y + li * size * 1.22 + (1 - k) * 50, size, color, 900); g.restore(); x += wch; }); });
+  return L.length * size * 1.22;
+}
+
+/* ---------- templates: draw(p, t) ---------- */
+const T = {};
+T.pain = (p, t) => {
+  const c = p.color, dark = shade(c, -.72);
+  bg(dark, shade(c, -.45));
+  // pulsing alarm rings behind the question
+  for (let i = 0; i < 3; i++) { const k = ((t * .8 + i / 3) % 1); g.strokeStyle = alpha(c, .5 * (1 - k)); g.lineWidth = 10; g.beginPath(); g.arc(W / 2, 560, 120 + k * 520, 0, Math.PI * 2); g.stroke(); }
+  const out = 1 - ease(t, 2.4, 2.9, E.in);
+  if (out > 0) at(0, -ease(t, 2.4, 2.9, E.in) * 300, 1, 0, out, () => {
+    at(W / 2, 470, ease(t, 0, .4, E.back), Math.sin(t * 9) * .08, 1, () => { circ(0, 0, 120, c); txt("?", 0, 58, 170, "#fff", 900, "center", DISP); });
+    questionHead(p.pain, 820, 92, "#fff", t, .1);
+  });
+  if (t > 2.6) {
+    const k = ease(t, 2.6, 3.3, E.back);
+    at(W / 2, 760 + (1 - k) * 900, 1, 0, 1, () => product(p, 0, 0, 760, 760, t));
+    const k2 = ease(t, 3.4, 3.9); at(W / 2, 260, 1, 0, k2, () => { fit(p.name, 0, 0, 74, 940, "#fff", 900); });
+    if (p.benefit) { const k3 = ease(t, 3.9, 4.4, E.back); at(W / 2, 1260, k3, 0, 1, () => { const w = Math.min(960, tw(p.benefit, 54, 900) + 90); box(-w / 2, -64, w, 120, 60, c); fit(p.benefit, 0, 20, 54, 880, lum(c) > .6 ? "#111" : "#fff", 900); }); }
+  }
+  if (t > 5.4 && p.reviews > 0) {
+    const k = ease(t, 5.4, 5.9); at(W / 2, 1420, 1, 0, k, () => {
+      for (let i = 0; i < 5; i++) star(-150 + i * 75, -18, 30, clamp(p.rating * ease(t, 5.4, 6.4) - i), "#ffd60a", "rgba(255,255,255,.25)");
+      txt(`상품평 ${won(p.reviews * ease(t, 5.4, 6.6))}개`, 0, 72, 46, "#fff", 700);
+    });
+  }
+  priceTag(p, W / 2, 1640, t, 6.2);
+  if (t > 6.2) { const k = 1 - ease(t, 7.8, 8.2); if (k > 0) txt("제작일 기준 · 가격은 바뀔 수 있어요", W / 2, 1800, 30, alpha("#ffffff", .75 * k), 500); }
+  ctaBar(p, t, 8.0);
+  adBadge(p);
+};
+T.countdown = (p, t) => {
+  const c = p.color; g.fillStyle = "#0b0b0d"; g.fillRect(0, 0, W, H);
+  // diagonal sale stripes sweep in
+  const sw = ease(t, 0, .8); g.save(); g.globalAlpha = .9; g.translate(W / 2, 330); g.rotate(-0.12);
+  for (let i = -8; i < 9; i++) { g.fillStyle = i % 2 ? "#ffd60a" : "#16181d"; g.fillRect(-W + (1 - sw) * -W + i * 140, -90, 140, 180); } g.restore();
+  at(W / 2, 360, 1 + (1 - ease(t, .3, .7, E.back)) * 2.2, -0.12, ease(t, .3, .5), () => { box(-380, -100, 760, 170, 22, "#e0242b"); txt("TIME SALE", 0, 40, 120, "#fff", 400, "center", DISP); });
+  // countdown clock
+  const left = Math.max(0, 3 * 3600 - 1 - Math.floor(clamp(t - .6, 0, 4) * 2900) - Math.floor(t * 7));
+  const hh = String(Math.floor(left / 3600)).padStart(2, "0"), mm = String(Math.floor(left / 60) % 60).padStart(2, "0"), ss = String(left % 60).padStart(2, "0");
+  const kc = ease(t, .6, 1.1); at(W / 2, 680, 1, 0, kc, () => {
+    box(-460, -150, 920, 230, 30, "#16181d", "#2c2f38", 4); fit(`${hh}:${mm}:${ss}`, 0, 50, 180, 860, "#ffd60a", 600, "center", MONO);
+    const drain = 1 - seg(t, .6, 9.5); box(-430, 104, 860, 20, 10, "#2c2f38"); box(-430, 104, 860 * drain, 20, 10, "#e0242b");
+  });
+  // product card + price drop
+  const kp = ease(t, 2.6, 3.3, E.back); at(W / 2, 1130 + (1 - kp) * 700, 1, 0, 1, () => product(p, 0, 0, 640, 600, t));
+  fit(p.name, W / 2, 1490, 64, 940, "#fff", 900);
+  if (t > 3.6 && p.price > p.sale) { txt(won(p.price) + "원", W / 2, 1580, 58, "rgba(255,255,255,.6)", 700); const w = tw(won(p.price) + "원", 58, 700), sk = ease(t, 3.8, 4.4); g.strokeStyle = "#e0242b"; g.lineWidth = 10; g.beginPath(); g.moveTo(W / 2 - w / 2 - 8, 1562); g.lineTo(W / 2 - w / 2 - 8 + (w + 16) * sk, 1562); g.stroke(); }
+  const kd = ease(t, 4.6, 5.2, E.back); const shake = t > 5.2 && t < 5.5 ? Math.sin(t * 90) * 8 : 0;
+  if (kd > 0) at(W / 2 + shake, 1700 - (1 - kd) * 500, 1, 0, clamp(kd * 2), () => { fit(won(p.sale) + "원", 0, 0, 150, 900, "#ffd60a", 400, "center", DISP); });
+  const kb = ease(t, 5.4, 5.8, E.back); if (kb > 0) at(870, 1080, kb * (1 + .04 * Math.sin(t * 8)), 0.2, 1, () => {
+    g.beginPath(); for (let i = 0; i < 24; i++) { const r = i % 2 ? 120 : 150, a = i * Math.PI / 12; g.lineTo(Math.cos(a) * r, Math.sin(a) * r); } g.closePath(); g.fillStyle = "#e0242b"; g.fill(); fit(p.badge, 0, 22, 70, 210, "#fff", 400, "center", DISP); });
+  if (t > 6.6) { const on = Math.floor(t * 2) % 2 === 0; at(W / 2, 1810, 1, 0, 1, () => { const w = Math.min(980, tw(p.deadline, 44, 900) + 80); box(-w / 2, -50, w, 84, 42, on ? "#ffd60a" : "#2c2f38"); fit(p.deadline, 0, 8, 44, w - 40, on ? "#1a1500" : "#fff", 900); }); }
+  if (t > 8.2) ctaBar(p, t, 8.2);
+  adBadge(p);
+};
+T.perday = (p, t) => {
+  const c = p.color; bg("#fbfaf7", "#efece4");
+  const per = Math.round(p.sale / p.days);
+  const k1 = ease(t, 0, .5, E.back);
+  at(W / 2, 260, k1, 0, 1, () => { fit(p.name, 0, 0, 64, 940, "#16181d", 900); });
+  at(W / 2, 400, 1, 0, ease(t, .3, .8), () => { const unit = p.days === 30 ? "한 달" : p.days === 365 ? "1년" : `${p.days}일`; fit(`${unit} ${won(p.sale)}원`, 0, 0, 110, 960, c, 400, "center", DISP); });
+  // calendar grid that fills
+  const cols = p.days > 31 ? 20 : 7, rows = Math.ceil(Math.min(p.days, 140) / cols), cell = Math.min(118, 860 / cols), gx = W / 2 - cols * cell / 2, gy = 520;
+  const shown = Math.min(p.days, 140), n = Math.floor(shown * ease(t, 1.2, 4, E.io));
+  for (let i = 0; i < shown; i++) { const x = gx + (i % cols) * cell, y = gy + Math.floor(i / cols) * cell; box(x + 5, y + 5, cell - 10, cell - 10, 12, i < n ? c : "#e3e0d8"); if (cols === 7) txt(String(i + 1), x + cell / 2, y + cell * .62, cell * .32, i < n ? "#fff" : "#a9a59b", 700, "center", MONO); }
+  const gyEnd = gy + rows * cell;
+  const k2 = ease(t, 4.2, 4.8, E.back); at(W / 2, gyEnd + 140, k2, 0, 1, () => { box(-420, -100, 840, 190, 40, "#16181d"); fit(`하루 ${won(per)}원`, 0, 30, 110, 780, "#ffd60a", 400, "center", DISP); });
+  // comparison bars
+  if (t > 5.4) {
+    const by = gyEnd + 330, maxv = Math.max(per, p.compareprice, 1), bw = 720, k3 = ease(t, 5.4, 6.4);
+    [[p.compare, p.compareprice, "#b9b4a8"], [p.name.split(" ")[0] + " 하루", per, c]].forEach(([lab, v, col], i) => {
+      const y = by + i * 150; fit(lab, gx, y, 40, 300, "#16181d", 700, "left");
+      box(W / 2 - 360, y + 20, bw * (v / maxv) * k3, 70, 35, col); txt(won(v * k3) + "원", W / 2 - 340 + bw * (v / maxv) * k3, y + 70, 40, "#16181d", 900, "left");
+    });
+  }
+  if (t > 8.6) ctaBar(p, t, 8.6);
+  adBadge(p);
+};
+T.beforeafter = (p, t) => {
+  const c = p.color;
+  const split = W * (t < 1 ? .5 : t < 4 ? lerp(.5, .06, ease(t, 1, 4, E.io)) : t < 6 ? lerp(.06, .5, ease(t, 4.4, 6, E.io)) : .5);
+  // before side: dull grey with grime specks
+  g.fillStyle = "#8f9196"; g.fillRect(0, 0, W, H); const r = rng(9);
+  for (let i = 0; i < 160; i++) { g.fillStyle = `rgba(70,60,40,${.15 + r() * .35})`; const x = r() * W, y = 260 + r() * 1100; g.beginPath(); g.ellipse(x, y, 8 + r() * 40, 6 + r() * 26, r() * 3, 0, 7); g.fill(); }
+  txt("BEFORE", W * .25, 230, 90, "rgba(255,255,255,.85)", 400, "center", DISP);
+  block(p.before, W * .25, 1460, 64, 440, 1.2, "#fff", 900, KR, 3);
+  // after side clipped from split → right
+  g.save(); g.beginPath(); g.rect(split, 0, W - split, H); g.clip();
+  bg(shade(c, .2), shade(c, -.25)); const r2 = rng(4);
+  for (let i = 0; i < 26; i++) { const x = r2() * W, y = 260 + r2() * 1100, s = 10 + r2() * 22, tw2 = .5 + .5 * Math.sin(t * 5 + i); g.fillStyle = `rgba(255,255,255,${.4 + .5 * tw2})`; g.save(); g.translate(x, y); g.rotate(Math.PI / 4); g.fillRect(-s / 2, -s / 2, s, s); g.restore(); }
+  txt("AFTER", W * .75, 230, 90, "#fff", 400, "center", DISP);
+  block(p.after, W * .75, 1460, 64, 440, 1.2, "#fff", 900, KR, 3);
+  g.restore();
+  // handle
+  g.fillStyle = "#fff"; g.fillRect(split - 4, 0, 8, H); circ(split, 820, 56, "#fff"); txt("⇆", split, 846, 64, "#16181d", 900);
+  if (t > 6.2) { const k = ease(t, 6.2, 6.9, E.back); at(W / 2, 820 + (1 - k) * 1100, 1, 0, 1, () => product(p, 0, 0, 560, 560, t)); fit(p.name, W / 2, 1220, 66, 940, "#fff", 900); }
+  if (t > 7.4) priceTag(p, W / 2, 1640, t, 7.4);
+  if (t > 8.4) ctaBar(p, t, 8.4);
+  adBadge(p);
+};
+T.steps = (p, t) => {
+  const c = p.color; bg("#ffffff", shade(c, .88));
+  at(W / 2, 250, 1, 0, ease(t, 0, .5), () => fit(p.name, 0, 0, 64, 940, "#16181d", 900));
+  at(W / 2, 380, ease(t, .2, .7, E.back), 0, 1, () => fit(`쓰는 법, ${p.steps.length || 3}단계면 끝`, 0, 0, 92, 980, c, 400, "center", DISP));
+  const steps = p.steps.length ? p.steps : ["꺼내서", "쓰고", "끝"];
+  steps.forEach((s, i) => {
+    const t0 = 1.2 + i * 1.7, k = ease(t, t0, t0 + .6, E.back); if (k <= 0) return; const y = 640 + i * 330;
+    at(W / 2 + (1 - k) * 700, y, 1, 0, 1, () => {
+      g.save(); g.shadowColor = "rgba(0,0,0,.12)"; g.shadowBlur = 30; g.shadowOffsetY = 12; box(-470, -120, 940, 240, 40, "#fff"); g.restore();
+      circ(-350, 0, 74, c); txt(String(i + 1), -350, 38, 100, "#fff", 400, "center", DISP);
+      block(s, 80, -6, 64, 560, 1.15, "#16181d", 900, KR, 2);
+      const kc = ease(t, t0 + .8, t0 + 1.2); if (kc > 0) { g.strokeStyle = "#1d8a4e"; g.lineWidth = 16; g.lineCap = "round"; g.beginPath(); g.moveTo(370, 0); g.lineTo(370 + 26 * Math.min(1, kc * 2), 26 * Math.min(1, kc * 2)); if (kc > .5) g.lineTo(396 + 50 * (kc - .5) * 2, 26 - 70 * (kc - .5) * 2); g.stroke(); }
+    });
+  });
+  const ks = ease(t, 6.4, 6.9, E.back); if (ks > 0) at(W / 2, 1640, ks, -0.08, 1, () => { box(-200, -90, 400, 170, 30, "#e0242b"); txt("끝!", 0, 40, 120, "#fff", 400, "center", DISP); });
+  confetti(t, 6.5, [c, "#ffd60a", "#2a46e8", "#1d8a4e"]);
+  if (t > 8.2) ctaBar(p, t, 8.2);
+  adBadge(p);
+};
+T.proof = (p, t) => {
+  const c = p.color; bg("#121318", shade(c, -.6));
+  const k = ease(t, .2, 2.4, E.out);
+  if (p.reviews > 0) {
+    txt("상품평", W / 2, 360, 64, "rgba(255,255,255,.75)", 700);
+    fit(won(p.reviews * k), W / 2, 590, 260, 980, "#fff", 400, "center", DISP);
+    txt("개", W / 2, 700, 64, "rgba(255,255,255,.75)", 700);
+  } else { block("이렇게 말해 주셨어요", W / 2, 520, 96, 900, 1.2, "#fff", 900); }
+  if (p.rating > 0) for (let i = 0; i < 5; i++) star(W / 2 - 300 + i * 150, 860, 62, clamp(p.rating * ease(t, 1.6, 3) - i), "#ffd60a", "rgba(255,255,255,.18)");
+  if (p.rating > 0) txt(p.rating.toFixed(1), W / 2, 1010, 70, "#ffd60a", 400, "center", DISP);
+  const qs = p.quotes.slice(0, 2);
+  qs.forEach((q, i) => { const t0 = 3.4 + i * 1.3, kq = ease(t, t0, t0 + .5, E.back); if (kq <= 0) return;
+    at(W / 2 + (i % 2 ? 40 : -40), 1160 + i * 230, kq, (i % 2 ? .02 : -.02), 1, () => { box(-440, -90, 880, 180, 40, "#fff"); g.beginPath(); g.moveTo(i % 2 ? 300 : -300, 86); g.lineTo(i % 2 ? 340 : -340, 140); g.lineTo(i % 2 ? 250 : -250, 86); g.fillStyle = "#fff"; g.fill(); block(`“${q}”`, 0, 6, 46, 800, 1.2, "#16181d", 700, KR, 2); }); });
+  if (t > 6.4) { const kk = ease(t, 6.4, 7, E.back); at(W / 2, 1650, kk, 0, 1, () => { const w = Math.min(960, tw(p.name, 56, 900) + 340); box(-w / 2, -70, w, 140, 70, c); fit(`${p.name} ${won(p.sale)}원`, 0, 20, 52, w - 60, lum(c) > .6 ? "#111" : "#fff", 900); }); }
+  if (t > 8.2) ctaBar(p, t, 8.2);
+  adBadge(p);
+};
+T.ugc = (p, t) => {
+  // UGC is filmed for real; this frame previews the hook caption sticker to overlay on the footage
+  bg("#2b2d33", "#17181c");
+  const r = rng(2); for (let i = 0; i < 40; i++) { g.fillStyle = `rgba(255,255,255,${.02 + r() * .05})`; g.fillRect(r() * W, r() * H, 2 + r() * 180, 2 + r() * 4); }
+  txt("여기에 직접 찍은 영상", W / 2, 900, 56, "rgba(255,255,255,.5)", 700); txt("(폰 세로 촬영 · 첫 장면은 손동작)", W / 2, 980, 38, "rgba(255,255,255,.35)", 500);
+  const k = ease(t, 0, .4, E.back); at(W / 2, 470, k, -0.03, 1, () => { const L = lines(p.pain, 76, 860); const h = L.length * 76 * 1.25 + 60; box(-470, -h / 2 - 20, 940, h, 24, "#fff"); L.forEach((l, i) => txt(l, 0, -h / 2 + 70 + i * 76 * 1.25, 76, "#111", 900)); });
+  if (t > 5) { const k2 = ease(t, 5, 5.5, E.back); at(W / 2, 1450, k2, 0, 1, () => { box(-440, -70, 880, 140, 24, "#ffd60a"); fit(`${p.name} ${won(p.sale)}원`, 0, 20, 54, 820, "#1a1500", 900); }); }
+  if (t > 7.6) ctaBar(p, t, 7.6);
+  adBadge(p);
+};
+
+/* ---------- scripts ---------- */
+const look = "Vertical 9:16, photorealistic smartphone footage, saturated colors, hands only, no faces, no bare feet, no on-screen text";
+function plan(p, fx) {
+  const pn = p.name, pr = `${won(p.sale)}원`, rv = p.reviews ? `상품평 ${won(p.reviews)}개` : "", per = Math.round(p.sale / p.days);
+  const anchor = p.price > p.sale ? `정가 ${won(p.price)}원 → ${pr}` : pr;
+  const cutsBy = {
+    pain: [
+      ["0–2초", "불편이 한창인 장면을 손동작으로 (채도 높은 색, 움직임)", p.pain, p.pain, `Close-up of hands in the middle of the problem: ${p.pain} — messy, vivid, in motion. ${look}`],
+      ["2–4초", "원인이나 요령 하나 (시청자가 얻어 가는 정보)", "원인은 이거였어요", `이건 ${p.benefit ? "이렇게 하면 돼요" : "방법이 따로 있어요"}`, `Hands showing the cause of the problem clearly, macro shot. ${look}`],
+      ["4–7초", "제품을 쓰는 손 → 해결된 결과", p.benefit || pn, `${pn}, ${p.benefit || "한 번에 해결돼요"}`, `Hands using "${pn}" to solve it in one smooth motion, then the clean result. ${look}`],
+      ["7–9초", "상품평·가격 자막", [rv, pr].filter(Boolean).join(" · "), `${rv ? rv + ", " : ""}지금 ${pr}이에요`, `Product "${pn}" on a bright kitchen counter, slow push-in. ${look}`],
+      ["9–10초", "첫 장면과 이어지는 장면 (반복 재생 유도)", p.cta, `${p.cta}에서 보실 수 있어요`, `Same framing as the first shot, now solved. ${look}`]
+    ],
+    countdown: [
+      ["0–1초", "TIME SALE 스티커가 쾅", "TIME SALE", "오늘만 이 가격이에요", `Bold yellow and black sale stripes sweeping across a dark screen, fast motion graphics, 9:16`],
+      ["1–4초", "남은 시간이 빠르게 줄어드는 타이머", p.deadline, `${p.deadline}이에요`, `Close-up of a digital countdown timer ticking fast, red glow, 9:16`],
+      ["4–6초", "정가에 빨간 줄 → 할인가가 떨어지며 흔들림", anchor, `${p.price > p.sale ? `원래 ${won(p.price)}원인데, ` : ""}지금 ${pr}`, `Hands holding "${pn}" toward camera, price card flipping, punchy. ${look}`],
+      ["6–8초", "할인 배지 + 제품", `${p.badge} ${pn}`, p.benefit || `${pn} 할인 중이에요`, `"${pn}" product hero shot with dramatic light, slow orbit. ${look}`],
+      ["8–10초", "마감 문구 깜빡임 + 구매 안내", p.cta, `${p.cta}, 마감 전에 확인하세요`, `Same timer near zero, urgent but clean, 9:16`]
+    ],
+    perday: [
+      ["0–2초", "큰 금액을 먼저", `${p.days === 30 ? "한 달" : p.days + "일"} ${pr}`, `${pn}, ${p.days === 30 ? "한 달에" : p.days + "일에"} ${pr}이에요`, `"${pn}" on a calendar desk, top-down, warm light. ${look}`],
+      ["2–4초", "달력 칸이 하루씩 채워짐", `${p.days}일로 나누면`, "그런데 하루로 나눠 보면요", `Hands flipping calendar pages quickly, top-down. ${look}`],
+      ["4–6초", "하루 가격 크게", `하루 ${won(per)}원`, `하루 ${won(per)}원이에요`, `Coins being counted on a table, macro. ${look}`],
+      ["6–8초", `${p.compare}와 나란히 비교`, `${p.compare} ${won(p.compareprice)}원 vs 하루 ${won(per)}원`, `${p.compare}보다 ${per < p.compareprice ? "적게 들어요" : "조금 더 들지만 훨씬 오래 써요"}`, `Hand placing "${p.compare}" next to "${pn}" on a table. ${look}`],
+      ["8–11초", "구매 안내", p.cta, `${p.cta}`, `"${pn}" in use at home, happy hands, soft light. ${look}`]
+    ],
+    beforeafter: [
+      ["0–1초", "비포 장면 (지저분·흐릿한 색)", "BEFORE", p.before, `Close-up of ${p.before}, dull and messy, hands touching it. ${look}`],
+      ["1–4초", "가운데 선이 밀리며 애프터가 드러남", "AFTER", p.after, `Split-screen wipe from messy to clean, same angle, hands in motion. ${look}`],
+      ["4–6초", "다시 반반 — 차이를 한 화면에", `${p.before} → ${p.after}`, "차이가 보이시죠", `Side-by-side before and after, identical framing. ${look}`],
+      ["6–8초", "제품 등장 + 가격", `${pn} ${pr}`, `비결은 ${pn}이에요`, `"${pn}" product reveal with a quick push-in. ${look}`],
+      ["8–10초", "구매 안내", p.cta, p.cta, `Clean result shot, slow pan, bright. ${look}`]
+    ],
+    steps: (() => { const st = p.steps.length ? p.steps : ["꺼내서", "쓰고", "끝"]; return [
+      ["0–1초", "제품명 + '단계면 끝'", `쓰는 법 ${st.length}단계`, `${pn}, ${st.length}단계면 끝나요`, `Hands unboxing "${pn}" quickly on a bright table. ${look}`],
+      ...st.map((s, i) => [`${1 + i * 2}–${3 + i * 2}초`, `${i + 1}단계를 손으로 보여 줌`, `${i + 1}. ${s}`, s, `Hands doing step ${i + 1}: ${s}, with "${pn}". ${look}`]),
+      ["7–8초", "'끝!' 도장 + 결과", "끝!", "이게 다예요", `Finished result, hands giving a small thumbs-up gesture, no face. ${look}`],
+      ["8–10초", "구매 안내", p.cta, p.cta, `"${pn}" product hero shot. ${look}`]]; })(),
+    proof: [
+      ["0–2초", "상품평 숫자가 빠르게 올라감", rv || "실제 리뷰", rv ? `${rv}가 달린 제품이에요` : "써 본 분들이 이렇게 말해요", `Phone screen showing a review list scrolling fast, hands holding the phone, no faces`],
+      ["2–3초", "별점이 채워짐", p.rating ? `★ ${p.rating.toFixed(1)}` : "", p.rating ? `별점은 ${p.rating.toFixed(1)}점` : "", `Close-up of five stars filling on a screen, 9:16`],
+      ...p.quotes.slice(0, 2).map((q, i) => [`${3 + i * 1.5}–${4.5 + i * 1.5}초`, "실제 리뷰 말풍선", `“${q}”`, q, `Hands using "${pn}" in the situation described: ${q}. ${look}`]),
+      ["6–8초", "제품 + 가격", `${pn} ${pr}`, `${pn}, ${pr}이에요`, `"${pn}" product hero shot, soft light. ${look}`],
+      ["8–10초", "구매 안내", p.cta, p.cta, `Product in use at home, hands only. ${look}`]
+    ],
+    ugc: [
+      ["0–1초", "경쟁 영상의 첫 장면과 같은 구도·동작 (제품만 바꿈)", p.pain, "경쟁 영상의 첫 문장 길이·말투 그대로", `Handheld phone footage, same opening action as the reference video, now with "${pn}". ${look}`],
+      ["1–3초", "경쟁 영상과 같은 컷 길이로 문제 장면", "(경쟁 영상 자막 위치·크기 그대로)", p.pain, `Handheld close-up of the problem, natural home light. ${look}`],
+      ["3–6초", "내 제품으로 해결하는 손", p.benefit || pn, `${pn}로 ${p.benefit || "해결했어요"}`, `Hands using "${pn}", natural, slightly shaky handheld. ${look}`],
+      ["6–8초", "결과 + 가격", pr, `${pr}이에요`, `Result close-up, then product on the counter. ${look}`],
+      ["8–10초", "경쟁 영상과 같은 마지막 행동 유도", p.cta, p.cta, `Hand pointing at the product, handheld. ${look}`]
+    ]
+  };
+  const cuts = (cutsBy[fx] || cutsBy.pain).filter(c => c[2] || c[3]);
+  const titles = {
+    pain: [`${p.pain.replace(/\?$/, "")}다면 | ${won(p.sale)}원 ${pn} #shorts`, `안 쓰면 손해 보는 ${pn}`, `${p.benefit || pn} — ${rv || pr}`],
+    countdown: [`${p.deadline}! ${pn} ${p.badge}`, `${anchor} | ${pn} 타임세일`, `오늘만 ${pr}, ${pn}`],
+    perday: [`하루 ${won(per)}원으로 ${p.benefit || pn}`, `${p.compare}보다 싼 ${pn}?`, `${pn}, 하루로 나누면 ${won(per)}원`],
+    beforeafter: [`${p.before} → ${p.after} | ${pn}`, `${p.after}, 비결은 ${pn}`, `비포 애프터로 보는 ${pn}`],
+    steps: [`${pn}, ${p.steps.length || 3}단계면 끝`, `쓰는 법 30초 정리 | ${pn}`, `처음 써도 쉬운 ${pn}`],
+    proof: [`${rv || "리뷰"}가 증명한 ${pn}`, `별점 ${p.rating.toFixed(1)}, ${pn} 실제 후기`, `다들 재구매한다는 ${pn}`],
+    ugc: [`(경쟁 영상 제목 구조 그대로) ${pn}`, `${p.pain.replace(/\?$/, "")}다면 이거 써 보세요`, `${pn} 진짜 써 봄`]
+  }[fx];
+  const tags = ["#살림템", "#꿀템", "#추천템", "#쇼츠", "#" + pn.split(/\s+/)[0].replace(/[^\p{L}\p{N}]/gu, "")].filter(x => x.length > 1);
+  const caption = `${p.pain}\n${pn}${p.benefit ? " — " + p.benefit : ""}\n\n${p.price > p.sale ? `정가 ${won(p.price)}원 → ` : ""}${pr} (제작일 기준 · 가격은 바뀔 수 있어요)${rv ? `\n${rv}${p.rating ? ` · 별점 ${p.rating.toFixed(1)}` : ""}` : ""}\n👉 ${p.cta}\n\n${p.adtag ? "※ 이 영상은 제휴·협찬으로 수수료를 받을 수 있는 광고입니다.\n" : ""}\n${tags.join(" ")}`;
+  const checks = [
+    p.adtag ? "영상 안 '광고' 표시가 켜져 있어요. 설명란 첫 줄에도 광고·대가성 문구를 넣으세요." : "광고 표시가 꺼져 있어요. 대가를 받거나 제휴 링크가 있으면 반드시 켜세요.",
+    "가격과 상품평 수는 제작일 실제 값인지 다시 확인하세요.",
+    "‘치료·완치·100% 제거’ 같은 효능 단정 표현은 빼세요.",
+    fx === "proof" ? "리뷰 문장은 받은 리뷰 그대로인지, 출처를 보여 줄 수 있는지 확인하세요." : "후기처럼 보이는 문장을 지어내지 마세요. 사실과 숫자로 말하세요.",
+    fx === "ugc" ? "경쟁 영상의 화면·음원 파일을 그대로 쓰면 저작권 문제가 돼요. 구조만 가져오고, 촬영·음원은 직접 준비하세요." : "AI 영상을 섞었다면 업로드할 때 'AI 사용'을 표시하세요.",
+    "첫 1초에 얼굴·맨발·흐린 회색 장면이 나오지 않게, 색이 진한 손동작으로 시작하세요."
+  ];
+  return { cuts, titles, caption, checks };
+}
+
+/* ---------- UI wiring ---------- */
+const fxWrap = $("formulas");
+FORMULAS.forEach(f => {
+  const b = document.createElement("button"); b.type = "button"; b.className = "fx"; b.dataset.id = f.id; b.setAttribute("aria-pressed", f.id === FX);
+  b.innerHTML = `<span class="nm"></span><span class="why"></span><span class="src${f.own ? " own" : ""}"></span>`;
+  b.querySelector(".nm").textContent = f.nm; b.querySelector(".why").textContent = f.why; b.querySelector(".src").textContent = f.src;
+  b.addEventListener("click", () => { FX = f.id; document.querySelectorAll(".fx").forEach(x => x.setAttribute("aria-pressed", x.dataset.id === FX)); try { localStorage.setItem("adfx", FX); } catch (e) {} sync(); });
+  fxWrap.appendChild(b);
+});
+try { const s = localStorage.getItem("adfx"); if (s && FORMULAS.some(f => f.id === s)) { FX = s; document.querySelectorAll(".fx").forEach(x => x.setAttribute("aria-pressed", x.dataset.id === FX)); } } catch (e) {}
+
+let aiCuts = null;
+function curDur() { return FORMULAS.find(f => f.id === FX).dur; }
+function renderSheet() {
+  const p = P(), pl = plan(p, FX); const cuts = aiCuts || pl.cuts;
+  const tb = $("cuts").querySelector("tbody"); tb.innerHTML = "";
+  cuts.forEach(c => { const tr = document.createElement("tr");
+    [["tc", c[0]], ["", c[1]], ["capc", c[2]], ["", c[3]], ["pr", c[4]]].forEach(([cls, v]) => { const td = document.createElement("td"); if (cls === "capc") { const s = document.createElement("span"); s.className = "cap"; s.textContent = v || ""; td.appendChild(s); } else { if (cls) td.className = cls; td.textContent = v || ""; } tr.appendChild(td); });
+    tb.appendChild(tr); });
+  $("titles").innerHTML = ""; pl.titles.forEach(s => { const li = document.createElement("li"); li.textContent = s; $("titles").appendChild(li); });
+  $("caption").textContent = pl.caption;
+  $("checks").innerHTML = ""; pl.checks.forEach(s => { const li = document.createElement("li"); li.textContent = s; $("checks").appendChild(li); });
+  const f = FORMULAS.find(x => x.id === FX);
+  $("fxnote").textContent = aiCuts ? "Claude가 붙여 넣은 광고 구조를 내 제품으로 옮긴 대본이에요. 사실·가격은 꼭 다시 확인하세요." : FX === "ugc" ? "UGC는 직접 찍는 공식이에요. 위 영상은 촬영 영상 위에 올릴 자막 스티커 예시이고, 아래 대본을 따라 경쟁 영상과 같은 컷 길이로 찍으세요." : `‘${f.nm}’ 공식으로 만든 대본이에요. 영상 대신 직접 찍거나 AI 영상 툴로 만들 때 이 표를 그대로 쓰세요.`;
+  document.querySelectorAll(".only").forEach(el => { el.hidden = el.dataset.for !== FX; });
+}
+function sheetText() {
+  const p = P(), pl = plan(p, FX), cuts = aiCuts || pl.cuts;
+  return `# ${p.name} — ${FORMULAS.find(f => f.id === FX).nm}\n\n## 컷별 대본\n` + cuts.map(c => `- ${c[0]} | 화면: ${c[1]} | 자막: ${c[2]} | 나레이션: ${c[3]}\n  프롬프트: ${c[4]}`).join("\n") +
+    `\n\n## 제목 후보\n${pl.titles.map((s, i) => `${i + 1}. ${s}`).join("\n")}\n\n## 캡션\n${pl.caption}\n\n## 올리기 전 확인\n${pl.checks.map(s => "- " + s).join("\n")}\n`;
+}
+
+/* playback */
+let playing = false, t0 = 0, tNow = 3.5, raf = 0;
+function draw(t) { g.save(); g.clearRect(0, 0, W, H); try { T[FX](P(), t); } catch (e) { console.error(e); } g.restore(); }
+function setTime(t) { tNow = t; const d = curDur(); $("time").textContent = `${t.toFixed(1)}초 / ${d.toFixed(1)}초`; if (!playing) $("scrub").value = Math.round(t / d * 1000); }
+function loop(now) { const d = curDur(); const t = ((now - t0) / 1000) % d; draw(t); setTime(t); $("scrub").value = Math.round(t / d * 1000); raf = requestAnimationFrame(loop); }
+function play() { if (playing) return; playing = true; t0 = performance.now() - tNow * 1000; $("play").textContent = "일시정지"; raf = requestAnimationFrame(loop); }
+function pause() { playing = false; cancelAnimationFrame(raf); $("play").textContent = "재생"; draw(tNow); }
+$("play").addEventListener("click", () => playing ? pause() : play());
+$("scrub").addEventListener("input", e => { if (playing) pause(); const t = e.target.value / 1000 * curDur(); setTime(t); draw(t); });
+function sync() { aiCuts = null; renderSheet(); if (!playing) { setTime(Math.min(tNow, curDur() - .01)); draw(tNow); } }
+$("prod").addEventListener("input", e => { if (e.target.type === "file") return; sync(); });
+$("prod").addEventListener("submit", e => e.preventDefault());
+$("photo").addEventListener("change", e => { const f = e.target.files[0]; if (!f) { photo = null; sync(); return; } const im = new Image(); im.onload = () => { photo = im; sync(); }; im.onerror = () => status("사진을 읽지 못했어요. JPG나 PNG로 다시 올려 주세요.", true); im.src = URL.createObjectURL(f); });
+let bgmUrl = null; $("bgm").addEventListener("change", e => { const f = e.target.files[0]; bgmUrl = f ? URL.createObjectURL(f) : null; });
+
+function status(msg, err) { const s = $("status"); s.textContent = msg; s.classList.toggle("err", !!err); }
+async function copyText(s, btn) { try { await navigator.clipboard.writeText(s); btn.textContent = "복사됨"; setTimeout(() => btn.textContent = btn.dataset.label || "복사", 1400); } catch (e) { const r = document.createRange(); const n = btn.previousElementSibling; if (n) { r.selectNodeContents(n); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); } btn.textContent = "선택됨 · Ctrl+C"; } }
+document.querySelectorAll("[data-copy]").forEach(b => { b.dataset.label = b.textContent; b.addEventListener("click", () => copyText($(b.dataset.copy).innerText, b)); });
+$("copyall").dataset.label = "전체 복사"; $("copyall").addEventListener("click", e => copyText(sheetText(), e.currentTarget));
+
+/* capabilities: downloads (save files), sample (Claude rewrite) — the page works without both */
+let downloads = null, sample = null;
+(async () => {
+  if (!window.claude || !window.claude.use) return;
+  try { downloads = await window.claude.use("downloads"); } catch (e) {}
+  try { sample = await window.claude.use("sample"); } catch (e) {}
+  if (sample) $("aibox").hidden = false;
+})();
+$("savetxt").addEventListener("click", async () => {
+  if (!downloads) { copyText(sheetText(), $("savetxt")); return; }
+  try { await downloads.save({ filename: `${P().name}_대본.md`, data: sheetText() }); } catch (e) { if (e && e.code !== "declined") status("대본을 저장하지 못했어요. '전체 복사'로 가져가 주세요.", true); }
+});
+
+/* recording */
+let recording = false;
+function pickMime() { const c = ["video/mp4;codecs=avc1.42E01E,mp4a.40.2", "video/mp4;codecs=avc1", "video/mp4", "video/webm;codecs=vp9,opus", "video/webm;codecs=vp8,opus", "video/webm"]; return c.find(m => window.MediaRecorder && MediaRecorder.isTypeSupported(m)) || ""; }
+$("rec").addEventListener("click", async () => {
+  if (recording) return; if (!window.MediaRecorder || !cv.captureStream) { status("이 브라우저는 영상 녹화를 지원하지 않아요. 크롬이나 엣지에서 열어 주세요.", true); return; }
+  pause(); recording = true; $("rec").disabled = true; $("play").disabled = true;
+  const d = curDur(), mime = pickMime(), ext = mime.includes("mp4") ? "mp4" : "webm";
+  const stream = cv.captureStream(30); let audioEl = null, actx = null;
+  if (bgmUrl) { try { audioEl = new Audio(bgmUrl); actx = new AudioContext(); const src = actx.createMediaElementSource(audioEl); const dest = actx.createMediaStreamDestination(); const gain = actx.createGain(); gain.gain.value = .8; src.connect(gain); gain.connect(dest); gain.connect(actx.destination); dest.stream.getAudioTracks().forEach(tr => stream.addTrack(tr)); } catch (e) { audioEl = null; } }
+  const chunks = []; const mr = new MediaRecorder(stream, mime ? { mimeType: mime, videoBitsPerSecond: 8_000_000 } : { videoBitsPerSecond: 8_000_000 });
+  mr.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+  const done = new Promise(res => mr.onstop = res);
+  draw(0); mr.start(250); if (audioEl) { try { await actx.resume(); audioEl.currentTime = 0; await audioEl.play(); } catch (e) {} }
+  const start = performance.now();
+  await new Promise(res => { const step = now => { const t = (now - start) / 1000; if (t >= d) { draw(d - .001); res(); return; } draw(t); setTime(t); status(`녹화 중… ${Math.ceil(d - t)}초 남음`); requestAnimationFrame(step); }; requestAnimationFrame(step); });
+  await new Promise(r => setTimeout(r, 150)); mr.stop(); await done; if (audioEl) { audioEl.pause(); actx.close(); }
+  const blob = new Blob(chunks, { type: mime || "video/webm" });
+  const out = $("out"); out.src = URL.createObjectURL(blob); out.hidden = false;
+  recording = false; $("rec").disabled = false; $("play").disabled = false;
+  const fname = `${P().name.replace(/[\\/:*?"<>|]/g, "")}_${FORMULAS.find(f => f.id === FX).nm.replace(/[\\/:*?"<>|·\s]/g, "")}.${ext}`;
+  if (downloads) {
+    status("저장할지 묻는 창이 떠요.");
+    try { await downloads.save({ filename: fname, data: blob }); status(`저장했어요 · ${ext.toUpperCase()} · ${(blob.size / 1048576).toFixed(1)}MB`); }
+    catch (e) { status(e && e.code === "declined" ? "저장을 취소했어요. 아래 미리보기에서 다시 볼 수 있어요." : "이 화면에서는 저장이 막혀 있어요. 미리보기 영상을 길게 눌러 저장하거나 데스크톱에서 열어 주세요.", e && e.code !== "declined"); }
+  } else status("녹화를 마쳤어요. 이 화면에서는 파일 저장이 막혀 있어 미리보기로만 볼 수 있어요.", true);
+});
+
+/* Claude rewrite of a reference ad */
+$("aigo").addEventListener("click", async () => {
+  if (!sample) return; const ref = $("ref").value.trim(); if (ref.length < 20) { $("aistatus").textContent = "따라 할 광고 내용을 조금 더 적어 주세요."; return; }
+  const p = P(); $("aigo").disabled = true; $("aistatus").textContent = "바꾸는 중…";
+  const prompt = `너는 한국 숏폼 광고 기획자다. 아래 '참고 광고'의 훅 문장 길이, 컷 수와 컷 길이, 말투, 마지막 행동 유도 구조를 그대로 유지하고, 내용만 '내 제품'으로 바꾼 컷별 대본을 만들어라.
+규칙: 지어낸 후기·사용 경험("써 보니")·효능 단정·없는 할인 금지. 가격·상품평은 아래 값만 쓴다. 참고 광고의 문장을 그대로 베끼지 말고 같은 구조로 새로 쓴다. 첫 컷은 채도 높은 색의 손동작 장면.
+내 제품: ${JSON.stringify({ 제품명: p.name, 장점: p.benefit, 고객불편: p.pain, 정가: p.price, 판매가: p.sale, 상품평수: p.reviews, 별점: p.rating, 구매안내: p.cta })}
+참고 광고:
+${ref}
+JSON 배열만 출력: [{"time":"0–2초","screen":"화면 설명","caption":"자막","voice":"나레이션","prompt":"English prompt for an AI video tool, vertical 9:16, hands only, no faces"}] (4~7개)`;
+  try {
+    const res = await sample.json(prompt, { modelTier: "default" });
+    const arr = Array.isArray(res) ? res : (res && res.cuts) || [];
+    if (!arr.length) throw { code: "empty" };
+    aiCuts = arr.slice(0, 8).map(x => [x.time || "", x.screen || "", x.caption || "", x.voice || "", x.prompt || ""]);
+    renderSheet(); $("aistatus").textContent = "대본을 바꿨어요. 제품 정보를 고치면 기본 대본으로 돌아가요.";
+  } catch (e) { $("aistatus").textContent = e && e.code === "rate_limited" ? "요청이 많아요. 잠시 뒤에 다시 눌러 주세요." : "이번엔 바꾸지 못했어요. 참고 광고를 조금 더 자세히 적어 주세요."; }
+  $("aigo").disabled = false;
+});
+
+/* boot: wait for fonts so the canvas never draws with a fallback face */
+renderSheet();
+Promise.all(["900 80px 'Noto Sans KR'", "700 40px 'Noto Sans KR'", "400 80px 'Black Han Sans'", "600 80px 'IBM Plex Mono'"].map(f => document.fonts.load(f, "가나다0123"))).catch(() => {}).then(() => { setTime(tNow); draw(tNow); });
+draw(tNow);
+</script>

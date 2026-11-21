@@ -1,0 +1,35 @@
+Overall assessment
+The audit reviewed the repository and public HTTP responses on October 14, 2026. This is a focused Korean-language AI-video reference tool: 75 cards, four substantive guides, a guide index, and an about/privacy page. Its realistic opportunity is specific Korean searches about camera movements, prompts, and video-generation problems—not competing for broad “AI video” searches.
+
+Good foundations; the next gains come from discovery and credibility, not more SEO infrastructure. Card and guide answers are already present in static HTML. Titles are distinct, descriptions are present, sampled public pages return 200, and the guides offer practical examples and summaries. The operator and contact information are disclosed. No broken local HTML links were found. AEO readiness is promising, but clearer standalone answers and demonstrated results would make the material more useful to readers and answer engines.
+
+Prioritized issues
+1. Confirm the intended public domain before changing anything.
+
+The project domain, magenta-tulumba-7e2302.netlify.app, returned 401 login responses for the homepage, a card, and the guide index. The canonical domain, ai-video-reference-kr.netlify.app, returned public 200 responses with matching sampled visible content. Canonicals and discovery files consistently point to the latter. If this project is a protected working copy, that is appropriate—not an SEO defect. If it is intended to become the public site, authentication blocks discovery and the existing canonicals point elsewhere. Keep one public indexing destination; resolve this only when the intended production domain is established.
+
+2. Make the existing library easier to discover without JavaScript. Highest-confidence improvement.
+
+The homepage inserts card descriptions and detail links with JavaScript; its initial HTML contains no card-detail navigation. Of the 75 cards, 37 also lack incoming static links from other cards. They are listed in the sitemap, so they are not necessarily undiscoverable, but navigation depends too heavily on rendering and discovery files. The four guides do not directly link to individual cards either.
+
+Add a compact HTML category/card directory and contextual guide links—for example, link the camera-movement guide directly to the relevant dolly-in and orbit cards. Keep the interactive tool. A framework migration or full rendering rewrite is unnecessary.
+
+3. Improve a few valuable answers rather than expanding the page count.
+
+Individual cards have useful definitions and copyable prompts, but category-level tips repeat across pages. Guides give reasonable advice without identifying tested tools, versions, or test dates. The existing operator disclosure is helpful; it does not establish that these recommendations were tested.
+
+Start with five to ten useful cards and one troubleshooting guide. Add an actual result or before/after example, the tool/version used, a failure case, and a specific limitation. Label schematic motion previews as illustrations rather than generated-result evidence. Attribute substantive source material near the relevant advice. Add a byline and reviewed date when warranted; do not invent testing or refresh dates cosmetically.
+
+4. Clarify the homepage’s search-facing purpose and make answers self-contained.
+
+The title names the “reference archive”; the hero promises an “order sheet.” Both are understandable, but neither immediately names the prompt-building task. Lead naturally with wording such as “AI 영상 프롬프트 만들기” and retain the brand. For important cards, put a short definition, when-to-use guidance, one prompt, and a caveat together. The troubleshooting guide’s problem → fix summary is already a strong model. Do not append a generic FAQ to every page.
+
+Recommended next steps
+Establish the public domain and check representative URLs in Google Search Console and, for the Korean audience, Naver Search Advisor. Verification files exist; they do not prove indexing or ownership access.
+Add static library navigation and guide-to-card links before commissioning more content.
+Strengthen the small set of pages above with original examples; use actual search queries to choose subsequent improvements.
+Measure impressions, useful query coverage, organic visits, and prompt-copy/order-sheet usage. Check mobile experience before optimizing animations or affiliate scripts; no measured performance failure was established.
+Low priority and limits
+Sitemap, robots.txt, breadcrumb markup, cards.json, and llms.txt already exist. Do not expand them merely for “AEO.” The JSON export has genuine utility for this tool, but it is not evidence of search or AI-answer visibility. Google’s current guidance, AI features and your website, says its AI search features require no special AI files or schema; Link best practices for Google supports ordinary, descriptive internal links.
+
+This was a source/HTTP audit, not a ranking, Search Console, rendered-browser, or Core Web Vitals assessment. It did not establish indexing, traffic, mobile performance, or AI citation frequency. No site files, configuration, or deployments were changed; only this audit report was added.

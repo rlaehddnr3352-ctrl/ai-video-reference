@@ -1,0 +1,52 @@
+<!--meta
+title: AI 영상 프롬프트, 7단계로 나눠 쓰면 결과가 안정된다
+desc: "멋지게 만들어 줘" 대신 무엇을 고정하고 무엇을 움직일지 나눠 쓰는 7단계 프롬프트 공식과 전후 비교 예시.
+read: 6
+-->
+<p>AI 영상 도구에 "고급스럽고 감성적인 제품 영상"이라고만 적으면 결과가 매번 달라집니다. 어떤 컷은 제품 모양이 바뀌고, 어떤 컷은 조명이 갑자기 어두워지고, 다음 컷에서는 진행 방향이 반대로 뒤집히죠. 모델이 나빠서라기보다, 정해 주지 않은 부분을 모델이 매번 새로 상상하기 때문입니다.</p>
+<p>해결법은 단순합니다. 프롬프트를 <b>바뀌면 안 되는 것</b>과 <b>움직여야 하는 것</b>으로 나눠, 정해진 순서대로 쓰는 거예요. 이 사이트의 주문서는 아래 7단계 순서로 프롬프트를 만듭니다.</p>
+
+<h2>7단계 한눈에 보기</h2>
+<table>
+  <thead><tr><th>단계</th><th>무엇을 쓰나</th><th>예시 문장</th></tr></thead>
+  <tbody>
+    <tr><td>1. 핵심 상황</td><td>이 장면이 무엇이고 어떤 감정을 남겨야 하는지 한 문장</td><td>수제 쿠키 신메뉴 15초 광고, 따뜻하고 군침 도는 느낌</td></tr>
+    <tr><td>2. 정체성 고정</td><td>바뀌면 안 되는 대상에 이름표(ID)를 붙이고 특징을 못 박기</td><td>PRODUCT_01 = 초코칩 쿠키, 지름 8cm, 갈색 크라프트 봉투</td></tr>
+    <tr><td>3. 세계 · 장르</td><td>장소, 색 팔레트, 재질, 빛이 들어오는 논리</td><td>나무 조리대, 오후 창가 햇살, 베이지와 갈색</td></tr>
+    <tr><td>4. 매체 · 사실감</td><td>실사인지 3D인지 스톱모션인지, 그리고 피해야 할 오류</td><td>실사 촬영 느낌. 녹아내리는 쿠키, 깨진 글자 금지</td></tr>
+    <tr><td>5. 사운드</td><td>음악을 몇 곡 쓰는지, 효과음은 어떤지</td><td>BGM 한 곡만, 쿠키 부서지는 효과음</td></tr>
+    <tr><td>6. 샷 설계</td><td>구간별 카메라 움직임, 샷 크기, 앵글, 조명 대비</td><td>0–3초 스냅 줌, 3–8초 매크로 돌리인, 클로즈업, 4:1 조명</td></tr>
+    <tr><td>7. 연속성</td><td>다음 샷까지 유지할 상태</td><td>봉투 라벨은 항상 정면, 빛은 왼쪽에서, 움직임은 왼→오</td></tr>
+  </tbody>
+</table>
+
+<h2>왜 이 순서일까</h2>
+<p>앞쪽 단계일수록 "변하면 안 되는 것"이고, 뒤쪽으로 갈수록 "샷마다 달라지는 것"입니다. 정체성(2단계)과 세계(3단계)를 먼저 고정해 두면, 6단계에서 카메라를 아무리 바꿔도 제품과 분위기가 흔들리지 않아요. 반대로 카메라 움직임부터 길게 적고 제품 설명을 맨 끝에 붙이면, 모델이 제품을 덜 중요한 정보로 다루기 쉽습니다.</p>
+<p>2단계의 이름표(PRODUCT_01 같은 ID)는 특히 여러 컷을 따로 생성할 때 효과가 큽니다. 컷마다 같은 ID와 같은 특징 문장을 그대로 붙여 넣으면, 사람이 읽어도 AI가 읽어도 "같은 물건"이라는 게 분명해져요.</p>
+
+<h2>전후 비교</h2>
+<p><b>고치기 전</b></p>
+<pre class="prompt">고급스럽고 감성적인 쿠키 광고 영상, 시네마틱하게, 예쁘게</pre>
+<p>"고급스럽게", "시네마틱하게", "예쁘게"는 모두 해석의 폭이 넓은 말이라, 모델이 알아서 채웁니다. 결과는 매번 다른 쿠키, 다른 조명, 다른 카메라가 나와요.</p>
+<p><b>고친 뒤</b></p>
+<pre class="prompt">CORE: chocolate chip cookie launch, 15s total, 9:16 vertical, warm and appetizing.
+IDENTITY LOCK: PRODUCT_01 = round chocolate chip cookie, 8cm, in a brown kraft bag with a white label; shape and label stay identical in every shot.
+WORLD: wooden counter, late-afternoon window light from the left, beige and brown palette.
+MEDIUM: photorealistic live-action. Avoid melting or morphing cookies, warped hands, garbled label text.
+SOUND: single BGM track only, light foley of the cookie breaking.
+SHOT PLAN (close-up, dramatic 4:1 lighting):
+  1. 0–3s hook: fast snap zoom-in on the cookie
+  2. 3–9s texture: slow macro dolly-in to the broken edge, focus pull
+  3. 9–15s brand: camera holds on the bag, label facing camera
+CONTINUITY: label faces camera, key light stays on the left, movement left to right.</pre>
+<p>"시네마틱"은 85mm 렌즈, 얕은 심도, 4:1 조명처럼 <b>측정할 수 있는 조건</b>으로 바뀌었고, 쿠키와 봉투는 ID로 고정됐습니다. 영문으로 쓴 이유는 대부분의 영상 모델이 영어 프롬프트를 더 안정적으로 해석하기 때문이에요. 한국어로 써도 구조만 지키면 효과는 비슷합니다.</p>
+
+<h2>바로 쓰는 체크리스트</h2>
+<ul>
+  <li>감성어("감성적", "고급스러운")를 썼다면 렌즈, 조명 비율, 색 팔레트로 바꿀 수 있는지 확인</li>
+  <li>제품, 캐릭터, 장소마다 ID와 바뀌면 안 되는 특징 1–3개를 적었는지</li>
+  <li>한 샷에 카메라 움직임을 두 개 이상 넣지 않았는지 (돌리인하면서 오비트 X)</li>
+  <li>피해야 할 오류를 명시했는지 (손 왜곡, 제품 변형, 글자 깨짐)</li>
+  <li>여러 컷을 따로 만든다면 1–3단계 문장을 컷마다 똑같이 붙였는지</li>
+</ul>
+<p>이 공식은 NolanX AI가 공개한 영상 제작 스킬의 모듈형 프롬프트 구성을 참고해 한국어로 풀어 정리했습니다.</p>
