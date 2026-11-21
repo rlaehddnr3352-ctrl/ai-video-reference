@@ -15,7 +15,7 @@ Create an 11-second vertical (1080x1920) 3D domino chain as one HTML file using 
 Message on the final block: "[MESSAGE]". Brand: [BRAND]. Domino colors: gradient [COLOR A] → [COLOR B].
 
 [대괄호]만 내 브랜드로 바꿔서 Claude에 붙여넣으면 돼요.
-🔗 ai-video-reference-kr.netlify.app (무료 · 회원가입 없음)
+🔗 ai-video-reference-kr.netlify.app/prompts/video (이 영상 프롬프트 전체 · 무료 · 회원가입 없음)
 
 어떤 제품으로 만들어 보고 싶어요?
 

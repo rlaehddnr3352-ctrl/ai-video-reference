@@ -1,4 +1,4 @@
-▶ 카드로 AI 영상 프롬프트 만드는 무료 사이트: https://ai-video-reference-kr.netlify.app/
+▶ 이 영상을 만든 프롬프트 전체(무료): https://ai-video-reference-kr.netlify.app/prompts/video/
 
 영상 AI 없이, Claude에게 프롬프트를 주고 코드(HTML·Canvas·Three.js)로 그리게 만든 테크 출시 영상 2편이에요. 영상 속 브랜드·숫자는 모두 지어낸 예시예요.
 
